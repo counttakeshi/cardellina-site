@@ -26,7 +26,20 @@ jobs:
           cache: npm
 
       - run: npm ci
+      - run: npm run check
+
+      # Served from https://<user>.github.io/cardellina-site/, so every link needs
+      # that prefix. When the custom domain goes live, set the repo variable
+      # USE_CUSTOM_DOMAIN to "true" and this drops to an empty base path.
       - run: npm run build
+        env:
+          BASE_PATH: ${{ vars.USE_CUSTOM_DOMAIN == 'true' && '' || format('/{0}', github.event.repository.name) }}
+
+      # CNAME must only be published once DNS actually points at GitHub Pages,
+      # otherwise Pages tries to serve the custom domain and the project URL 404s.
+      - name: Add CNAME for the custom domain
+        if: vars.USE_CUSTOM_DOMAIN == 'true'
+        run: echo "cardellina.com" > build/CNAME
 
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
