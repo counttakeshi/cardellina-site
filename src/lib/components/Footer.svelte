@@ -1,7 +1,11 @@
+<script lang="ts">
+	import { base } from '$app/paths';
+</script>
+
 <footer class="footer">
 	<div class="wrap footer-inner">
 		<p>&copy; {new Date().getFullYear()} Cardellina Birdwatching Tours</p>
-		<a href="/privacy-policy">Privacy policy</a>
+		<a href="{base}/privacy-policy">Privacy policy</a>
 	</div>
 </footer>
 

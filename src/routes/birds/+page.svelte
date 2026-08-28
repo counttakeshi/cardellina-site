@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { base } from '$app/paths';
 	import { species, familyOrder } from '$lib/data/species';
 	import { TIERS, ZONES, ZONE_ORDER, type TierCode, type ZoneCode } from '$lib/data/taxonomy';
 	import HabitatIcon from '$lib/components/HabitatIcon.svelte';
@@ -116,7 +117,7 @@
 					<div class="sp-main">
 						<span class="bn">
 							{#if bird.hasAccount}
-								<a href="/birds/{bird.slug}">{bird.commonName}</a>
+								<a href="{base}/birds/{bird.slug}">{bird.commonName}</a>
 							{:else}
 								{bird.commonName}
 							{/if}
@@ -181,7 +182,7 @@
 			<h2>Want to see some of these?</h2>
 			<p>Tell us which birds you're after and we'll build a trip around them.</p>
 		</div>
-		<a class="btn" href="/contact">Plan a trip</a>
+		<a class="btn" href="{base}/contact">Plan a trip</a>
 	</div>
 </div>
 

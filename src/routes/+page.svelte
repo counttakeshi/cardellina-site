@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { base } from '$app/paths';
 	import { flagships, elevationBands, tripTeasers, guides, warblers, reviews, principles } from '$lib/data/home';
 
 	const HERO_IMG =
@@ -34,8 +35,8 @@
 			specialities, and the stunning birds of the tropical lowlands all live.
 		</p>
 		<div class="hero-actions">
-			<a href="/contact" class="btn btn-primary">Plan your trip</a>
-			<a href="/birds" class="btn btn-ghost">Explore the birds</a>
+			<a href="{base}/contact" class="btn btn-primary">Plan your trip</a>
+			<a href="{base}/birds" class="btn btn-ghost">Explore the birds</a>
 			<a class="hero-rating" href={GOOGLE_REVIEWS_URL} target="_blank" rel="noopener">
 				<span class="stars">★★★★★</span> <b>5.0</b> · 51 Google reviews
 			</a>
@@ -82,7 +83,7 @@
 
 		<div class="flagships">
 			{#each flagships as bird (bird.name)}
-				<a class="fs" href={bird.href}>
+				<a class="fs" href={base + bird.href}>
 					<img src={bird.img} alt={bird.name} loading="lazy" />
 					<span class="fs-cap">
 						<span class="n">{bird.name}</span>
@@ -116,7 +117,7 @@
 				We're building a library of detailed accounts for the birds people travel here to see: where
 				they live, when to go, and what it takes to find them.
 			</p>
-			<a class="arrow-link" href="/birds">Explore the Chiapas Bird Library →</a>
+			<a class="arrow-link" href="{base}/birds">Explore the Chiapas Bird Library →</a>
 		</div>
 	</div>
 </section>
@@ -144,7 +145,7 @@
 					<div class="trip-body">
 						<h3>{card.title}</h3>
 						<p>{card.body}</p>
-						<a class="arrow-link" href={card.href}>{card.cta}</a>
+						<a class="arrow-link" href={base + card.href}>{card.cta}</a>
 					</div>
 				</article>
 			{/each}

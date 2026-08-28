@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { base } from '$app/paths';
 	import { page } from '$app/state';
 
 	const LOGO =
@@ -14,7 +15,7 @@
 
 <header class="nav">
 	<div class="wrap nav-inner">
-		<a href="/" class="logo" aria-label="Cardellina — home">
+		<a href="{base}/" class="logo" aria-label="Cardellina — home">
 			<img src={LOGO} alt="Cardellina - Chiapas Birding Tours logo" />
 		</a>
 
@@ -29,7 +30,7 @@
 
 		<nav class="menu" class:open={mobileOpen} aria-label="Primary">
 			<ul>
-				<li><a href="/" class:active={page.url.pathname === '/'}>Home</a></li>
+				<li><a href="{base}/" class:active={page.url.pathname === '/'}>Home</a></li>
 
 				<li
 					class="has-sub"
@@ -46,13 +47,13 @@
 					</button>
 					{#if openMenu === 'trips'}
 						<ul class="sub">
-							<li><a href="/trips/day">Day Tours</a></li>
-							<li><a href="/trips/multi-day">Multi-day Tours</a></li>
+							<li><a href="{base}/trips/day">Day Tours</a></li>
+							<li><a href="{base}/trips/multi-day">Multi-day Tours</a></li>
 						</ul>
 					{/if}
 				</li>
 
-				<li><a href="/birds" class:active={isActive('/birds')}>Chiapas Birds</a></li>
+				<li><a href="{base}/birds" class:active={isActive('/birds')}>Chiapas Birds</a></li>
 
 				<li
 					class="has-sub"
@@ -69,13 +70,13 @@
 					</button>
 					{#if openMenu === 'guides'}
 						<ul class="sub">
-							<li><a href="/guides">Valente &amp; Ben</a></li>
-							<li><a href="/partners">Partners</a></li>
+							<li><a href="{base}/guides">Valente &amp; Ben</a></li>
+							<li><a href="{base}/partners">Partners</a></li>
 						</ul>
 					{/if}
 				</li>
 
-				<li><a href="/contact" class:active={isActive('/contact')}>Contact</a></li>
+				<li><a href="{base}/contact" class:active={isActive('/contact')}>Contact</a></li>
 			</ul>
 		</nav>
 	</div>

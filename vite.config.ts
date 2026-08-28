@@ -2,6 +2,11 @@ import adapter from '@sveltejs/adapter-static';
 import { sveltekit } from '@sveltejs/kit/vite';
 import { defineConfig } from 'vite';
 
+// SvelteKit types `base` as '' or a '/'-prefixed string, so normalise whatever
+// BASE_PATH holds (and tolerate a trailing slash) before handing it over.
+const raw = (process.env.BASE_PATH ?? '').trim().replace(/\/+$/, '');
+const basePath: '' | `/${string}` = raw === '' ? '' : raw.startsWith('/') ? (raw as `/${string}`) : `/${raw}`;
+
 export default defineConfig({
 	plugins: [
 		sveltekit({
@@ -20,6 +25,13 @@ export default defineConfig({
 				precompress: false,
 				strict: true
 			}),
+
+			// Base path for the site. Empty for a root domain (cardellina.com);
+			// set BASE_PATH=/cardellina-site to serve from the GitHub Pages
+			// project URL at counttakeshi.github.io/cardellina-site.
+			paths: {
+				base: basePath
+			},
 
 			prerender: {
 				// TODO: remove once real images are in place (see src/lib/data/*.ts TODOs) —

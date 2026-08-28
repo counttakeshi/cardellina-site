@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { base } from '$app/paths';
 	let { data } = $props();
 	const account = $derived(data.account);
 </script>
@@ -53,7 +54,7 @@
 	{#if account.cta}
 		<div class="cta-block">
 			<p>{@html account.cta.html}</p>
-			<a href={account.cta.href} class="btn">{account.cta.label}</a>
+			<a href={base + account.cta.href} class="btn">{account.cta.label}</a>
 		</div>
 	{/if}
 
@@ -62,7 +63,8 @@
 			<h3>Sources</h3>
 			<ol>
 				{#each account.sources as source, i (i)}
-					<li>{@html source}</li>
+					<!-- id targets the <sup> footnote links in the body copy -->
+					<li id="src{i + 1}">{@html source}</li>
 				{/each}
 			</ol>
 		</div>
