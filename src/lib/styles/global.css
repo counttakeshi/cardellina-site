@@ -1,0 +1,189 @@
+/* Design tokens ported verbatim from the live cardellina.com build. */
+:root {
+	--ink: #16241f; /* cloud-forest shade, near-black green */
+	--canopy: #2f4a3c; /* deep canopy */
+	--moss: #5a7060; /* muted foliage — secondary text on dark */
+	--stone: #6e7671; /* secondary text on light */
+	--mist: #e4e8e1; /* the fog */
+	--paper: #f8f7f3; /* page */
+	--white: #ffffff;
+	--phwa: #d6446f; /* Pink-headed Warbler — the logo bird */
+	--lichen: #a8762f; /* endemic flag */
+	--rule: #d9ddd5;
+
+	--display: 'Newsreader', Georgia, serif;
+	--body: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+	--mono: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+	*,
+	*::before,
+	*::after {
+		animation: none !important;
+		transition: none !important;
+	}
+}
+
+body {
+	font-family: var(--body);
+	font-size: 17px;
+	line-height: 1.7;
+	color: var(--ink);
+	background: var(--paper);
+	-webkit-font-smoothing: antialiased;
+}
+
+a {
+	color: inherit;
+}
+
+img {
+	display: block;
+	max-width: 100%;
+}
+
+:focus-visible {
+	outline: 2px solid var(--phwa);
+	outline-offset: 3px;
+}
+
+.wrap {
+	max-width: 1120px;
+	margin: 0 auto;
+	padding: 0 1.5rem;
+}
+
+.eyebrow {
+	font-family: var(--mono);
+	font-size: 11px;
+	font-weight: 500;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+	color: var(--phwa);
+	margin-bottom: 0.9rem;
+}
+
+h2 {
+	font-family: var(--display);
+	font-weight: 400;
+	font-size: clamp(28px, 3.4vw, 40px);
+	line-height: 1.18;
+	letter-spacing: -0.01em;
+}
+
+h3 {
+	font-family: var(--display);
+	font-weight: 500;
+	font-size: 21px;
+	line-height: 1.3;
+}
+
+.lede {
+	font-size: 19px;
+	line-height: 1.7;
+	color: var(--stone);
+	max-width: 60ch;
+}
+
+section {
+	padding: 5.5rem 0;
+}
+
+.btn {
+	display: inline-block;
+	font-family: var(--body);
+	font-weight: 700;
+	font-size: 15px;
+	letter-spacing: 0.02em;
+	padding: 15px 30px;
+	border-radius: 2px;
+	text-decoration: none;
+	border: 1px solid transparent;
+	transition:
+		background 0.18s ease,
+		color 0.18s ease,
+		border-color 0.18s ease;
+	cursor: pointer;
+}
+
+.btn-primary {
+	background: var(--phwa);
+	color: #fff;
+}
+
+.btn-primary:hover {
+	background: #bf3a61;
+}
+
+.btn-ghost {
+	border-color: rgba(255, 255, 255, 0.4);
+	color: #fff;
+}
+
+.btn-ghost:hover {
+	background: rgba(255, 255, 255, 0.12);
+	border-color: rgba(255, 255, 255, 0.75);
+}
+
+.arrow-link {
+	font-weight: 700;
+	font-size: 14.5px;
+	text-decoration: none;
+	color: var(--canopy);
+	border-bottom: 1.5px solid var(--canopy);
+	padding-bottom: 2px;
+	align-self: flex-start;
+	transition:
+		color 0.18s,
+		border-color 0.18s;
+}
+
+.arrow-link:hover {
+	color: var(--phwa);
+	border-color: var(--phwa);
+}
+
+.stars {
+	color: #e8b33c;
+	letter-spacing: 1px;
+	font-size: 13px;
+}
+
+.flag {
+	font-family: var(--mono);
+	font-size: 9px;
+	font-weight: 500;
+	letter-spacing: 0.07em;
+	padding: 2px 5px;
+	border-radius: 2px;
+	white-space: nowrap;
+	border: 1px solid;
+}
+
+.f-mx {
+	color: #ff9ebc;
+	border-color: rgba(255, 158, 188, 0.5);
+	background: rgba(214, 68, 111, 0.25);
+}
+
+.f-nca {
+	color: #e5bc7e;
+	border-color: rgba(229, 188, 126, 0.45);
+	background: rgba(168, 118, 47, 0.25);
+}
