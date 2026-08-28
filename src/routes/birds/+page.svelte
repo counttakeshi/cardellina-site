@@ -231,7 +231,7 @@
 
 	.controls {
 		position: sticky;
-		top: 0;
+		top: var(--header-h);
 		background: var(--paper);
 		padding: 1.1rem 0 1rem;
 		border-bottom: 1px solid var(--rule);
