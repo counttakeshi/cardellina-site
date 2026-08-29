@@ -1,26 +1,36 @@
 <script lang="ts">
-	import { CONTACT_ENDPOINT } from '$lib/config';
+	import { CONTACT_ENDPOINT, CONTACT_EMAIL } from '$lib/config';
 
 	type Status = 'idle' | 'sending' | 'sent' | 'error';
 
 	let status = $state<Status>('idle');
 	let errorMessage = $state('');
 
+	const configured = $derived(!CONTACT_ENDPOINT.includes('REPLACE_WITH_FORM_ID'));
+
 	async function handleSubmit(event: SubmitEvent) {
 		event.preventDefault();
 		const form = event.currentTarget as HTMLFormElement;
-		const data = Object.fromEntries(new FormData(form).entries());
 
 		status = 'sending';
 		errorMessage = '';
 
 		try {
+			// Submitting as FormData with an Accept: application/json header keeps
+			// Formspree from redirecting to its own thank-you page, so we can show
+			// the confirmation inline instead.
 			const res = await fetch(CONTACT_ENDPOINT, {
 				method: 'POST',
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify(data)
+				headers: { Accept: 'application/json' },
+				body: new FormData(form)
 			});
-			if (!res.ok) throw new Error(`Request failed (${res.status})`);
+
+			if (!res.ok) {
+				const body = await res.json().catch(() => null);
+				const detail = body?.errors?.map((e: { message: string }) => e.message).join(', ');
+				throw new Error(detail || `Request failed (${res.status})`);
+			}
+
 			status = 'sent';
 			form.reset();
 		} catch (err) {
@@ -31,6 +41,20 @@
 </script>
 
 <form onsubmit={handleSubmit}>
+	<!-- Subject line for the notification email, so enquiries are scannable in the inbox. -->
+	<input type="hidden" name="_subject" value="New enquiry from cardellina.com" />
+
+	<!-- Honeypot: invisible to people, but bots fill every field they find.
+	     Formspree silently discards any submission where _gotcha has a value. -->
+	<input
+		class="gotcha"
+		type="text"
+		name="_gotcha"
+		tabindex="-1"
+		autocomplete="off"
+		aria-hidden="true"
+	/>
+
 	<div class="field-row">
 		<div class="field">
 			<label for="cf-name">Name*</label>
@@ -73,16 +97,21 @@
 		<textarea id="cf-msg" name="message" rows="5" required></textarea>
 	</div>
 
-	<button class="submit-btn" type="submit" disabled={status === 'sending'}>
+	<button class="submit-btn" type="submit" disabled={status === 'sending' || !configured}>
 		{status === 'sending' ? 'Sending…' : 'Send enquiry'}
 	</button>
 
-	{#if status === 'sent'}
+	{#if !configured}
+		<p class="status warn">
+			The form isn't connected yet. In the meantime, please email
+			<a href="mailto:{CONTACT_EMAIL}">{CONTACT_EMAIL}</a>.
+		</p>
+	{:else if status === 'sent'}
 		<p class="status ok">Thanks — we'll be in touch within 24 hours.</p>
 	{:else if status === 'error'}
 		<p class="status err">
 			Couldn't send that ({errorMessage}). Please email
-			<a href="mailto:info@cardellina.com">info@cardellina.com</a> directly.
+			<a href="mailto:{CONTACT_EMAIL}">{CONTACT_EMAIL}</a> directly.
 		</p>
 	{/if}
 </form>
@@ -192,6 +221,23 @@
 	}
 	.status.err {
 		color: #b8305a;
+	}
+	.status.warn {
+		color: var(--lichen);
+	}
+
+	/* Off-screen rather than display:none — some bots skip hidden inputs. */
+	.gotcha {
+		position: absolute;
+		left: -9999px;
+		width: 1px;
+		height: 1px;
+		opacity: 0;
+	}
+
+	.submit-btn:disabled {
+		opacity: 0.55;
+		cursor: not-allowed;
 	}
 
 	@media (max-width: 560px) {
