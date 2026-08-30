@@ -242,26 +242,35 @@
 				     the column, teaches the colour key, and gives a way in that does not
 				     depend on spotting that the dots are clickable. -->
 				<div class="sitelist">
-					<p class="sl-lead">
-						{compact ? 'Six habitats, eighteen sites' : 'Or pick a site from the list:'}
-					</p>
-					{#each grouped as group (group.color)}
-						<div class="sl-group">
-							<div class="sl-head">
-								<span class="dot" style="background:{group.color}"></span>{group.label}
-								<span class="sl-count">{group.sites.length}</span>
-							</div>
-							<ul>
-								{#each group.sites as s (s.id)}
-									<li>
-										<button onclick={() => pickSite(s)}>
-											{s.name}<span class="sl-elev">{s.elev} m</span>
-										</button>
-									</li>
-								{/each}
-							</ul>
+					<p class="sl-lead">Or pick a site from the list:</p>
+					{#if compact}
+						<!-- Wraps horizontally under the map rather than forming a tall
+						     column, which on the homepage ran far past the map itself. -->
+						<div class="sl-chips">
+							{#each sites as s (s.id)}
+								<button onclick={() => pickSite(s)}>
+									<span class="dot" style="background:{s.zoneColor}"></span>{s.name}
+								</button>
+							{/each}
 						</div>
-					{/each}
+					{:else}
+						{#each grouped as group (group.color)}
+							<div class="sl-group">
+								<div class="sl-head">
+									<span class="dot" style="background:{group.color}"></span>{group.label}
+								</div>
+								<ul>
+									{#each group.sites as s (s.id)}
+										<li>
+											<button onclick={() => pickSite(s)}>
+												{s.name}<span class="sl-elev">{s.elev} m</span>
+											</button>
+										</li>
+									{/each}
+								</ul>
+							</div>
+						{/each}
+					{/if}
 				</div>
 			{/if}
 		</div>
@@ -532,24 +541,52 @@
 		color: var(--stone);
 		flex-shrink: 0;
 	}
-	.sl-count {
-		margin-left: auto;
-		font-family: var(--mono);
-		font-size: 10px;
-		color: var(--stone);
+	.sl-chips {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 6px;
 	}
+	.sl-chips button {
+		display: inline-flex;
+		align-items: center;
+		gap: 6px;
+		font-family: var(--body);
+		font-size: 13.5px;
+		background: var(--white);
+		border: 1px solid var(--rule);
+		border-radius: 3px;
+		padding: 5px 10px;
+		color: var(--ink);
+		cursor: pointer;
+		transition:
+			border-color 0.14s,
+			color 0.14s;
+	}
+	.sl-chips button:hover {
+		border-color: var(--phwa);
+		color: var(--phwa);
+	}
+
 	.bird.more {
 		background: none;
 		border-style: dashed;
 		color: var(--stone);
 	}
 
-	/* Homepage taster: slightly tighter, and no mode bar. */
+	/* Homepage taster: one column. A side panel here ran far past the bottom of
+	   the map, so the site chips and the card stack underneath it instead. */
+	.compact .grid {
+		grid-template-columns: 1fr;
+		gap: 1.4rem;
+	}
 	.compact .map-panel {
 		position: static;
 	}
 	.compact .detail {
 		min-height: 0;
+	}
+	.compact .site-card {
+		max-width: 760px;
 	}
 
 	/* ── Site card ── */

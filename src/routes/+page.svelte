@@ -75,13 +75,11 @@
 		<div class="case-head">
 			<p class="eyebrow">The case for Chiapas</p>
 			<h2>More than forty endemic and near-endemic birds</h2>
-			<p class="lede">
-				Pacific dry forest, Lacandón rainforest, limestone hills, highland cloud forest, and the
-				slopes of Tacaná Volcano hold birds that are tough to find elsewhere: the Horned Guan and
-				Pink-headed Warbler, Nava's Wren, the Rose-bellied Bunting and so much more.
-			</p>
 		</div>
 
+		<!-- The habitat line under each bird does the work the old prose did: it
+		     shows the range from Pacific dry forest to the volcano through actual
+		     birds, rather than listing habitats in a sentence. -->
 		<div class="flagships">
 			{#each flagships as bird (bird.name)}
 				<a class="fs" href={base + bird.href}>
@@ -89,9 +87,11 @@
 					<span class="fs-cap">
 						<span class="n">{bird.name}</span>
 						<span class="s">{bird.sci}</span>
-						{#if bird.flag}
-							<i class="flag f-{bird.flag.toLowerCase()}">{bird.flag}</i>
-						{/if}
+						<span class="h">
+							{bird.habitat}{#if bird.flag}<i class="flag f-{bird.flag.toLowerCase()}"
+									>{bird.flag}</i
+								>{/if}
+						</span>
 					</span>
 				</a>
 			{/each}
@@ -102,25 +102,21 @@
 			Endemic to the northern Central American highlands, meaning Chiapas and adjacent Guatemala
 		</p>
 
-		<!-- Replaces the five-column elevation write-up: the same point — that the
-		     habitats run from coast to cloud forest — made by showing rather than
-		     telling, and clickable so people can see what lives where. -->
-		<div class="habitats">
-			<p class="eyebrow">Where those habitats are</p>
-			<h3>From the coast to the cloud forest</h3>
-			<p class="hab-lede">
-				Chiapas packs sea level to 4,060 m into one state, and the birds change completely as you
-				climb. These are the eighteen places we bird most.
-			</p>
-			<SiteMap compact />
-		</div>
-
 		<div class="case-cta">
 			<p>
 				We're building a library of detailed accounts for the birds people travel here to see: where
 				they live, when to go, and what it takes to find them.
 			</p>
 			<a class="arrow-link" href="{base}/birds">Explore the Chiapas Bird Library →</a>
+		</div>
+
+		<div class="habitats">
+			<h3>And where to find them</h3>
+			<p class="hab-lede">
+				The birds change completely as you climb, from the Pacific coast to the summit of Tacaná.
+				These are the sites we visit most.
+			</p>
+			<SiteMap compact />
 		</div>
 	</div>
 </section>
@@ -528,10 +524,23 @@
 		color: rgba(255, 255, 255, 0.6);
 		letter-spacing: 0.02em;
 		display: block;
-		margin-bottom: 6px;
+		margin-bottom: 5px;
+	}
+	/* Habitat line, with the endemism flag sitting inline beside it. */
+	.fs-cap .h {
+		display: flex;
+		align-items: center;
+		gap: 6px;
+		flex-wrap: wrap;
+		font-family: var(--mono);
+		font-size: 9.5px;
+		letter-spacing: 0.03em;
+		text-transform: uppercase;
+		color: rgba(255, 255, 255, 0.88);
 	}
 	.fs-cap :global(.flag) {
 		display: inline-block;
+		flex-shrink: 0;
 	}
 
 	.legend {
@@ -558,9 +567,7 @@
 
 
 	.habitats {
-		border-top: 1px solid var(--rule);
-		padding-top: 2.2rem;
-		margin-bottom: 2.6rem;
+		margin-top: 2.8rem;
 	}
 	.habitats h3 {
 		font-family: var(--display);

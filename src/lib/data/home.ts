@@ -10,6 +10,7 @@ export const flagships = [
 	{
 		name: 'Horned Guan',
 		sci: 'Oreophasis derbianus',
+		habitat: 'Cloud forest, above 2,300 m',
 		flag: 'NCA',
 		href: '/birds/horned-guan',
 		img: card('horned-guan-mv02ExGWQJC0k2xv.jpg')
@@ -17,6 +18,7 @@ export const flagships = [
 	{
 		name: 'Pink-headed Warbler',
 		sci: 'Cardellina versicolor',
+		habitat: 'Highland pine-oak',
 		flag: 'NCA',
 		href: '/birds/pink-headed-warbler',
 		img: card('pink-headed-warbler-Y4LDbp8VMLCx8rRX.jpg')
@@ -24,6 +26,7 @@ export const flagships = [
 	{
 		name: 'Resplendent Quetzal',
 		sci: 'Pharomachrus mocinno',
+		habitat: 'Cloud forest',
 		flag: null,
 		href: '/birds/resplendent-quetzal',
 		img: card('resplendent-quetzal-mnlW0616OoTEDEj3.jpg')
@@ -31,6 +34,7 @@ export const flagships = [
 	{
 		name: 'Rose-bellied Bunting',
 		sci: 'Passerina rositae',
+		habitat: 'Pacific dry forest',
 		flag: 'MX',
 		href: '/birds/rose-bellied-bunting',
 		img: card('5a00c77407956732f80e74b002410be9-mk3qQ8RrkvuyPp7o.jpg')
@@ -38,6 +42,7 @@ export const flagships = [
 	{
 		name: 'Bearded Screech-Owl',
 		sci: 'Megascops barbarus',
+		habitat: 'Highland pine-oak',
 		flag: 'NCA',
 		href: '/birds',
 		img: card('screech-owl-dOq8VPoBxgFQDKM9.jpg')
@@ -45,6 +50,7 @@ export const flagships = [
 	{
 		name: 'Wine-throated Hummingbird',
 		sci: 'Selasphorus ellioti',
+		habitat: 'Volcano cloud forest',
 		flag: 'NCA',
 		href: '/birds',
 		img: card('sabes_aves_wine-thorated_hummingbird-2-A1azLaRJ6zsGPE7K.jpg')
