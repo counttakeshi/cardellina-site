@@ -5,7 +5,14 @@
 
 	type Mode = 'site' | 'species';
 
+	/**
+	 * `compact` is the homepage taster: site mode only, a shorter bird list, and a
+	 * link through to the full explorer. Same data and same map, less machinery.
+	 */
 	let { compact = false }: { compact?: boolean } = $props();
+
+	/** How many birds to list in the card before linking on. */
+	const BIRD_LIMIT = $derived(compact ? 10 : Infinity);
 
 	let mode = $state<Mode>('site');
 	let selectedSiteId = $state<string | null>(null);
@@ -207,7 +214,7 @@
 					<p class="sc-blurb">{selectedSite.blurb}</p>
 					<div class="sc-birds-lbl">Birds here</div>
 					<div class="sc-birds">
-						{#each selectedSite.birds as bird (bird.name)}
+						{#each selectedSite.birds.slice(0, BIRD_LIMIT) as bird (bird.name)}
 							<span
 								class="bird"
 								class:tier-nca={bird.tier === 'nca'}
@@ -217,9 +224,16 @@
 								{bird.name}{#if bird.tier}<i class="bt">{TIER_LABELS[bird.tier]}</i>{/if}
 							</span>
 						{/each}
+						{#if selectedSite.birds.length > BIRD_LIMIT}
+							<span class="bird more">+{selectedSite.birds.length - BIRD_LIMIT} more</span>
+						{/if}
 					</div>
 					<div class="sc-foot">
-						<a class="btn" href="{base}/contact">Ask about birding here</a>
+						{#if compact}
+							<a class="btn" href="{base}/trips/multi-day#explore">See the full map</a>
+						{:else}
+							<a class="btn" href="{base}/contact">Ask about birding here</a>
+						{/if}
 						<button class="clear" onclick={() => (selectedSiteId = null)}>Back to all sites</button>
 					</div>
 				</div>
@@ -228,11 +242,14 @@
 				     the column, teaches the colour key, and gives a way in that does not
 				     depend on spotting that the dots are clickable. -->
 				<div class="sitelist">
-					<p class="sl-lead">Or pick a site from the list:</p>
+					<p class="sl-lead">
+						{compact ? 'Six habitats, eighteen sites' : 'Or pick a site from the list:'}
+					</p>
 					{#each grouped as group (group.color)}
 						<div class="sl-group">
 							<div class="sl-head">
 								<span class="dot" style="background:{group.color}"></span>{group.label}
+								<span class="sl-count">{group.sites.length}</span>
 							</div>
 							<ul>
 								{#each group.sites as s (s.id)}
@@ -514,6 +531,25 @@
 		font-size: 10px;
 		color: var(--stone);
 		flex-shrink: 0;
+	}
+	.sl-count {
+		margin-left: auto;
+		font-family: var(--mono);
+		font-size: 10px;
+		color: var(--stone);
+	}
+	.bird.more {
+		background: none;
+		border-style: dashed;
+		color: var(--stone);
+	}
+
+	/* Homepage taster: slightly tighter, and no mode bar. */
+	.compact .map-panel {
+		position: static;
+	}
+	.compact .detail {
+		min-height: 0;
 	}
 
 	/* ── Site card ── */

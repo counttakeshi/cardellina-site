@@ -1,7 +1,8 @@
 <script lang="ts">
 	import { asset } from '$lib/ledger';
 	import { base } from '$app/paths';
-	import { flagships, elevationBands, tripTeasers, guides, warblers, reviews, principles } from '$lib/data/home';
+	import SiteMap from '$lib/components/SiteMap.svelte';
+	import { flagships, tripTeasers, guides, warblers, reviews, principles } from '$lib/data/home';
 
 	const HERO_IMG = asset('images/sabes_aves_pink-headed_warbler-A0xjy2JlD8TLpRLX-full.webp');
 	const GOOGLE_REVIEWS_URL = 'https://share.google/P1kf5lWkcsJoRDRXU';
@@ -101,15 +102,17 @@
 			Endemic to the northern Central American highlands, meaning Chiapas and adjacent Guatemala
 		</p>
 
-		<div class="elev">
-			{#each elevationBands as band (band.alt)}
-				<div class="elev-col">
-					<div class="bar"></div>
-					<div class="alt">{band.alt}</div>
-					<div class="h">{band.h}</div>
-					<p class="sp">{band.sp}</p>
-				</div>
-			{/each}
+		<!-- Replaces the five-column elevation write-up: the same point — that the
+		     habitats run from coast to cloud forest — made by showing rather than
+		     telling, and clickable so people can see what lives where. -->
+		<div class="habitats">
+			<p class="eyebrow">Where those habitats are</p>
+			<h3>From the coast to the cloud forest</h3>
+			<p class="hab-lede">
+				Chiapas packs sea level to 4,060 m into one state, and the birds change completely as you
+				climb. These are the eighteen places we bird most.
+			</p>
+			<SiteMap compact />
 		</div>
 
 		<div class="case-cta">
@@ -553,52 +556,24 @@
 		background: rgba(168, 118, 47, 0.08);
 	}
 
-	.elev {
+
+	.habitats {
 		border-top: 1px solid var(--rule);
-		padding-top: 1.8rem;
-		display: grid;
-		grid-template-columns: repeat(5, 1fr);
-		gap: 1.6rem;
-		margin-bottom: 2.4rem;
+		padding-top: 2.2rem;
+		margin-bottom: 2.6rem;
 	}
-	.elev-col .bar {
-		height: 3px;
-		border-radius: 2px;
-		margin-bottom: 0.9rem;
-	}
-	.elev-col:nth-child(1) .bar {
-		background: #1f4d3a;
-	}
-	.elev-col:nth-child(2) .bar {
-		background: #3e6b4e;
-	}
-	.elev-col:nth-child(3) .bar {
-		background: #6d8c74;
-	}
-	.elev-col:nth-child(4) .bar {
-		background: #9fb3a1;
-	}
-	.elev-col:nth-child(5) .bar {
-		background: #c7d2c6;
-	}
-	.elev-col .alt {
-		font-family: var(--mono);
-		font-size: 10.5px;
-		letter-spacing: 0.06em;
-		color: var(--stone);
-		margin-bottom: 0.35rem;
-	}
-	.elev-col .h {
+	.habitats h3 {
 		font-family: var(--display);
-		font-size: 17px;
-		font-weight: 500;
-		line-height: 1.25;
-		margin-bottom: 0.4rem;
+		font-weight: 400;
+		font-size: clamp(22px, 2.6vw, 30px);
+		line-height: 1.2;
+		margin-bottom: 0.6rem;
 	}
-	.elev-col .sp {
-		font-size: 13.5px;
+	.hab-lede {
+		font-size: 16px;
 		color: var(--stone);
-		line-height: 1.55;
+		max-width: 62ch;
+		margin-bottom: 1.6rem;
 	}
 
 	.case-cta {
@@ -1154,10 +1129,6 @@
 		.flagships {
 			grid-template-columns: repeat(3, 1fr);
 		}
-		.elev {
-			grid-template-columns: repeat(2, 1fr);
-			gap: 1.4rem 2rem;
-		}
 		.trip-grid,
 		.guide-grid,
 		.how-grid {
@@ -1189,9 +1160,6 @@
 		}
 		.flagships {
 			grid-template-columns: repeat(2, 1fr);
-		}
-		.elev {
-			grid-template-columns: 1fr;
 		}
 		.case-cta {
 			flex-direction: column;
