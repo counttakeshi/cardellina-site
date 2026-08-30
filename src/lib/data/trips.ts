@@ -116,13 +116,14 @@ export const dayTours: DayTour[] = [
 		habitat: 'Pine-oak & cloud forest · lakes',
 		tagline: 'Highland forest & quetzals',
 		blurb:
-			'The forested lakes on the Guatemalan border, at their best for Resplendent Quetzal and a strong cast of highland forest birds, with pine-oak and cloud forest right down to the water.',
+			'First light on the Camino de Cinco Lagos for Resplendent Quetzal, then the lake at El Pojoj, lunch over the water, and either the Chinkultic pyramids or the wetlands to finish.',
 		birds: [
 			'Resplendent Quetzal',
 			'Azure-hooded Jay',
-			'Barred Parakeet',
+			'Northern Emerald-Toucanet',
 			'Black-throated Jay',
-			'Yellow-throated Nightingale-Thrush'
+			'Green-throated Mountain-gem',
+			'Barred Parakeet'
 		],
 		priceUsd: 350,
 		party: '1–2 people · ~5–6 hours birding',

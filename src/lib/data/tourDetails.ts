@@ -1,7 +1,10 @@
 /**
- * Full detail pages for every day tour and multi-day trip, transcribed from the
- * live site. Keyed by the same slug used in trips.ts, so the listing cards and
- * these pages stay in step.
+ * Full detail pages for every day tour and multi-day trip. Keyed by the same slug
+ * used in trips.ts, so the listing cards and these pages stay in step.
+ *
+ * Originally transcribed from the old site, but this file is now edited by hand —
+ * it is the source of truth for tour copy, not a generated artefact. Do not
+ * regenerate it from the old site or you will lose later rewrites.
  */
 
 export interface TourFact {
@@ -502,7 +505,7 @@ export const tourDetails: TourDetail[] = [
 		"slug": "montebello-lakes",
 		"kind": "day",
 		"title": "Montebello Lakes",
-		"hero": "",
+		"hero": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1600/YofU1cddTQzjoQ8J/resplendent-quetzal-mnlW0616OoTEDEj3.jpg",
 		"facts": [
 			{
 				"label": "Duration",
@@ -532,14 +535,45 @@ export const tourDetails: TourDetail[] = [
 		"habitat": "Pine-oak & cloud forest · lakes",
 		"tagline": "Highland forest & quetzals",
 		"intro": [
-			"The forested lakes of Montebello, right on the Guatemalan border, are among the best places in Chiapas for the Resplendent Quetzal, with pine-oak and cloud forest running down to the water's edge and a strong cast of highland forest birds."
+			"The forested lakes of Montebello sit right on the Guatemalan border, an hour from Comitán, with pine-oak and cloud forest running down to the water's edge. We collect you from your accommodation early and time our arrival for first light, which is when the Resplendent Quetzal is most active and the reason the day starts when it does.",
+			"The Camino de Cinco Lagos is the heart of the morning. Along it we look for Azure-hooded Jay, Northern Emerald-Toucanet, Black-throated Jay and Strong-billed Woodcreeper, with Slate-colored Solitaire and Black-headed Nightingale-Thrush singing from cover, Barred Parakeets going over, and Common Chlorospingus and Gray-breasted Wood-Wren working the understorey.",
+			"We carry on to the lake at El Pojoj, where the cast changes: Green-throated Mountain-gem and Collared Trogon, Brown-backed Solitaire and Orange-billed Nightingale-Thrush, Black-throated Green Warbler among the wintering birds, and Plain Chachalaca in the canopy.",
+			"Lunch is local, with homemade tortillas, looking out over the crystalline lakes while Unicolored Jays, Yellow-backed Orioles and Grace's Warbler move through the trees around the table.",
+			"The afternoon depends on the weather. Either the archaeological site at Chinkultic, for Cabanis's Wren, White-tailed Hawk and White-tipped Dove alongside the view from the top of the pyramids; or the nearby wetlands, for Osprey, Wood Stork, Pinnated Bittern, Black-bellied Whistling-Duck, Belted Kingfisher, Vermilion and Scissor-tailed Flycatcher, Common Moorhen, Common Yellowthroat and Grass Wren. Either way we return to Comitán at the end of the day."
 		],
 		"targets": [
 			"Resplendent Quetzal",
 			"Azure-hooded Jay",
-			"Barred Parakeet",
+			"Northern Emerald-Toucanet",
 			"Black-throated Jay",
-			"Yellow-throated Nightingale-Thrush"
+			"Strong-billed Woodcreeper",
+			"Slate-colored Solitaire",
+			"Common Chlorospingus",
+			"Gray-breasted Wood-Wren",
+			"Black-headed Nightingale-Thrush",
+			"Barred Parakeet",
+			"Green-throated Mountain-gem",
+			"Brown-backed Solitaire",
+			"Collared Trogon",
+			"Orange-billed Nightingale-Thrush",
+			"Black-throated Green Warbler",
+			"Plain Chachalaca",
+			"Unicolored Jay",
+			"Yellow-backed Oriole",
+			"Grace's Warbler",
+			"Cabanis's Wren",
+			"White-tailed Hawk",
+			"White-tipped Dove",
+			"Osprey",
+			"Belted Kingfisher",
+			"Wood Stork",
+			"Pinnated Bittern",
+			"Black-bellied Whistling-Duck",
+			"Scissor-tailed Flycatcher",
+			"Vermilion Flycatcher",
+			"Common Moorhen",
+			"Common Yellowthroat",
+			"Grass Wren"
 		]
 	},
 	{
