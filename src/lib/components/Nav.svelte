@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { base } from '$app/paths';
 	import { page } from '$app/state';
+	import { asset } from '$lib/ledger';
 
-	const LOGO =
-		'https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=220,fit=contain/YofU1cddTQzjoQ8J/cardellina-logo-r-ouLe0QMSi7BFi1G9.png';
+	const LOGO = asset('images/cardellina-logo-r-ouLe0QMSi7BFi1G9-md.webp');
 
 	interface NavChild {
 		label: string;

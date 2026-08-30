@@ -1,5 +1,4 @@
-const CDN = 'https://assets.zyrosite.com/cdn-cgi/image/format=auto';
-const BUCKET = 'YofU1cddTQzjoQ8J';
+import { imageUrl } from '$lib/ledger';
 
 export interface GuideFact {
 	label: string;
@@ -33,7 +32,7 @@ export const guides: Guide[] = [
 		slug: 'valente',
 		name: 'Valente González',
 		role: 'Tour leader & guide · born in Chiapas',
-		photo: `${CDN},w=900,h=1080,fit=crop/${BUCKET}/valente-guiding-photo-YBgb3LeK7nUXWJr2.jpg`,
+		photo: imageUrl('valente-guiding-photo-YBgb3LeK7nUXWJr2.jpg', 'full'),
 		tag: 'Comitán, Chiapas',
 		bio: [
 			'Valente, born in San Cristóbal de las Casas, got his first pair of binoculars at seven years old. Watching birds in his garden as a child and learning their habitat ranges, he has been in love with birding ever since. His knowledge of Chiapas’s birds, their niches and secret habitats is unrivalled.',
@@ -76,7 +75,7 @@ export const guides: Guide[] = [
 		slug: 'ben',
 		name: 'Ben Simmons',
 		role: 'Tour leader & guide · from London, in Latin America since 2011',
-		photo: `${CDN},w=900,h=980,fit=crop/${BUCKET}/ben-guide-photo-Awv4vr7rLzfqJD6j.jpg`,
+		photo: imageUrl('ben-guide-photo-Awv4vr7rLzfqJD6j.jpg', 'full'),
 		tag: 'San Cristóbal de las Casas',
 		flip: true,
 		bio: [

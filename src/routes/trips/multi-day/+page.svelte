@@ -1,10 +1,10 @@
 <script lang="ts">
+	import { asset } from '$lib/ledger';
 	import { base } from '$app/paths';
 	import { multiDayTrips } from '$lib/data/trips';
 	import SiteMap from '$lib/components/SiteMap.svelte';
 
-	const HERO =
-		'https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1600,h=600,fit=crop/YofU1cddTQzjoQ8J/tacana-photo-YbNB1ybokJuXrOor.jpg';
+	const HERO = asset('images/tacana-photo-YbNB1ybokJuXrOor-card.webp');
 
 	function scrollToMap(event: MouseEvent) {
 		event.preventDefault();

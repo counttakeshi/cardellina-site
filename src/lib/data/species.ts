@@ -1,3 +1,4 @@
+import { asset } from '$lib/ledger';
 import type { TierCode, ZoneCode } from './taxonomy';
 
 export interface Species {
@@ -43,7 +44,7 @@ export const species: Species[] = [
 		family: "Guans, Chachalacas & Quail",
 		tier: "wide",
 		zones: ["rainforest"],
-		photos: ["https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400/YofU1cddTQzjoQ8J/crested-guan-CKPoAxdUhmbgjmxZ.jpg","https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400/YofU1cddTQzjoQ8J/crested-guan-2-IwURyHPiaRvtUSCZ.jpg"]
+		photos: [asset("images/crested-guan-CKPoAxdUhmbgjmxZ-full.webp"),asset("images/crested-guan-2-IwURyHPiaRvtUSCZ-full.webp")]
 	},
 	{
 		slug: "great-curassow",
@@ -70,7 +71,7 @@ export const species: Species[] = [
 		tier: "nca",
 		zones: ["cloud"],
 		tierBadge: "NCA",
-		photos: ["https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400/YofU1cddTQzjoQ8J/horned-guan-mv02ExGWQJC0k2xv.jpg"],
+		photos: [asset("images/horned-guan-mv02ExGWQJC0k2xv-full.webp")],
 		hasAccount: true
 	},
 	{
@@ -257,7 +258,7 @@ export const species: Species[] = [
 		tier: "nca",
 		zones: ["cloud"],
 		tierBadge: "NCA",
-		photos: ["https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400/YofU1cddTQzjoQ8J/green-throated-mountain-gem-1-BsIEUutE5zt2I5cS.jpg","https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400/YofU1cddTQzjoQ8J/green-throated-mountain-gem-2-AfkqjWFIZA8j6CIi.jpg"]
+		photos: [asset("images/green-throated-mountain-gem-1-BsIEUutE5zt2I5cS-full.webp"),asset("images/green-throated-mountain-gem-2-AfkqjWFIZA8j6CIi-full.webp")]
 	},
 	{
 		slug: "plain-capped-starthroat",
@@ -282,7 +283,7 @@ export const species: Species[] = [
 		family: "Hummingbirds",
 		tier: "mxca",
 		zones: ["pineoak"],
-		photos: ["https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400/YofU1cddTQzjoQ8J/sabes_aves_rivolis_hummingbird-4K4YnfKdpJWaTbqo.JPG"]
+		photos: [asset("images/sabes_aves_rivolis_hummingbird-4K4YnfKdpJWaTbqo-full.webp")]
 	},
 	{
 		slug: "scaly-breasted-hummingbird",
@@ -300,7 +301,7 @@ export const species: Species[] = [
 		tier: "nca",
 		zones: ["pineoak"],
 		tierBadge: "NCA",
-		photos: ["https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400/YofU1cddTQzjoQ8J/slender-sheartail-qMw7TVBhS9Q1882N.jpg"]
+		photos: [asset("images/slender-sheartail-qMw7TVBhS9Q1882N-full.webp")]
 	},
 	{
 		slug: "stripe-tailed-hummingbird",
@@ -317,7 +318,7 @@ export const species: Species[] = [
 		family: "Hummingbirds",
 		tier: "mxca",
 		zones: ["pineoak"],
-		photos: ["https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400/YofU1cddTQzjoQ8J/sabes_aves_basilina_leucotis-KRKtKHveZzcPOm7i.jpg"]
+		photos: [asset("images/sabes_aves_basilina_leucotis-KRKtKHveZzcPOm7i-full.webp")]
 	},
 	{
 		slug: "agami-heron",
@@ -374,7 +375,7 @@ export const species: Species[] = [
 		family: "Raptors",
 		tier: "wide",
 		zones: ["rainforest"],
-		photos: ["https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400/YofU1cddTQzjoQ8J/ornate-hawk-eagle-mP4OGNwpvehoNJQq.jpg"]
+		photos: [asset("images/ornate-hawk-eagle-mP4OGNwpvehoNJQq-full.webp")]
 	},
 	{
 		slug: "black-and-white-owl",
@@ -383,7 +384,7 @@ export const species: Species[] = [
 		family: "Owls",
 		tier: "mxca",
 		zones: ["rainforest"],
-		photos: ["https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400/YofU1cddTQzjoQ8J/black-and-white-owl-photo_-jaime-pa-c-rez-AR0L0bvD6wckvp2o.jpg"]
+		photos: [asset("images/black-and-white-owl-photo_-jaime-pa-c-rez-AR0L0bvD6wckvp2o-full.webp")]
 	},
 	{
 		slug: "crested-owl",
@@ -424,7 +425,7 @@ export const species: Species[] = [
 		family: "Trogons & Quetzal",
 		tier: "mxca",
 		zones: ["rainforest"],
-		photos: ["https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400/YofU1cddTQzjoQ8J/black-headed-trogon-8fNX9TIpLIQYBb1q.jpg"]
+		photos: [asset("images/black-headed-trogon-8fNX9TIpLIQYBb1q-full.webp")]
 	},
 	{
 		slug: "citreoline-trogon",
@@ -442,7 +443,7 @@ export const species: Species[] = [
 		family: "Trogons & Quetzal",
 		tier: "mxca",
 		zones: ["rainforest"],
-		photos: ["https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400/YofU1cddTQzjoQ8J/gartered-trogon-mP432bzGwoUoL9jv.jpg"]
+		photos: [asset("images/gartered-trogon-mP432bzGwoUoL9jv-full.webp")]
 	},
 	{
 		slug: "mountain-trogon",
@@ -451,7 +452,7 @@ export const species: Species[] = [
 		family: "Trogons & Quetzal",
 		tier: "mxca",
 		zones: ["pineoak"],
-		photos: ["https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400/YofU1cddTQzjoQ8J/mountain-trogon-M4lDamBkHGnFnPex.jpg"]
+		photos: [asset("images/mountain-trogon-M4lDamBkHGnFnPex-full.webp")]
 	},
 	{
 		slug: "resplendent-quetzal",
@@ -479,7 +480,7 @@ export const species: Species[] = [
 		tier: "nca",
 		zones: ["cloud"],
 		tierBadge: "NCA",
-		photos: ["https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400/YofU1cddTQzjoQ8J/sabes_aves_blue-throated_motmot-NFfUHZuU255VnhZE.JPG"]
+		photos: [asset("images/sabes_aves_blue-throated_motmot-NFfUHZuU255VnhZE-full.webp")]
 	},
 	{
 		slug: "russet-crowned-motmot",
@@ -489,7 +490,7 @@ export const species: Species[] = [
 		tier: "wmx",
 		zones: ["thorn"],
 		tierBadge: "W-MX",
-		photos: ["https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400/YofU1cddTQzjoQ8J/russet-crowned-motmot-AR0MD0JLlJi4JGXO.jpg"]
+		photos: [asset("images/russet-crowned-motmot-AR0MD0JLlJi4JGXO-full.webp")]
 	},
 	{
 		slug: "turquoise-browed-motmot",
@@ -498,7 +499,7 @@ export const species: Species[] = [
 		family: "Motmots",
 		tier: "mxca",
 		zones: ["thorn"],
-		photos: ["https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400/YofU1cddTQzjoQ8J/turquoise-browed-motmot-hwikmYfulmi5nHCi.jpg","https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400/YofU1cddTQzjoQ8J/turquoise-browed-motmot-Aq2WEx31G4floEx0.jpg"]
+		photos: [asset("images/turquoise-browed-motmot-hwikmYfulmi5nHCi-full.webp"),asset("images/turquoise-browed-motmot-Aq2WEx31G4floEx0-full.webp")]
 	},
 	{
 		slug: "collared-aracari",
@@ -507,7 +508,7 @@ export const species: Species[] = [
 		family: "Toucans",
 		tier: "mxca",
 		zones: ["rainforest"],
-		photos: ["https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400/YofU1cddTQzjoQ8J/collared-aracari-photo_-jaime-pa-c-rez-AMq1q4LoPbF5nQvP.jpg","https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400/YofU1cddTQzjoQ8J/collared-aracari-2-LXlUuKMlNxIaN8DU.jpg"]
+		photos: [asset("images/collared-aracari-photo_-jaime-pa-c-rez-AMq1q4LoPbF5nQvP-full.webp"),asset("images/collared-aracari-2-LXlUuKMlNxIaN8DU-full.webp")]
 	},
 	{
 		slug: "keel-billed-toucan",
@@ -516,7 +517,7 @@ export const species: Species[] = [
 		family: "Toucans",
 		tier: "mxca",
 		zones: ["rainforest"],
-		photos: ["https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400/YofU1cddTQzjoQ8J/1759259147357-Y4LPxjKeznsOKOKp.jpg"]
+		photos: [asset("images/1759259147357-Y4LPxjKeznsOKOKp-full.webp")]
 	},
 	{
 		slug: "northern-emerald-toucanet",
@@ -567,7 +568,7 @@ export const species: Species[] = [
 		family: "Parrots",
 		tier: "mxca",
 		zones: ["rainforest"],
-		photos: ["https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400/YofU1cddTQzjoQ8J/red-lored-amazon-MwRLmtrCILFf0EgE.jpg"]
+		photos: [asset("images/red-lored-amazon-MwRLmtrCILFf0EgE-full.webp")]
 	},
 	{
 		slug: "scarlet-macaw",
@@ -576,7 +577,7 @@ export const species: Species[] = [
 		family: "Parrots",
 		tier: "wide",
 		zones: ["rainforest"],
-		photos: ["https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400/YofU1cddTQzjoQ8J/scarlet-macaw-VuZUDrvypQ0vU3dv.jpg"]
+		photos: [asset("images/scarlet-macaw-VuZUDrvypQ0vU3dv-full.webp")]
 	},
 	{
 		slug: "yellow-headed-amazon",
@@ -586,7 +587,7 @@ export const species: Species[] = [
 		tier: "mx",
 		zones: ["coast"],
 		tierBadge: "MX",
-		photos: ["https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400/YofU1cddTQzjoQ8J/yellow-headed-amazon-RwBRxOKOv3wii34L.png"]
+		photos: [asset("images/yellow-headed-amazon-RwBRxOKOv3wii34L-full.webp")]
 	},
 	{
 		slug: "yellow-naped-amazon",
@@ -604,7 +605,7 @@ export const species: Species[] = [
 		tier: "nca",
 		zones: ["thorn"],
 		tierBadge: "NCA",
-		photos: ["https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400/YofU1cddTQzjoQ8J/saves_aves_belted_flyctacher-yle4qopkavupwgkq_le_upscale_prime_light_ai_30-W0ccOL9OyvD1PW60.jpg"]
+		photos: [asset("images/saves_aves_belted_flyctacher-yle4qopkavupwgkq_le_upscale_prime_light_ai_30-W0ccOL9OyvD1PW60-full.webp")]
 	},
 	{
 		slug: "flammulated-flycatcher",
@@ -623,7 +624,7 @@ export const species: Species[] = [
 		tier: "nca",
 		zones: ["cloud"],
 		tierBadge: "NCA",
-		photos: ["https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400/YofU1cddTQzjoQ8J/guatemalan-tyrannulet-HFmbr5dlTSRWWVe9.jpg"]
+		photos: [asset("images/guatemalan-tyrannulet-HFmbr5dlTSRWWVe9-full.webp")]
 	},
 	{
 		slug: "pine-flycatcher",
@@ -649,7 +650,7 @@ export const species: Species[] = [
 		family: "Tyrant Flycatchers",
 		tier: "mxca",
 		zones: ["rainforest"],
-		photos: ["https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400/YofU1cddTQzjoQ8J/stub-tailed-spadebill-pyQ7sCdb07PFlsDi.jpg"]
+		photos: [asset("images/stub-tailed-spadebill-pyQ7sCdb07PFlsDi-full.webp")]
 	},
 	{
 		slug: "yellowish-flycatcher",
@@ -668,7 +669,7 @@ export const species: Species[] = [
 		tier: "nca",
 		zones: ["pacslope"],
 		tierBadge: "NCA",
-		photos: ["https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400/YofU1cddTQzjoQ8J/long-tailed-manakin-photo_-jaime-pa-c-rez-AoPWPGpV7yI0kkl5.jpg"]
+		photos: [asset("images/long-tailed-manakin-photo_-jaime-pa-c-rez-AoPWPGpV7yI0kkl5-full.webp")]
 	},
 	{
 		slug: "lovely-cotinga",
@@ -709,7 +710,7 @@ export const species: Species[] = [
 		family: "Jays",
 		tier: "mxca",
 		zones: ["cloud"],
-		photos: ["https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400/YofU1cddTQzjoQ8J/azure-hooded-jay-w6Bqp2psIEeDOfzQ.jpg"]
+		photos: [asset("images/azure-hooded-jay-w6Bqp2psIEeDOfzQ-full.webp")]
 	},
 	{
 		slug: "black-throated-jay",
@@ -745,7 +746,7 @@ export const species: Species[] = [
 		tier: "nca",
 		zones: ["pineoak"],
 		tierBadge: "NCA",
-		photos: ["https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400/YofU1cddTQzjoQ8J/black-capped-swallow-vYDUGfI4yq2m07pL.jpg"]
+		photos: [asset("images/black-capped-swallow-vYDUGfI4yq2m07pL-full.webp")]
 	},
 	{
 		slug: "giant-wren",
@@ -755,7 +756,7 @@ export const species: Species[] = [
 		tier: "mx",
 		zones: ["coast"],
 		tierBadge: "MX",
-		photos: ["https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400/YofU1cddTQzjoQ8J/_dsc0870-UHFcPZY27edAPFr1.JPG"]
+		photos: [asset("images/_dsc0870-UHFcPZY27edAPFr1-full.webp")]
 	},
 	{
 		slug: "nava-s-wren",
@@ -782,7 +783,7 @@ export const species: Species[] = [
 		tier: "nca",
 		zones: ["cloud"],
 		tierBadge: "NCA",
-		photos: ["https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400/YofU1cddTQzjoQ8J/sabes_aves_rufous-browed_wren-ozWNJPc9Zns8f5zO.JPG"]
+		photos: [asset("images/sabes_aves_rufous-browed_wren-ozWNJPc9Zns8f5zO-full.webp")]
 	},
 	{
 		slug: "russet-naped-wren",
@@ -817,7 +818,7 @@ export const species: Species[] = [
 		family: "Thrushes & Solitaires",
 		tier: "mxca",
 		zones: ["cloud"],
-		photos: ["https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400/YofU1cddTQzjoQ8J/black-headed-nightingale-thrush-nTqJPgsmKfcxaxAu.jpg"]
+		photos: [asset("images/black-headed-nightingale-thrush-nTqJPgsmKfcxaxAu-full.webp")]
 	},
 	{
 		slug: "mountain-thrush",
@@ -852,7 +853,7 @@ export const species: Species[] = [
 		family: "Thrushes & Solitaires",
 		tier: "mxca",
 		zones: ["cloud"],
-		photos: ["https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400/YofU1cddTQzjoQ8J/slate-colored-solitaire-ED5x0xZ5NKF6Z27s.jpg"]
+		photos: [asset("images/slate-colored-solitaire-ED5x0xZ5NKF6Z27s-full.webp")]
 	},
 	{
 		slug: "yellow-throated-nightingale-thrush",
@@ -871,7 +872,7 @@ export const species: Species[] = [
 		tier: "nca",
 		zones: ["cloud","pineoak"],
 		tierBadge: "NCA",
-		photos: ["https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400/YofU1cddTQzjoQ8J/blue-and-white-mockingbird-1-NCnEIapZ3vpQC2sm.jpg","https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400/YofU1cddTQzjoQ8J/blue-and-white-mockingbird-2-XpFHUZKbXKFSe1oj.jpg"]
+		photos: [asset("images/blue-and-white-mockingbird-1-NCnEIapZ3vpQC2sm-full.webp"),asset("images/blue-and-white-mockingbird-2-XpFHUZKbXKFSe1oj-full.webp")]
 	},
 	{
 		slug: "black-capped-siskin",
@@ -890,7 +891,7 @@ export const species: Species[] = [
 		tier: "nca",
 		zones: ["cloud"],
 		tierBadge: "NCA",
-		photos: ["https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400/YofU1cddTQzjoQ8J/sabes_aves_blue-crowned_chlorophonia-1-YD0w1yZbj5fb90o7.jpg"]
+		photos: [asset("images/sabes_aves_blue-crowned_chlorophonia-1-YD0w1yZbj5fb90o7-full.webp")]
 	},
 	{
 		slug: "pine-siskin",
@@ -967,7 +968,7 @@ export const species: Species[] = [
 		family: "Sparrows & Brushfinches",
 		tier: "mxca",
 		zones: ["cloud"],
-		photos: ["https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400/YofU1cddTQzjoQ8J/white-naped-brushfinch-EOFbbzpwUGpok9UL.jpg"]
+		photos: [asset("images/white-naped-brushfinch-EOFbbzpwUGpok9UL-full.webp")]
 	},
 	{
 		slug: "bar-winged-oriole",
@@ -994,7 +995,7 @@ export const species: Species[] = [
 		tier: "wmx",
 		zones: ["thorn"],
 		tierBadge: "W-MX",
-		photos: ["https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400/YofU1cddTQzjoQ8J/yellow-winged-cacique-si9c5eXF04ZJMbgB.jpg"]
+		photos: [asset("images/yellow-winged-cacique-si9c5eXF04ZJMbgB-full.webp")]
 	},
 	{
 		slug: "fan-tailed-warbler",
@@ -1019,7 +1020,7 @@ export const species: Species[] = [
 		family: "Warblers",
 		tier: "mxca",
 		zones: ["pineoak"],
-		photos: ["https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400/YofU1cddTQzjoQ8J/saves_aves_golden-cheeked_warbler-fO82HsR2CVu7j9hq.png"]
+		photos: [asset("images/saves_aves_golden-cheeked_warbler-fO82HsR2CVu7j9hq-full.webp")]
 	},
 	{
 		slug: "gray-throated-chat",
@@ -1037,7 +1038,7 @@ export const species: Species[] = [
 		tier: "nca",
 		zones: ["pineoak","cloud"],
 		tierBadge: "NCA",
-		photos: ["https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400/YofU1cddTQzjoQ8J/pink-headed-warbler-Y4LDbp8VMLCx8rRX.jpg"],
+		photos: [asset("images/pink-headed-warbler-Y4LDbp8VMLCx8rRX-full.webp")],
 		hasAccount: true
 	},
 	{
@@ -1099,7 +1100,7 @@ export const species: Species[] = [
 		tier: "mx",
 		zones: ["thorn"],
 		tierBadge: "MX",
-		photos: ["https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400/YofU1cddTQzjoQ8J/rose-bellied-bunting-m2Wa32VjWETn9NkA.png"],
+		photos: [asset("images/rose-bellied-bunting-m2Wa32VjWETn9NkA-full.webp")],
 		hasAccount: true
 	},
 	{
@@ -1109,7 +1110,7 @@ export const species: Species[] = [
 		family: "Tanagers, Buntings & allies",
 		tier: "mxca",
 		zones: ["thorn"],
-		photos: ["https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400/YofU1cddTQzjoQ8J/yellow-grosbeak-EBPvotaS7J1A3VuE.png"]
+		photos: [asset("images/yellow-grosbeak-EBPvotaS7J1A3VuE-full.webp")]
 	}
 ];
 

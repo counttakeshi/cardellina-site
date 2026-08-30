@@ -1,3 +1,4 @@
+import { asset } from '$lib/ledger';
 /**
  * Full detail pages for every day tour and multi-day trip. Keyed by the same slug
  * used in trips.ts, so the listing cards and these pages stay in step.
@@ -81,74 +82,74 @@ export const tourDetails: TourDetail[] = [
 		],
 		"gallery": [
 			{
-				"thumb": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=800/YofU1cddTQzjoQ8J/sabes_aves_pink-headed_warbler-A0xjy2JlD8TLpRLX.jpg",
-				"full": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1600/YofU1cddTQzjoQ8J/sabes_aves_pink-headed_warbler-A0xjy2JlD8TLpRLX.jpg",
+				"thumb": asset("images/sabes_aves_pink-headed_warbler-A0xjy2JlD8TLpRLX-md.webp"),
+				"full": asset("images/sabes_aves_pink-headed_warbler-A0xjy2JlD8TLpRLX-full.webp"),
 				"alt": "Pink-headed Warbler",
 				"caption": "Pink-headed Warbler"
 			},
 			{
-				"thumb": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=800/YofU1cddTQzjoQ8J/sabes_aves_wine-thorated_hummingbird-1-AoPJBzjDE8c8XVez.jpg",
-				"full": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1600/YofU1cddTQzjoQ8J/sabes_aves_wine-thorated_hummingbird-1-AoPJBzjDE8c8XVez.jpg",
+				"thumb": asset("images/sabes_aves_wine-thorated_hummingbird-1-AoPJBzjDE8c8XVez-md.webp"),
+				"full": asset("images/sabes_aves_wine-thorated_hummingbird-1-AoPJBzjDE8c8XVez-full.webp"),
 				"alt": "Wine-throated Hummingbird",
 				"caption": "Wine-throated Hummingbird"
 			},
 			{
-				"thumb": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=800/YofU1cddTQzjoQ8J/sabes_aves_blue-throated_motmot-NFfUHZuU255VnhZE.JPG",
-				"full": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1600/YofU1cddTQzjoQ8J/sabes_aves_blue-throated_motmot-NFfUHZuU255VnhZE.JPG",
+				"thumb": asset("images/sabes_aves_blue-throated_motmot-NFfUHZuU255VnhZE-md.webp"),
+				"full": asset("images/sabes_aves_blue-throated_motmot-NFfUHZuU255VnhZE-full.webp"),
 				"alt": "Blue-throated Motmot",
 				"caption": "Blue-throated Motmot"
 			},
 			{
-				"thumb": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=800/YofU1cddTQzjoQ8J/saves_aves_golden-cheeked_warbler-fO82HsR2CVu7j9hq.png",
-				"full": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1600/YofU1cddTQzjoQ8J/saves_aves_golden-cheeked_warbler-fO82HsR2CVu7j9hq.png",
+				"thumb": asset("images/saves_aves_golden-cheeked_warbler-fO82HsR2CVu7j9hq-md.webp"),
+				"full": asset("images/saves_aves_golden-cheeked_warbler-fO82HsR2CVu7j9hq-full.webp"),
 				"alt": "Golden-cheeked Warbler",
 				"caption": "Golden-cheeked Warbler"
 			},
 			{
-				"thumb": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=800/YofU1cddTQzjoQ8J/red-faced-warbler-m2Wa3zBX1PiLDJw9.jpg",
-				"full": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1600/YofU1cddTQzjoQ8J/red-faced-warbler-m2Wa3zBX1PiLDJw9.jpg",
+				"thumb": asset("images/red-faced-warbler-m2Wa3zBX1PiLDJw9-md.webp"),
+				"full": asset("images/red-faced-warbler-m2Wa3zBX1PiLDJw9-full.webp"),
 				"alt": "Red-faced Warbler",
 				"caption": "Red-faced Warbler"
 			},
 			{
-				"thumb": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=800/YofU1cddTQzjoQ8J/sabes_aves_rufous-browed_wren-ozWNJPc9Zns8f5zO.JPG",
-				"full": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1600/YofU1cddTQzjoQ8J/sabes_aves_rufous-browed_wren-ozWNJPc9Zns8f5zO.JPG",
+				"thumb": asset("images/sabes_aves_rufous-browed_wren-ozWNJPc9Zns8f5zO-md.webp"),
+				"full": asset("images/sabes_aves_rufous-browed_wren-ozWNJPc9Zns8f5zO-full.webp"),
 				"alt": "Rufous-browed Wren",
 				"caption": "Rufous-browed Wren"
 			},
 			{
-				"thumb": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=800/YofU1cddTQzjoQ8J/sabes_aves_basilina_leucotis-KRKtKHveZzcPOm7i.jpg",
-				"full": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1600/YofU1cddTQzjoQ8J/sabes_aves_basilina_leucotis-KRKtKHveZzcPOm7i.jpg",
+				"thumb": asset("images/sabes_aves_basilina_leucotis-KRKtKHveZzcPOm7i-md.webp"),
+				"full": asset("images/sabes_aves_basilina_leucotis-KRKtKHveZzcPOm7i-full.webp"),
 				"alt": "White-eared Hummingbird",
 				"caption": "White-eared Hummingbird"
 			},
 			{
-				"thumb": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=800/YofU1cddTQzjoQ8J/sabes_aves_rivolis_hummingbird-4K4YnfKdpJWaTbqo.JPG",
-				"full": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1600/YofU1cddTQzjoQ8J/sabes_aves_rivolis_hummingbird-4K4YnfKdpJWaTbqo.JPG",
+				"thumb": asset("images/sabes_aves_rivolis_hummingbird-4K4YnfKdpJWaTbqo-md.webp"),
+				"full": asset("images/sabes_aves_rivolis_hummingbird-4K4YnfKdpJWaTbqo-full.webp"),
 				"alt": "Rivoli's Hummingbird",
 				"caption": "Rivoli's Hummingbird"
 			},
 			{
-				"thumb": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=800/YofU1cddTQzjoQ8J/myioborus_miniatus-mv021oK5pNcWexMQ.JPG",
-				"full": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1600/YofU1cddTQzjoQ8J/myioborus_miniatus-mv021oK5pNcWexMQ.JPG",
+				"thumb": asset("images/myioborus_miniatus-mv021oK5pNcWexMQ-md.webp"),
+				"full": asset("images/myioborus_miniatus-mv021oK5pNcWexMQ-full.webp"),
 				"alt": "Slate-throated Redstart",
 				"caption": "Slate-throated Redstart"
 			},
 			{
-				"thumb": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=800/YofU1cddTQzjoQ8J/rose-throated-becarad-A1aPGVEonbhDZBaW.jpg",
-				"full": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1600/YofU1cddTQzjoQ8J/rose-throated-becarad-A1aPGVEonbhDZBaW.jpg",
+				"thumb": asset("images/rose-throated-becarad-A1aPGVEonbhDZBaW-md.webp"),
+				"full": asset("images/rose-throated-becarad-A1aPGVEonbhDZBaW-full.webp"),
 				"alt": "Rose-throated Becard",
 				"caption": "Rose-throated Becard"
 			},
 			{
-				"thumb": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=800/YofU1cddTQzjoQ8J/sabes_aves_rufous-collared_sparrow-GqOCJC9TabonSzXb.jpg",
-				"full": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1600/YofU1cddTQzjoQ8J/sabes_aves_rufous-collared_sparrow-GqOCJC9TabonSzXb.jpg",
+				"thumb": asset("images/sabes_aves_rufous-collared_sparrow-GqOCJC9TabonSzXb-md.webp"),
+				"full": asset("images/sabes_aves_rufous-collared_sparrow-GqOCJC9TabonSzXb-full.webp"),
 				"alt": "Rufous-collared Sparrow",
 				"caption": "Rufous-collared Sparrow"
 			},
 			{
-				"thumb": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=800/YofU1cddTQzjoQ8J/cloud-forest-birding-montetik-viewpoint-profile-m6L2jlGWKxSEPljw.jpg",
-				"full": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1600/YofU1cddTQzjoQ8J/cloud-forest-birding-montetik-viewpoint-profile-m6L2jlGWKxSEPljw.jpg",
+				"thumb": asset("images/cloud-forest-birding-montetik-viewpoint-profile-m6L2jlGWKxSEPljw-md.webp"),
+				"full": asset("images/cloud-forest-birding-montetik-viewpoint-profile-m6L2jlGWKxSEPljw-full.webp"),
 				"alt": "Cloud forest at the Montetik viewpoint",
 				"caption": "Cloud forest at the Montetik viewpoint"
 			}
@@ -207,38 +208,38 @@ export const tourDetails: TourDetail[] = [
 		],
 		"gallery": [
 			{
-				"thumb": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=800/YofU1cddTQzjoQ8J/white-necked-jacobin-AQEeDwNj9zFG7X57.jpg",
-				"full": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1600/YofU1cddTQzjoQ8J/white-necked-jacobin-AQEeDwNj9zFG7X57.jpg",
+				"thumb": asset("images/white-necked-jacobin-AQEeDwNj9zFG7X57-md.webp"),
+				"full": asset("images/white-necked-jacobin-AQEeDwNj9zFG7X57-full.webp"),
 				"alt": "White-necked Jacobin",
 				"caption": "White-necked Jacobin"
 			},
 			{
-				"thumb": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=800/YofU1cddTQzjoQ8J/white-necked-jacobin-female-Yan0qorZz9t99oea.jpg",
-				"full": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1600/YofU1cddTQzjoQ8J/white-necked-jacobin-female-Yan0qorZz9t99oea.jpg",
+				"thumb": asset("images/white-necked-jacobin-female-Yan0qorZz9t99oea-md.webp"),
+				"full": asset("images/white-necked-jacobin-female-Yan0qorZz9t99oea-full.webp"),
 				"alt": "White-necked Jacobin (female)",
 				"caption": "White-necked Jacobin (female)"
 			},
 			{
-				"thumb": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=800/YofU1cddTQzjoQ8J/gartered-trogon-intense-Yg2qzJnl2RCoEXwK.jpg",
-				"full": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1600/YofU1cddTQzjoQ8J/gartered-trogon-intense-Yg2qzJnl2RCoEXwK.jpg",
+				"thumb": asset("images/gartered-trogon-intense-Yg2qzJnl2RCoEXwK-md.webp"),
+				"full": asset("images/gartered-trogon-intense-Yg2qzJnl2RCoEXwK-full.webp"),
 				"alt": "Gartered Trogon",
 				"caption": "Gartered Trogon"
 			},
 			{
-				"thumb": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=800/YofU1cddTQzjoQ8J/collared-aracari-photo_-jaime-pa-c-rez-AMq1q4LoPbF5nQvP.jpg",
-				"full": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1600/YofU1cddTQzjoQ8J/collared-aracari-photo_-jaime-pa-c-rez-AMq1q4LoPbF5nQvP.jpg",
+				"thumb": asset("images/collared-aracari-photo_-jaime-pa-c-rez-AMq1q4LoPbF5nQvP-md.webp"),
+				"full": asset("images/collared-aracari-photo_-jaime-pa-c-rez-AMq1q4LoPbF5nQvP-full.webp"),
 				"alt": "Collared Aracari",
 				"caption": "Collared Aracari"
 			},
 			{
-				"thumb": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=800/YofU1cddTQzjoQ8J/1759259147357-y4lpxjkeznsokokp_le_upscale_prime_light_ai_30-hgUZlMUOwH9ViYgB.jpg",
-				"full": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1600/YofU1cddTQzjoQ8J/1759259147357-y4lpxjkeznsokokp_le_upscale_prime_light_ai_30-hgUZlMUOwH9ViYgB.jpg",
+				"thumb": asset("images/1759259147357-y4lpxjkeznsokokp_le_upscale_prime_light_ai_30-hgUZlMUOwH9ViYgB-md.webp"),
+				"full": asset("images/1759259147357-y4lpxjkeznsokokp_le_upscale_prime_light_ai_30-hgUZlMUOwH9ViYgB-full.webp"),
 				"alt": "CAPTION NEEDED",
 				"caption": "CAPTION NEEDED"
 			},
 			{
-				"thumb": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=800/YofU1cddTQzjoQ8J/1759259147499-YNqMPaEaERHeMOG8.jpg",
-				"full": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1600/YofU1cddTQzjoQ8J/1759259147499-YNqMPaEaERHeMOG8.jpg",
+				"thumb": asset("images/1759259147499-YNqMPaEaERHeMOG8-md.webp"),
+				"full": asset("images/1759259147499-YNqMPaEaERHeMOG8-full.webp"),
 				"alt": "CAPTION NEEDED",
 				"caption": "CAPTION NEEDED"
 			},
@@ -249,8 +250,8 @@ export const tourDetails: TourDetail[] = [
 				"caption": "In the forest at Palenque"
 			},
 			{
-				"thumb": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=800/YofU1cddTQzjoQ8J/palenq-Yle4qa7Q10t5Q9gk.jpg",
-				"full": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1600/YofU1cddTQzjoQ8J/palenq-Yle4qa7Q10t5Q9gk.jpg",
+				"thumb": asset("images/palenq-Yle4qa7Q10t5Q9gk-md.webp"),
+				"full": asset("images/palenq-Yle4qa7Q10t5Q9gk-full.webp"),
 				"alt": "Rainforest around the ruins",
 				"caption": "Rainforest around the ruins"
 			}
@@ -312,80 +313,80 @@ export const tourDetails: TourDetail[] = [
 		],
 		"gallery": [
 			{
-				"thumb": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=700,h=525,fit=crop/YofU1cddTQzjoQ8J/sabes_aves_canon_del_sumidero-mePJl0M91pTLG4Ja.JPG",
-				"full": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1600/YofU1cddTQzjoQ8J/sabes_aves_canon_del_sumidero-mePJl0M91pTLG4Ja.JPG",
+				"thumb": asset("images/sabes_aves_canon_del_sumidero-mePJl0M91pTLG4Ja-card.webp"),
+				"full": asset("images/sabes_aves_canon_del_sumidero-mePJl0M91pTLG4Ja-full.webp"),
 				"alt": "Sumidero Canyon",
 				"caption": "Sumidero Canyon"
 			},
 			{
-				"thumb": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=700,h=525,fit=crop/YofU1cddTQzjoQ8J/belted-flycatcher-great-photo-iZzV6wprekrFaMzq.jpg",
-				"full": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1600/YofU1cddTQzjoQ8J/belted-flycatcher-great-photo-iZzV6wprekrFaMzq.jpg",
+				"thumb": asset("images/belted-flycatcher-great-photo-iZzV6wprekrFaMzq-card.webp"),
+				"full": asset("images/belted-flycatcher-great-photo-iZzV6wprekrFaMzq-full.webp"),
 				"alt": "Belted Flycatcher",
 				"caption": "Belted Flycatcher"
 			},
 			{
-				"thumb": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=700,h=525,fit=crop/YofU1cddTQzjoQ8J/russet-crowned-motmot-AR0MD0JLlJi4JGXO.jpg",
-				"full": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1600/YofU1cddTQzjoQ8J/russet-crowned-motmot-AR0MD0JLlJi4JGXO.jpg",
+				"thumb": asset("images/russet-crowned-motmot-AR0MD0JLlJi4JGXO-card.webp"),
+				"full": asset("images/russet-crowned-motmot-AR0MD0JLlJi4JGXO-full.webp"),
 				"alt": "Russet-crowned Motmot",
 				"caption": "Russet-crowned Motmot"
 			},
 			{
-				"thumb": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=700,h=525,fit=crop/YofU1cddTQzjoQ8J/banded-wren-YanqLvXMD1UNgz3v.jpg",
-				"full": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1600/YofU1cddTQzjoQ8J/banded-wren-YanqLvXMD1UNgz3v.jpg",
+				"thumb": asset("images/banded-wren-YanqLvXMD1UNgz3v-card.webp"),
+				"full": asset("images/banded-wren-YanqLvXMD1UNgz3v-full.webp"),
 				"alt": "Banded Wren",
 				"caption": "Banded Wren"
 			},
 			{
-				"thumb": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=700,h=525,fit=crop/YofU1cddTQzjoQ8J/blue-and-white-mockingbird-1-NCnEIapZ3vpQC2sm.jpg",
-				"full": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1600/YofU1cddTQzjoQ8J/blue-and-white-mockingbird-1-NCnEIapZ3vpQC2sm.jpg",
+				"thumb": asset("images/blue-and-white-mockingbird-1-NCnEIapZ3vpQC2sm-card.webp"),
+				"full": asset("images/blue-and-white-mockingbird-1-NCnEIapZ3vpQC2sm-full.webp"),
 				"alt": "Blue-and-white Mockingbird",
 				"caption": "Blue-and-white Mockingbird"
 			},
 			{
-				"thumb": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=700,h=525,fit=crop/YofU1cddTQzjoQ8J/white-throated-magpie-jay-4ffUHK2dtXrFJStK.jpg",
-				"full": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1600/YofU1cddTQzjoQ8J/white-throated-magpie-jay-4ffUHK2dtXrFJStK.jpg",
+				"thumb": asset("images/white-throated-magpie-jay-4ffUHK2dtXrFJStK-card.webp"),
+				"full": asset("images/white-throated-magpie-jay-4ffUHK2dtXrFJStK-full.webp"),
 				"alt": "White-throated Magpie-Jay",
 				"caption": "White-throated Magpie-Jay"
 			},
 			{
-				"thumb": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=700,h=525,fit=crop/YofU1cddTQzjoQ8J/white-tipped-dove-mccoQMMMqHQh5lRi.jpg",
-				"full": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1600/YofU1cddTQzjoQ8J/white-tipped-dove-mccoQMMMqHQh5lRi.jpg",
+				"thumb": asset("images/white-tipped-dove-mccoQMMMqHQh5lRi-card.webp"),
+				"full": asset("images/white-tipped-dove-mccoQMMMqHQh5lRi-full.webp"),
 				"alt": "White-tipped Dove",
 				"caption": "White-tipped Dove"
 			},
 			{
-				"thumb": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=700,h=525,fit=crop/YofU1cddTQzjoQ8J/townsend-s-warbler-4n0x0K8n4youCbQE.jpg",
-				"full": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1600/YofU1cddTQzjoQ8J/townsend-s-warbler-4n0x0K8n4youCbQE.jpg",
+				"thumb": asset("images/townsend-s-warbler-4n0x0K8n4youCbQE-card.webp"),
+				"full": asset("images/townsend-s-warbler-4n0x0K8n4youCbQE-full.webp"),
 				"alt": "Townsend's Warbler",
 				"caption": "Townsend's Warbler"
 			},
 			{
-				"thumb": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=700,h=525,fit=crop/YofU1cddTQzjoQ8J/merlin-QepCw15OZpgUuZuE.jpg",
-				"full": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1600/YofU1cddTQzjoQ8J/merlin-QepCw15OZpgUuZuE.jpg",
+				"thumb": asset("images/merlin-QepCw15OZpgUuZuE-card.webp"),
+				"full": asset("images/merlin-QepCw15OZpgUuZuE-full.webp"),
 				"alt": "Merlin",
 				"caption": "Merlin"
 			},
 			{
-				"thumb": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=700,h=525,fit=crop/YofU1cddTQzjoQ8J/gray-collared-becard-KpdJ5QKgEmAxvp3r.jpg",
-				"full": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1600/YofU1cddTQzjoQ8J/gray-collared-becard-KpdJ5QKgEmAxvp3r.jpg",
+				"thumb": asset("images/gray-collared-becard-KpdJ5QKgEmAxvp3r-card.webp"),
+				"full": asset("images/gray-collared-becard-KpdJ5QKgEmAxvp3r-full.webp"),
 				"alt": "Gray-collared Becard",
 				"caption": "Gray-collared Becard"
 			},
 			{
-				"thumb": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=700,h=525,fit=crop/YofU1cddTQzjoQ8J/fan-tailed-warbler-NpvZdySIwrPR9t9N.png",
-				"full": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1600/YofU1cddTQzjoQ8J/fan-tailed-warbler-NpvZdySIwrPR9t9N.png",
+				"thumb": asset("images/fan-tailed-warbler-NpvZdySIwrPR9t9N-card.webp"),
+				"full": asset("images/fan-tailed-warbler-NpvZdySIwrPR9t9N-full.webp"),
 				"alt": "Fan-tailed Warbler",
 				"caption": "Fan-tailed Warbler"
 			},
 			{
-				"thumb": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=700,h=525,fit=crop/YofU1cddTQzjoQ8J/gartered-trogon-mP432bzGwoUoL9jv.jpg",
-				"full": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1600/YofU1cddTQzjoQ8J/gartered-trogon-mP432bzGwoUoL9jv.jpg",
+				"thumb": asset("images/gartered-trogon-mP432bzGwoUoL9jv-card.webp"),
+				"full": asset("images/gartered-trogon-mP432bzGwoUoL9jv-full.webp"),
 				"alt": "Gartered Trogon",
 				"caption": "Gartered Trogon"
 			},
 			{
-				"thumb": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=700,h=525,fit=crop/YofU1cddTQzjoQ8J/feizal-and-valente-birdwatching-at-sumidero-canyon-AE0P0plDJlTR6J5M.jpg",
-				"full": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1600/YofU1cddTQzjoQ8J/feizal-and-valente-birdwatching-at-sumidero-canyon-AE0P0plDJlTR6J5M.jpg",
+				"thumb": asset("images/feizal-and-valente-birdwatching-at-sumidero-canyon-AE0P0plDJlTR6J5M-card.webp"),
+				"full": asset("images/feizal-and-valente-birdwatching-at-sumidero-canyon-AE0P0plDJlTR6J5M-full.webp"),
 				"alt": "Birding the canyon rim",
 				"caption": "Birding the canyon rim"
 			}
@@ -440,32 +441,32 @@ export const tourDetails: TourDetail[] = [
 		],
 		"gallery": [
 			{
-				"thumb": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=700,h=525,fit=crop/YofU1cddTQzjoQ8J/saves_aves_slender_sheartail-mk3JZ2XwRgceMJ7G.png",
-				"full": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1600/YofU1cddTQzjoQ8J/saves_aves_slender_sheartail-mk3JZ2XwRgceMJ7G.png",
+				"thumb": asset("images/saves_aves_slender_sheartail-mk3JZ2XwRgceMJ7G-card.webp"),
+				"full": asset("images/saves_aves_slender_sheartail-mk3JZ2XwRgceMJ7G-full.webp"),
 				"alt": "Slender Sheartail",
 				"caption": "Slender Sheartail"
 			},
 			{
-				"thumb": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=700,h=525,fit=crop/YofU1cddTQzjoQ8J/saves_aves_belted_flyctacher-yle4qopkavupwgkq_le_upscale_prime_light_ai_30-W0ccOL9OyvD1PW60.jpg",
-				"full": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1600/YofU1cddTQzjoQ8J/saves_aves_belted_flyctacher-yle4qopkavupwgkq_le_upscale_prime_light_ai_30-W0ccOL9OyvD1PW60.jpg",
+				"thumb": asset("images/saves_aves_belted_flyctacher-yle4qopkavupwgkq_le_upscale_prime_light_ai_30-W0ccOL9OyvD1PW60-card.webp"),
+				"full": asset("images/saves_aves_belted_flyctacher-yle4qopkavupwgkq_le_upscale_prime_light_ai_30-W0ccOL9OyvD1PW60-full.webp"),
 				"alt": "Belted Flycatcher",
 				"caption": "Belted Flycatcher"
 			},
 			{
-				"thumb": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=700,h=525,fit=crop/YofU1cddTQzjoQ8J/yellow-grosbeak-EBPvotaS7J1A3VuE.png",
-				"full": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1600/YofU1cddTQzjoQ8J/yellow-grosbeak-EBPvotaS7J1A3VuE.png",
+				"thumb": asset("images/yellow-grosbeak-EBPvotaS7J1A3VuE-card.webp"),
+				"full": asset("images/yellow-grosbeak-EBPvotaS7J1A3VuE-full.webp"),
 				"alt": "Yellow Grosbeak",
 				"caption": "Yellow Grosbeak"
 			},
 			{
-				"thumb": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=700,h=525,fit=crop/YofU1cddTQzjoQ8J/green-jay-YyvZrOK740uXWDkj.jpg",
-				"full": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1600/YofU1cddTQzjoQ8J/green-jay-YyvZrOK740uXWDkj.jpg",
+				"thumb": asset("images/green-jay-YyvZrOK740uXWDkj-card.webp"),
+				"full": asset("images/green-jay-YyvZrOK740uXWDkj-full.webp"),
 				"alt": "Green Jay",
 				"caption": "Green Jay"
 			},
 			{
-				"thumb": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=700,h=525,fit=crop/YofU1cddTQzjoQ8J/tenam-puente-m6Ljg0VxNXhzeewd.jpg",
-				"full": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1600/YofU1cddTQzjoQ8J/tenam-puente-m6Ljg0VxNXhzeewd.jpg",
+				"thumb": asset("images/tenam-puente-m6Ljg0VxNXhzeewd-card.webp"),
+				"full": asset("images/tenam-puente-m6Ljg0VxNXhzeewd-full.webp"),
 				"alt": "Tenam Puente ruins",
 				"caption": "Tenam Puente ruins"
 			}
@@ -505,7 +506,7 @@ export const tourDetails: TourDetail[] = [
 		"slug": "montebello-lakes",
 		"kind": "day",
 		"title": "Montebello Lakes",
-		"hero": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1600/YofU1cddTQzjoQ8J/resplendent-quetzal-mnlW0616OoTEDEj3.jpg",
+		"hero": asset("images/resplendent-quetzal-mnlW0616OoTEDEj3-full.webp"),
 		"facts": [
 			{
 				"label": "Duration",
@@ -526,8 +527,8 @@ export const tourDetails: TourDetail[] = [
 		],
 		"gallery": [
 			{
-				"thumb": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=700,h=525,fit=crop/YofU1cddTQzjoQ8J/resplendent-quetzal-mnlW0616OoTEDEj3.jpg",
-				"full": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1600/YofU1cddTQzjoQ8J/resplendent-quetzal-mnlW0616OoTEDEj3.jpg",
+				"thumb": asset("images/resplendent-quetzal-mnlW0616OoTEDEj3-card.webp"),
+				"full": asset("images/resplendent-quetzal-mnlW0616OoTEDEj3-full.webp"),
 				"alt": "Resplendent Quetzal",
 				"caption": "Resplendent Quetzal"
 			}
@@ -580,7 +581,7 @@ export const tourDetails: TourDetail[] = [
 		"slug": "la-sepultura",
 		"kind": "day",
 		"title": "La Sepultura",
-		"hero": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1600/YofU1cddTQzjoQ8J/5a00c77407956732f80e74b002410be9-mk3qQ8RrkvuyPp7o.jpg",
+		"hero": asset("images/5a00c77407956732f80e74b002410be9-mk3qQ8RrkvuyPp7o-full.webp"),
 		"facts": [
 			{
 				"label": "Duration",
@@ -601,8 +602,8 @@ export const tourDetails: TourDetail[] = [
 		],
 		"gallery": [
 			{
-				"thumb": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=700,h=525,fit=crop/YofU1cddTQzjoQ8J/5a00c77407956732f80e74b002410be9-mk3qQ8RrkvuyPp7o.jpg",
-				"full": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1600/YofU1cddTQzjoQ8J/5a00c77407956732f80e74b002410be9-mk3qQ8RrkvuyPp7o.jpg",
+				"thumb": asset("images/5a00c77407956732f80e74b002410be9-mk3qQ8RrkvuyPp7o-card.webp"),
+				"full": asset("images/5a00c77407956732f80e74b002410be9-mk3qQ8RrkvuyPp7o-full.webp"),
 				"alt": "Rose-bellied Bunting",
 				"caption": "Rose-bellied Bunting"
 			}
@@ -626,7 +627,7 @@ export const tourDetails: TourDetail[] = [
 		"slug": "chiapas-highlights",
 		"kind": "multi-day",
 		"title": "Chiapas Highlights",
-		"hero": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=900,h=600,fit=crop/YofU1cddTQzjoQ8J/belted-flycatcher-great-photo-iZzV6wprekrFaMzq.jpg",
+		"hero": asset("images/belted-flycatcher-great-photo-iZzV6wprekrFaMzq-card.webp"),
 		"facts": [
 			{
 				"label": "Length",
@@ -647,80 +648,80 @@ export const tourDetails: TourDetail[] = [
 		],
 		"gallery": [
 			{
-				"thumb": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=500,h=500,fit=crop/YofU1cddTQzjoQ8J/belted-flycatcher-great-photo-iZzV6wprekrFaMzq.jpg",
-				"full": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400/YofU1cddTQzjoQ8J/belted-flycatcher-great-photo-iZzV6wprekrFaMzq.jpg",
+				"thumb": asset("images/belted-flycatcher-great-photo-iZzV6wprekrFaMzq-sq.webp"),
+				"full": asset("images/belted-flycatcher-great-photo-iZzV6wprekrFaMzq-full.webp"),
 				"alt": "Belted Flycatcher",
 				"caption": "Belted Flycatcher"
 			},
 			{
-				"thumb": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=500,h=500,fit=crop/YofU1cddTQzjoQ8J/pink-headed-warbler-2-PKTVisrKq3xo673F.jpg",
-				"full": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400/YofU1cddTQzjoQ8J/pink-headed-warbler-2-PKTVisrKq3xo673F.jpg",
+				"thumb": asset("images/pink-headed-warbler-2-PKTVisrKq3xo673F-sq.webp"),
+				"full": asset("images/pink-headed-warbler-2-PKTVisrKq3xo673F-full.webp"),
 				"alt": "Pink-headed Warbler",
 				"caption": "Pink-headed Warbler · Sergio Gómez Villaverde"
 			},
 			{
-				"thumb": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=500,h=500,fit=crop/YofU1cddTQzjoQ8J/blue-and-white-mockingbird-1-NCnEIapZ3vpQC2sm.jpg",
-				"full": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400/YofU1cddTQzjoQ8J/blue-and-white-mockingbird-1-NCnEIapZ3vpQC2sm.jpg",
+				"thumb": asset("images/blue-and-white-mockingbird-1-NCnEIapZ3vpQC2sm-sq.webp"),
+				"full": asset("images/blue-and-white-mockingbird-1-NCnEIapZ3vpQC2sm-full.webp"),
 				"alt": "Blue-and-white Mockingbird",
 				"caption": "Blue-and-white Mockingbird · Sergio Gómez Villaverde"
 			},
 			{
-				"thumb": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=500,h=500,fit=crop/YofU1cddTQzjoQ8J/rose-bellied-bunting-m2Wa32VjWETn9NkA.png",
-				"full": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400/YofU1cddTQzjoQ8J/rose-bellied-bunting-m2Wa32VjWETn9NkA.png",
+				"thumb": asset("images/rose-bellied-bunting-m2Wa32VjWETn9NkA-sq.webp"),
+				"full": asset("images/rose-bellied-bunting-m2Wa32VjWETn9NkA-full.webp"),
 				"alt": "Rose-bellied Bunting",
 				"caption": "Rose-bellied Bunting · Nagi Aboulenein"
 			},
 			{
-				"thumb": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=500,h=500,fit=crop/YofU1cddTQzjoQ8J/unicolored-jay-s7sJYdXMbsQy4iJO.jpg",
-				"full": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400/YofU1cddTQzjoQ8J/unicolored-jay-s7sJYdXMbsQy4iJO.jpg",
+				"thumb": asset("images/unicolored-jay-s7sJYdXMbsQy4iJO-sq.webp"),
+				"full": asset("images/unicolored-jay-s7sJYdXMbsQy4iJO-full.webp"),
 				"alt": "Unicolored Jay",
 				"caption": "Unicolored Jay"
 			},
 			{
-				"thumb": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=500,h=500,fit=crop/YofU1cddTQzjoQ8J/sabes_aves_blue-throated_motmot-NFfUHZuU255VnhZE.JPG",
-				"full": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400/YofU1cddTQzjoQ8J/sabes_aves_blue-throated_motmot-NFfUHZuU255VnhZE.JPG",
+				"thumb": asset("images/sabes_aves_blue-throated_motmot-NFfUHZuU255VnhZE-sq.webp"),
+				"full": asset("images/sabes_aves_blue-throated_motmot-NFfUHZuU255VnhZE-full.webp"),
 				"alt": "Blue-throated Motmot",
 				"caption": "Blue-throated Motmot"
 			},
 			{
-				"thumb": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=500,h=500,fit=crop/YofU1cddTQzjoQ8J/slender-sheartail-qMw7TVBhS9Q1882N.jpg",
-				"full": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400/YofU1cddTQzjoQ8J/slender-sheartail-qMw7TVBhS9Q1882N.jpg",
+				"thumb": asset("images/slender-sheartail-qMw7TVBhS9Q1882N-sq.webp"),
+				"full": asset("images/slender-sheartail-qMw7TVBhS9Q1882N-full.webp"),
 				"alt": "Slender Sheartail",
 				"caption": "Slender Sheartail · Sergio Gómez Villaverde"
 			},
 			{
-				"thumb": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=500,h=500,fit=crop/YofU1cddTQzjoQ8J/bearded-screech-owl-B5Fngu1MgWbNIBDY.jpg",
-				"full": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400/YofU1cddTQzjoQ8J/bearded-screech-owl-B5Fngu1MgWbNIBDY.jpg",
+				"thumb": asset("images/bearded-screech-owl-B5Fngu1MgWbNIBDY-sq.webp"),
+				"full": asset("images/bearded-screech-owl-B5Fngu1MgWbNIBDY-full.webp"),
 				"alt": "Bearded Screech-Owl",
 				"caption": "Bearded Screech-Owl · Sergio Gómez Villaverde"
 			},
 			{
-				"thumb": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=500,h=500,fit=crop/YofU1cddTQzjoQ8J/collared-aracari-photo_-jaime-pa-c-rez-AMq1q4LoPbF5nQvP.jpg",
-				"full": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400/YofU1cddTQzjoQ8J/collared-aracari-photo_-jaime-pa-c-rez-AMq1q4LoPbF5nQvP.jpg",
+				"thumb": asset("images/collared-aracari-photo_-jaime-pa-c-rez-AMq1q4LoPbF5nQvP-sq.webp"),
+				"full": asset("images/collared-aracari-photo_-jaime-pa-c-rez-AMq1q4LoPbF5nQvP-full.webp"),
 				"alt": "Collared Aracari",
 				"caption": "Collared Aracari · Jaime Pérez"
 			},
 			{
-				"thumb": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=500,h=500,fit=crop/YofU1cddTQzjoQ8J/keel-billed-toucan-N3wJ3xiANHuwBTFC.jpg",
-				"full": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400/YofU1cddTQzjoQ8J/keel-billed-toucan-N3wJ3xiANHuwBTFC.jpg",
+				"thumb": asset("images/keel-billed-toucan-N3wJ3xiANHuwBTFC-sq.webp"),
+				"full": asset("images/keel-billed-toucan-N3wJ3xiANHuwBTFC-full.webp"),
 				"alt": "Keel-billed Toucan",
 				"caption": "Keel-billed Toucan"
 			},
 			{
-				"thumb": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=500,h=500,fit=crop/YofU1cddTQzjoQ8J/ornate-hawk-eagle-mP4OGNwpvehoNJQq.jpg",
-				"full": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400/YofU1cddTQzjoQ8J/ornate-hawk-eagle-mP4OGNwpvehoNJQq.jpg",
+				"thumb": asset("images/ornate-hawk-eagle-mP4OGNwpvehoNJQq-sq.webp"),
+				"full": asset("images/ornate-hawk-eagle-mP4OGNwpvehoNJQq-full.webp"),
 				"alt": "Ornate Hawk-Eagle",
 				"caption": "Ornate Hawk-Eagle · Jaime Pérez"
 			},
 			{
-				"thumb": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=500,h=500,fit=crop/YofU1cddTQzjoQ8J/rufous-browed-wren-3phBg9ChWPaz4qiV.jpg",
-				"full": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400/YofU1cddTQzjoQ8J/rufous-browed-wren-3phBg9ChWPaz4qiV.jpg",
+				"thumb": asset("images/rufous-browed-wren-3phBg9ChWPaz4qiV-sq.webp"),
+				"full": asset("images/rufous-browed-wren-3phBg9ChWPaz4qiV-full.webp"),
 				"alt": "Rufous-browed Wren",
 				"caption": "Rufous-browed Wren"
 			},
 			{
-				"thumb": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=500,h=500,fit=crop/YofU1cddTQzjoQ8J/black-capped-swallow-vYDUGfI4yq2m07pL.jpg",
-				"full": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400/YofU1cddTQzjoQ8J/black-capped-swallow-vYDUGfI4yq2m07pL.jpg",
+				"thumb": asset("images/black-capped-swallow-vYDUGfI4yq2m07pL-sq.webp"),
+				"full": asset("images/black-capped-swallow-vYDUGfI4yq2m07pL-full.webp"),
 				"alt": "Black-capped Swallow",
 				"caption": "Black-capped Swallow · Sergio Gómez Villaverde"
 			}
@@ -769,7 +770,7 @@ export const tourDetails: TourDetail[] = [
 		"slug": "volcano-endemics",
 		"kind": "multi-day",
 		"title": "Volcano Endemics",
-		"hero": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=900,h=600,fit=crop/YofU1cddTQzjoQ8J/horned-guan-mv02ExGWQJC0k2xv.jpg",
+		"hero": asset("images/horned-guan-mv02ExGWQJC0k2xv-card.webp"),
 		"facts": [
 			{
 				"label": "Length",
@@ -790,80 +791,80 @@ export const tourDetails: TourDetail[] = [
 		],
 		"gallery": [
 			{
-				"thumb": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=500,h=500,fit=crop/YofU1cddTQzjoQ8J/horned-guan-mv02ExGWQJC0k2xv.jpg",
-				"full": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400/YofU1cddTQzjoQ8J/horned-guan-mv02ExGWQJC0k2xv.jpg",
+				"thumb": asset("images/horned-guan-mv02ExGWQJC0k2xv-sq.webp"),
+				"full": asset("images/horned-guan-mv02ExGWQJC0k2xv-full.webp"),
 				"alt": "Horned Guan",
 				"caption": "Horned Guan"
 			},
 			{
-				"thumb": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=500,h=500,fit=crop/YofU1cddTQzjoQ8J/pink-headed-warbler-3-qDv5NS68FdQ7onyM.jpg",
-				"full": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400/YofU1cddTQzjoQ8J/pink-headed-warbler-3-qDv5NS68FdQ7onyM.jpg",
+				"thumb": asset("images/pink-headed-warbler-3-qDv5NS68FdQ7onyM-sq.webp"),
+				"full": asset("images/pink-headed-warbler-3-qDv5NS68FdQ7onyM-full.webp"),
 				"alt": "Pink-headed Warbler",
 				"caption": "Pink-headed Warbler · Sergio Gómez Villaverde"
 			},
 			{
-				"thumb": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=500,h=500,fit=crop/YofU1cddTQzjoQ8J/blue-and-white-mockingbird-1-NCnEIapZ3vpQC2sm.jpg",
-				"full": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400/YofU1cddTQzjoQ8J/blue-and-white-mockingbird-1-NCnEIapZ3vpQC2sm.jpg",
+				"thumb": asset("images/blue-and-white-mockingbird-1-NCnEIapZ3vpQC2sm-sq.webp"),
+				"full": asset("images/blue-and-white-mockingbird-1-NCnEIapZ3vpQC2sm-full.webp"),
 				"alt": "Blue-and-white Mockingbird",
 				"caption": "Blue-and-white Mockingbird · Sergio Gómez Villaverde"
 			},
 			{
-				"thumb": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=500,h=500,fit=crop/YofU1cddTQzjoQ8J/_dsc0870-UHFcPZY27edAPFr1.JPG",
-				"full": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400/YofU1cddTQzjoQ8J/_dsc0870-UHFcPZY27edAPFr1.JPG",
+				"thumb": asset("images/_dsc0870-UHFcPZY27edAPFr1-sq.webp"),
+				"full": asset("images/_dsc0870-UHFcPZY27edAPFr1-full.webp"),
 				"alt": "Giant Wren",
 				"caption": "Giant Wren"
 			},
 			{
-				"thumb": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=500,h=500,fit=crop/YofU1cddTQzjoQ8J/rose-bellied-bunting-m2Wa32VjWETn9NkA.png",
-				"full": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400/YofU1cddTQzjoQ8J/rose-bellied-bunting-m2Wa32VjWETn9NkA.png",
+				"thumb": asset("images/rose-bellied-bunting-m2Wa32VjWETn9NkA-sq.webp"),
+				"full": asset("images/rose-bellied-bunting-m2Wa32VjWETn9NkA-full.webp"),
 				"alt": "Rose-bellied Bunting",
 				"caption": "Rose-bellied Bunting · Nagi Aboulenein"
 			},
 			{
-				"thumb": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=500,h=500,fit=crop/YofU1cddTQzjoQ8J/sabes_aves_blue-crowned_chlorophonia-1-YD0w1yZbj5fb90o7.jpg",
-				"full": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400/YofU1cddTQzjoQ8J/sabes_aves_blue-crowned_chlorophonia-1-YD0w1yZbj5fb90o7.jpg",
+				"thumb": asset("images/sabes_aves_blue-crowned_chlorophonia-1-YD0w1yZbj5fb90o7-sq.webp"),
+				"full": asset("images/sabes_aves_blue-crowned_chlorophonia-1-YD0w1yZbj5fb90o7-full.webp"),
 				"alt": "Blue-crowned Chlorophonia",
 				"caption": "Blue-crowned Chlorophonia"
 			},
 			{
-				"thumb": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=500,h=500,fit=crop/YofU1cddTQzjoQ8J/sabes_aves_blue-throated_motmot-NFfUHZuU255VnhZE.JPG",
-				"full": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400/YofU1cddTQzjoQ8J/sabes_aves_blue-throated_motmot-NFfUHZuU255VnhZE.JPG",
+				"thumb": asset("images/sabes_aves_blue-throated_motmot-NFfUHZuU255VnhZE-sq.webp"),
+				"full": asset("images/sabes_aves_blue-throated_motmot-NFfUHZuU255VnhZE-full.webp"),
 				"alt": "Blue-throated Motmot",
 				"caption": "Blue-throated Motmot"
 			},
 			{
-				"thumb": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=500,h=500,fit=crop/YofU1cddTQzjoQ8J/hooded-grosbeak-Jnoa3lBHTMdjXHGh.jpg",
-				"full": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400/YofU1cddTQzjoQ8J/hooded-grosbeak-Jnoa3lBHTMdjXHGh.jpg",
+				"thumb": asset("images/hooded-grosbeak-Jnoa3lBHTMdjXHGh-sq.webp"),
+				"full": asset("images/hooded-grosbeak-Jnoa3lBHTMdjXHGh-full.webp"),
 				"alt": "Hooded Grosbeak",
 				"caption": "Hooded Grosbeak"
 			},
 			{
-				"thumb": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=500,h=500,fit=crop/YofU1cddTQzjoQ8J/wine-throated-hummingbird-1KaFhnbxIE9aAt0U.jpg",
-				"full": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400/YofU1cddTQzjoQ8J/wine-throated-hummingbird-1KaFhnbxIE9aAt0U.jpg",
+				"thumb": asset("images/wine-throated-hummingbird-1KaFhnbxIE9aAt0U-sq.webp"),
+				"full": asset("images/wine-throated-hummingbird-1KaFhnbxIE9aAt0U-full.webp"),
 				"alt": "Wine-throated Hummingbird",
 				"caption": "Wine-throated Hummingbird"
 			},
 			{
-				"thumb": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=500,h=500,fit=crop/YofU1cddTQzjoQ8J/rufous-sabrewing-8lgcv1ND0RJovnoi.jpg",
-				"full": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400/YofU1cddTQzjoQ8J/rufous-sabrewing-8lgcv1ND0RJovnoi.jpg",
+				"thumb": asset("images/rufous-sabrewing-8lgcv1ND0RJovnoi-sq.webp"),
+				"full": asset("images/rufous-sabrewing-8lgcv1ND0RJovnoi-full.webp"),
 				"alt": "Rufous Sabrewing",
 				"caption": "Rufous Sabrewing"
 			},
 			{
-				"thumb": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=500,h=500,fit=crop/YofU1cddTQzjoQ8J/turquoise-browed-motmot-hwikmYfulmi5nHCi.jpg",
-				"full": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400/YofU1cddTQzjoQ8J/turquoise-browed-motmot-hwikmYfulmi5nHCi.jpg",
+				"thumb": asset("images/turquoise-browed-motmot-hwikmYfulmi5nHCi-sq.webp"),
+				"full": asset("images/turquoise-browed-motmot-hwikmYfulmi5nHCi-full.webp"),
 				"alt": "Turquoise-browed Motmot",
 				"caption": "Turquoise-browed Motmot · Sergio Gómez Villaverde"
 			},
 			{
-				"thumb": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=500,h=500,fit=crop/YofU1cddTQzjoQ8J/guatemalan-tyrannulet-HFmbr5dlTSRWWVe9.jpg",
-				"full": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400/YofU1cddTQzjoQ8J/guatemalan-tyrannulet-HFmbr5dlTSRWWVe9.jpg",
+				"thumb": asset("images/guatemalan-tyrannulet-HFmbr5dlTSRWWVe9-sq.webp"),
+				"full": asset("images/guatemalan-tyrannulet-HFmbr5dlTSRWWVe9-full.webp"),
 				"alt": "Guatemalan Tyrannulet",
 				"caption": "Guatemalan Tyrannulet · Sergio Gómez Villaverde"
 			},
 			{
-				"thumb": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=500,h=500,fit=crop/YofU1cddTQzjoQ8J/long-tailed-manakin-tqWbPcfxlxP9AoST.jpg",
-				"full": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400/YofU1cddTQzjoQ8J/long-tailed-manakin-tqWbPcfxlxP9AoST.jpg",
+				"thumb": asset("images/long-tailed-manakin-tqWbPcfxlxP9AoST-sq.webp"),
+				"full": asset("images/long-tailed-manakin-tqWbPcfxlxP9AoST-full.webp"),
 				"alt": "Long-tailed Manakin",
 				"caption": "Long-tailed Manakin · Jaime Pérez"
 			}
@@ -912,7 +913,7 @@ export const tourDetails: TourDetail[] = [
 		"slug": "lowland-jungles",
 		"kind": "multi-day",
 		"title": "Lowland Jungles",
-		"hero": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=900,h=600,fit=crop/YofU1cddTQzjoQ8J/keel-billed-toucan-N3wJ3xiANHuwBTFC.jpg",
+		"hero": asset("images/keel-billed-toucan-N3wJ3xiANHuwBTFC-card.webp"),
 		"facts": [
 			{
 				"label": "Length",
@@ -933,32 +934,32 @@ export const tourDetails: TourDetail[] = [
 		],
 		"gallery": [
 			{
-				"thumb": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=500,h=500,fit=crop/YofU1cddTQzjoQ8J/keel-billed-toucan-N3wJ3xiANHuwBTFC.jpg",
-				"full": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400/YofU1cddTQzjoQ8J/keel-billed-toucan-N3wJ3xiANHuwBTFC.jpg",
+				"thumb": asset("images/keel-billed-toucan-N3wJ3xiANHuwBTFC-sq.webp"),
+				"full": asset("images/keel-billed-toucan-N3wJ3xiANHuwBTFC-full.webp"),
 				"alt": "Keel-billed Toucan",
 				"caption": "Keel-billed Toucan"
 			},
 			{
-				"thumb": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=500,h=500,fit=crop/YofU1cddTQzjoQ8J/ornate-hawk-eagle-mP4OGNwpvehoNJQq.jpg",
-				"full": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400/YofU1cddTQzjoQ8J/ornate-hawk-eagle-mP4OGNwpvehoNJQq.jpg",
+				"thumb": asset("images/ornate-hawk-eagle-mP4OGNwpvehoNJQq-sq.webp"),
+				"full": asset("images/ornate-hawk-eagle-mP4OGNwpvehoNJQq-full.webp"),
 				"alt": "Ornate Hawk-Eagle",
 				"caption": "Ornate Hawk-Eagle · Jaime Pérez"
 			},
 			{
-				"thumb": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=500,h=500,fit=crop/YofU1cddTQzjoQ8J/lovely-cotinga-kMeBqQD8MqFZoxbw.png",
-				"full": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400/YofU1cddTQzjoQ8J/lovely-cotinga-kMeBqQD8MqFZoxbw.png",
+				"thumb": asset("images/lovely-cotinga-kMeBqQD8MqFZoxbw-sq.webp"),
+				"full": asset("images/lovely-cotinga-kMeBqQD8MqFZoxbw-full.webp"),
 				"alt": "Lovely Cotinga",
 				"caption": "Lovely Cotinga"
 			},
 			{
-				"thumb": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=500,h=500,fit=crop/YofU1cddTQzjoQ8J/scarlet-macaw-VuZUDrvypQ0vU3dv.jpg",
-				"full": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400/YofU1cddTQzjoQ8J/scarlet-macaw-VuZUDrvypQ0vU3dv.jpg",
+				"thumb": asset("images/scarlet-macaw-VuZUDrvypQ0vU3dv-sq.webp"),
+				"full": asset("images/scarlet-macaw-VuZUDrvypQ0vU3dv-full.webp"),
 				"alt": "Scarlet Macaw",
 				"caption": "Scarlet Macaw · Sergio Gómez Villaverde"
 			},
 			{
-				"thumb": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=500,h=500,fit=crop/YofU1cddTQzjoQ8J/tropical-royal-flycatcher-1-anIw6HaxJjuJCPks.jpg",
-				"full": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400/YofU1cddTQzjoQ8J/tropical-royal-flycatcher-1-anIw6HaxJjuJCPks.jpg",
+				"thumb": asset("images/tropical-royal-flycatcher-1-anIw6HaxJjuJCPks-sq.webp"),
+				"full": asset("images/tropical-royal-flycatcher-1-anIw6HaxJjuJCPks-full.webp"),
 				"alt": "Tropical Royal Flycatcher",
 				"caption": "Tropical Royal Flycatcher · Sergio Gómez Villaverde"
 			}
@@ -1017,7 +1018,7 @@ export const tourDetails: TourDetail[] = [
 		"slug": "full-endemics",
 		"kind": "multi-day",
 		"title": "Full Endemics",
-		"hero": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=900,h=600,fit=crop/YofU1cddTQzjoQ8J/rose-bellied-bunting-m2Wa32VjWETn9NkA.png",
+		"hero": asset("images/rose-bellied-bunting-m2Wa32VjWETn9NkA-card.webp"),
 		"facts": [
 			{
 				"label": "Length",
@@ -1038,80 +1039,80 @@ export const tourDetails: TourDetail[] = [
 		],
 		"gallery": [
 			{
-				"thumb": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=500,h=500,fit=crop/YofU1cddTQzjoQ8J/pink-headed-warbler-1-aLtT3eAXkiqtjRWh.jpg",
-				"full": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400/YofU1cddTQzjoQ8J/pink-headed-warbler-1-aLtT3eAXkiqtjRWh.jpg",
+				"thumb": asset("images/pink-headed-warbler-1-aLtT3eAXkiqtjRWh-sq.webp"),
+				"full": asset("images/pink-headed-warbler-1-aLtT3eAXkiqtjRWh-full.webp"),
 				"alt": "Pink-headed Warbler",
 				"caption": "Pink-headed Warbler · Sergio Gómez Villaverde"
 			},
 			{
-				"thumb": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=500,h=500,fit=crop/YofU1cddTQzjoQ8J/belted-flycatcher-great-photo-iZzV6wprekrFaMzq.jpg",
-				"full": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400/YofU1cddTQzjoQ8J/belted-flycatcher-great-photo-iZzV6wprekrFaMzq.jpg",
+				"thumb": asset("images/belted-flycatcher-great-photo-iZzV6wprekrFaMzq-sq.webp"),
+				"full": asset("images/belted-flycatcher-great-photo-iZzV6wprekrFaMzq-full.webp"),
 				"alt": "Belted Flycatcher",
 				"caption": "Belted Flycatcher"
 			},
 			{
-				"thumb": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=500,h=500,fit=crop/YofU1cddTQzjoQ8J/blue-and-white-mockingbird-1-NCnEIapZ3vpQC2sm.jpg",
-				"full": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400/YofU1cddTQzjoQ8J/blue-and-white-mockingbird-1-NCnEIapZ3vpQC2sm.jpg",
+				"thumb": asset("images/blue-and-white-mockingbird-1-NCnEIapZ3vpQC2sm-sq.webp"),
+				"full": asset("images/blue-and-white-mockingbird-1-NCnEIapZ3vpQC2sm-full.webp"),
 				"alt": "Blue-and-white Mockingbird",
 				"caption": "Blue-and-white Mockingbird · Sergio Gómez Villaverde"
 			},
 			{
-				"thumb": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=500,h=500,fit=crop/YofU1cddTQzjoQ8J/horned-guan-mv02ExGWQJC0k2xv.jpg",
-				"full": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400/YofU1cddTQzjoQ8J/horned-guan-mv02ExGWQJC0k2xv.jpg",
+				"thumb": asset("images/horned-guan-mv02ExGWQJC0k2xv-sq.webp"),
+				"full": asset("images/horned-guan-mv02ExGWQJC0k2xv-full.webp"),
 				"alt": "Horned Guan",
 				"caption": "Horned Guan"
 			},
 			{
-				"thumb": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=500,h=500,fit=crop/YofU1cddTQzjoQ8J/unicolored-jay-s7sJYdXMbsQy4iJO.jpg",
-				"full": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400/YofU1cddTQzjoQ8J/unicolored-jay-s7sJYdXMbsQy4iJO.jpg",
+				"thumb": asset("images/unicolored-jay-s7sJYdXMbsQy4iJO-sq.webp"),
+				"full": asset("images/unicolored-jay-s7sJYdXMbsQy4iJO-full.webp"),
 				"alt": "Unicolored Jay",
 				"caption": "Unicolored Jay"
 			},
 			{
-				"thumb": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=500,h=500,fit=crop/YofU1cddTQzjoQ8J/sabes_aves_blue-crowned_chlorophonia-1-YD0w1yZbj5fb90o7.jpg",
-				"full": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400/YofU1cddTQzjoQ8J/sabes_aves_blue-crowned_chlorophonia-1-YD0w1yZbj5fb90o7.jpg",
+				"thumb": asset("images/sabes_aves_blue-crowned_chlorophonia-1-YD0w1yZbj5fb90o7-sq.webp"),
+				"full": asset("images/sabes_aves_blue-crowned_chlorophonia-1-YD0w1yZbj5fb90o7-full.webp"),
 				"alt": "Blue-crowned Chlorophonia",
 				"caption": "Blue-crowned Chlorophonia"
 			},
 			{
-				"thumb": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=500,h=500,fit=crop/YofU1cddTQzjoQ8J/sabes_aves_blue-throated_motmot-NFfUHZuU255VnhZE.JPG",
-				"full": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400/YofU1cddTQzjoQ8J/sabes_aves_blue-throated_motmot-NFfUHZuU255VnhZE.JPG",
+				"thumb": asset("images/sabes_aves_blue-throated_motmot-NFfUHZuU255VnhZE-sq.webp"),
+				"full": asset("images/sabes_aves_blue-throated_motmot-NFfUHZuU255VnhZE-full.webp"),
 				"alt": "Blue-throated Motmot",
 				"caption": "Blue-throated Motmot"
 			},
 			{
-				"thumb": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=500,h=500,fit=crop/YofU1cddTQzjoQ8J/slender-sheartail-qMw7TVBhS9Q1882N.jpg",
-				"full": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400/YofU1cddTQzjoQ8J/slender-sheartail-qMw7TVBhS9Q1882N.jpg",
+				"thumb": asset("images/slender-sheartail-qMw7TVBhS9Q1882N-sq.webp"),
+				"full": asset("images/slender-sheartail-qMw7TVBhS9Q1882N-full.webp"),
 				"alt": "Slender Sheartail",
 				"caption": "Slender Sheartail · Sergio Gómez Villaverde"
 			},
 			{
-				"thumb": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=500,h=500,fit=crop/YofU1cddTQzjoQ8J/agami-heron-CwzZQHYqe6AfiDTq.jpg",
-				"full": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400/YofU1cddTQzjoQ8J/agami-heron-CwzZQHYqe6AfiDTq.jpg",
+				"thumb": asset("images/agami-heron-CwzZQHYqe6AfiDTq-sq.webp"),
+				"full": asset("images/agami-heron-CwzZQHYqe6AfiDTq-full.webp"),
 				"alt": "Agami Heron",
 				"caption": "Agami Heron"
 			},
 			{
-				"thumb": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=500,h=500,fit=crop/YofU1cddTQzjoQ8J/azure-hooded-jay-w6Bqp2psIEeDOfzQ.jpg",
-				"full": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400/YofU1cddTQzjoQ8J/azure-hooded-jay-w6Bqp2psIEeDOfzQ.jpg",
+				"thumb": asset("images/azure-hooded-jay-w6Bqp2psIEeDOfzQ-sq.webp"),
+				"full": asset("images/azure-hooded-jay-w6Bqp2psIEeDOfzQ-full.webp"),
 				"alt": "Azure-hooded Jay",
 				"caption": "Azure-hooded Jay · Sergio Gómez Villaverde"
 			},
 			{
-				"thumb": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=500,h=500,fit=crop/YofU1cddTQzjoQ8J/bearded-screech-owl-B5Fngu1MgWbNIBDY.jpg",
-				"full": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400/YofU1cddTQzjoQ8J/bearded-screech-owl-B5Fngu1MgWbNIBDY.jpg",
+				"thumb": asset("images/bearded-screech-owl-B5Fngu1MgWbNIBDY-sq.webp"),
+				"full": asset("images/bearded-screech-owl-B5Fngu1MgWbNIBDY-full.webp"),
 				"alt": "Bearded Screech-Owl",
 				"caption": "Bearded Screech-Owl · Sergio Gómez Villaverde"
 			},
 			{
-				"thumb": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=500,h=500,fit=crop/YofU1cddTQzjoQ8J/black-collared-hawk-oFYKYtW5m1pBiNws.jpg",
-				"full": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400/YofU1cddTQzjoQ8J/black-collared-hawk-oFYKYtW5m1pBiNws.jpg",
+				"thumb": asset("images/black-collared-hawk-oFYKYtW5m1pBiNws-sq.webp"),
+				"full": asset("images/black-collared-hawk-oFYKYtW5m1pBiNws-full.webp"),
 				"alt": "Black-collared Hawk",
 				"caption": "Black-collared Hawk"
 			},
 			{
-				"thumb": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=500,h=500,fit=crop/YofU1cddTQzjoQ8J/collared-aracari-photo_-jaime-pa-c-rez-AMq1q4LoPbF5nQvP.jpg",
-				"full": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400/YofU1cddTQzjoQ8J/collared-aracari-photo_-jaime-pa-c-rez-AMq1q4LoPbF5nQvP.jpg",
+				"thumb": asset("images/collared-aracari-photo_-jaime-pa-c-rez-AMq1q4LoPbF5nQvP-sq.webp"),
+				"full": asset("images/collared-aracari-photo_-jaime-pa-c-rez-AMq1q4LoPbF5nQvP-full.webp"),
 				"alt": "Collared Aracari",
 				"caption": "Collared Aracari · Jaime Pérez"
 			}

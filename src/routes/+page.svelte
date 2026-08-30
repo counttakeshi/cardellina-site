@@ -1,9 +1,9 @@
 <script lang="ts">
+	import { asset } from '$lib/ledger';
 	import { base } from '$app/paths';
 	import { flagships, elevationBands, tripTeasers, guides, warblers, reviews, principles } from '$lib/data/home';
 
-	const HERO_IMG =
-		'https://assets.zyrosite.com/YofU1cddTQzjoQ8J/sabes_aves_pink-headed_warbler-A0xjy2JlD8TLpRLX.jpg';
+	const HERO_IMG = asset('images/sabes_aves_pink-headed_warbler-A0xjy2JlD8TLpRLX-full.webp');
 	const GOOGLE_REVIEWS_URL = 'https://share.google/P1kf5lWkcsJoRDRXU';
 
 	let videoPlaying = $state(false);
@@ -199,7 +199,7 @@
 				>
 					<img
 						class="lite-thumb"
-						src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=900/YofU1cddTQzjoQ8J/dsc01506-edit-gmwe9PWpByoJSYdo.jpg"
+						src={asset('images/dsc01506-edit-gmwe9PWpByoJSYdo-md.webp')}
 						alt="Cloud forest on Tacaná Volcano"
 						loading="lazy"
 					/>
@@ -234,7 +234,7 @@
 		<div class="genus-grid">
 			<figure class="genus-mark">
 				<img
-					src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=600,fit=contain/YofU1cddTQzjoQ8J/cardellina-logo-r-ouLe0QMSi7BFi1G9.png"
+					src={asset('images/cardellina-logo-r-ouLe0QMSi7BFi1G9-md.webp')}
 					alt="The Cardellina Birding Tours logo: three Cardellina warblers"
 					loading="lazy"
 				/>
@@ -342,7 +342,7 @@
 			</div>
 			<figure class="how-img">
 				<img
-					src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=900,h=700,fit=crop/YofU1cddTQzjoQ8J/customer-birding-with-sabes-aves-and-valente-A85E1ZjQr2IV3DBy.jpg"
+					src={asset('images/customer-birding-with-sabes-aves-and-valente-A85E1ZjQr2IV3DBy-card.webp')}
 					alt="Valente taking notes while a guest scans the canopy at Huitepec Reserve"
 					loading="lazy"
 				/>

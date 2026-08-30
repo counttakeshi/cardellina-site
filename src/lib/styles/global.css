@@ -18,6 +18,9 @@
 	/* Height of the sticky site header. Anything else that sticks (the bird
 	   library's filter bar) offsets by this so it doesn't slide underneath. */
 	--header-h: 74px;
+
+	/* The horizontal gutter .wrap applies. Full-bleed elements negate it. */
+	--map-bleed: 1.5rem;
 }
 
 @media (max-width: 900px) {

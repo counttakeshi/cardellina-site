@@ -1,8 +1,8 @@
-const CDN = 'https://assets.zyrosite.com/cdn-cgi/image/format=auto';
-const BUCKET = 'YofU1cddTQzjoQ8J';
+import { imageUrl } from '$lib/ledger';
 
-const dayImg = (file: string) => `${CDN},w=800,h=600,fit=crop/${BUCKET}/${file}`;
-const tripImg = (file: string) => `${CDN},w=900,h=600,fit=crop/${BUCKET}/${file}`;
+// Both listing cards use a 4:3-ish crop.
+const dayImg = (file: string) => imageUrl(file, 'card');
+const tripImg = (file: string) => imageUrl(file, 'card');
 
 export interface DayTour {
 	slug: string;

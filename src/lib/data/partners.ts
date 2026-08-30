@@ -1,5 +1,4 @@
-const CDN = 'https://assets.zyrosite.com/cdn-cgi/image/format=auto';
-const BUCKET = 'YofU1cddTQzjoQ8J';
+import { imageUrl } from '$lib/ledger';
 
 export interface Partner {
 	slug: string;
@@ -26,8 +25,8 @@ export const partners: Partner[] = [
 		slug: 'oatl',
 		name: 'OATL',
 		where: 'Observatorio de Aves Tlaxiaco · Oaxaca',
-		logo: `${CDN},w=200/${BUCKET}/oatl-logo-S1RPBoJAo9FcNlXk.webp`,
-		image: `${CDN},w=900/${BUCKET}/sergio-guiding-5RYqe2csqZF2rGx3.png`,
+		logo: imageUrl('oatl-logo-S1RPBoJAo9FcNlXk.webp', 'md'),
+		image: imageUrl('sergio-guiding-5RYqe2csqZF2rGx3.png', 'full'),
 		imageAlt: 'Sergio Gómez Villaverde guiding',
 		imagePosition: '50% 40%',
 		body: [
@@ -44,8 +43,8 @@ export const partners: Partner[] = [
 		slug: 'siyaj-chan',
 		name: 'Siyaj Chan',
 		where: 'Frontera Corozal · Selva Lacandona',
-		logo: `${CDN},w=200/${BUCKET}/siyaj-chan-logo-xnkC7HfdiToY6kqz.webp`,
-		image: `${CDN},w=900/${BUCKET}/silvano-guiding-OA0YRiZbZC3lStwz.webp`,
+		logo: imageUrl('siyaj-chan-logo-xnkC7HfdiToY6kqz.webp', 'md'),
+		image: imageUrl('silvano-guiding-OA0YRiZbZC3lStwz.webp', 'full'),
 		imageAlt: 'Silvano guiding on the Usumacinta at Yaxchilán',
 		imagePosition: '50% 40%',
 		flip: true,

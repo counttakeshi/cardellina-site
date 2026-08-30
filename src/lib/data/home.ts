@@ -1,9 +1,10 @@
-const CDN = 'https://assets.zyrosite.com/cdn-cgi/image/format=auto';
-const BUCKET = 'YofU1cddTQzjoQ8J';
+import { imageUrl } from '$lib/ledger';
 
-const card = (file: string) => `${CDN},w=380,h=500,fit=crop/${BUCKET}/${file}`;
-const strip = (file: string) => `${CDN},w=240,h=280,fit=crop/${BUCKET}/${file}`;
-const avatar = (file: string) => `${CDN},w=120,h=120,fit=crop/${BUCKET}/${file}`;
+// Portrait flagship cards and the small strip/avatar thumbnails all read well
+// enough from the square crop; the taller originals are only needed full size.
+const card = (file: string) => imageUrl(file, 'sq');
+const strip = (file: string) => imageUrl(file, 'sq');
+const avatar = (file: string) => imageUrl(file, 'sq');
 
 export const flagships = [
 	{

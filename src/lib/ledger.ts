@@ -6,11 +6,20 @@
  * keeps the data shape in one place — and, importantly, keeps every image URL
  * behind `imageUrl()`, so moving off the Zyro CDN is a one-line change.
  */
+import { base } from '$app/paths';
 import ledger from './data/ledger.json';
 
-/** Where the ledger's bare filenames actually live. */
-const ASSET_BASE = 'https://assets.zyrosite.com/YofU1cddTQzjoQ8J';
-const RESIZE_BASE = 'https://assets.zyrosite.com/cdn-cgi/image';
+/**
+ * Image variants generated at import time and committed to static/images.
+ * Zyro resized on the fly; GitHub Pages only serves files, so the sizes the site
+ * uses are baked once and picked here.
+ *
+ *   full — max 1600px wide, for heroes and the lightbox
+ *   md   — max 800px wide, for cards and strips
+ *   card — 800x600 crop, for 4:3 gallery tiles
+ *   sq   — 600x600 crop, for square gallery tiles
+ */
+export type ImageVariant = 'full' | 'md' | 'card' | 'sq';
 
 export interface LedgerLocation {
 	name: string;
@@ -79,19 +88,31 @@ const PHOTO_ALIASES: Record<string, string> = {
 	// there is no photo under either, so no alias is needed yet.
 };
 
-/** Build an image URL, optionally resized through the CDN. */
-export function imageUrl(filename: string, width?: number): string {
+/**
+ * Resolve any site asset path against the deploy base, so images work both at
+ * the root domain and under the GitHub Pages project URL.
+ */
+export function asset(path: string): string {
+	if (!path) return '';
+	if (/^(https?:)?\/\//.test(path) || path.startsWith('data:')) return path;
+	return `${base}/${path.replace(/^\//, '')}`;
+}
+
+/**
+ * URL for one of a photo's variants, from the ledger's bare filename.
+ * Every image on the site goes through here — that is what made moving off the
+ * Zyro CDN a change to this function rather than to hundreds of strings.
+ */
+export function imageUrl(filename: string, variant: ImageVariant = 'full'): string {
 	if (!filename) return '';
-	if (/^https?:\/\//.test(filename)) return filename;
-	return width
-		? `${RESIZE_BASE}/format=auto,w=${width}/YofU1cddTQzjoQ8J/${filename}`
-		: `${ASSET_BASE}/${filename}`;
+	if (/^(https?:)?\/\//.test(filename)) return filename;
+	const stem = filename.replace(/\.[^.]+$/, '');
+	return asset(`images/${stem}-${variant}.webp`);
 }
 
 /** Square crop, for gallery thumbnails. */
-export function thumbUrl(filename: string, size = 500): string {
-	if (!filename) return '';
-	return `${RESIZE_BASE}/format=auto,w=${size},h=${size},fit=crop/YofU1cddTQzjoQ8J/${filename}`;
+export function thumbUrl(filename: string): string {
+	return imageUrl(filename, 'sq');
 }
 
 /** The photo entry for a species, by display name. Undefined when we have none. */
@@ -101,9 +122,9 @@ export function photoFor(speciesName: string): LedgerPhoto | undefined {
 }
 
 /** Primary image URL for a species, or '' when we have no photo of it. */
-export function imageFor(speciesName: string, width?: number): string {
+export function imageFor(speciesName: string, variant: ImageVariant = 'full'): string {
 	const photo = photoFor(speciesName);
-	return photo?.files[0] ? imageUrl(photo.files[0], width) : '';
+	return photo?.files[0] ? imageUrl(photo.files[0], variant) : '';
 }
 
 /** Photographer for a species, or '' when none is required. */
@@ -160,16 +181,16 @@ export function mustShowForTour(tourId: string): string[] {
  */
 export function galleryFor(
 	speciesNames: string[],
-	opts: { limit?: number; width?: number } = {}
+	opts: { limit?: number; variant?: ImageVariant } = {}
 ): { species: string; file: string; credit: string; star: boolean }[] {
-	const { limit, width } = opts;
+	const { limit, variant = 'sq' } = opts;
 
 	const picked = speciesNames
 		.map((species) => ({ species, photo: photoFor(species) }))
 		.filter((x): x is { species: string; photo: LedgerPhoto } => !!x.photo?.files.length)
 		.map(({ species, photo }) => ({
 			species,
-			file: width ? imageUrl(photo.files[0], width) : imageUrl(photo.files[0]),
+			file: imageUrl(photo.files[0], variant),
 			credit: photo.credit,
 			star: photo.star,
 			unused: photo.used_on.length === 0

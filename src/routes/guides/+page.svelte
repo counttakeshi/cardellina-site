@@ -2,6 +2,7 @@
 	import { base } from '$app/paths';
 	import { guides, guideValues } from '$lib/data/guides';
 	import { partners } from '$lib/data/partners';
+	import { asset } from '$lib/ledger';
 
 	let videoPlaying = $state(false);
 </script>
@@ -86,7 +87,7 @@
 				>
 					<img
 						class="lite-thumb"
-						src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=900,fit=crop/YofU1cddTQzjoQ8J/dsc01506-edit-gmwe9PWpByoJSYdo.jpg"
+						src={asset('images/dsc01506-edit-gmwe9PWpByoJSYdo-md.webp')}
 						alt="Cloud forest on Tacaná Volcano"
 						loading="lazy"
 					/>

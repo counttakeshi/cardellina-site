@@ -1,9 +1,9 @@
 <script lang="ts">
+	import { asset } from '$lib/ledger';
 	import { base } from '$app/paths';
 	import { dayTours } from '$lib/data/trips';
 
-	const HERO =
-		"https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1600,h=360,fit=crop,gravity=0.8x0.2/YofU1cddTQzjoQ8J/dscn5960-AGB2B6qXevFLZNPP.JPG";
+	const HERO = asset('images/dscn5960-AGB2B6qXevFLZNPP-card.webp');
 </script>
 
 <svelte:head>

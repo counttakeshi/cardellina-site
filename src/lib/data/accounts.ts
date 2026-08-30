@@ -1,3 +1,4 @@
+import { asset } from '$lib/ledger';
 import type { Species } from './species';
 
 export interface QuickRefRow {
@@ -40,7 +41,7 @@ export const accounts: SpeciesAccount[] = [
 		"title": "Horned Guan",
 		"subtitle": "Oreophasis derbianus · Chiapas, Mexico",
 		"hero": {
-			"src": "https://assets.zyrosite.com/YofU1cddTQzjoQ8J/dsc01506-edit-gmwe9PWpByoJSYdo.jpg",
+			"src": asset("images/dsc01506-edit-gmwe9PWpByoJSYdo-full.webp"),
 			"alt": "Horned Guan (Oreophasis derbianus) perched on a lichen-dense tree, Tacana Volcano, Chiapas, Mexico"
 		},
 		"creditHtml": "© <a href=\"https://www.instagram.com/oatl_mx/\" target=\"_blank\" rel=\"noopener\">Sergio Gomez Villaverde</a>",
@@ -228,7 +229,7 @@ export const accounts: SpeciesAccount[] = [
 		"title": "Pink-headed Warbler",
 		"subtitle": "Cardellina versicolor · Chiapas, Mexico",
 		"hero": {
-			"src": "https://assets.zyrosite.com/YofU1cddTQzjoQ8J/pink-headed-warbler-Y4LDbp8VMLCx8rRX.jpg",
+			"src": asset("images/pink-headed-warbler-Y4LDbp8VMLCx8rRX-full.webp"),
 			"alt": "Pink-headed Warbler (Cardellina versicolor) perched in cloud forest, Chiapas, Mexico"
 		},
 		"creditHtml": "© <a href=\"https://www.instagram.com/oatl_mx/\" target=\"_blank\" rel=\"noopener\">Sergio Gomez Villaverde</a>",
@@ -341,7 +342,7 @@ export const accounts: SpeciesAccount[] = [
 		"title": "Rose-bellied Bunting",
 		"subtitle": "Passerina rositae · Isthmus of Tehuantepec, Mexico",
 		"hero": {
-			"src": "https://assets.zyrosite.com/YofU1cddTQzjoQ8J/5a00c77407956732f80e74b002410be9-mk3qQ8RrkvuyPp7o.jpg",
+			"src": asset("images/5a00c77407956732f80e74b002410be9-mk3qQ8RrkvuyPp7o-full.webp"),
 			"alt": "Male Rose-bellied Bunting (Passerina rositae), Isthmus of Tehuantepec, Oaxaca, Mexico"
 		},
 		"creditHtml": "© <a href=\"https://www.inaturalist.org/photos/69460132\" target=\"_blank\" rel=\"noopener\">Blair Dudeck</a>, <a href=\"https://creativecommons.org/licenses/by/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY 4.0</a>, via <a href=\"https://commons.wikimedia.org/wiki/File:Passerina_rositae_69460132.jpg\" target=\"_blank\" rel=\"noopener\">Wikimedia Commons</a>.",
