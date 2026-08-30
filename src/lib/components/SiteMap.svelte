@@ -260,6 +260,57 @@
 		display: block;
 	}
 
+	/* Base-map graphics. These style the injected SVG, so they must be :global —
+	   Svelte scopes styles by adding attributes at compile time, which never
+	   reaches markup inserted with {@html}. Without them the landmass renders
+	   black, since the shapes carry classes rather than inline fills. */
+	.cmap :global(.neighbour) {
+		fill: #e6e6de;
+		stroke: #fff;
+		stroke-width: 1;
+		opacity: 0.7;
+	}
+	.cmap :global(.state-fill) {
+		fill: #cbd8c7;
+	}
+	.cmap :global(.state-line) {
+		fill: none;
+		stroke: #fff;
+		stroke-width: 1.8;
+	}
+	.cmap :global(.roads .road),
+	.cmap :global(.roads .road-curve) {
+		stroke: #b98a6a;
+		stroke-width: 1.6;
+		stroke-dasharray: 2 3;
+		opacity: 0.75;
+		fill: none;
+	}
+	.cmap :global(.sea) {
+		font-family: var(--display);
+		font-style: italic;
+		font-size: 13px;
+		fill: #9bb0bc;
+	}
+	.cmap :global(.nlabel) {
+		font-family: var(--mono);
+		font-size: 10px;
+		fill: #a9a98f;
+		letter-spacing: 0.12em;
+	}
+	.cmap :global(.glabel) {
+		font-family: var(--mono);
+		font-size: 11px;
+		fill: #a9a98f;
+		letter-spacing: 0.14em;
+	}
+	.cmap :global(.air-label) {
+		font-family: var(--mono);
+		font-size: 9.5px;
+		fill: var(--stone);
+		letter-spacing: 0.06em;
+	}
+
 	/* Pins */
 	.pin {
 		cursor: pointer;
