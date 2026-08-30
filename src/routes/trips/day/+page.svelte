@@ -39,7 +39,11 @@
 					<div class="tc-img"><img src={tour.image} alt={tour.name} loading="lazy" /></div>
 					<div class="tc-body">
 						<p class="tc-hab">{tour.habitat}</p>
-						<h3 class="tc-name">{tour.name}</h3>
+						<h3 class="tc-name">
+							<!-- Stretched link: the whole card is clickable, but only this
+							     anchor is in the tab order and read out by screen readers. -->
+							<a class="tc-stretch" href="{base}/trips/{tour.slug}">{tour.name}</a>
+						</h3>
 						<p class="tc-tag">{tour.tagline}</p>
 						<p class="tc-blurb">{tour.blurb}</p>
 						<p class="tc-birds">{tour.birds.join(' · ')}</p>
@@ -48,7 +52,7 @@
 								<span class="tc-price">{tour.priceUsd} USD</span>
 								<span class="tc-party">{tour.party}</span>
 							</div>
-							<a class="tc-link" href="{base}/contact">Enquire →</a>
+							<span class="tc-link">See the tour →</span>
 						</div>
 						{#if tour.note}
 							<span class="tc-note">{tour.note}</span>
@@ -107,6 +111,7 @@
 		gap: 1.6rem;
 	}
 	.tour-card {
+		position: relative;
 		display: flex;
 		flex-direction: column;
 		background: var(--white);
@@ -117,6 +122,23 @@
 			border-color 0.2s ease,
 			transform 0.2s ease,
 			box-shadow 0.2s ease;
+	}
+
+	.tc-stretch {
+		text-decoration: none;
+		color: inherit;
+	}
+	/* Expands the single anchor to cover the card, so the whole thing is clickable
+	   without nesting interactive elements or duplicating links. */
+	.tc-stretch::after {
+		content: '';
+		position: absolute;
+		inset: 0;
+		z-index: 1;
+	}
+	.tour-card:focus-within {
+		border-color: var(--canopy);
+		box-shadow: 0 0 0 3px rgba(214, 68, 111, 0.25);
 	}
 	.tour-card:hover {
 		border-color: var(--canopy);

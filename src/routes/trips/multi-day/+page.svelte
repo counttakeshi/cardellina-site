@@ -76,11 +76,15 @@
 					</div>
 					<div class="tc-body">
 						<p class="tc-theme">{trip.theme}</p>
-						<h3 class="tc-name">{trip.name}</h3>
+						<h3 class="tc-name">
+							<!-- Stretched link: the whole card is clickable, but only this
+							     anchor is in the tab order and read out by screen readers. -->
+							<a class="tc-stretch" href="{base}/trips/{trip.slug}">{trip.name}</a>
+						</h3>
 						<p class="tc-summary">{trip.summary}</p>
 						<p class="tc-birds">{trip.birds.join(' · ')}</p>
 						<div class="tc-foot">
-							<a class="tc-link" href="{base}/contact">See the itinerary →</a>
+							<span class="tc-link">See the itinerary →</span>
 							{#if trip.sampleItinerary}
 								<span class="tc-draft">Sample itinerary</span>
 							{/if}
@@ -207,6 +211,7 @@
 		gap: 1.6rem;
 	}
 	.tour-card {
+		position: relative;
 		display: flex;
 		flex-direction: column;
 		background: var(--white);
@@ -217,6 +222,23 @@
 			border-color 0.2s ease,
 			transform 0.2s ease,
 			box-shadow 0.2s ease;
+	}
+
+	.tc-stretch {
+		text-decoration: none;
+		color: inherit;
+	}
+	/* Expands the single anchor to cover the card, so the whole thing is clickable
+	   without nesting interactive elements or duplicating links. */
+	.tc-stretch::after {
+		content: '';
+		position: absolute;
+		inset: 0;
+		z-index: 1;
+	}
+	.tour-card:focus-within {
+		border-color: var(--canopy);
+		box-shadow: 0 0 0 3px rgba(214, 68, 111, 0.25);
 	}
 	.tour-card:hover {
 		border-color: var(--canopy);

@@ -1,7 +1,39 @@
 <script lang="ts">
+	import { browser } from '$app/environment';
+	import { page } from '$app/state';
 	import ContactForm from '$lib/components/ContactForm.svelte';
+	import { dayTours, multiDayTrips } from '$lib/data/trips';
 
 	const WHATSAPP = 'https://wa.me/5219615164020';
+
+	// Tour cards link here as /contact?tour=<slug>. One prerendered page serves all
+	// of them, so the query string is only read in the browser — SvelteKit rejects
+	// touching searchParams during prerendering, since the HTML can't vary by query.
+	const slug = $derived(browser ? page.url.searchParams.get('tour') : null);
+
+	const context = $derived.by(() => {
+		if (!slug) return { kind: 'general' as const };
+
+		const day = dayTours.find((t) => t.slug === slug);
+		if (day) {
+			return {
+				kind: 'day' as const,
+				tourName: day.name,
+				tourMeta: `${day.priceUsd} USD · ${day.party}`
+			};
+		}
+
+		const trip = multiDayTrips.find((t) => t.slug === slug);
+		if (trip) {
+			return { kind: 'multi-day' as const, tourName: trip.name, tourMeta: trip.days };
+		}
+
+		return { kind: 'general' as const };
+	});
+
+	const heading = $derived(
+		context.tourName ? `Book ${context.tourName}` : "Let's plan your trip"
+	);
 </script>
 
 <svelte:head>
@@ -13,11 +45,17 @@
 </svelte:head>
 
 <div class="wrap c-head">
-	<p class="eyebrow">Get in touch</p>
-	<h1>Let's plan your trip</h1>
+	<p class="eyebrow">{context.kind === 'general' ? 'Get in touch' : 'Booking enquiry'}</p>
+	<h1>{heading}</h1>
 	<p>
-		Tell us what you'd like to see, when you're thinking of coming, and how you like to bird. We'll
-		come back with ideas, whether that's one of our set trips or something built from scratch.
+		{#if context.kind === 'general'}
+			Tell us what you'd like to see, when you're thinking of coming, and how you like to bird.
+			We'll come back with ideas, whether that's one of our set trips or something built from
+			scratch.
+		{:else}
+			Tell us your dates and who's coming, and we'll confirm availability and everything else you
+			need to know. Nothing is booked until we've replied and agreed the details with you.
+		{/if}
 	</p>
 	<a class="wa" href={WHATSAPP} target="_blank" rel="noopener">
 		<svg viewBox="0 0 24 24" width="18" height="18" fill="#fff" aria-hidden="true">
@@ -31,7 +69,7 @@
 </div>
 
 <div class="wrap c-form">
-	<ContactForm />
+	<ContactForm kind={context.kind} tourName={context.tourName} tourMeta={context.tourMeta} />
 </div>
 
 <div class="wrap c-info">

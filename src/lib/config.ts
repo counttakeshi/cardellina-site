@@ -8,10 +8,11 @@
  * a secret and carries no account access. Spam control is handled by the
  * honeypot field in ContactForm.svelte plus Formspree's own filtering.
  *
- * TODO: replace with the real form ID from the Formspree dashboard
- * (Formspree → your form → Integration → the endpoint ending in /f/xxxxxxxx).
+ * One endpoint serves every enquiry type. The form varies its fields and subject
+ * line by context (general / day tour / multi-day), so all enquiries land in a
+ * single inbox while still carrying the details each type needs.
  */
-export const CONTACT_ENDPOINT = 'https://formspree.io/f/REPLACE_WITH_FORM_ID';
+export const CONTACT_ENDPOINT = 'https://formspree.io/f/xvkogdon';
 
 /** Where enquiries land, shown to the user if the form ever fails. */
 export const CONTACT_EMAIL = 'info@cardellina.com';
