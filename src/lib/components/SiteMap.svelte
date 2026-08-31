@@ -8,8 +8,12 @@
 	/**
 	 * `compact` is the homepage taster: site mode only, a shorter bird list, and a
 	 * link through to the full explorer. Same data and same map, less machinery.
+	 *
+	 * `inForm` is for the trip builder, where the map sits above an enquiry form
+	 * the reader is already filling in. The site card's call to action would send
+	 * them to a second, emptier form and lose their answers, so it is dropped.
 	 */
-	let { compact = false }: { compact?: boolean } = $props();
+	let { compact = false, inForm = false }: { compact?: boolean; inForm?: boolean } = $props();
 
 	/** How many birds to list in the card before linking on. */
 	const BIRD_LIMIT = $derived(compact ? 10 : Infinity);
@@ -231,7 +235,7 @@
 					<div class="sc-foot">
 						{#if compact}
 							<a class="btn" href="{base}/trips#personalised">See the full map</a>
-						{:else}
+						{:else if !inForm}
 							<a class="btn" href="{base}/contact">Ask about birding here</a>
 						{/if}
 						<button class="clear" onclick={() => (selectedSiteId = null)}>Back to all sites</button>

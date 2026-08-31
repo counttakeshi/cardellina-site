@@ -229,7 +229,7 @@
 						Every site we bird, and what lives at each. Have a look, then mention anything that
 						catches your eye below — or skip it and leave the route to us.
 					</p>
-					<SiteMap />
+					<SiteMap inForm />
 				</div>
 			</div>
 
