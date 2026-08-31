@@ -19,7 +19,7 @@ import ledger from './data/ledger.json';
  *   card — 800x600 crop, for 4:3 gallery tiles
  *   sq   — 600x600 crop, for square gallery tiles
  */
-export type ImageVariant = 'full' | 'md' | 'card' | 'sq';
+export type ImageVariant = 'full' | 'md' | 'card' | 'sq' | 'portrait';
 
 export interface LedgerLocation {
 	name: string;

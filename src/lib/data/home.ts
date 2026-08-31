@@ -5,6 +5,9 @@ import { imageUrl } from '$lib/ledger';
 const card = (file: string) => imageUrl(file, 'sq');
 const strip = (file: string) => imageUrl(file, 'sq');
 const avatar = (file: string) => imageUrl(file, 'sq');
+// 4:5 crops. A circle throws away the binoculars, the scope and the habitat,
+// which is most of what makes a guide photo persuasive.
+const portrait = (file: string) => imageUrl(file, 'portrait');
 
 /**
  * The three birds that carry the homepage. One micro-endemic, one hard-won
@@ -154,6 +157,7 @@ export const guides = [
 		name: 'Ben Simmons',
 		role: 'Co-founder & Guide',
 		avatar: avatar('ben-guide-photo-Awv4vr7rLzfqJD6j.jpg'),
+		portrait: portrait('ben-guide-photo-Awv4vr7rLzfqJD6j.jpg'),
 		bio: "Originally from the UK and a birder across Latin America for years, Ben has guided in Costa Rica and now calls the Chiapas highlands home. He's a fluent Spanish speaker with a sharp eye for a rarity, a patient teacher, and easy company through a long day in the field.",
 		superpower: 'Rarity magnet'
 	},
@@ -161,6 +165,7 @@ export const guides = [
 		name: 'Valente González',
 		role: 'Co-founder & Guide',
 		avatar: avatar('valente-guiding-photo-YBgb3LeK7nUXWJr2.jpg'),
+		portrait: portrait('valente-explaining.png'),
 		bio: 'A Chiapaneco from birth and a birder since childhood, Valente pores over historical records and satellite imagery to track down birds in places nobody thought to look. He brings deep local knowledge and three languages to every trip.',
 		superpower: 'Owl ears'
 	}

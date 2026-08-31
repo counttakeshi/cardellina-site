@@ -135,27 +135,40 @@
 <!-- ═══ GUIDES ═══ -->
 <section class="guides" id="guides">
 	<div class="wrap">
-		<div class="guides-head">
-			<p class="eyebrow">Your guides</p>
-			<h2>Speak to a real human birder</h2>
-			<p class="lede">
-				Two obsessive birders based in Chiapas, with an unhealthy preoccupation with identification
-				and a soft spot for the difficult birds. We're colleagues and great friends.
-			</p>
+		<div class="guides-lead">
+			<div class="guides-head">
+				<p class="eyebrow">Your guides</p>
+				<h2>Speak to a real human birder</h2>
+				<p class="lede">
+					Two obsessive birders based in Chiapas, with an unhealthy preoccupation with
+					identification and a soft spot for the difficult birds. We're colleagues and great
+					friends.
+				</p>
+				<p class="proof">
+					Between us: three languages, a decade of guiding across Latin America, and the first
+					eBird record of <em>Stygian Owl</em> in Chiapas since the 1980s.
+				</p>
+				<a class="guides-link" href="{base}/guides">Meet us properly →</a>
+			</div>
+			<figure class="guides-shot">
+				<img
+					src={asset('images/customer-birding-with-sabes-aves-and-valente-A85E1ZjQr2IV3DBy-full.webp')}
+					alt="Valente watching a guest get onto a bird in the highlands"
+					loading="lazy"
+				/>
+			</figure>
 		</div>
 
 		<div class="guide-grid">
 			{#each guides as guide (guide.name)}
 				<article class="guide">
-					<div class="guide-top">
-						<img class="avatar" src={guide.avatar} alt={guide.name} loading="lazy" />
-						<div>
-							<div class="nm">{guide.name}</div>
-							<div class="role">{guide.role}</div>
-						</div>
+					<img class="portrait" src={guide.portrait} alt={guide.name} loading="lazy" />
+					<div class="guide-body">
+						<div class="nm">{guide.name}</div>
+						<div class="role">{guide.role}</div>
+						<p>{guide.bio}</p>
+						<div class="super">Superpower · <b>{guide.superpower}</b></div>
 					</div>
-					<p>{guide.bio}</p>
-					<div class="super">Superpower · <b>{guide.superpower}</b></div>
 				</article>
 			{/each}
 		</div>
@@ -649,6 +662,10 @@
 	.guides {
 		background: var(--ink);
 		color: var(--mist);
+		/* The lead photo bleeds past the right edge. 100vw counts the scrollbar,
+		   so without this the page picks up a horizontal scrollbar. clip rather
+		   than hidden, which would turn the band into a scroll container. */
+		overflow-x: clip;
 	}
 	.guides h2 {
 		color: #fff;
@@ -657,9 +674,58 @@
 	.guides :global(.lede) {
 		color: rgba(255, 255, 255, 0.68);
 	}
+	/* The copy used to sit alone at 64ch, leaving most of a dark band empty —
+	   which reads as the page ending rather than as a section. The photograph
+	   now fills that half, and bleeds off the right edge so the band opens on an
+	   image instead of on space. */
+	.guides-lead {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+		gap: 3rem;
+		align-items: center;
+		margin-bottom: 3.5rem;
+	}
 	.guides-head {
-		margin-bottom: 3rem;
-		max-width: 64ch;
+		max-width: 54ch;
+	}
+	.proof {
+		font-size: 15px;
+		line-height: 1.7;
+		color: rgba(255, 255, 255, 0.6);
+		border-left: 2px solid var(--phwa);
+		padding-left: 1rem;
+		margin: 1.4rem 0 1.6rem;
+	}
+	.proof em {
+		color: rgba(255, 255, 255, 0.85);
+	}
+	.guides-link {
+		display: inline-block;
+		font-weight: 700;
+		font-size: 15px;
+		color: #fff;
+		text-decoration: none;
+		border-bottom: 1.5px solid var(--phwa);
+		padding-bottom: 3px;
+		transition: color 0.18s;
+	}
+	.guides-link:hover {
+		color: var(--phwa);
+	}
+	.guides-shot {
+		margin: 0;
+		border-radius: 4px;
+		overflow: hidden;
+		/* Pull out to the viewport edge; the wrap's own padding is the only thing
+		   between the image and the screen. */
+		margin-right: calc(50% - 50vw);
+		max-width: 780px;
+	}
+	.guides-shot img {
+		display: block;
+		width: 100%;
+		height: clamp(300px, 34vw, 430px);
+		object-fit: cover;
 	}
 
 	.guide-grid {
@@ -670,33 +736,31 @@
 	}
 
 	.guide {
+		display: grid;
+		grid-template-columns: 152px minmax(0, 1fr);
+		gap: 1.4rem;
+		align-items: start;
 		background: rgba(255, 255, 255, 0.04);
 		border: 1px solid rgba(255, 255, 255, 0.11);
 		border-radius: 3px;
-		padding: 1.7rem;
+		padding: 1.5rem;
 	}
-	.guide-top {
-		display: flex;
-		align-items: center;
-		gap: 14px;
-		margin-bottom: 1.1rem;
-	}
-	.avatar {
-		width: 58px;
-		height: 58px;
-		border-radius: 50%;
+	/* 4:5 rather than a circle: the crop that keeps the bins, the scope and the
+	   habitat, all of which do more selling than the face alone. */
+	.portrait {
+		width: 152px;
+		aspect-ratio: 4 / 5;
 		object-fit: cover;
-		flex-shrink: 0;
+		border-radius: 3px;
 		background: var(--canopy);
-		border: 1px solid rgba(255, 255, 255, 0.18);
 	}
-	.guide-top .nm {
+	.guide .nm {
 		font-family: var(--display);
-		font-size: 21px;
+		font-size: 22px;
 		color: #fff;
 		line-height: 1.2;
 	}
-	.guide-top .role {
+	.guide .role {
 		font-family: var(--mono);
 		font-size: 10.5px;
 		letter-spacing: 0.1em;
@@ -705,10 +769,10 @@
 		margin-top: 3px;
 	}
 	.guide p {
-		font-size: 15.5px;
-		line-height: 1.7;
+		font-size: 15px;
+		line-height: 1.65;
 		color: rgba(255, 255, 255, 0.72);
-		margin-bottom: 1.2rem;
+		margin: 0.9rem 0 1.1rem;
 	}
 	.guide .super {
 		font-family: var(--mono);
@@ -1108,6 +1172,16 @@
 		.stat:nth-child(2) {
 			border-bottom: 1px solid rgba(255, 255, 255, 0.09);
 		}
+		.guides-lead {
+			grid-template-columns: 1fr;
+			gap: 2rem;
+		}
+		.guides-shot {
+			margin-right: calc(50% - 50vw);
+			margin-left: calc(50% - 50vw);
+			max-width: none;
+			border-radius: 0;
+		}
 		.trip-grid,
 		.guide-grid,
 		.how-grid {
@@ -1127,6 +1201,17 @@
 		}
 	}
 	@media (max-width: 560px) {
+		.guide {
+			grid-template-columns: 1fr;
+			gap: 1rem;
+		}
+		.portrait {
+			width: 100%;
+			max-width: 220px;
+			aspect-ratio: 5 / 4;
+			object-position: 50% 25%;
+		}
+
 		.strip {
 			grid-template-columns: repeat(3, 1fr);
 			height: 100px;
