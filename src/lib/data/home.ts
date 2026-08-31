@@ -119,6 +119,9 @@ export const elevationBands = [
 
 // Three cards, three strip images each. At five apiece the photos became 70px
 // slivers once the grid went to three columns, and no bird survives that.
+// None of these nine birds appears anywhere else on the page: the headliners
+// above already carry Rose-bellied Bunting, Horned Guan and Resplendent Quetzal,
+// and the hero is a Pink-headed Warbler.
 export const tripTeasers = [
 	{
 		title: 'Day tours',
@@ -126,7 +129,7 @@ export const tripTeasers = [
 		cta: 'See day tours →',
 		href: '/trips#day',
 		strip: [
-			{ src: strip('pink-headed-warbler-Y4LDbp8VMLCx8rRX.jpg'), alt: 'Pink-headed Warbler' },
+			{ src: strip('belted-flycatcher-great-photo-iZzV6wprekrFaMzq.jpg'), alt: 'Belted Flycatcher' },
 			{ src: strip('screech-owl-dOq8VPoBxgFQDKM9.jpg'), alt: 'Bearded Screech-Owl' },
 			{ src: strip('russet-crowned-motmot-AR0MD0JLlJi4JGXO.jpg'), alt: 'Russet-crowned Motmot' }
 		]
@@ -137,8 +140,8 @@ export const tripTeasers = [
 		cta: 'See the routes →',
 		href: '/trips#multi-day',
 		strip: [
-			{ src: strip('horned-guan-mv02ExGWQJC0k2xv.jpg'), alt: 'Horned Guan' },
-			{ src: strip('resplendent-quetzal-mnlW0616OoTEDEj3.jpg'), alt: 'Resplendent Quetzal' },
+			{ src: strip('wine-throated-hummingbird-1KaFhnbxIE9aAt0U.jpg'), alt: 'Wine-throated Hummingbird' },
+			{ src: strip('agami-heron-CwzZQHYqe6AfiDTq.jpg'), alt: 'Agami Heron' },
 			{ src: strip('ornate-hawk-eagle-mP4OGNwpvehoNJQq.jpg'), alt: 'Ornate Hawk-Eagle' }
 		]
 	},
@@ -148,10 +151,7 @@ export const tripTeasers = [
 		cta: 'Start building →',
 		href: '/trips#personalised',
 		strip: [
-			{
-				src: strip('5a00c77407956732f80e74b002410be9-mk3qQ8RrkvuyPp7o.jpg'),
-				alt: 'Rose-bellied Bunting'
-			},
+{ src: strip('black-crested-coquette-FVDJjG0PhzhViTMQ.png'), alt: 'Black-crested Coquette' },
 			{ src: strip('banded-wren-YanqLvXMD1UNgz3v.jpg'), alt: 'Banded Wren' },
 			{
 				src: strip('long-tailed-manakin-photo_-jaime-pa-c-rez-AoPWPGpV7yI0kkl5.jpg'),

@@ -153,8 +153,8 @@
 			</div>
 			<figure class="guides-shot">
 				<img
-					src={asset('images/customer-birding-with-sabes-aves-and-valente-A85E1ZjQr2IV3DBy-full.webp')}
-					alt="Valente watching a guest get onto a bird in the highlands"
+					src={asset('images/ben-cloud-forest-full.webp')}
+					alt="Ben listening for a bird in bromeliad-covered highland forest"
 					loading="lazy"
 				/>
 			</figure>
@@ -335,11 +335,11 @@
 			</div>
 			<figure class="how-img">
 				<img
-					src={asset('images/ben-cloud-forest-full.webp')}
-					alt="Ben birding among bromeliad-covered pines in the Chiapas highlands"
+					src={asset('images/customer-birding-with-sabes-aves-and-valente-A85E1ZjQr2IV3DBy-full.webp')}
+					alt="Valente watching a guest get onto a bird in the highlands"
 					loading="lazy"
 				/>
-				<figcaption>Highland forest, where half the endemics are</figcaption>
+				<figcaption>Valente with a guest, above San Cristóbal</figcaption>
 			</figure>
 		</div>
 	</div>
@@ -677,7 +677,7 @@
 	   image instead of on space. */
 	.guides-lead {
 		display: grid;
-		grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+		grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
 		gap: 3rem;
 		align-items: center;
 		margin-bottom: 3.5rem;
@@ -717,7 +717,8 @@
 	.guides-shot img {
 		display: block;
 		width: 100%;
-		height: clamp(300px, 34vw, 430px);
+		aspect-ratio: 4 / 5;
+		max-height: 460px;
 		object-fit: cover;
 	}
 
