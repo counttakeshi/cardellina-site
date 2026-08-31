@@ -239,22 +239,10 @@ export const tourDetails: TourDetail[] = [
 				"caption": "Collared Aracari"
 			},
 			{
-				"thumb": asset("images/1759259147357-y4lpxjkeznsokokp_le_upscale_prime_light_ai_30-hgUZlMUOwH9ViYgB-md.webp"),
-				"full": asset("images/1759259147357-y4lpxjkeznsokokp_le_upscale_prime_light_ai_30-hgUZlMUOwH9ViYgB-full.webp"),
-				"alt": "CAPTION NEEDED",
-				"caption": "CAPTION NEEDED"
-			},
-			{
 				"thumb": asset("images/1759259147499-YNqMPaEaERHeMOG8-md.webp"),
 				"full": asset("images/1759259147499-YNqMPaEaERHeMOG8-full.webp"),
-				"alt": "CAPTION NEEDED",
-				"caption": "CAPTION NEEDED"
-			},
-			{
-				"thumb": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=800/YofU1cddTQzjoQ8J/41751345475_fa342e6d51_o-dWxBW1pRzgC491eY.jpg",
-				"full": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1600/YofU1cddTQzjoQ8J/41751345475_fa342e6d51_o-dWxBW1pRzgC491eY.jpg",
-				"alt": "In the forest at Palenque",
-				"caption": "In the forest at Palenque"
+				"alt": "Red-capped Manakin",
+				"caption": "Red-capped Manakin"
 			},
 			{
 				"thumb": asset("images/palenq-Yle4qa7Q10t5Q9gk-md.webp"),

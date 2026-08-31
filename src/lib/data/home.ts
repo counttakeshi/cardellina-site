@@ -119,9 +119,10 @@ export const elevationBands = [
 
 // Three cards, three strip images each. At five apiece the photos became 70px
 // slivers once the grid went to three columns, and no bird survives that.
-// None of these nine birds appears anywhere else on the page: the headliners
-// above already carry Rose-bellied Bunting, Horned Guan and Resplendent Quetzal,
-// and the hero is a Pink-headed Warbler.
+// None of these nine photographs appears anywhere else on the page. The
+// Pink-headed Warbler is deliberately the exception: it is the bird in the logo
+// and the genus the company is named after, and this is a different, better
+// frame than the hero's — five of Sergio's six were sitting unused.
 export const tripTeasers = [
 	{
 		title: 'Day tours',
@@ -131,7 +132,7 @@ export const tripTeasers = [
 		strip: [
 			{ src: strip('belted-flycatcher-great-photo-iZzV6wprekrFaMzq.jpg'), alt: 'Belted Flycatcher' },
 			{ src: strip('screech-owl-dOq8VPoBxgFQDKM9.jpg'), alt: 'Bearded Screech-Owl' },
-			{ src: strip('russet-crowned-motmot-AR0MD0JLlJi4JGXO.jpg'), alt: 'Russet-crowned Motmot' }
+			{ src: strip('pink-headed-warbler-1-aLtT3eAXkiqtjRWh.jpg'), alt: 'Pink-headed Warbler' }
 		]
 	},
 	{
