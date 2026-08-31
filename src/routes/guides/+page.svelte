@@ -52,16 +52,19 @@
 						</div>
 					{/each}
 				</div>
-
-				<div class="g-reviews">
-					{#each guide.reviews as review (review.who)}
-						<div class="g-review">
-							<p>{review.quote}</p>
-							<p class="who">{review.who}</p>
-						</div>
-					{/each}
-				</div>
 			</div>
+		</div>
+
+		<!-- Outside the two-column grid on purpose: three quotes stacked in a
+		     narrow column were most of what made the text run so far past the
+		     photo. Across the full width they are one row instead of three. -->
+		<div class="g-reviews">
+			{#each guide.reviews as review (review.who)}
+				<div class="g-review">
+					<p>{review.quote}</p>
+					<p class="who">{review.who}</p>
+				</div>
+			{/each}
 		</div>
 	</div>
 {/each}
@@ -204,7 +207,8 @@
 		order: 2;
 	}
 	.g-photo {
-		position: relative;
+		position: sticky;
+		top: calc(var(--header-h) + 1.5rem);
 	}
 	.g-photo img {
 		width: 100%;
@@ -282,10 +286,11 @@
 	}
 
 	.g-reviews {
-		margin-top: 1.5rem;
-		display: flex;
-		flex-direction: column;
-		gap: 1.1rem;
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+		gap: 1.6rem 2rem;
+		margin: 0 0 1rem;
+		align-items: start;
 	}
 	.g-review {
 		border-left: 3px solid var(--phwa);
@@ -535,6 +540,9 @@
 		}
 		.guide.flip .g-photo {
 			order: 0;
+		}
+		.g-photo {
+			position: static;
 		}
 		.vgrid,
 		.pgrid {

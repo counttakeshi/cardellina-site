@@ -138,7 +138,12 @@
 	}
 
 	.c-head {
-		padding: 3.5rem 0 2rem;
+		padding-top: 3.5rem;
+		padding-bottom: 2rem;
+	}
+	.c-head :global(.eyebrow),
+	.c-head h1,
+	.c-head p {
 		max-width: 720px;
 	}
 	.c-head h1 {
@@ -184,7 +189,8 @@
 	}
 
 	.c-info {
-		padding: 2.5rem 0 3.5rem;
+		padding-top: 2.5rem;
+		padding-bottom: 3.5rem;
 	}
 	.info-grid {
 		display: grid;
