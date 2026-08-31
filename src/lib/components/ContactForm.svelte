@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { CONTACT_ENDPOINT, CONTACT_EMAIL } from '$lib/config';
 
-	export type EnquiryKind = 'general' | 'day' | 'multi-day';
+	export type EnquiryKind = 'general' | 'day' | 'multi-day' | 'personalised';
 
 	interface Props {
 		kind?: EnquiryKind;
@@ -9,21 +9,34 @@
 		tourName?: string;
 		/** Extra context echoed into the email so we know what they were looking at. */
 		tourMeta?: string;
+		/**
+		 * Answers already given elsewhere on the page, sent as hidden fields so the
+		 * form never asks the same question twice. Blank values are dropped. Used by
+		 * the trip builder, which collects the shape of the trip before this form
+		 * collects who is asking.
+		 */
+		prefill?: Record<string, string>;
 	}
 
-	let { kind = 'general', tourName, tourMeta }: Props = $props();
+	let { kind = 'general', tourName, tourMeta, prefill }: Props = $props();
+
+	const prefilled = $derived(
+		Object.entries(prefill ?? {}).filter(([, v]) => v && v.trim() !== '')
+	);
 
 	type Status = 'idle' | 'sending' | 'sent' | 'error';
 
 	let status = $state<Status>('idle');
 	let errorMessage = $state('');
 
-	const booking = $derived(kind !== 'general');
+	const booking = $derived(kind === 'day' || kind === 'multi-day');
 
 	const subject = $derived(
 		tourName
 			? `${kind === 'day' ? 'Day tour' : 'Multi-day'} booking: ${tourName}`
-			: 'New enquiry from cardellina.com'
+			: kind === 'personalised'
+				? 'Personalised trip enquiry from cardellina.com'
+				: 'New enquiry from cardellina.com'
 	);
 
 	async function handleSubmit(event: SubmitEvent) {
@@ -83,8 +96,17 @@
 		<input
 			type="hidden"
 			name="Enquiry type"
-			value={kind === 'day' ? 'Day tour booking' : kind === 'multi-day' ? 'Multi-day booking' : 'General enquiry'}
+			value={kind === 'day'
+				? 'Day tour booking'
+				: kind === 'multi-day'
+					? 'Multi-day booking'
+					: kind === 'personalised'
+						? 'Personalised trip'
+						: 'General enquiry'}
 		/>
+		{#each prefilled as [label, value] (label)}
+			<input type="hidden" name={label} value={value} />
+		{/each}
 
 		<!-- Honeypot: off-screen rather than display:none, since some bots skip
 		     hidden inputs but will fill anything they can read. -->
@@ -218,6 +240,23 @@
 					placeholder="Which airport, and which dates, if you know"
 				/>
 			</div>
+		{:else if kind === 'personalised'}
+			<div class="field-row">
+				<div class="field">
+					<label for="cf-group">How many of you? *</label>
+					<input id="cf-group" name="Group size" type="text" required />
+				</div>
+				<div class="field">
+					<label for="cf-exp">Birding experience</label>
+					<select id="cf-exp" name="Birding experience">
+						<option value="">Select…</option>
+						<option>First time birding</option>
+						<option>Casual — I enjoy birds</option>
+						<option>Experienced birder</option>
+						<option>Serious lister</option>
+					</select>
+				</div>
+			</div>
 		{:else}
 			<div class="field-row">
 				<div class="field">
@@ -241,15 +280,17 @@
 			</fieldset>
 		{/if}
 
-		<div class="field">
-			<label for="cf-species">Target species</label>
-			<input
-				id="cf-species"
-				name="Target species"
-				type="text"
-				placeholder="Birds you'd most like to see"
-			/>
-		</div>
+		{#if kind !== 'personalised'}
+			<div class="field">
+				<label for="cf-species">Target species</label>
+				<input
+					id="cf-species"
+					name="Target species"
+					type="text"
+					placeholder="Birds you'd most like to see"
+				/>
+			</div>
+		{/if}
 
 		{#if booking}
 			<div class="field">
@@ -260,13 +301,26 @@
 
 		<div class="field">
 			<label for="cf-msg">
-				{booking ? 'Anything else we should know?' : "Anything else you'd like to tell us *"}
+				{booking || kind === 'personalised'
+					? 'Anything else we should know?'
+					: "Anything else you'd like to tell us *"}
 			</label>
-			<textarea id="cf-msg" name="Message" rows="5" required={!booking}></textarea>
+			<textarea
+				id="cf-msg"
+				name="Message"
+				rows="5"
+				required={kind === 'general'}
+			></textarea>
 		</div>
 
 		<button class="submit-btn" type="submit" disabled={status === 'sending'}>
-			{status === 'sending' ? 'Sending…' : booking ? 'Send booking enquiry' : 'Send enquiry'}
+			{status === 'sending'
+				? 'Sending…'
+				: booking
+					? 'Send booking enquiry'
+					: kind === 'personalised'
+						? 'Send this to us'
+						: 'Send enquiry'}
 		</button>
 
 		{#if status === 'error'}

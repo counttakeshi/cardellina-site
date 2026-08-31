@@ -108,8 +108,9 @@
 			<p class="eyebrow">Trips</p>
 			<h2>From a single morning to a full expedition</h2>
 			<p class="lede">
-				Some people join us for a day, others for a fortnight across the whole state. Tell us what
-				you'd like to see and how long you have, and we'll put a trip together around it.
+				Some people join us for a day, others for a fortnight across the whole state. Take one of
+				the trips we already run, or tell us how long you have and which birds you're after and
+				we'll build the route around it.
 			</p>
 		</div>
 
@@ -600,7 +601,7 @@
 
 	.trip-grid {
 		display: grid;
-		grid-template-columns: 1fr 1fr;
+		grid-template-columns: repeat(3, 1fr);
 		gap: 1.5rem;
 	}
 
@@ -622,7 +623,7 @@
 
 	.strip {
 		display: grid;
-		grid-template-columns: repeat(5, 1fr);
+		grid-template-columns: repeat(3, 1fr);
 		gap: 1px;
 		background: var(--rule);
 		height: 132px;
@@ -1198,13 +1199,7 @@
 			object-position: 50% 25%;
 		}
 
-		.strip {
-			grid-template-columns: repeat(3, 1fr);
-			height: 100px;
-		}
-		.strip div:nth-child(n + 4) {
-			display: none;
-		}
+		.strip,
 		.strip img {
 			height: 100px;
 		}

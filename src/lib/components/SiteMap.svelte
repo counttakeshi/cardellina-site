@@ -230,7 +230,7 @@
 					</div>
 					<div class="sc-foot">
 						{#if compact}
-							<a class="btn" href="{base}/trips/multi-day#explore">See the full map</a>
+							<a class="btn" href="{base}/trips#personalised">See the full map</a>
 						{:else}
 							<a class="btn" href="{base}/contact">Ask about birding here</a>
 						{/if}
@@ -490,7 +490,14 @@
 		font-style: italic;
 	}
 
-	/* Default state: a real list, not an empty box. */
+	/* Default state: a real list, not an empty box. Capped to the map's own height
+	   so the two columns end together — all eighteen sites at full height ran to
+	   twice the map, leaving a long ragged tail beside nothing. */
+	.sitelist {
+		max-height: min(58vh, 520px);
+		overflow-y: auto;
+		padding-right: 0.6rem;
+	}
 	.sl-lead {
 		font-family: var(--mono);
 		font-size: 11px;

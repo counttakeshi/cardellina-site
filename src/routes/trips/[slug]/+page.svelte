@@ -5,7 +5,7 @@
 	let { data } = $props();
 	const tour = $derived(data.tour);
 
-	const backHref = $derived(tour.kind === 'day' ? '/trips/day' : '/trips/multi-day');
+	const backHref = $derived(tour.kind === 'day' ? '/trips#day' : '/trips#multi-day');
 	const backLabel = $derived(tour.kind === 'day' ? 'All day tours' : 'All multi-day tours');
 
 	let lightboxIndex = $state<number | null>(null);

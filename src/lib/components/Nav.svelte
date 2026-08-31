@@ -22,11 +22,16 @@
 			id: 'trips',
 			label: 'Trips',
 			children: [
-				{ label: 'Day Tours', href: '/trips/day', hint: 'Full mornings out, highlands to coast' },
+				{ label: 'Day Tours', href: '/trips#day', hint: 'Full mornings out, highlands to coast' },
 				{
 					label: 'Multi-day Tours',
-					href: '/trips/multi-day',
+					href: '/trips#multi-day',
 					hint: 'Three days to a full expedition'
+				},
+				{
+					label: 'Build Your Own',
+					href: '/trips#personalised',
+					hint: 'Your dates, your target birds'
 				}
 			]
 		},

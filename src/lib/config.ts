@@ -16,3 +16,10 @@ export const CONTACT_ENDPOINT = 'https://formspree.io/f/xvkogdon';
 
 /** Where enquiries land, shown to the user if the form ever fails. */
 export const CONTACT_EMAIL = 'info@cardellina.com';
+
+/**
+ * eBird's target-list tool, scoped to Chiapas against a life list. The fastest
+ * way for a visiting birder to turn "I want lifers" into an actual list.
+ */
+export const EBIRD_TARGETS =
+	'https://ebird.org/targets?r1=MX-CHP&r2=world&t2=life&bmo=1&emo=12&print=true';

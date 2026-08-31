@@ -117,33 +117,42 @@ export const elevationBands = [
 	}
 ];
 
+// Three cards, three strip images each. At five apiece the photos became 70px
+// slivers once the grid went to three columns, and no bird survives that.
 export const tripTeasers = [
 	{
 		title: 'Day tours',
 		body: 'San Cristóbal, Sumidero Canyon, La Sepultura, the Comitán wetlands, or the ruins and rainforest at Palenque. Good on their own, and easy to string together.',
 		cta: 'See day tours →',
-		href: '/trips/day',
+		href: '/trips#day',
 		strip: [
 			{ src: strip('pink-headed-warbler-Y4LDbp8VMLCx8rRX.jpg'), alt: 'Pink-headed Warbler' },
 			{ src: strip('screech-owl-dOq8VPoBxgFQDKM9.jpg'), alt: 'Bearded Screech-Owl' },
-			{ src: strip('banded-wren-YanqLvXMD1UNgz3v.jpg'), alt: 'Banded Wren' },
-			{ src: strip('russet-crowned-motmot-AR0MD0JLlJi4JGXO.jpg'), alt: 'Russet-crowned Motmot' },
-			{ src: strip('_dsc0475-YyvZOGKXLBFjQ2E6.JPG'), alt: "Rivoli's Hummingbird" }
+			{ src: strip('russet-crowned-motmot-AR0MD0JLlJi4JGXO.jpg'), alt: 'Russet-crowned Motmot' }
 		]
 	},
 	{
-		title: 'Full trips',
-		body: 'Anything from a few days to a couple of weeks, put together around your target birds. Most people send us a list and their dates, and leave the planning with us.',
-		cta: 'Plan a full trip →',
-		href: '/trips/multi-day',
+		title: 'Multi-day routes',
+		body: 'The routes we run most often, from three focused days in the highlands to a full expedition across the state. Each one a starting point rather than a fixed package.',
+		cta: 'See the routes →',
+		href: '/trips#multi-day',
 		strip: [
 			{ src: strip('horned-guan-mv02ExGWQJC0k2xv.jpg'), alt: 'Horned Guan' },
 			{ src: strip('resplendent-quetzal-mnlW0616OoTEDEj3.jpg'), alt: 'Resplendent Quetzal' },
-			{ src: strip('ornate-hawk-eagle-mP4OGNwpvehoNJQq.jpg'), alt: 'Ornate Hawk-Eagle' },
+			{ src: strip('ornate-hawk-eagle-mP4OGNwpvehoNJQq.jpg'), alt: 'Ornate Hawk-Eagle' }
+		]
+	},
+	{
+		title: 'Build your own',
+		body: "Tell us how long you have, roughly when, and which birds you're after. We'll come back with a route built around your list — this is how most of our trips start.",
+		cta: 'Start building →',
+		href: '/trips#personalised',
+		strip: [
 			{
 				src: strip('5a00c77407956732f80e74b002410be9-mk3qQ8RrkvuyPp7o.jpg'),
 				alt: 'Rose-bellied Bunting'
 			},
+			{ src: strip('banded-wren-YanqLvXMD1UNgz3v.jpg'), alt: 'Banded Wren' },
 			{
 				src: strip('long-tailed-manakin-photo_-jaime-pa-c-rez-AoPWPGpV7yI0kkl5.jpg'),
 				alt: 'Long-tailed Manakin'
@@ -151,7 +160,6 @@ export const tripTeasers = [
 		]
 	}
 ];
-
 // eBird Chiapas life lists, August 2026: 591 and 621. The homepage rounds these
 // to "around 600 each" rather than printing them per guide — side by side they
 // invite a comparison that says nothing useful about either of us.
