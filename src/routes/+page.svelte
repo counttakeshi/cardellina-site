@@ -145,8 +145,9 @@
 					friends.
 				</p>
 				<p class="proof">
-					Between us: three languages, a decade of guiding across Latin America, and the first
-					eBird record of <em>Stygian Owl</em> in Chiapas since the 1980s.
+					Between us: three languages, a decade of guiding across Latin America, and two personal
+					Chiapas lists of <em>591</em> and <em>621</em> species — from a state total of around
+					700.
 				</p>
 				<a class="guides-link" href="{base}/guides">Meet us properly →</a>
 			</div>
@@ -167,7 +168,10 @@
 						<div class="nm">{guide.name}</div>
 						<div class="role">{guide.role}</div>
 						<p>{guide.bio}</p>
-						<div class="super">Superpower · <b>{guide.superpower}</b></div>
+						<div class="super">
+							<span>Chiapas list · <b>{guide.chiapasList}</b></span>
+							<span>Superpower · <b>{guide.superpower}</b></span>
+						</div>
 					</div>
 				</article>
 			{/each}
@@ -775,6 +779,9 @@
 		margin: 0.9rem 0 1.1rem;
 	}
 	.guide .super {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.35rem 1.4rem;
 		font-family: var(--mono);
 		font-size: 11px;
 		letter-spacing: 0.05em;
