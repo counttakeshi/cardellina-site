@@ -152,6 +152,9 @@ export const tripTeasers = [
 	}
 ];
 
+// eBird Chiapas life lists, August 2026: 591 and 621. The homepage rounds these
+// to "around 600 each" rather than printing them per guide — side by side they
+// invite a comparison that says nothing useful about either of us.
 export const guides = [
 	{
 		name: 'Ben Simmons',
@@ -159,8 +162,6 @@ export const guides = [
 		avatar: avatar('ben-guide-photo-Awv4vr7rLzfqJD6j.jpg'),
 		portrait: portrait('ben-guide-photo-Awv4vr7rLzfqJD6j.jpg'),
 		bio: "Originally from the UK and a birder across Latin America for years, Ben has guided in Costa Rica and now calls the Chiapas highlands home. He's a fluent Spanish speaker with a sharp eye for a rarity, a patient teacher, and easy company through a long day in the field.",
-		// eBird Chiapas life list, August 2026. Update both together.
-		chiapasList: 591,
 		superpower: 'Rarity magnet'
 	},
 	{
@@ -169,7 +170,6 @@ export const guides = [
 		avatar: avatar('valente-guiding-photo-YBgb3LeK7nUXWJr2.jpg'),
 		portrait: portrait('valente-explaining.png'),
 		bio: 'A Chiapaneco from birth and a birder since childhood, Valente pores over historical records and satellite imagery to track down birds in places nobody thought to look. He brings deep local knowledge and three languages to every trip.',
-		chiapasList: 621,
 		superpower: 'Owl ears'
 	}
 ];

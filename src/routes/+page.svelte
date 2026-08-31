@@ -138,15 +138,14 @@
 		<div class="guides-lead">
 			<div class="guides-head">
 				<p class="eyebrow">Your guides</p>
-				<h2>Speak to a real human birder</h2>
+				<h2>Two obsessive birders</h2>
 				<p class="lede">
-					Two obsessive birders based in Chiapas, with an unhealthy preoccupation with
-					identification and a soft spot for the difficult birds. We're colleagues and great
-					friends.
+					Based in Chiapas, with an unhealthy preoccupation with identification and a soft spot
+					for the difficult birds. We're colleagues and great friends.
 				</p>
 				<p class="proof">
-					Between us: three languages, a decade of guiding across Latin America, and two personal
-					Chiapas lists of <em>591</em> and <em>621</em> species — from a state total of around
+					Between us: four languages, years of birding and guiding across Latin America, and
+					personal Chiapas lists of around <em>600 species each</em> — from a state total of about
 					700.
 				</p>
 				<a class="guides-link" href="{base}/guides">Meet us properly →</a>
@@ -168,10 +167,7 @@
 						<div class="nm">{guide.name}</div>
 						<div class="role">{guide.role}</div>
 						<p>{guide.bio}</p>
-						<div class="super">
-							<span>Chiapas list · <b>{guide.chiapasList}</b></span>
-							<span>Superpower · <b>{guide.superpower}</b></span>
-						</div>
+						<div class="super">Superpower · <b>{guide.superpower}</b></div>
 					</div>
 				</article>
 			{/each}
@@ -191,7 +187,7 @@
 				<button
 					class="lite-yt"
 					onclick={() => (videoPlaying = true)}
-					aria-label="Play video: In search of the Horned Guan on Tacaná"
+					aria-label="Play video: see us in the field"
 				>
 					<img
 						class="lite-thumb"
@@ -213,54 +209,11 @@
 				</button>
 			{/if}
 			<div class="film-copy">
-				<h3>In search of the Horned Guan on Tacaná</h3>
+				<h3>See us in the field</h3>
 				<p>
-					Join us on a scouting trip up Tacaná Volcano in search of one of the most sought-after
-					birds in the Americas. A look at the kind of habitat we visit, and an introduction to the
-					two of us.
-				</p>
-			</div>
-		</div>
-	</div>
-</section>
-
-<!-- ═══ WHY CARDELLINA ═══ -->
-<section class="genus">
-	<div class="wrap">
-		<div class="genus-grid">
-			<figure class="genus-mark">
-				<img
-					src={asset('images/cardellina-logo-r-ouLe0QMSi7BFi1G9-md.webp')}
-					alt="The Cardellina Birding Tours logo: three Cardellina warblers"
-					loading="lazy"
-				/>
-				<figcaption>Red Warbler · Red-faced Warbler · Pink-headed Warbler</figcaption>
-			</figure>
-
-			<div>
-				<p class="eyebrow">Why "Cardellina"</p>
-				<h2>Four of the five live here</h2>
-				<p class="lede">
-					<em>Cardellina</em> is a genus of five warblers, and four of them occur in Chiapas,
-					including the Pink-headed Warbler, which is found almost nowhere else. The three on our
-					logo reflect our team.
-				</p>
-
-				<ul class="warblers">
-					{#each warblers as w (w.name)}
-						<li>
-							<span class="dot"></span>
-							<div>
-								<span class="nm">{w.name}</span><span class="sci">{w.sci}</span>
-								<p class="rl">{@html w.role}</p>
-							</div>
-						</li>
-					{/each}
-				</ul>
-
-				<p class="genus-foot">
-					The remaining two, Wilson's and Canada Warbler, pass through Chiapas on migration each
-					year.
+					A scouting trip up Tacaná Volcano after the Horned Guan, one of the most sought-after
+					birds in the Americas. The best look you'll get at how we work, the ground we cover, and
+					who you'd actually be birding with.
 				</p>
 			</div>
 		</div>
@@ -319,6 +272,49 @@
 	</div>
 </section>
 
+<!-- ═══ WHY CARDELLINA ═══ -->
+<section class="genus">
+	<div class="wrap">
+		<div class="genus-grid">
+			<figure class="genus-mark">
+				<img
+					src={asset('images/cardellina-logo-r-ouLe0QMSi7BFi1G9-md.webp')}
+					alt="The Cardellina Birding Tours logo: three Cardellina warblers"
+					loading="lazy"
+				/>
+				<figcaption>Red Warbler · Red-faced Warbler · Pink-headed Warbler</figcaption>
+			</figure>
+
+			<div>
+				<p class="eyebrow">Why "Cardellina"</p>
+				<h2>Four of the five live here</h2>
+				<p class="lede">
+					<em>Cardellina</em> is a genus of five warblers, and four of them occur in Chiapas,
+					including the Pink-headed Warbler, which is found almost nowhere else. The three on our
+					logo reflect our team.
+				</p>
+
+				<ul class="warblers">
+					{#each warblers as w (w.name)}
+						<li>
+							<span class="dot"></span>
+							<div>
+								<span class="nm">{w.name}</span><span class="sci">{w.sci}</span>
+								<p class="rl">{@html w.role}</p>
+							</div>
+						</li>
+					{/each}
+				</ul>
+
+				<p class="genus-foot">
+					The remaining two, Wilson's and Canada Warbler, pass through Chiapas on migration each
+					year.
+				</p>
+			</div>
+		</div>
+	</div>
+</section>
+
 <!-- ═══ HOW WE BIRD ═══ -->
 <section class="how">
 	<div class="wrap">
@@ -338,11 +334,11 @@
 			</div>
 			<figure class="how-img">
 				<img
-					src={asset('images/customer-birding-with-sabes-aves-and-valente-A85E1ZjQr2IV3DBy-card.webp')}
-					alt="Valente taking notes while a guest scans the canopy at Huitepec Reserve"
+					src={asset('images/ben-cloud-forest-full.webp')}
+					alt="Ben birding among bromeliad-covered pines in the Chiapas highlands"
 					loading="lazy"
 				/>
-				<figcaption>Huitepec Reserve, above San Cristóbal de las Casas</figcaption>
+				<figcaption>Highland forest, where half the endemics are</figcaption>
 			</figure>
 		</div>
 	</div>
@@ -666,10 +662,6 @@
 	.guides {
 		background: var(--ink);
 		color: var(--mist);
-		/* The lead photo bleeds past the right edge. 100vw counts the scrollbar,
-		   so without this the page picks up a horizontal scrollbar. clip rather
-		   than hidden, which would turn the band into a scroll container. */
-		overflow-x: clip;
 	}
 	.guides h2 {
 		color: #fff;
@@ -720,10 +712,6 @@
 		margin: 0;
 		border-radius: 4px;
 		overflow: hidden;
-		/* Pull out to the viewport edge; the wrap's own padding is the only thing
-		   between the image and the screen. */
-		margin-right: calc(50% - 50vw);
-		max-width: 780px;
 	}
 	.guides-shot img {
 		display: block;
@@ -779,9 +767,6 @@
 		margin: 0.9rem 0 1.1rem;
 	}
 	.guide .super {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 0.35rem 1.4rem;
 		font-family: var(--mono);
 		font-size: 11px;
 		letter-spacing: 0.05em;
@@ -1111,7 +1096,7 @@
 
 	/* ═══ HOW WE BIRD ═══ */
 	.how {
-		background: var(--paper);
+		background: var(--mist);
 	}
 	.how-grid {
 		display: grid;
@@ -1182,12 +1167,6 @@
 		.guides-lead {
 			grid-template-columns: 1fr;
 			gap: 2rem;
-		}
-		.guides-shot {
-			margin-right: calc(50% - 50vw);
-			margin-left: calc(50% - 50vw);
-			max-width: none;
-			border-radius: 0;
 		}
 		.trip-grid,
 		.guide-grid,
