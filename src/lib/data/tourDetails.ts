@@ -33,6 +33,8 @@ interface TourBase {
 	slug: string;
 	title: string;
 	hero: string;
+	/** object-position for the hero crop, from the original CDN gravity. */
+	heroFocus?: string;
 	facts: TourFact[];
 	gallery: TourPhoto[];
 }
@@ -61,7 +63,8 @@ export const tourDetails: TourDetail[] = [
 		"slug": "san-cristobal",
 		"kind": "day",
 		"title": "San Cristóbal de las Casas",
-		"hero": "",
+		"hero": asset("images/sabes_aves_pink-headed_warbler-A0xjy2JlD8TLpRLX-full.webp"),
+		"heroFocus": "50% 40%",
 		"facts": [
 			{
 				"label": "Duration",
@@ -183,7 +186,8 @@ export const tourDetails: TourDetail[] = [
 		"slug": "palenque",
 		"kind": "day",
 		"title": "Palenque",
-		"hero": "",
+		"hero": asset("images/palenq-Yle4qa7Q10t5Q9gk-full.webp"),
+		"heroFocus": "50% 50%",
 		"facts": [
 			{
 				"label": "Duration",
@@ -292,7 +296,8 @@ export const tourDetails: TourDetail[] = [
 		"slug": "sumidero-canyon",
 		"kind": "day",
 		"title": "Sumidero Canyon",
-		"hero": "",
+		"hero": asset("images/sabes_aves_canon_del_sumidero-mePJl0M91pTLG4Ja-full.webp"),
+		"heroFocus": "50% 50%",
 		"facts": [
 			{
 				"label": "Duration",
@@ -420,7 +425,8 @@ export const tourDetails: TourDetail[] = [
 		"slug": "comitan",
 		"kind": "day",
 		"title": "Comitán",
-		"hero": "",
+		"hero": asset("images/tenam-puente-m6Ljg0VxNXhzeewd-full.webp"),
+		"heroFocus": "50% 50%",
 		"facts": [
 			{
 				"label": "Duration",
@@ -507,6 +513,7 @@ export const tourDetails: TourDetail[] = [
 		"kind": "day",
 		"title": "Montebello Lakes",
 		"hero": asset("images/resplendent-quetzal-mnlW0616OoTEDEj3-full.webp"),
+		"heroFocus": "10% 20%",
 		"facts": [
 			{
 				"label": "Duration",
@@ -582,6 +589,7 @@ export const tourDetails: TourDetail[] = [
 		"kind": "day",
 		"title": "La Sepultura",
 		"hero": asset("images/5a00c77407956732f80e74b002410be9-mk3qQ8RrkvuyPp7o-full.webp"),
+		"heroFocus": "50% 32%",
 		"facts": [
 			{
 				"label": "Duration",

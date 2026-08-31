@@ -3,7 +3,9 @@
 	import { base } from '$app/paths';
 	import { dayTours } from '$lib/data/trips';
 
-	const HERO = asset('images/dscn5960-AGB2B6qXevFLZNPP-card.webp');
+	// Full frame rather than the pre-cropped card variant, so the focal point in
+	// the CSS below has the whole image to work with.
+	const HERO = asset('images/dscn5960-AGB2B6qXevFLZNPP-full.webp');
 </script>
 
 <svelte:head>
@@ -77,7 +79,9 @@
 				rgba(22, 36, 31, 0.3) 40%,
 				rgba(22, 36, 31, 0.9) 100%
 			),
-			var(--hero-img) center/cover no-repeat;
+			/* The original crop used gravity 0.8x0.2; centring it cut the trogon's
+			   head off, so the focus stays high and to the right. */
+			var(--hero-img) 80% 20%/cover no-repeat;
 		background-color: var(--ink);
 	}
 	.hero-inner {

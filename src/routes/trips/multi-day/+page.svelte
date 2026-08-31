@@ -4,7 +4,7 @@
 	import { multiDayTrips } from '$lib/data/trips';
 	import SiteMap from '$lib/components/SiteMap.svelte';
 
-	const HERO = asset('images/tacana-photo-YbNB1ybokJuXrOor-card.webp');
+	const HERO = asset('images/tacana-photo-YbNB1ybokJuXrOor-full.webp');
 
 	function scrollToMap(event: MouseEvent) {
 		event.preventDefault();

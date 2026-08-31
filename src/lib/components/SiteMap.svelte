@@ -347,9 +347,12 @@
 		border-radius: 8px;
 		padding: 0.4rem;
 	}
+	/* Cap the height so the whole map stays on screen alongside the header —
+	   at full width the 760x660 viewBox was taller than a laptop viewport. */
 	.cmap {
 		width: 100%;
 		height: auto;
+		max-height: min(58vh, 520px);
 		display: block;
 	}
 

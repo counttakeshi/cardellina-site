@@ -20,7 +20,12 @@
 </svelte:head>
 
 <header class="hero">
-	<img class="hero-img" src={tour.hero} alt={tour.title} />
+	<img
+		class="hero-img"
+		src={tour.hero}
+		alt={tour.title}
+		style="object-position: {tour.heroFocus ?? '50% 40%'}"
+	/>
 	<div class="hero-shade"></div>
 	<div class="wrap hero-inner">
 		<p class="kicker">{tour.kind === 'day' ? tour.habitat : tour.length}</p>
