@@ -231,7 +231,11 @@
 		margin-bottom: 1.6rem;
 	}
 
+	/* global.css gives every <section> 5.5rem of band padding. These are content
+	   groupings inside an article, not page bands, so they opt out and space
+	   themselves with margin instead. */
 	.block {
+		padding: 0;
 		margin-top: 2.6rem;
 	}
 	.block h2,
@@ -249,7 +253,7 @@
 
 	.headline {
 		margin-top: 1.8rem;
-		padding-top: 1.4rem;
+		padding: 1.4rem 0 0;
 		border-top: 1px solid var(--rule);
 	}
 	.headline .hl-label {

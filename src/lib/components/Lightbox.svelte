@@ -64,6 +64,9 @@
 			{#if photo.caption}
 				<figcaption>
 					{photo.caption}
+					{#if photo.credit}
+						<span class="credit">photo by {photo.credit}</span>
+					{/if}
 					{#if photos.length > 1}
 						<span class="count">{(index ?? 0) + 1} / {photos.length}</span>
 					{/if}
@@ -127,6 +130,12 @@
 	}
 	.count {
 		color: rgba(255, 255, 255, 0.45);
+	}
+	/* Credits live here rather than on the thumbnails: at grid size the
+	   photographer's name was longer than the bird's and wrapped the captions
+	   onto three ragged lines. */
+	.credit {
+		color: rgba(255, 255, 255, 0.5);
 	}
 
 	.close,

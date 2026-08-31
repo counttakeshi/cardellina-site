@@ -1,13 +1,40 @@
 <script lang="ts">
 	import { base } from '$app/paths';
-	import { species, familyOrder } from '$lib/data/species';
+	import { species, familyOrder, type Species } from '$lib/data/species';
 	import { TIERS, ZONES, ZONE_ORDER, type TierCode, type ZoneCode } from '$lib/data/taxonomy';
 	import HabitatIcon from '$lib/components/HabitatIcon.svelte';
+	import Lightbox from '$lib/components/Lightbox.svelte';
+	import { creditFor } from '$lib/ledger';
+	import type { TourPhoto } from '$lib/data/tourDetails';
 
 	let query = $state('');
 	let activeTiers = $state<TierCode[]>([]);
 	let activeZones = $state<ZoneCode[]>([]);
 	let openGallery = $state<string | null>(null);
+
+	// Photos open in two stages. The camera button expands a modest strip in
+	// place, so a curious tap doesn't take over the screen; clicking one of those
+	// hands off to the same lightbox the tour pages use, at full size and with
+	// the photographer credited.
+	let lightboxPhotos = $state<TourPhoto[]>([]);
+	let lightboxIndex = $state<number | null>(null);
+
+	/** Photographer, where the ledger records one. Not every photo needs a credit. */
+	function credit(bird: Species): string {
+		return creditFor(bird.commonName);
+	}
+
+	function openLightbox(bird: Species, i: number) {
+		const by = credit(bird);
+		lightboxPhotos = (bird.photos ?? []).map((src, n) => ({
+			thumb: src,
+			full: src,
+			alt: `${bird.commonName}, photo ${n + 1}`,
+			caption: bird.commonName,
+			credit: by || undefined
+		}));
+		lightboxIndex = i;
+	}
 
 	function toggleTier(code: TierCode) {
 		activeTiers = activeTiers.includes(code)
@@ -129,30 +156,31 @@
 					</div>
 
 					<span class="right">
+						{#if bird.photos?.length}
+							<button
+								class="mbtn"
+								class:active={openGallery === bird.slug}
+								aria-label="Photos of {bird.commonName}"
+								aria-expanded={openGallery === bird.slug}
+								onclick={() => (openGallery = openGallery === bird.slug ? null : bird.slug)}
+							>
+								<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+									<path
+										d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"
+									/>
+									<circle cx="12" cy="13" r="4" />
+								</svg>
+								<span class="mbtn-t">
+									{#if openGallery === bird.slug}Hide{:else if bird.photos.length > 1}{bird.photos
+												.length} photos{:else}Photo{/if}
+								</span>
+							</button>
+						{/if}
 						<span class="zones">
 							{#each bird.zones as zone (zone)}
 								<HabitatIcon {zone} />
 							{/each}
 						</span>
-						{#if bird.photos?.length}
-							<span class="media">
-								<button
-									class="mbtn"
-									class:active={openGallery === bird.slug}
-									title="Photos"
-									aria-label="Photos of {bird.commonName}"
-									aria-expanded={openGallery === bird.slug}
-									onclick={() => (openGallery = openGallery === bird.slug ? null : bird.slug)}
-								>
-									<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-										<path
-											d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"
-										/>
-										<circle cx="12" cy="13" r="4" />
-									</svg>
-								</button>
-							</span>
-						{/if}
 					</span>
 				</div>
 
@@ -161,8 +189,18 @@
 						<div class="pp-inner">
 							{#each bird.photos as photo, i (photo)}
 								<figure>
-									<img src={photo} alt="{bird.commonName} photo {i + 1}" loading="lazy" />
-									<figcaption>{bird.commonName}</figcaption>
+									<button
+										class="pp-zoom"
+										onclick={() => openLightbox(bird, i)}
+										aria-label="View {bird.commonName} full size"
+									>
+										<img src={photo} alt="{bird.commonName} photo {i + 1}" loading="lazy" />
+										<span class="pp-hint">Full size ⤡</span>
+									</button>
+									<figcaption>
+										{bird.commonName}
+										{#if credit(bird)}<span class="pp-credit">photo by {credit(bird)}</span>{/if}
+									</figcaption>
 								</figure>
 							{/each}
 						</div>
@@ -185,6 +223,8 @@
 		<a class="btn" href="{base}/contact">Plan a trip</a>
 	</div>
 </div>
+
+<Lightbox photos={lightboxPhotos} bind:index={lightboxIndex} />
 
 <style>
 	.wrap {
@@ -374,34 +414,41 @@
 		align-items: center;
 		flex-shrink: 0;
 	}
-	.media {
-		display: flex;
-		gap: 4px;
-		align-items: center;
-	}
+	/* A bare icon in a circle read as decoration next to the habitat icons, which
+	   are genuinely non-interactive. Labelling it and tinting it with the accent
+	   colour makes it the one thing in the row that looks like a control. */
 	.mbtn {
-		width: 30px;
-		height: 30px;
-		border-radius: 50%;
-		border: 1px solid var(--rule);
-		background: var(--white);
-		cursor: pointer;
-		display: flex;
+		display: inline-flex;
 		align-items: center;
-		justify-content: center;
-		color: var(--canopy);
-		transition: all 0.13s;
-		padding: 0;
+		gap: 5px;
+		padding: 3px 9px 3px 7px;
+		border-radius: 999px;
+		border: 1px solid rgba(214, 68, 111, 0.4);
+		background: rgba(214, 68, 111, 0.07);
+		color: var(--phwa);
+		cursor: pointer;
+		font-family: var(--mono);
+		font-size: 10.5px;
+		letter-spacing: 0.04em;
+		white-space: nowrap;
+		transition:
+			background 0.13s,
+			border-color 0.13s,
+			color 0.13s;
 	}
 	.mbtn:hover,
 	.mbtn.active {
-		background: var(--ink);
+		background: var(--phwa);
 		color: #fff;
-		border-color: var(--ink);
+		border-color: var(--phwa);
 	}
 	.mbtn svg {
-		width: 14px;
-		height: 14px;
+		width: 13px;
+		height: 13px;
+		flex-shrink: 0;
+	}
+	.mbtn-t {
+		line-height: 1;
 	}
 	.bs {
 		font-family: var(--mono);
@@ -454,14 +501,43 @@
 		margin: 0;
 		position: relative;
 	}
+	/* Stage one stays deliberately small — enough to recognise the bird, not so
+	   big that expanding a row shoves the rest of the family off screen. */
+	.pp-zoom {
+		display: block;
+		position: relative;
+		padding: 0;
+		border: 0;
+		background: none;
+		cursor: zoom-in;
+		border-radius: 6px;
+		overflow: hidden;
+	}
 	.photo-panel img {
-		max-height: 440px;
+		max-height: 230px;
 		max-width: 100%;
 		width: auto;
 		height: auto;
-		border-radius: 6px;
 		display: block;
 		background: var(--mist);
+	}
+	.pp-hint {
+		position: absolute;
+		right: 6px;
+		bottom: 6px;
+		font-family: var(--mono);
+		font-size: 9.5px;
+		letter-spacing: 0.05em;
+		color: #fff;
+		background: rgba(12, 20, 17, 0.6);
+		border-radius: 3px;
+		padding: 3px 6px;
+		opacity: 0;
+		transition: opacity 0.16s ease;
+	}
+	.pp-zoom:hover .pp-hint,
+	.pp-zoom:focus-visible .pp-hint {
+		opacity: 1;
 	}
 	.photo-panel figcaption {
 		font-family: var(--mono);
@@ -469,6 +545,12 @@
 		color: var(--stone);
 		margin-top: 5px;
 		letter-spacing: 0.02em;
+		max-width: 30ch;
+		line-height: 1.5;
+	}
+	.pp-credit {
+		display: block;
+		color: var(--lichen);
 	}
 	.pp-close {
 		display: inline-flex;

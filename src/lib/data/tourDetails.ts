@@ -18,7 +18,10 @@ export interface TourPhoto {
 	thumb: string;
 	full: string;
 	alt: string;
+	/** The bird. Kept short — this is the thumbnail label. */
 	caption: string;
+	/** Photographer, shown only in the lightbox. Absent when none is required. */
+	credit?: string;
 }
 
 export interface ItineraryDay {
@@ -665,19 +668,22 @@ export const tourDetails: TourDetail[] = [
 				"thumb": asset("images/pink-headed-warbler-2-PKTVisrKq3xo673F-sq.webp"),
 				"full": asset("images/pink-headed-warbler-2-PKTVisrKq3xo673F-full.webp"),
 				"alt": "Pink-headed Warbler",
-				"caption": "Pink-headed Warbler · Sergio Gómez Villaverde"
+				"caption": "Pink-headed Warbler",
+				"credit": "Sergio Gómez Villaverde"
 			},
 			{
 				"thumb": asset("images/blue-and-white-mockingbird-1-NCnEIapZ3vpQC2sm-sq.webp"),
 				"full": asset("images/blue-and-white-mockingbird-1-NCnEIapZ3vpQC2sm-full.webp"),
 				"alt": "Blue-and-white Mockingbird",
-				"caption": "Blue-and-white Mockingbird · Sergio Gómez Villaverde"
+				"caption": "Blue-and-white Mockingbird",
+				"credit": "Sergio Gómez Villaverde"
 			},
 			{
 				"thumb": asset("images/rose-bellied-bunting-m2Wa32VjWETn9NkA-sq.webp"),
 				"full": asset("images/rose-bellied-bunting-m2Wa32VjWETn9NkA-full.webp"),
 				"alt": "Rose-bellied Bunting",
-				"caption": "Rose-bellied Bunting · Nagi Aboulenein"
+				"caption": "Rose-bellied Bunting",
+				"credit": "Nagi Aboulenein"
 			},
 			{
 				"thumb": asset("images/unicolored-jay-s7sJYdXMbsQy4iJO-sq.webp"),
@@ -695,19 +701,22 @@ export const tourDetails: TourDetail[] = [
 				"thumb": asset("images/slender-sheartail-qMw7TVBhS9Q1882N-sq.webp"),
 				"full": asset("images/slender-sheartail-qMw7TVBhS9Q1882N-full.webp"),
 				"alt": "Slender Sheartail",
-				"caption": "Slender Sheartail · Sergio Gómez Villaverde"
+				"caption": "Slender Sheartail",
+				"credit": "Sergio Gómez Villaverde"
 			},
 			{
 				"thumb": asset("images/bearded-screech-owl-B5Fngu1MgWbNIBDY-sq.webp"),
 				"full": asset("images/bearded-screech-owl-B5Fngu1MgWbNIBDY-full.webp"),
 				"alt": "Bearded Screech-Owl",
-				"caption": "Bearded Screech-Owl · Sergio Gómez Villaverde"
+				"caption": "Bearded Screech-Owl",
+				"credit": "Sergio Gómez Villaverde"
 			},
 			{
 				"thumb": asset("images/collared-aracari-photo_-jaime-pa-c-rez-AMq1q4LoPbF5nQvP-sq.webp"),
 				"full": asset("images/collared-aracari-photo_-jaime-pa-c-rez-AMq1q4LoPbF5nQvP-full.webp"),
 				"alt": "Collared Aracari",
-				"caption": "Collared Aracari · Jaime Pérez"
+				"caption": "Collared Aracari",
+				"credit": "Jaime Pérez"
 			},
 			{
 				"thumb": asset("images/keel-billed-toucan-N3wJ3xiANHuwBTFC-sq.webp"),
@@ -719,7 +728,8 @@ export const tourDetails: TourDetail[] = [
 				"thumb": asset("images/ornate-hawk-eagle-mP4OGNwpvehoNJQq-sq.webp"),
 				"full": asset("images/ornate-hawk-eagle-mP4OGNwpvehoNJQq-full.webp"),
 				"alt": "Ornate Hawk-Eagle",
-				"caption": "Ornate Hawk-Eagle · Jaime Pérez"
+				"caption": "Ornate Hawk-Eagle",
+				"credit": "Jaime Pérez"
 			},
 			{
 				"thumb": asset("images/rufous-browed-wren-3phBg9ChWPaz4qiV-sq.webp"),
@@ -731,7 +741,8 @@ export const tourDetails: TourDetail[] = [
 				"thumb": asset("images/black-capped-swallow-vYDUGfI4yq2m07pL-sq.webp"),
 				"full": asset("images/black-capped-swallow-vYDUGfI4yq2m07pL-full.webp"),
 				"alt": "Black-capped Swallow",
-				"caption": "Black-capped Swallow · Sergio Gómez Villaverde"
+				"caption": "Black-capped Swallow",
+				"credit": "Sergio Gómez Villaverde"
 			}
 		],
 		"length": "3 days · A taste of everything",
@@ -808,13 +819,15 @@ export const tourDetails: TourDetail[] = [
 				"thumb": asset("images/pink-headed-warbler-3-qDv5NS68FdQ7onyM-sq.webp"),
 				"full": asset("images/pink-headed-warbler-3-qDv5NS68FdQ7onyM-full.webp"),
 				"alt": "Pink-headed Warbler",
-				"caption": "Pink-headed Warbler · Sergio Gómez Villaverde"
+				"caption": "Pink-headed Warbler",
+				"credit": "Sergio Gómez Villaverde"
 			},
 			{
 				"thumb": asset("images/blue-and-white-mockingbird-1-NCnEIapZ3vpQC2sm-sq.webp"),
 				"full": asset("images/blue-and-white-mockingbird-1-NCnEIapZ3vpQC2sm-full.webp"),
 				"alt": "Blue-and-white Mockingbird",
-				"caption": "Blue-and-white Mockingbird · Sergio Gómez Villaverde"
+				"caption": "Blue-and-white Mockingbird",
+				"credit": "Sergio Gómez Villaverde"
 			},
 			{
 				"thumb": asset("images/_dsc0870-UHFcPZY27edAPFr1-sq.webp"),
@@ -826,7 +839,8 @@ export const tourDetails: TourDetail[] = [
 				"thumb": asset("images/rose-bellied-bunting-m2Wa32VjWETn9NkA-sq.webp"),
 				"full": asset("images/rose-bellied-bunting-m2Wa32VjWETn9NkA-full.webp"),
 				"alt": "Rose-bellied Bunting",
-				"caption": "Rose-bellied Bunting · Nagi Aboulenein"
+				"caption": "Rose-bellied Bunting",
+				"credit": "Nagi Aboulenein"
 			},
 			{
 				"thumb": asset("images/sabes_aves_blue-crowned_chlorophonia-1-YD0w1yZbj5fb90o7-sq.webp"),
@@ -862,19 +876,22 @@ export const tourDetails: TourDetail[] = [
 				"thumb": asset("images/turquoise-browed-motmot-hwikmYfulmi5nHCi-sq.webp"),
 				"full": asset("images/turquoise-browed-motmot-hwikmYfulmi5nHCi-full.webp"),
 				"alt": "Turquoise-browed Motmot",
-				"caption": "Turquoise-browed Motmot · Sergio Gómez Villaverde"
+				"caption": "Turquoise-browed Motmot",
+				"credit": "Sergio Gómez Villaverde"
 			},
 			{
 				"thumb": asset("images/guatemalan-tyrannulet-HFmbr5dlTSRWWVe9-sq.webp"),
 				"full": asset("images/guatemalan-tyrannulet-HFmbr5dlTSRWWVe9-full.webp"),
 				"alt": "Guatemalan Tyrannulet",
-				"caption": "Guatemalan Tyrannulet · Sergio Gómez Villaverde"
+				"caption": "Guatemalan Tyrannulet",
+				"credit": "Sergio Gómez Villaverde"
 			},
 			{
 				"thumb": asset("images/long-tailed-manakin-tqWbPcfxlxP9AoST-sq.webp"),
 				"full": asset("images/long-tailed-manakin-tqWbPcfxlxP9AoST-full.webp"),
 				"alt": "Long-tailed Manakin",
-				"caption": "Long-tailed Manakin · Jaime Pérez"
+				"caption": "Long-tailed Manakin",
+				"credit": "Jaime Pérez"
 			}
 		],
 		"length": "3 days · Pacific slope to the volcano",
@@ -951,7 +968,8 @@ export const tourDetails: TourDetail[] = [
 				"thumb": asset("images/ornate-hawk-eagle-mP4OGNwpvehoNJQq-sq.webp"),
 				"full": asset("images/ornate-hawk-eagle-mP4OGNwpvehoNJQq-full.webp"),
 				"alt": "Ornate Hawk-Eagle",
-				"caption": "Ornate Hawk-Eagle · Jaime Pérez"
+				"caption": "Ornate Hawk-Eagle",
+				"credit": "Jaime Pérez"
 			},
 			{
 				"thumb": asset("images/lovely-cotinga-kMeBqQD8MqFZoxbw-sq.webp"),
@@ -963,13 +981,15 @@ export const tourDetails: TourDetail[] = [
 				"thumb": asset("images/scarlet-macaw-VuZUDrvypQ0vU3dv-sq.webp"),
 				"full": asset("images/scarlet-macaw-VuZUDrvypQ0vU3dv-full.webp"),
 				"alt": "Scarlet Macaw",
-				"caption": "Scarlet Macaw · Sergio Gómez Villaverde"
+				"caption": "Scarlet Macaw",
+				"credit": "Sergio Gómez Villaverde"
 			},
 			{
 				"thumb": asset("images/tropical-royal-flycatcher-1-anIw6HaxJjuJCPks-sq.webp"),
 				"full": asset("images/tropical-royal-flycatcher-1-anIw6HaxJjuJCPks-full.webp"),
 				"alt": "Tropical Royal Flycatcher",
-				"caption": "Tropical Royal Flycatcher · Sergio Gómez Villaverde"
+				"caption": "Tropical Royal Flycatcher",
+				"credit": "Sergio Gómez Villaverde"
 			}
 		],
 		"length": "4 days · Jungle, rivers and Maya ruins",
@@ -1050,7 +1070,8 @@ export const tourDetails: TourDetail[] = [
 				"thumb": asset("images/pink-headed-warbler-1-aLtT3eAXkiqtjRWh-sq.webp"),
 				"full": asset("images/pink-headed-warbler-1-aLtT3eAXkiqtjRWh-full.webp"),
 				"alt": "Pink-headed Warbler",
-				"caption": "Pink-headed Warbler · Sergio Gómez Villaverde"
+				"caption": "Pink-headed Warbler",
+				"credit": "Sergio Gómez Villaverde"
 			},
 			{
 				"thumb": asset("images/belted-flycatcher-great-photo-iZzV6wprekrFaMzq-sq.webp"),
@@ -1062,7 +1083,8 @@ export const tourDetails: TourDetail[] = [
 				"thumb": asset("images/blue-and-white-mockingbird-1-NCnEIapZ3vpQC2sm-sq.webp"),
 				"full": asset("images/blue-and-white-mockingbird-1-NCnEIapZ3vpQC2sm-full.webp"),
 				"alt": "Blue-and-white Mockingbird",
-				"caption": "Blue-and-white Mockingbird · Sergio Gómez Villaverde"
+				"caption": "Blue-and-white Mockingbird",
+				"credit": "Sergio Gómez Villaverde"
 			},
 			{
 				"thumb": asset("images/horned-guan-mv02ExGWQJC0k2xv-sq.webp"),
@@ -1092,7 +1114,8 @@ export const tourDetails: TourDetail[] = [
 				"thumb": asset("images/slender-sheartail-qMw7TVBhS9Q1882N-sq.webp"),
 				"full": asset("images/slender-sheartail-qMw7TVBhS9Q1882N-full.webp"),
 				"alt": "Slender Sheartail",
-				"caption": "Slender Sheartail · Sergio Gómez Villaverde"
+				"caption": "Slender Sheartail",
+				"credit": "Sergio Gómez Villaverde"
 			},
 			{
 				"thumb": asset("images/agami-heron-CwzZQHYqe6AfiDTq-sq.webp"),
@@ -1104,13 +1127,15 @@ export const tourDetails: TourDetail[] = [
 				"thumb": asset("images/azure-hooded-jay-w6Bqp2psIEeDOfzQ-sq.webp"),
 				"full": asset("images/azure-hooded-jay-w6Bqp2psIEeDOfzQ-full.webp"),
 				"alt": "Azure-hooded Jay",
-				"caption": "Azure-hooded Jay · Sergio Gómez Villaverde"
+				"caption": "Azure-hooded Jay",
+				"credit": "Sergio Gómez Villaverde"
 			},
 			{
 				"thumb": asset("images/bearded-screech-owl-B5Fngu1MgWbNIBDY-sq.webp"),
 				"full": asset("images/bearded-screech-owl-B5Fngu1MgWbNIBDY-full.webp"),
 				"alt": "Bearded Screech-Owl",
-				"caption": "Bearded Screech-Owl · Sergio Gómez Villaverde"
+				"caption": "Bearded Screech-Owl",
+				"credit": "Sergio Gómez Villaverde"
 			},
 			{
 				"thumb": asset("images/black-collared-hawk-oFYKYtW5m1pBiNws-sq.webp"),
@@ -1122,7 +1147,8 @@ export const tourDetails: TourDetail[] = [
 				"thumb": asset("images/collared-aracari-photo_-jaime-pa-c-rez-AMq1q4LoPbF5nQvP-sq.webp"),
 				"full": asset("images/collared-aracari-photo_-jaime-pa-c-rez-AMq1q4LoPbF5nQvP-full.webp"),
 				"alt": "Collared Aracari",
-				"caption": "Collared Aracari · Jaime Pérez"
+				"caption": "Collared Aracari",
+				"credit": "Jaime Pérez"
 			}
 		],
 		"length": "9–10 days · The complete sweep, highlands to volcano",
