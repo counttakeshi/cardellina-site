@@ -136,28 +136,23 @@
 <!-- ═══ GUIDES ═══ -->
 <section class="guides" id="guides">
 	<div class="wrap">
-		<div class="guides-lead">
-			<div class="guides-head">
-				<p class="eyebrow">Your guides</p>
-				<h2>Two obsessive birders</h2>
+		<div class="guides-head">
+			<p class="eyebrow">Your guides</p>
+			<h2>Two obsessive birders</h2>
+			<div class="gh-cols">
 				<p class="lede">
-					Based in Chiapas, with an unhealthy preoccupation with identification and a soft spot
-					for the difficult birds. We're colleagues and great friends.
+					Based in Chiapas, with an unhealthy preoccupation with identification and a soft spot for
+					the difficult birds. We're colleagues and great friends.
 				</p>
-				<p class="proof">
-					Between us: four languages, years of birding and guiding across Latin America, and
-					personal Chiapas lists of around <em>600 species each</em> — from a state total of about
-					700.
-				</p>
-				<a class="guides-link" href="{base}/guides">Meet us properly →</a>
+				<div>
+					<p class="proof">
+						Between us: four languages, years of birding and guiding across Latin America, and
+						personal Chiapas lists of around <em>600 species each</em> — from a state total of
+						about 700.
+					</p>
+					<a class="guides-link" href="{base}/guides">Meet us properly →</a>
+				</div>
 			</div>
-			<figure class="guides-shot">
-				<img
-					src={asset('images/ben-cloud-forest-full.webp')}
-					alt="Ben listening for a bird in bromeliad-covered highland forest"
-					loading="lazy"
-				/>
-			</figure>
 		</div>
 
 		<div class="guide-grid">
@@ -671,19 +666,21 @@
 	.guides :global(.lede) {
 		color: rgba(255, 255, 255, 0.68);
 	}
-	/* The copy used to sit alone at 64ch, leaving most of a dark band empty —
-	   which reads as the page ending rather than as a section. The photograph
-	   now fills that half, and bleeds off the right edge so the band opens on an
-	   image instead of on space. */
-	.guides-lead {
-		display: grid;
-		grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
-		gap: 3rem;
-		align-items: center;
-		margin-bottom: 3.5rem;
-	}
+	/* Two text columns rather than one at 64ch: the band is dark, and a single
+	   column left half of it empty, which reads as the page ending rather than as
+	   a section. Filling it with the claim and the link keeps it dense without
+	   needing a photograph that does not exist. */
 	.guides-head {
-		max-width: 54ch;
+		margin-bottom: 3rem;
+	}
+	.gh-cols {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+		gap: 1rem 3rem;
+		align-items: start;
+	}
+	.gh-cols .lede {
+		max-width: 46ch;
 	}
 	.proof {
 		font-size: 15px;
@@ -691,7 +688,7 @@
 		color: rgba(255, 255, 255, 0.6);
 		border-left: 2px solid var(--phwa);
 		padding-left: 1rem;
-		margin: 1.4rem 0 1.6rem;
+		margin: 0 0 1.3rem;
 	}
 	.proof em {
 		color: rgba(255, 255, 255, 0.85);
@@ -709,19 +706,6 @@
 	.guides-link:hover {
 		color: var(--phwa);
 	}
-	.guides-shot {
-		margin: 0;
-		border-radius: 4px;
-		overflow: hidden;
-	}
-	.guides-shot img {
-		display: block;
-		width: 100%;
-		aspect-ratio: 4 / 5;
-		max-height: 460px;
-		object-fit: cover;
-	}
-
 	.guide-grid {
 		display: grid;
 		grid-template-columns: 1fr 1fr;
@@ -731,7 +715,7 @@
 
 	.guide {
 		display: grid;
-		grid-template-columns: 152px minmax(0, 1fr);
+		grid-template-columns: 176px minmax(0, 1fr);
 		gap: 1.4rem;
 		align-items: start;
 		background: rgba(255, 255, 255, 0.04);
@@ -742,7 +726,7 @@
 	/* 4:5 rather than a circle: the crop that keeps the bins, the scope and the
 	   habitat, all of which do more selling than the face alone. */
 	.portrait {
-		width: 152px;
+		width: 176px;
 		aspect-ratio: 4 / 5;
 		object-fit: cover;
 		border-radius: 3px;
@@ -1166,9 +1150,9 @@
 		.stat:nth-child(2) {
 			border-bottom: 1px solid rgba(255, 255, 255, 0.09);
 		}
-		.guides-lead {
+		.gh-cols {
 			grid-template-columns: 1fr;
-			gap: 2rem;
+			gap: 1.4rem;
 		}
 		.trip-grid,
 		.guide-grid,
