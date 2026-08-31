@@ -1,8 +1,7 @@
 <script lang="ts">
 	import { asset } from '$lib/ledger';
 	import { base } from '$app/paths';
-	import SiteMap from '$lib/components/SiteMap.svelte';
-	import { flagships, tripTeasers, guides, warblers, reviews, principles } from '$lib/data/home';
+	import { headliners, tripTeasers, guides, warblers, reviews, principles } from '$lib/data/home';
 
 	const HERO_IMG = asset('images/sabes_aves_pink-headed_warbler-A0xjy2JlD8TLpRLX-full.webp');
 	const GOOGLE_REVIEWS_URL = 'https://share.google/P1kf5lWkcsJoRDRXU';
@@ -30,10 +29,10 @@
 <header class="hero" style="--hero-img: url('{HERO_IMG}')">
 	<div class="wrap hero-inner">
 		<p class="eyebrow">Chiapas · Southern Mexico</p>
-		<h1>One of the most bird-rich corners of Mexico, and one of the <em>least travelled</em>.</h1>
+		<h1>Mexico's most unique birding, <em>off the beaten track</em>.</h1>
 		<p>
-			700 species in one state, where Mexican and west Mexican endemics, Central American highland
-			specialities, and the stunning birds of the tropical lowlands all live.
+			700 species in one state, with Mexican endemics, Central American highland specialities, and
+			the stunning birds of the tropical lowlands. Guided by two passionate birders.
 		</p>
 		<div class="hero-actions">
 			<a href="{base}/contact" class="btn btn-primary">Plan your trip</a>
@@ -62,8 +61,8 @@
 				<div class="l">Sea level to the<br />summit of Tacaná</div>
 			</div>
 			<div class="stat">
-				<div class="n">Coast → cloud forest</div>
-				<div class="l">Rainforest, dry forest,<br />canyon, wetland &amp; alpine</div>
+				<div class="n">6</div>
+				<div class="l">Major habitats, coast<br />to cloud forest</div>
 			</div>
 		</div>
 	</div>
@@ -77,47 +76,28 @@
 			<h2>More than forty endemic and near-endemic birds</h2>
 		</div>
 
-		<!-- The habitat line under each bird does the work the old prose did: it
-		     shows the range from Pacific dry forest to the volcano through actual
-		     birds, rather than listing habitats in a sentence. -->
-		<div class="flagships">
-			{#each flagships as bird (bird.name)}
-				<a class="fs" href={base + bird.href}>
-					<img src={bird.img} alt={bird.name} loading="lazy" />
-					<span class="fs-cap">
-						<span class="n">{bird.name}</span>
-						<span class="s">{bird.sci}</span>
-						<span class="h">
-							{bird.habitat}{#if bird.flag}<i class="flag f-{bird.flag.toLowerCase()}"
-									>{bird.flag}</i
-								>{/if}
-						</span>
-					</span>
+		<!-- Three birds, each with a one-line reason it matters. The description
+		     replaces both the habitat paragraph and the MX/NCA tag key, which
+		     needed a legend to decode. -->
+		<div class="headliners">
+			{#each headliners as bird (bird.name)}
+				<a class="hl" href={base + bird.href}>
+					<span class="hl-img"><img src={bird.img} alt={bird.name} loading="lazy" /></span>
+					<span class="hl-name">{bird.name}</span>
+					<span class="hl-sci">{bird.sci}</span>
+					<span class="hl-blurb">{bird.blurb}</span>
 				</a>
 			{/each}
 		</div>
 
-		<p class="legend">
-			<i class="flag f-mx">MX</i> Endemic to Mexico &nbsp;·&nbsp; <i class="flag f-nca">NCA</i>
-			Endemic to the northern Central American highlands, meaning Chiapas and adjacent Guatemala
-		</p>
-
-		<div class="case-cta">
-			<p>
-				We're building a library of detailed accounts for the birds people travel here to see: where
-				they live, when to go, and what it takes to find them.
-			</p>
-			<a class="arrow-link" href="{base}/birds">Explore the Chiapas Bird Library →</a>
-		</div>
-
-		<div class="habitats">
-			<h3>And where to find them</h3>
-			<p class="hab-lede">
-				The birds change completely as you climb, from the Pacific coast to the summit of Tacaná.
-				These are the sites we visit most.
-			</p>
-			<SiteMap compact />
-		</div>
+		<a class="library-cta" href="{base}/birds">
+			<span class="lc-text">
+				<strong>Explore our complete Chiapas bird list</strong>
+				<span>Every endemic and speciality worth travelling for, with an interactive map of where
+					to find them.</span>
+			</span>
+			<span class="lc-go" aria-hidden="true">→</span>
+		</a>
 	</div>
 </section>
 
@@ -448,9 +428,8 @@
 		margin-bottom: 0.45rem;
 		letter-spacing: -0.01em;
 	}
-	.stat:last-child .n {
-		font-size: 19px;
-	}
+	/* The last stat used to be a long phrase and needed shrinking; now it is a
+	   numeral like the others, so it keeps the same size. */
 	.stat .l {
 		font-family: var(--mono);
 		font-size: 11px;
@@ -472,131 +451,127 @@
 		margin-bottom: 1.1rem;
 	}
 
-	.flagships {
+	.headliners {
 		display: grid;
-		grid-template-columns: repeat(6, 1fr);
-		gap: 10px;
-		margin-bottom: 3.2rem;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 1.6rem;
+		margin-bottom: 2rem;
 	}
-	.fs {
-		position: relative;
+	.hl {
 		display: block;
-		aspect-ratio: 3/4;
-		border-radius: 3px;
-		overflow: hidden;
 		text-decoration: none;
-		background: var(--ink);
 	}
-	.fs img {
+	.hl-img {
+		display: block;
+		aspect-ratio: 4/3;
+		border-radius: 4px;
+		overflow: hidden;
+		background: var(--ink);
+		margin-bottom: 0.85rem;
+	}
+	.hl-img img {
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
 		transition: transform 0.5s ease;
 	}
-	.fs:hover img {
-		transform: scale(1.07);
+	.hl:hover .hl-img img {
+		transform: scale(1.05);
 	}
-	.fs::after {
-		content: '';
-		position: absolute;
-		inset: 0;
-		background: linear-gradient(180deg, rgba(22, 36, 31, 0) 38%, rgba(22, 36, 31, 0.88) 100%);
-	}
-	.fs-cap {
-		position: absolute;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		padding: 0.85rem 0.85rem 0.9rem;
-		z-index: 2;
-	}
-	.fs-cap .n {
-		font-family: var(--display);
-		font-size: 15.5px;
-		font-weight: 500;
-		color: #fff;
-		line-height: 1.22;
-		margin-bottom: 4px;
-	}
-	.fs-cap .s {
-		font-family: var(--mono);
-		font-size: 9.5px;
-		color: rgba(255, 255, 255, 0.6);
-		letter-spacing: 0.02em;
+	.hl-name {
 		display: block;
-		margin-bottom: 5px;
+		font-family: var(--display);
+		font-weight: 500;
+		font-size: 21px;
+		line-height: 1.2;
+		color: var(--ink);
 	}
-	/* Habitat line, with the endemism flag sitting inline beside it. */
-	.fs-cap .h {
+	.hl:hover .hl-name {
+		color: var(--phwa);
+	}
+	.hl-sci {
+		display: block;
+		font-family: var(--mono);
+		font-size: 11px;
+		font-style: italic;
+		color: var(--stone);
+		margin: 2px 0 0.5rem;
+	}
+	.hl-blurb {
+		display: block;
+		font-size: 14.5px;
+		line-height: 1.55;
+		color: var(--stone);
+	}
+
+	/* Sits directly under the birds with no rule between them: it is the same
+	   thought continued, not a new section. */
+	.library-cta {
 		display: flex;
 		align-items: center;
-		gap: 6px;
-		flex-wrap: wrap;
-		font-family: var(--mono);
-		font-size: 9.5px;
-		letter-spacing: 0.03em;
-		text-transform: uppercase;
-		color: rgba(255, 255, 255, 0.88);
+		gap: 1.4rem;
+		background: var(--ink);
+		border-radius: 8px;
+		padding: 1.4rem 1.7rem;
+		text-decoration: none;
+		transition:
+			background 0.18s ease,
+			transform 0.18s ease;
 	}
-	.fs-cap :global(.flag) {
-		display: inline-block;
-		flex-shrink: 0;
+	.library-cta:hover {
+		background: #1d3129;
+		transform: translateY(-2px);
 	}
-
-	.legend {
-		font-family: var(--mono);
-		font-size: 11.5px;
-		color: var(--stone);
-		line-height: 1.9;
-		margin-bottom: 2.4rem;
-		padding-bottom: 1.6rem;
-	}
-	.legend :global(.flag) {
-		vertical-align: 1px;
-	}
-	.legend :global(.f-mx) {
-		color: #b8305a;
-		border-color: rgba(214, 68, 111, 0.4);
-		background: rgba(214, 68, 111, 0.07);
-	}
-	.legend :global(.f-nca) {
-		color: #8a5e1e;
-		border-color: rgba(168, 118, 47, 0.4);
-		background: rgba(168, 118, 47, 0.08);
-	}
-
-
-	.habitats {
-		margin-top: 2.8rem;
-	}
-	.habitats h3 {
+	.lc-text strong {
+		display: block;
 		font-family: var(--display);
-		font-weight: 400;
-		font-size: clamp(22px, 2.6vw, 30px);
-		line-height: 1.2;
-		margin-bottom: 0.6rem;
+		font-weight: 500;
+		font-size: 21px;
+		color: #fff;
+		margin-bottom: 0.2rem;
 	}
-	.hab-lede {
-		font-size: 16px;
-		color: var(--stone);
+	.lc-text span {
+		display: block;
+		font-size: 14.5px;
+		line-height: 1.55;
+		color: rgba(255, 255, 255, 0.72);
 		max-width: 62ch;
-		margin-bottom: 1.6rem;
+	}
+	.lc-go {
+		margin-left: auto;
+		flex-shrink: 0;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 44px;
+		height: 44px;
+		border-radius: 50%;
+		background: var(--phwa);
+		color: #fff;
+		font-size: 20px;
+		transition: transform 0.18s ease;
+	}
+	.library-cta:hover .lc-go {
+		transform: translateX(3px);
 	}
 
-	.case-cta {
-		padding-top: 1.8rem;
-		border-top: 1px solid var(--rule);
-		display: flex;
-		align-items: baseline;
-		justify-content: space-between;
-		gap: 2rem;
-		flex-wrap: wrap;
+	@media (max-width: 760px) {
+		.headliners {
+			grid-template-columns: 1fr;
+			gap: 1.8rem;
+		}
+		.library-cta {
+			flex-wrap: wrap;
+			gap: 1rem;
+		}
+		.lc-go {
+			margin-left: 0;
+		}
 	}
-	.case-cta p {
-		color: var(--stone);
-		font-size: 16px;
-		max-width: 52ch;
-	}
+
+
+
+
 
 	/* ═══ TRIPS ═══ */
 	.trips {
@@ -1133,9 +1108,6 @@
 		.stat:nth-child(2) {
 			border-bottom: 1px solid rgba(255, 255, 255, 0.09);
 		}
-		.flagships {
-			grid-template-columns: repeat(3, 1fr);
-		}
 		.trip-grid,
 		.guide-grid,
 		.how-grid {
@@ -1164,13 +1136,6 @@
 		}
 		.strip img {
 			height: 100px;
-		}
-		.flagships {
-			grid-template-columns: repeat(2, 1fr);
-		}
-		.case-cta {
-			flex-direction: column;
-			gap: 1.2rem;
 		}
 		.stats-grid {
 			grid-template-columns: 1fr;

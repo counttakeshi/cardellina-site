@@ -6,6 +6,35 @@ const card = (file: string) => imageUrl(file, 'sq');
 const strip = (file: string) => imageUrl(file, 'sq');
 const avatar = (file: string) => imageUrl(file, 'sq');
 
+/**
+ * The three birds that carry the homepage. One micro-endemic, one hard-won
+ * highland speciality, one everyone already wants to see — between them they
+ * make the case without a paragraph of habitat names.
+ */
+export const headliners = [
+	{
+		name: 'Rose-bellied Bunting',
+		sci: 'Passerina rositae',
+		blurb: 'A Mexican micro-endemic of the Pacific dry forests.',
+		href: '/birds/rose-bellied-bunting',
+		img: imageUrl('rose-bellied-bunting-m2Wa32VjWETn9NkA.png', 'card')
+	},
+	{
+		name: 'Horned Guan',
+		sci: 'Oreophasis derbianus',
+		blurb: 'Rare, and endemic to the northern Central American highlands.',
+		href: '/birds/horned-guan',
+		img: imageUrl('horned-guan-mv02ExGWQJC0k2xv.jpg', 'card')
+	},
+	{
+		name: 'Resplendent Quetzal',
+		sci: 'Pharomachrus mocinno',
+		blurb: 'The legendary cloud-forest plumed serpent.',
+		href: '/birds/resplendent-quetzal',
+		img: imageUrl('resplendent-quetzal-mnlW0616OoTEDEj3.jpg', 'card')
+	}
+];
+
 export const flagships = [
 	{
 		name: 'Horned Guan',
