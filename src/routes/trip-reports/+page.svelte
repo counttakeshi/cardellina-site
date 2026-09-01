@@ -24,18 +24,12 @@
 <header class="hero" style="--hero-img:url('{HERO}')">
 	<div class="wrap hero-inner">
 		<h1>Trip reports</h1>
-		<p>What we actually saw, where we saw it, and the checklists to prove it.</p>
+		<p>Where we went, what we found, and the eBird checklists.</p>
 	</div>
 </header>
 
 <section class="list">
 	<div class="wrap">
-		<p class="lede">
-			We write these up after most trips. They are the honest version — the sites in the order we
-			birded them, the birds that showed and the ones that didn't, and a link to every eBird
-			checklist so you can see the full list rather than the highlights.
-		</p>
-
 		<div class="grid">
 			{#each tripReports as report (report.slug)}
 				<article class="card">
@@ -109,9 +103,6 @@
 
 	.list {
 		padding: 3.5rem 0 4rem;
-	}
-	.list .lede {
-		margin-bottom: 2.4rem;
 	}
 
 	.grid {

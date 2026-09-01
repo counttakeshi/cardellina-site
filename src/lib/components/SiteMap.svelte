@@ -79,6 +79,8 @@
 	let selectedBird = $state<string | null>(null);
 	let birdQuery = $state('');
 	let cardEl = $state<HTMLElement | null>(null);
+	/** The map itself, used as the fixed point when the detail panel resizes. */
+	let mapEl = $state<HTMLElement | null>(null);
 
 	/**
 	 * Habitat colours, in map order — coast and wetland share one, so this is
@@ -116,6 +118,27 @@
 			sites: sites.filter((s) => s.zoneColor === l.color).sort((a, b) => a.name.localeCompare(b.name))
 		})).filter((g) => g.sites.length)
 	);
+
+	/**
+	 * Close the card without the page moving under you.
+	 *
+	 * Matching the two panel heights fixes this on the wide layout, but below
+	 * 900px the card is stacked and uncapped, so clearing it still shortens the
+	 * page by however tall that card was. Anchoring on the map and correcting the
+	 * scroll afterwards works at every width, and costs nothing when the layout
+	 * already holds still — the delta is simply zero.
+	 */
+	function clearSite() {
+		const anchor = mapEl?.getBoundingClientRect().top ?? null;
+		selectedSiteId = null;
+		openBird = null;
+		if (anchor === null) return;
+		requestAnimationFrame(() => {
+			const after = mapEl?.getBoundingClientRect().top ?? anchor;
+			const drift = after - anchor;
+			if (Math.abs(drift) > 1) window.scrollBy({ top: drift, behavior: 'instant' as ScrollBehavior });
+		});
+	}
 
 	function pickSite(site: Site) {
 		selectedSiteId = selectedSiteId === site.id ? null : site.id;
@@ -183,7 +206,7 @@
 				{/if}
 			</p>
 
-			<div class="map-wrap">
+			<div class="map-wrap" bind:this={mapEl}>
 				<svg
 					class="cmap"
 					viewBox={MAP_VIEWBOX}
@@ -246,12 +269,38 @@
 				</div>
 
 				{#if activeBird}
+					{@const shot = birdPhoto(activeBird.name)}
 					<div class="site-card">
-						<div class="sc-hab">Found at {activeBird.sites.length} of our sites</div>
-						<h3 class="sc-name">
-							{activeBird.name}{#if activeBird.tier}<i class="bt">{TIER_LABELS[activeBird.tier]}</i
-								>{/if}
-						</h3>
+						{#if shot}
+							<img class="sc-photo" src={shot.src} alt={activeBird.name} loading="lazy" />
+						{/if}
+						<div class="sc-hab">
+							{activeBird.sites.length === 1
+								? 'Found at one of our sites'
+								: `Found at ${activeBird.sites.length} of our sites`}
+						</div>
+						<div class="sc-title">
+							<h3 class="sc-name">
+								{activeBird.name}{#if activeBird.tier}<i class="bt">{TIER_LABELS[activeBird.tier]}</i
+									>{/if}
+							</h3>
+							{#if inForm}
+								<button
+									class="addbtn"
+									class:on={pickedBirds.includes(activeBird.name)}
+									onclick={() => toggleBird(activeBird.name)}
+								>
+									{pickedBirds.includes(activeBird.name) ? '✓ On your list' : '+ Add to bird list'}
+								</button>
+							{/if}
+						</div>
+						{#if shot?.credit}<p class="sc-cred">photo by {shot.credit}</p>{/if}
+						{#if ACCOUNTS.has(activeBird.name)}
+							<a class="bpop-link" href="{base}/birds/{ACCOUNTS.get(activeBird.name)}">
+								Read the account →
+							</a>
+						{/if}
+						<div class="sc-birds-lbl">Where to find it</div>
 						<ul class="sc-sites">
 							{#each activeBird.sites as id (id)}
 								{@const s = sites.find((x) => x.id === id)}
@@ -358,7 +407,7 @@
 						{:else if !inForm}
 							<a class="btn" href="{base}/contact">Ask about birding here</a>
 						{/if}
-						<button class="clear" onclick={() => (selectedSiteId = null)}>Back to all sites</button>
+						<button class="clear" onclick={clearSite}>Back to all sites</button>
 					</div>
 				</div>
 			{:else}
@@ -819,6 +868,12 @@
 		background: var(--canopy);
 		border-color: var(--canopy);
 		color: #fff;
+	}
+	.sc-cred {
+		font-family: var(--mono);
+		font-size: 10px;
+		color: var(--lichen);
+		margin: 0.2rem 0 0.6rem;
 	}
 	.sc-tap {
 		font-family: var(--mono);

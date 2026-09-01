@@ -146,7 +146,6 @@
 							<p class="c-birds">{trip.birds.join(' · ')}</p>
 							<div class="c-foot">
 								<span class="c-link">See the itinerary →</span>
-								{#if trip.sampleItinerary}<span class="c-draft">Sample itinerary</span>{/if}
 							</div>
 						</div>
 					</article>
@@ -514,15 +513,6 @@
 	.card:hover .c-link {
 		color: var(--phwa);
 		border-color: var(--phwa);
-	}
-	.c-draft {
-		font-family: var(--mono);
-		font-size: 10.5px;
-		color: var(--lichen);
-		border: 1px solid rgba(168, 118, 47, 0.4);
-		background: rgba(168, 118, 47, 0.08);
-		border-radius: 2px;
-		padding: 3px 7px;
 	}
 	.c-note {
 		font-family: var(--mono);
