@@ -23,3 +23,14 @@ export const CONTACT_EMAIL = 'info@cardellina.com';
  */
 export const EBIRD_TARGETS =
 	'https://ebird.org/targets?r1=MX-CHP&r2=world&t2=life&bmo=1&emo=12&print=true';
+
+/**
+ * Microsoft Clarity project ID. Paste the ten-character ID from the Clarity
+ * dashboard (Settings → Overview → Project ID) between the quotes; leave it
+ * empty and no Clarity script is loaded at all.
+ *
+ * Not a secret — it ships in the page like any analytics tag — but it is the
+ * one thing that decides whether we are recording sessions, so it lives here
+ * rather than being buried in a template.
+ */
+export const CLARITY_PROJECT_ID = '';

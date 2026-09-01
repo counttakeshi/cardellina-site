@@ -32,6 +32,11 @@
 					label: 'Build Your Own',
 					href: '/trips#personalised',
 					hint: 'Your dates, your target birds'
+				},
+				{
+					label: 'Trip Reports',
+					href: '/trip-reports',
+					hint: 'What we saw, and the eBird checklists'
 				}
 			]
 		},
