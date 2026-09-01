@@ -126,6 +126,17 @@
 		}
 	}
 
+	/**
+	 * Jump from a species result to that site's card. Selecting the site has to
+	 * happen after the mode switch, and pickSite toggles, so it cannot be reused
+	 * here — coming from species mode the site should always open, never close.
+	 */
+	function showSiteFromSpecies(site: Site) {
+		mode = 'site';
+		selectedSiteId = site.id;
+		openBird = null;
+	}
+
 	function pickBird(name: string) {
 		selectedBird = name;
 		birdQuery = name;
@@ -246,7 +257,7 @@
 								{@const s = sites.find((x) => x.id === id)}
 								{#if s}
 									<li>
-										<button onclick={() => (mode = 'site') || pickSite(s)}>
+										<button onclick={() => showSiteFromSpecies(s)}>
 											<span class="dot" style="background:{s.zoneColor}"></span>
 											<span>
 												<b>{s.name}</b>
@@ -578,7 +589,12 @@
 
 	/* ── Detail column ── */
 	.detail {
-		min-height: 320px;
+		min-height: min(58vh, 520px);
+	}
+	.site-card {
+		max-height: min(58vh, 520px);
+		overflow-y: auto;
+		padding-right: 0.6rem;
 	}
 	.placeholder {
 		border: 1px dashed var(--rule);
@@ -695,6 +711,11 @@
 		min-height: 0;
 	}
 	.compact .site-card {
+		max-height: none;
+		overflow-y: visible;
+		padding-right: 0;
+	}
+	.compact .site-card {
 		max-width: 760px;
 	}
 
@@ -754,10 +775,13 @@
 		margin-bottom: 1.3rem;
 		border-bottom: 1px solid var(--rule);
 	}
+	/* A band rather than a 4:3 frame. The card scrolls within a fixed height, and
+	   at 4:3 the photograph filled it — you had to scroll to reach the name of the
+	   place you had just clicked. */
 	.sc-photo {
 		display: block;
 		width: 100%;
-		aspect-ratio: 4 / 3;
+		height: 132px;
 		object-fit: cover;
 		border-radius: 5px;
 		margin-bottom: 0.9rem;
@@ -1115,6 +1139,13 @@
 		}
 		.detail {
 			min-height: 0;
+		}
+		/* Stacked, the card has the whole page to run down and nothing sits beside
+		   it to stay level with, so it is not capped. */
+		.site-card {
+			max-height: none;
+			overflow-y: visible;
+			padding-right: 0;
 		}
 	}
 
