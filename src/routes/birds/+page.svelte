@@ -218,7 +218,11 @@
 	<div class="foot-cta">
 		<div>
 			<h2>Want to see some of these?</h2>
-			<p>Tell us which birds you're after and we'll build a trip around them.</p>
+			<p>
+				Tell us which birds you're after and we'll build a trip around them — or read the
+				<a class="cta-link" href="{base}/trip-reports">trip reports</a> to see what turned up, and
+				where.
+			</p>
 		</div>
 		<a class="btn" href="{base}/contact">Plan a trip</a>
 	</div>
@@ -594,6 +598,14 @@
 		font-size: 15px;
 		color: rgba(255, 255, 255, 0.7);
 		max-width: 46ch;
+	}
+	.cta-link {
+		color: #fff;
+		text-decoration: none;
+		border-bottom: 1px solid var(--phwa);
+	}
+	.cta-link:hover {
+		color: var(--phwa);
 	}
 
 	@media (max-width: 600px) {

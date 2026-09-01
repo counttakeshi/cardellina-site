@@ -59,8 +59,15 @@
 	let duration = $state('');
 	let startDate = $state('');
 	let targets = $state('');
+	// Filled from the map: sites added to the itinerary, birds added to the list.
+	let pickedSites = $state<string[]>([]);
+	let pickedBirds = $state<string[]>([]);
 
-	const answered = $derived([duration, startDate, targets].filter((v) => v.trim() !== '').length);
+	const answered = $derived(
+		[duration, startDate, targets].filter((v) => v.trim() !== '').length +
+			pickedSites.length +
+			pickedBirds.length
+	);
 </script>
 
 <svelte:head>
@@ -74,10 +81,7 @@
 <header class="hero" style="--hero-img:url('{HERO}')">
 	<div class="wrap hero-inner">
 		<h1>Trips</h1>
-		<p>
-			A morning out, a fortnight across the state, or something built around your list. All of it
-			small, private, and led by one of us.
-		</p>
+		<p>A morning out, a fortnight across the state, or something built around your list.</p>
 	</div>
 </header>
 
@@ -97,12 +101,6 @@
 {#if panel === 'day'}
 	<section class="panel">
 		<div class="wrap">
-			<p class="lede">
-				Pick a single day out, or string several together across a visit. Every tour is small (one
-				to two people at this price, more on request), guided by Ben or Valente, and shaped around
-				what you most want to see.
-			</p>
-
 			<div class="grid">
 				{#each dayTours as tour (tour.slug)}
 					<article class="card">
@@ -132,11 +130,6 @@
 {:else if panel === 'multi-day'}
 	<section class="panel">
 		<div class="wrap">
-			<p class="lede">
-				These are the routes we run most often, and the ones we know best. Each is a starting point
-				rather than a fixed package: the dates, the pace and the targets are yours to shape.
-			</p>
-
 			<div class="grid">
 				{#each multiDayTrips as trip (trip.slug)}
 					<article class="card">
@@ -169,11 +162,6 @@
 {:else}
 	<section class="panel">
 		<div class="wrap">
-			<p class="lede">
-				Most of our trips start here. Answer as much or as little as you like — a rough length and a
-				month is enough for us to come back with something concrete.
-			</p>
-
 			<div class="build">
 				<div class="q">
 					<h3><span class="qn">1</span> How long do you have?</h3>
@@ -192,10 +180,6 @@
 
 				<div class="q">
 					<h3><span class="qn">2</span> When might you come?</h3>
-					<p class="qhint">
-						A month is plenty. Nothing here is really off-season, but the birding changes through
-						the year and we'll tell you what to expect.
-					</p>
 					<input
 						class="txt"
 						type="text"
@@ -207,10 +191,6 @@
 
 				<div class="q">
 					<h3><span class="qn">3</span> Which birds are you after?</h3>
-					<p class="qhint">
-						Paste a list, name a couple of headline birds, or say you'd rather we chose. If you keep
-						a life list on eBird, its target list for Chiapas is the quickest way to build one.
-					</p>
 					<textarea
 						class="txt"
 						rows="4"
@@ -225,11 +205,42 @@
 
 				<div class="q">
 					<h3><span class="qn">4</span> Anywhere you already want to go?</h3>
-					<p class="qhint">
-						Every site we bird, and what lives at each. Have a look, then mention anything that
-						catches your eye below — or skip it and leave the route to us.
-					</p>
-					<SiteMap inForm />
+					<SiteMap inForm bind:pickedSites bind:pickedBirds />
+
+					{#if pickedSites.length || pickedBirds.length}
+						<div class="picked">
+							{#if pickedSites.length}
+								<div class="pk-row">
+									<span class="pk-lbl">Itinerary</span>
+									<div class="pk-chips">
+										{#each pickedSites as site (site)}
+											<button
+												class="pk"
+												onclick={() => (pickedSites = pickedSites.filter((s) => s !== site))}
+											>
+												{site}<span class="pk-x">×</span>
+											</button>
+										{/each}
+									</div>
+								</div>
+							{/if}
+							{#if pickedBirds.length}
+								<div class="pk-row">
+									<span class="pk-lbl">Birds</span>
+									<div class="pk-chips">
+										{#each pickedBirds as bird (bird)}
+											<button
+												class="pk"
+												onclick={() => (pickedBirds = pickedBirds.filter((b) => b !== bird))}
+											>
+												{bird}<span class="pk-x">×</span>
+											</button>
+										{/each}
+									</div>
+								</div>
+							{/if}
+						</div>
+					{/if}
 				</div>
 			</div>
 
@@ -242,6 +253,12 @@
 							{#if duration}<b>{duration}</b>{/if}
 							{#if startDate}<b>{startDate}</b>{/if}
 							{#if targets}<b>your target birds</b>{/if}
+							{#if pickedSites.length}
+								<b>{pickedSites.length} site{pickedSites.length === 1 ? '' : 's'}</b>
+							{/if}
+							{#if pickedBirds.length}
+								<b>{pickedBirds.length} bird{pickedBirds.length === 1 ? '' : 's'}</b>
+							{/if}
 						</p>
 					{:else}
 						<p class="ho-sum muted">
@@ -254,7 +271,9 @@
 					prefill={{
 						'Trip length': duration,
 						'Possible dates': startDate,
-						'Target birds': targets
+						'Target birds': targets,
+						'Sites chosen on the map': pickedSites.join(', '),
+						'Birds chosen on the map': pickedBirds.join(', ')
 					}}
 				/>
 			</div>
@@ -346,10 +365,7 @@
 	}
 
 	.panel {
-		padding: 2.6rem 0 4rem;
-	}
-	.panel .lede {
-		margin-bottom: 2rem;
+		padding: 2.8rem 0 4rem;
 	}
 
 	.grid {
@@ -548,7 +564,7 @@
 		display: flex;
 		align-items: center;
 		gap: 0.7rem;
-		margin-bottom: 0.5rem;
+		margin-bottom: 0.9rem;
 	}
 	.qn {
 		font-family: var(--mono);
@@ -562,13 +578,6 @@
 		align-items: center;
 		justify-content: center;
 		flex-shrink: 0;
-	}
-	.qhint {
-		font-size: 14.5px;
-		line-height: 1.65;
-		color: var(--stone);
-		max-width: 68ch;
-		margin-bottom: 1rem;
 	}
 	.chips {
 		display: flex;
@@ -632,6 +641,64 @@
 	.ebird:hover {
 		color: var(--phwa);
 		border-color: var(--phwa);
+	}
+
+	/* What the map has added so far, kept in view while you carry on choosing —
+	   and removable here, since going back to find the site again to un-add it
+	   would be the long way round. */
+	.picked {
+		display: flex;
+		flex-direction: column;
+		gap: 0.7rem;
+		margin-top: 1.2rem;
+		padding: 1rem 1.1rem;
+		border: 1px solid var(--rule);
+		border-radius: 5px;
+		background: var(--white);
+	}
+	.pk-row {
+		display: flex;
+		align-items: baseline;
+		gap: 0.9rem;
+		flex-wrap: wrap;
+	}
+	.pk-lbl {
+		font-family: var(--mono);
+		font-size: 10px;
+		letter-spacing: 0.07em;
+		text-transform: uppercase;
+		color: var(--stone);
+		min-width: 62px;
+	}
+	.pk-chips {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 6px;
+	}
+	.pk {
+		display: inline-flex;
+		align-items: center;
+		gap: 7px;
+		font-family: var(--body);
+		font-size: 13px;
+		background: var(--mist);
+		border: 1px solid var(--rule);
+		border-radius: 3px;
+		padding: 4px 9px;
+		color: var(--ink);
+		cursor: pointer;
+	}
+	.pk:hover {
+		border-color: var(--phwa);
+		color: var(--phwa);
+	}
+	.pk-x {
+		color: var(--stone);
+		font-size: 14px;
+		line-height: 1;
+	}
+	.pk:hover .pk-x {
+		color: var(--phwa);
 	}
 
 	.handoff {

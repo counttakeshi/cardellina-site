@@ -32,15 +32,24 @@
 					label: 'Build Your Own',
 					href: '/trips#personalised',
 					hint: 'Your dates, your target birds'
-				},
-				{
-					label: 'Trip Reports',
-					href: '/trip-reports',
-					hint: 'What we saw, and the eBird checklists'
 				}
 			]
 		},
-		{ id: 'birds', label: 'Chiapas Birds', href: '/birds' },
+		// Trip reports belong with the reference material, not with the things you
+		// can book: the reader who wants them is the one already deep in the bird
+		// library, checking what turns up where.
+		{
+			id: 'birds',
+			label: 'Chiapas Birds',
+			children: [
+				{ label: 'Bird Library', href: '/birds', hint: 'Every endemic and speciality, with a map' },
+				{
+					label: 'Trip Reports',
+					href: '/trip-reports',
+					hint: 'What we found, with the eBird checklists'
+				}
+			]
+		},
 		{
 			id: 'guides',
 			label: 'Guides',

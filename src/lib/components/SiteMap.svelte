@@ -1,6 +1,8 @@
 <script lang="ts">
 	import { base } from '$app/paths';
 	import { sites, mapBirds, MAP_VIEWBOX, TIER_LABELS, type Site } from '$lib/data/sites';
+	import { species } from '$lib/data/species';
+	import { photoFor, imageUrl } from '$lib/ledger';
 	import mapBase from './map-base.svg?raw';
 
 	type Mode = 'site' | 'species';
@@ -11,9 +13,63 @@
 	 *
 	 * `inForm` is for the trip builder, where the map sits above an enquiry form
 	 * the reader is already filling in. The site card's call to action would send
-	 * them to a second, emptier form and lose their answers, so it is dropped.
+	 * them to a second, emptier form and lose their answers, so it is dropped —
+	 * and instead the card can add sites and birds to the trip being built.
 	 */
-	let { compact = false, inForm = false }: { compact?: boolean; inForm?: boolean } = $props();
+	interface Props {
+		compact?: boolean;
+		inForm?: boolean;
+		/** Site names the reader has added to their itinerary. Bindable. */
+		pickedSites?: string[];
+		/** Bird names the reader has added to their target list. Bindable. */
+		pickedBirds?: string[];
+	}
+
+	let {
+		compact = false,
+		inForm = false,
+		pickedSites = $bindable([]),
+		pickedBirds = $bindable([])
+	}: Props = $props();
+
+	/**
+	 * Place photographs, for the sites we have one of. Six of eighteen — the card
+	 * simply omits the image for the rest rather than substituting a bird photo,
+	 * which would answer a different question than "what does this place look
+	 * like".
+	 */
+	const SITE_PHOTOS: Record<string, string> = {
+		sancris: 'cloud-forest-birding-montetik-viewpoint-profile-m6L2jlGWKxSEPljw.jpg',
+		sumidero: 'sabes_aves_canon_del_sumidero-mePJl0M91pTLG4Ja.jpg',
+		comitan: 'tenam-puente-m6Ljg0VxNXhzeewd.jpg',
+		catazaja: 'catazaja-lakes-Awv4ne3GZ1fqoKl7.jpg',
+		tacana: 'tacana-photo-YbNB1ybokJuXrOor.jpg',
+		palenque: 'palenq-Yle4qa7Q10t5Q9gk.jpg'
+	};
+
+	/** Birds with a full account page, so the popover can offer to link on. */
+	const ACCOUNTS = new Map(species.filter((sp) => sp.hasAccount).map((sp) => [sp.commonName, sp.slug]));
+
+	/** The bird whose photo is open in the site card, if any. */
+	let openBird = $state<string | null>(null);
+
+	function birdPhoto(name: string) {
+		const p = photoFor(name);
+		if (!p?.files.length) return null;
+		return { src: imageUrl(p.files[0], 'md'), credit: p.credit };
+	}
+
+	function toggleSite(name: string) {
+		pickedSites = pickedSites.includes(name)
+			? pickedSites.filter((n) => n !== name)
+			: [...pickedSites, name];
+	}
+
+	function toggleBird(name: string) {
+		pickedBirds = pickedBirds.includes(name)
+			? pickedBirds.filter((n) => n !== name)
+			: [...pickedBirds, name];
+	}
 
 	/** How many birds to list in the card before linking on. */
 	const BIRD_LIMIT = $derived(compact ? 10 : Infinity);
@@ -25,8 +81,10 @@
 	let cardEl = $state<HTMLElement | null>(null);
 
 	/**
-	 * Habitat key. The map draws six colours — coast and wetland share one — so
-	 * this is stated explicitly rather than derived from the seven habitat codes.
+	 * Habitat colours, in map order — coast and wetland share one, so this is
+	 * stated explicitly rather than derived from the seven habitat codes. It used
+	 * to print a key under the map; now it only groups the site list, where each
+	 * heading names the habitat and makes the key redundant.
 	 */
 	const LEGEND = [
 		{ color: '#2E6E52', label: 'Cloud forest' },
@@ -61,6 +119,7 @@
 
 	function pickSite(site: Site) {
 		selectedSiteId = selectedSiteId === site.id ? null : site.id;
+		openBird = null;
 		// On a narrow screen the card is below the fold; bring it into view.
 		if (selectedSiteId && window.matchMedia('(max-width: 900px)').matches) {
 			requestAnimationFrame(() => cardEl?.scrollIntoView({ behavior: 'smooth', block: 'start' }));
@@ -148,11 +207,6 @@
 				</svg>
 			</div>
 
-			<div class="map-legend">
-				{#each LEGEND as l (l.color)}
-					<span><span class="dot" style="background:{l.color}"></span>{l.label}</span>
-				{/each}
-			</div>
 		</div>
 
 		<div class="detail" bind:this={cardEl}>
@@ -209,29 +263,84 @@
 				{/if}
 			{:else if selectedSite}
 				<div class="site-card">
+					{#if SITE_PHOTOS[selectedSite.id]}
+						<img
+							class="sc-photo"
+							src={imageUrl(SITE_PHOTOS[selectedSite.id], 'card')}
+							alt={selectedSite.name}
+							loading="lazy"
+						/>
+					{/if}
 					<div class="sc-hab">
 						<span class="sc-hdot" style="background:{selectedSite.zoneColor}"></span>
 						{selectedSite.habitat}
 					</div>
-					<h3 class="sc-name">{selectedSite.name}</h3>
+					<div class="sc-title">
+						<h3 class="sc-name">{selectedSite.name}</h3>
+						{#if inForm}
+							<button
+								class="addbtn"
+								class:on={pickedSites.includes(selectedSite.name)}
+								onclick={() => toggleSite(selectedSite.name)}
+							>
+								{pickedSites.includes(selectedSite.name) ? '✓ On your itinerary' : '+ Add to itinerary'}
+							</button>
+						{/if}
+					</div>
 					<div class="sc-elev">{selectedSite.elev} m</div>
 					<p class="sc-blurb">{selectedSite.blurb}</p>
-					<div class="sc-birds-lbl">Birds here</div>
+					<div class="sc-birds-lbl">
+						Birds here <span class="sc-tap">— tap one for a photo</span>
+					</div>
 					<div class="sc-birds">
 						{#each selectedSite.birds.slice(0, BIRD_LIMIT) as bird (bird.name)}
-							<span
+							<button
 								class="bird"
 								class:tier-nca={bird.tier === 'nca'}
 								class:tier-mx={bird.tier === 'mx'}
 								class:tier-wmx={bird.tier === 'wmx'}
+								class:open={openBird === bird.name}
+								class:picked={pickedBirds.includes(bird.name)}
+								onclick={() => (openBird = openBird === bird.name ? null : bird.name)}
 							>
 								{bird.name}{#if bird.tier}<i class="bt">{TIER_LABELS[bird.tier]}</i>{/if}
-							</span>
+							</button>
 						{/each}
 						{#if selectedSite.birds.length > BIRD_LIMIT}
 							<span class="bird more">+{selectedSite.birds.length - BIRD_LIMIT} more</span>
 						{/if}
 					</div>
+
+					{#if openBird}
+						{@const shot = birdPhoto(openBird)}
+						<div class="bpop">
+							{#if shot}
+								<img src={shot.src} alt={openBird} loading="lazy" />
+							{:else}
+								<p class="bpop-none">No photo of this one yet.</p>
+							{/if}
+							<div class="bpop-body">
+								<p class="bpop-name">{openBird}</p>
+								{#if shot?.credit}<p class="bpop-cred">photo by {shot.credit}</p>{/if}
+								<div class="bpop-acts">
+									{#if inForm}
+										<button
+											class="addbtn"
+											class:on={pickedBirds.includes(openBird)}
+											onclick={() => toggleBird(openBird!)}
+										>
+											{pickedBirds.includes(openBird) ? '✓ On your list' : '+ Add to bird list'}
+										</button>
+									{/if}
+									{#if ACCOUNTS.has(openBird)}
+										<a class="bpop-link" href="{base}/birds/{ACCOUNTS.get(openBird)}">
+											Read the account →
+										</a>
+									{/if}
+								</div>
+							</div>
+						</div>
+					{/if}
 					<div class="sc-foot">
 						{#if compact}
 							<a class="btn" href="{base}/trips#personalised">See the full map</a>
@@ -459,20 +568,6 @@
 		opacity: 1;
 	}
 
-	.map-legend {
-		font-family: var(--mono);
-		font-size: 10px;
-		color: var(--stone);
-		padding: 0.7rem 0.3rem 0;
-		display: flex;
-		flex-wrap: wrap;
-		gap: 0.55rem 0.9rem;
-	}
-	.map-legend span {
-		display: inline-flex;
-		align-items: center;
-		gap: 5px;
-	}
 	.dot {
 		width: 9px;
 		height: 9px;
@@ -659,6 +754,125 @@
 		margin-bottom: 1.3rem;
 		border-bottom: 1px solid var(--rule);
 	}
+	.sc-photo {
+		display: block;
+		width: 100%;
+		aspect-ratio: 4 / 3;
+		object-fit: cover;
+		border-radius: 5px;
+		margin-bottom: 0.9rem;
+		background: var(--mist);
+	}
+	.sc-title {
+		display: flex;
+		align-items: flex-start;
+		justify-content: space-between;
+		gap: 0.8rem;
+		flex-wrap: wrap;
+	}
+	.addbtn {
+		font-family: var(--mono);
+		font-size: 10.5px;
+		letter-spacing: 0.04em;
+		white-space: nowrap;
+		padding: 5px 10px;
+		border-radius: 999px;
+		border: 1px solid rgba(214, 68, 111, 0.45);
+		background: rgba(214, 68, 111, 0.07);
+		color: var(--phwa);
+		cursor: pointer;
+		transition:
+			background 0.14s,
+			color 0.14s,
+			border-color 0.14s;
+	}
+	.addbtn:hover {
+		background: var(--phwa);
+		border-color: var(--phwa);
+		color: #fff;
+	}
+	.addbtn.on {
+		background: var(--canopy);
+		border-color: var(--canopy);
+		color: #fff;
+	}
+	.sc-tap {
+		font-family: var(--mono);
+		font-size: 10px;
+		letter-spacing: 0.02em;
+		text-transform: none;
+		color: var(--lichen);
+	}
+
+	/* The photo opens under the chips rather than over them, so the list keeps
+	   its place and you can work along it without the layout jumping. */
+	.bpop {
+		display: flex;
+		gap: 0.9rem;
+		align-items: flex-start;
+		margin-top: 0.9rem;
+		padding: 0.7rem;
+		border: 1px solid var(--rule);
+		border-radius: 5px;
+		background: var(--white);
+	}
+	.bpop img {
+		width: 132px;
+		aspect-ratio: 1;
+		object-fit: cover;
+		border-radius: 4px;
+		flex-shrink: 0;
+		background: var(--mist);
+	}
+	.bpop-none {
+		width: 132px;
+		aspect-ratio: 1;
+		display: flex;
+		align-items: center;
+		text-align: center;
+		border: 1px dashed var(--rule);
+		border-radius: 4px;
+		font-size: 11.5px;
+		font-style: italic;
+		color: var(--stone);
+		padding: 0 0.6rem;
+		flex-shrink: 0;
+		margin: 0;
+	}
+	.bpop-body {
+		min-width: 0;
+	}
+	.bpop-name {
+		font-size: 15px;
+		color: var(--ink);
+		margin: 0 0 2px;
+	}
+	.bpop-cred {
+		font-family: var(--mono);
+		font-size: 10px;
+		color: var(--lichen);
+		margin: 0 0 0.7rem;
+	}
+	.bpop-acts {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 0.6rem;
+	}
+	.bpop-link {
+		font-family: var(--mono);
+		font-size: 10.5px;
+		letter-spacing: 0.04em;
+		color: var(--canopy);
+		text-decoration: none;
+		border-bottom: 1px solid var(--rule);
+		padding-bottom: 1px;
+	}
+	.bpop-link:hover {
+		color: var(--phwa);
+		border-color: var(--phwa);
+	}
+
 	.sc-birds-lbl {
 		font-family: var(--mono);
 		font-size: 10px;
@@ -672,16 +886,45 @@
 		flex-wrap: wrap;
 		gap: 6px;
 	}
+	/* Chips are buttons now — each one opens that bird's photo — so they need a
+	   pointer and a hover state to say so. */
 	.bird {
 		display: inline-flex;
 		align-items: center;
 		gap: 5px;
+		font-family: var(--body);
 		font-size: 13px;
+		text-align: left;
 		background: var(--paper);
 		border: 1px solid var(--rule);
 		border-radius: 3px;
 		padding: 4px 9px;
 		color: var(--canopy);
+		cursor: pointer;
+		transition:
+			border-color 0.14s,
+			background 0.14s;
+	}
+	button.bird:hover {
+		border-color: var(--canopy);
+		background: var(--white);
+	}
+	.bird.open {
+		background: var(--ink);
+		border-color: var(--ink);
+		color: #fff;
+	}
+	/* A bird already on the list keeps a mark even when its photo is closed. */
+	.bird.picked::before {
+		content: '✓';
+		font-size: 10px;
+		color: var(--phwa);
+	}
+	.bird.open.picked::before {
+		color: #fff;
+	}
+	.bird.more {
+		cursor: default;
 	}
 	.bt {
 		font-family: var(--mono);
@@ -856,9 +1099,6 @@
 			border-left: 0;
 			border-right: 0;
 			padding: 0.25rem;
-		}
-		.map-legend {
-			font-size: 10.5px;
 		}
 		/* Bigger pins for finger-sized targets. Labels stay hidden until a pin is
 		   chosen — showing all eighteen at once collides badly around Tacaná and
