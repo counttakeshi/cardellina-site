@@ -8,13 +8,35 @@ export type ZoneCode =
 	| 'coast'
 	| 'wetland';
 
-/** Range tiers, in the order the live filter bar shows them. */
+/**
+ * The five range tiers a species can carry. These still drive the badge beside a
+ * bird's name, where the precision is worth having.
+ */
 export const TIERS: { code: TierCode; label: string; activeColor: string }[] = [
 	{ code: 'mx', label: 'Mexican endemic', activeColor: '#B8305A' },
 	{ code: 'wmx', label: 'West Mexican endemic', activeColor: '#9C5A16' },
 	{ code: 'nca', label: 'Northern Central America', activeColor: '#2F4A3C' },
 	{ code: 'mxca', label: 'Mexico & Central America', activeColor: '#6E7671' },
 	{ code: 'wide', label: 'Widespread Neotropical', activeColor: '#8A94A6' }
+];
+
+export type TierGroupCode = 'endemic' | 'nca' | 'wide';
+
+/**
+ * What the filter bar offers: three ranges rather than five. Five buttons made
+ * the reader choose between distinctions that only matter once you already know
+ * the answer — West Mexican endemic is a Mexican endemic, and "Mexico & Central
+ * America" and "Widespread Neotropical" both mean "not restricted to here".
+ */
+export const TIER_GROUPS: {
+	code: TierGroupCode;
+	label: string;
+	tiers: TierCode[];
+	activeColor: string;
+}[] = [
+	{ code: 'endemic', label: 'Mexican endemic', tiers: ['mx', 'wmx'], activeColor: '#B8305A' },
+	{ code: 'nca', label: 'Northern Central America', tiers: ['nca'], activeColor: '#2F4A3C' },
+	{ code: 'wide', label: 'Widespread', tiers: ['mxca', 'wide'], activeColor: '#8A94A6' }
 ];
 
 /** Habitat zones, in the order the live filter bar shows them. */

@@ -200,44 +200,48 @@
 					<a class="ebird" href={EBIRD_TARGETS} target="_blank" rel="noopener">
 						Build a Chiapas target list on eBird →
 					</a>
+
+					<!-- Birds picked off the map land here rather than under it: typing a
+					     name and tapping one are two ways of answering this question, so
+					     both answers belong to it. -->
+					{#if pickedBirds.length}
+						<div class="picked">
+							<div class="pk-row">
+								<span class="pk-lbl">From the map</span>
+								<div class="pk-chips">
+									{#each pickedBirds as bird (bird)}
+										<button
+											class="pk"
+											onclick={() => (pickedBirds = pickedBirds.filter((b) => b !== bird))}
+										>
+											{bird}<span class="pk-x">×</span>
+										</button>
+									{/each}
+								</div>
+							</div>
+						</div>
+					{/if}
 				</div>
 
 				<div class="q">
 					<h3><span class="qn">4</span> Anywhere you already want to go?</h3>
 					<SiteMap inForm bind:pickedSites bind:pickedBirds />
 
-					{#if pickedSites.length || pickedBirds.length}
+					{#if pickedSites.length}
 						<div class="picked">
-							{#if pickedSites.length}
-								<div class="pk-row">
-									<span class="pk-lbl">Itinerary</span>
-									<div class="pk-chips">
-										{#each pickedSites as site (site)}
-											<button
-												class="pk"
-												onclick={() => (pickedSites = pickedSites.filter((s) => s !== site))}
-											>
-												{site}<span class="pk-x">×</span>
-											</button>
-										{/each}
-									</div>
+							<div class="pk-row">
+								<span class="pk-lbl">Itinerary</span>
+								<div class="pk-chips">
+									{#each pickedSites as site (site)}
+										<button
+											class="pk"
+											onclick={() => (pickedSites = pickedSites.filter((s) => s !== site))}
+										>
+											{site}<span class="pk-x">×</span>
+										</button>
+									{/each}
 								</div>
-							{/if}
-							{#if pickedBirds.length}
-								<div class="pk-row">
-									<span class="pk-lbl">Birds</span>
-									<div class="pk-chips">
-										{#each pickedBirds as bird (bird)}
-											<button
-												class="pk"
-												onclick={() => (pickedBirds = pickedBirds.filter((b) => b !== bird))}
-											>
-												{bird}<span class="pk-x">×</span>
-											</button>
-										{/each}
-									</div>
-								</div>
-							{/if}
+							</div>
 						</div>
 					{/if}
 				</div>
@@ -658,7 +662,7 @@
 		letter-spacing: 0.07em;
 		text-transform: uppercase;
 		color: var(--stone);
-		min-width: 62px;
+		min-width: 76px;
 	}
 	.pk-chips {
 		display: flex;

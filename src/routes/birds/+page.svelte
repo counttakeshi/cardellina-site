@@ -1,16 +1,27 @@
 <script lang="ts">
 	import { base } from '$app/paths';
 	import { species, familyOrder, type Species } from '$lib/data/species';
-	import { TIERS, ZONES, ZONE_ORDER, type TierCode, type ZoneCode } from '$lib/data/taxonomy';
+	import {
+		TIER_GROUPS,
+		ZONES,
+		ZONE_ORDER,
+		type TierGroupCode,
+		type ZoneCode
+	} from '$lib/data/taxonomy';
 	import HabitatIcon from '$lib/components/HabitatIcon.svelte';
 	import Lightbox from '$lib/components/Lightbox.svelte';
 	import { creditFor } from '$lib/ledger';
 	import type { TourPhoto } from '$lib/data/tourDetails';
 
 	let query = $state('');
-	let activeTiers = $state<TierCode[]>([]);
+	let activeTiers = $state<TierGroupCode[]>([]);
+	/** Mobile only: the filters collapse so the sticky bar stays one row tall. */
+	let filtersOpen = $state(false);
+
 	let activeZones = $state<ZoneCode[]>([]);
 	let openGallery = $state<string | null>(null);
+
+	const activeCount = $derived(activeTiers.length + activeZones.length);
 
 	// Photos open in two stages. The camera button expands a modest strip in
 	// place, so a curious tap doesn't take over the screen; clicking one of those
@@ -36,7 +47,7 @@
 		lightboxIndex = i;
 	}
 
-	function toggleTier(code: TierCode) {
+	function toggleTier(code: TierGroupCode) {
 		activeTiers = activeTiers.includes(code)
 			? activeTiers.filter((t) => t !== code)
 			: [...activeTiers, code];
@@ -57,7 +68,9 @@
 				!q ||
 				s.commonName.toLowerCase().includes(q) ||
 				s.scientificName.toLowerCase().includes(q);
-			const okTier = activeTiers.length === 0 || activeTiers.includes(s.tier);
+			const okTier =
+				activeTiers.length === 0 ||
+				activeTiers.some((g) => TIER_GROUPS.find((t) => t.code === g)?.tiers.includes(s.tier));
 			const okZone = activeZones.length === 0 || s.zones.some((z) => activeZones.includes(z));
 			return okName && okTier && okZone;
 		});
@@ -82,15 +95,12 @@
 <div class="wrap masthead">
 	<p class="eyebrow">Chiapas Bird Library</p>
 	<h1>The birds worth travelling for</h1>
+	<!-- The count does the telling. The filters and the search box are visible
+	     directly below, so describing them was explaining the furniture. -->
 	<p class="intro">
-		A working reference to the endemics, near-endemics and specialities of Chiapas, plus some
-		emblematic lowland neotropical birds, with habitat and elevation. Filter by what you're after,
-		or search by name. We're adding full accounts as we go; linked names have them so far.
-	</p>
-	<p class="nb">
-		<b>NB</b> This isn't an exhaustive list of every bird in Chiapas. For the full state list,
-		<a href="https://ebird.org/region/MX-CHP" target="_blank" rel="noopener">eBird</a> is the place to
-		go.
+		{species.length} endemics, near-endemics and specialities, with habitat and elevation. Not the
+		full state list —
+		<a href="https://ebird.org/region/MX-CHP" target="_blank" rel="noopener">eBird</a> has that.
 	</p>
 </div>
 
@@ -105,32 +115,43 @@
 			oninput={() => (openGallery = null)}
 		/>
 
-		<div class="chips">
-			<span class="lbl">Range</span>
-			{#each TIERS as tier (tier.code)}
-				<button
-					class="chip tchip"
-					data-tier={tier.code}
-					aria-pressed={activeTiers.includes(tier.code)}
-					onclick={() => toggleTier(tier.code)}
-				>
-					{tier.label}
-				</button>
-			{/each}
-		</div>
+		<button
+			class="filter-toggle"
+			aria-expanded={filtersOpen}
+			onclick={() => (filtersOpen = !filtersOpen)}
+		>
+			Filters{#if activeCount}<span class="ft-count">{activeCount}</span>{/if}
+			<span class="ft-caret" class:up={filtersOpen}>▾</span>
+		</button>
 
-		<div class="chips">
-			<span class="lbl">Habitat</span>
-			{#each ZONE_ORDER as zone (zone)}
-				<button
-					class="chip zchip"
-					aria-pressed={activeZones.includes(zone)}
-					onclick={() => toggleZone(zone)}
-				>
-					<HabitatIcon {zone} size={14} />
-					{ZONES[zone].chipLabel}
-				</button>
-			{/each}
+		<div class="filters" class:open={filtersOpen}>
+			<div class="chips">
+				<span class="lbl">Range</span>
+				{#each TIER_GROUPS as tier (tier.code)}
+					<button
+						class="chip tchip"
+						data-tier={tier.code}
+						aria-pressed={activeTiers.includes(tier.code)}
+						onclick={() => toggleTier(tier.code)}
+					>
+						{tier.label}
+					</button>
+				{/each}
+			</div>
+
+			<div class="chips">
+				<span class="lbl">Habitat</span>
+				{#each ZONE_ORDER as zone (zone)}
+					<button
+						class="chip zchip"
+						aria-pressed={activeZones.includes(zone)}
+						onclick={() => toggleZone(zone)}
+					>
+						<HabitatIcon {zone} size={14} />
+						{ZONES[zone].chipLabel}
+					</button>
+				{/each}
+			</div>
 		</div>
 	</div>
 </div>
@@ -249,28 +270,15 @@
 	.masthead p.intro {
 		font-size: 18px;
 		color: var(--stone);
-		max-width: 66ch;
-		margin-bottom: 0.9rem;
+		max-width: 60ch;
 	}
-	.masthead p.nb {
-		font-size: 14px;
-		color: var(--stone);
-		max-width: 66ch;
-		font-style: italic;
-		padding-left: 0.9rem;
-		border-left: 2px solid var(--rule);
-	}
-	.masthead p.nb b {
-		font-style: normal;
-		font-family: var(--mono);
-		font-size: 10px;
-		letter-spacing: 0.06em;
-		text-transform: uppercase;
-		color: var(--lichen);
-		margin-right: 0.3rem;
-	}
-	.masthead p.nb a {
+	.masthead p.intro a {
 		color: var(--canopy);
+	}
+
+	/* Desktop shows every filter; the toggle is a mobile affordance only. */
+	.filter-toggle {
+		display: none;
 	}
 
 	.controls {
@@ -615,6 +623,75 @@
 		}
 		.right {
 			gap: 0.6rem;
+		}
+
+		/* The masthead and a two-row filter bar were together taller than the
+		   viewport's reading area, so scrolling the list showed three or four birds
+		   at a time. The heading tightens, and the filters fold behind a button so
+		   the sticky bar stays one row deep. */
+		.masthead {
+			padding: 1.8rem 0 1rem;
+		}
+		.masthead h1 {
+			margin-bottom: 0.6rem;
+		}
+		.masthead p.intro {
+			font-size: 15.5px;
+			line-height: 1.55;
+		}
+		.controls {
+			padding: 0.7rem 0;
+		}
+		.search {
+			font-size: 16px;
+			padding: 9px 12px;
+			margin-bottom: 0;
+		}
+		.filter-toggle {
+			display: inline-flex;
+			align-items: center;
+			gap: 7px;
+			margin-top: 0.6rem;
+			padding: 6px 11px;
+			font-family: var(--mono);
+			font-size: 11px;
+			letter-spacing: 0.05em;
+			text-transform: uppercase;
+			color: var(--canopy);
+			background: var(--white);
+			border: 1px solid var(--rule);
+			border-radius: 3px;
+			cursor: pointer;
+		}
+		.ft-count {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			min-width: 16px;
+			height: 16px;
+			padding: 0 4px;
+			border-radius: 999px;
+			background: var(--phwa);
+			color: #fff;
+			font-size: 10px;
+		}
+		.ft-caret {
+			transition: transform 0.15s ease;
+		}
+		.ft-caret.up {
+			transform: rotate(180deg);
+		}
+		.filters {
+			display: none;
+			padding-top: 0.7rem;
+		}
+		.filters.open {
+			display: block;
+		}
+		.chips .lbl {
+			min-width: 0;
+			width: 100%;
+			margin-bottom: 0.15rem;
 		}
 	}
 </style>
