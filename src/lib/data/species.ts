@@ -14,10 +14,11 @@ export interface Species {
 }
 
 /**
- * The Chiapas Bird Library — 125 species across 26 families,
+ * The Chiapas Bird Library — 132 species across 27 families,
  * transcribed from the live site. Family order is taxonomic, matching the original.
  */
-export const species: Species[] = [
+export const species: Species[
+] = [
 	{
 		slug: "slaty-breasted-tinamou",
 		commonName: "Slaty-breasted Tinamou",
@@ -293,6 +294,15 @@ export const species: Species[] = [
 		family: "Hummingbirds",
 		tier: "nca",
 		zones: ["pineoak"],
+		tierBadge: "NCA"
+	},
+	{
+		slug: "sparkling-tailed-woodstar",
+		commonName: "Sparkling-tailed Woodstar",
+		scientificName: "Tilmatura dupontii",
+		family: "Hummingbirds",
+		tier: "nca",
+		zones: ["pacslope"],
 		tierBadge: "NCA"
 	},
 	{
@@ -860,6 +870,14 @@ export const species: Species[] = [
 		tierBadge: "NCA"
 	},
 	{
+		slug: "elegant-euphonia",
+		commonName: "Elegant Euphonia",
+		scientificName: "Chlorophonia elegantissima",
+		family: "Finches, Euphonias & Siskins",
+		tier: "mxca",
+		zones: ["cloud", "pineoak"]
+	},
+	{
 		slug: "pine-siskin",
 		commonName: "Pine Siskin",
 		scientificName: "Spinus pinus",
@@ -986,6 +1004,14 @@ export const species: Species[] = [
 		zones: ["pineoak"]
 	},
 	{
+		slug: "graces-warbler",
+		commonName: "Grace's Warbler",
+		scientificName: "Setophaga graciae",
+		family: "Warblers",
+		tier: "mxca",
+		zones: ["pineoak"]
+	},
+	{
 		slug: "gray-throated-chat",
 		commonName: "Gray-throated Chat",
 		scientificName: "Granatellus sallaei",
@@ -1013,6 +1039,14 @@ export const species: Species[] = [
 		tierBadge: "W-MX"
 	},
 	{
+		slug: "red-faced-warbler",
+		commonName: "Red-faced Warbler",
+		scientificName: "Cardellina rubrifrons",
+		family: "Warblers",
+		tier: "mxca",
+		zones: ["pineoak", "cloud"]
+	},
+	{
 		slug: "azure-rumped-tanager",
 		commonName: "Azure-rumped Tanager",
 		scientificName: "Poecilostreptus cabanisi",
@@ -1036,6 +1070,14 @@ export const species: Species[] = [
 		family: "Tanagers, Buntings & allies",
 		tier: "mxca",
 		zones: ["cloud"]
+	},
+	{
+		slug: "flame-colored-tanager",
+		commonName: "Flame-colored Tanager",
+		scientificName: "Piranga bidentata",
+		family: "Tanagers, Buntings & allies",
+		tier: "mxca",
+		zones: ["cloud", "pineoak"]
 	},
 	{
 		slug: "golden-hooded-tanager",
@@ -1071,6 +1113,22 @@ export const species: Species[] = [
 		family: "Tanagers, Buntings & allies",
 		tier: "mxca",
 		zones: ["thorn"]
+	},
+	{
+		slug: "lesser-ground-cuckoo",
+		commonName: "Lesser Ground-Cuckoo",
+		scientificName: "Morococcyx erythropygus",
+		family: "Cuckoos",
+		tier: "mxca",
+		zones: ["thorn", "pacslope"]
+	},
+	{
+		slug: "lesser-roadrunner",
+		commonName: "Lesser Roadrunner",
+		scientificName: "Geococcyx velox",
+		family: "Cuckoos",
+		tier: "mxca",
+		zones: ["thorn"]
 	}
 ];
 
@@ -1079,6 +1137,7 @@ export const familyOrder: string[] = [
 	"Tinamous",
 	"Guans, Chachalacas & Quail",
 	"Pigeons & Doves",
+	"Cuckoos",
 	"Nightjars & Potoos",
 	"Hummingbirds",
 	"Rails, Crakes & Waterbirds",

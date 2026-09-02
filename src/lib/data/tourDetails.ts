@@ -385,6 +385,13 @@ export const tourDetails: TourDetail[] = [
 				"full": asset("images/feizal-and-valente-birdwatching-at-sumidero-canyon-AE0P0plDJlTR6J5M-full.webp"),
 				"alt": "Birding the canyon rim",
 				"caption": "Birding the canyon rim"
+			},
+			{
+				"thumb": asset("images/lesser-ground-cuckoo-sergio-md.webp"),
+				"full": asset("images/lesser-ground-cuckoo-sergio-full.webp"),
+				"alt": "Lesser Ground-Cuckoo",
+				"caption": "Lesser Ground-Cuckoo",
+				"credit": "Sergio Gómez Villaverde"
 			}
 		],
 		"habitat": "Deciduous forest · 1,000 m above the river",
@@ -466,6 +473,13 @@ export const tourDetails: TourDetail[] = [
 				"full": asset("images/tenam-puente-m6Ljg0VxNXhzeewd-full.webp"),
 				"alt": "Tenam Puente ruins",
 				"caption": "Tenam Puente ruins"
+			},
+			{
+				"thumb": asset("images/lesser-roadrunner-sergio-md.webp"),
+				"full": asset("images/lesser-roadrunner-sergio-full.webp"),
+				"alt": "Lesser Roadrunner",
+				"caption": "Lesser Roadrunner",
+				"credit": "Sergio Gómez Villaverde"
 			}
 		],
 		"habitat": "Pine-oak, dry forest & wetland",
@@ -605,6 +619,34 @@ export const tourDetails: TourDetail[] = [
 				"full": asset("images/5a00c77407956732f80e74b002410be9-mk3qQ8RrkvuyPp7o-full.webp"),
 				"alt": "Rose-bellied Bunting",
 				"caption": "Rose-bellied Bunting"
+			},
+			{
+				"thumb": asset("images/orange-breasted-bunting-sergio-md.webp"),
+				"full": asset("images/orange-breasted-bunting-sergio-full.webp"),
+				"alt": "Orange-breasted Bunting",
+				"caption": "Orange-breasted Bunting",
+				"credit": "Sergio Gómez Villaverde"
+			},
+			{
+				"thumb": asset("images/citreoline-trogon-sergio-md.webp"),
+				"full": asset("images/citreoline-trogon-sergio-full.webp"),
+				"alt": "Citreoline Trogon",
+				"caption": "Citreoline Trogon",
+				"credit": "Sergio Gómez Villaverde"
+			},
+			{
+				"thumb": asset("images/green-fronted-hummingbird-sergio-md.webp"),
+				"full": asset("images/green-fronted-hummingbird-sergio-full.webp"),
+				"alt": "Green-fronted Hummingbird",
+				"caption": "Green-fronted Hummingbird",
+				"credit": "Sergio Gómez Villaverde"
+			},
+			{
+				"thumb": asset("images/cinnamon-tailed-sparrow-sergio-md.webp"),
+				"full": asset("images/cinnamon-tailed-sparrow-sergio-full.webp"),
+				"alt": "Cinnamon-tailed Sparrow",
+				"caption": "Cinnamon-tailed Sparrow",
+				"credit": "Sergio Gómez Villaverde"
 			}
 		],
 		"habitat": "Sierra Madre · dry to humid forest",
@@ -730,6 +772,34 @@ export const tourDetails: TourDetail[] = [
 				"full": asset("images/black-capped-swallow-vYDUGfI4yq2m07pL-full.webp"),
 				"alt": "Black-capped Swallow",
 				"caption": "Black-capped Swallow",
+				"credit": "Sergio Gómez Villaverde"
+			},
+			{
+				"thumb": asset("images/orange-breasted-bunting-sergio-md.webp"),
+				"full": asset("images/orange-breasted-bunting-sergio-full.webp"),
+				"alt": "Orange-breasted Bunting",
+				"caption": "Orange-breasted Bunting",
+				"credit": "Sergio Gómez Villaverde"
+			},
+			{
+				"thumb": asset("images/citreoline-trogon-sergio-md.webp"),
+				"full": asset("images/citreoline-trogon-sergio-full.webp"),
+				"alt": "Citreoline Trogon",
+				"caption": "Citreoline Trogon",
+				"credit": "Sergio Gómez Villaverde"
+			},
+			{
+				"thumb": asset("images/cinnamon-tailed-sparrow-sergio-md.webp"),
+				"full": asset("images/cinnamon-tailed-sparrow-sergio-full.webp"),
+				"alt": "Cinnamon-tailed Sparrow",
+				"caption": "Cinnamon-tailed Sparrow",
+				"credit": "Sergio Gómez Villaverde"
+			},
+			{
+				"thumb": asset("images/navas-wren-sergio-md.webp"),
+				"full": asset("images/navas-wren-sergio-full.webp"),
+				"alt": "Nava's Wren",
+				"caption": "Nava's Wren",
 				"credit": "Sergio Gómez Villaverde"
 			}
 		],
@@ -880,6 +950,27 @@ export const tourDetails: TourDetail[] = [
 				"alt": "Long-tailed Manakin",
 				"caption": "Long-tailed Manakin",
 				"credit": "Jaime Pérez"
+			},
+			{
+				"thumb": asset("images/orange-breasted-bunting-sergio-md.webp"),
+				"full": asset("images/orange-breasted-bunting-sergio-full.webp"),
+				"alt": "Orange-breasted Bunting",
+				"caption": "Orange-breasted Bunting",
+				"credit": "Sergio Gómez Villaverde"
+			},
+			{
+				"thumb": asset("images/citreoline-trogon-sergio-md.webp"),
+				"full": asset("images/citreoline-trogon-sergio-full.webp"),
+				"alt": "Citreoline Trogon",
+				"caption": "Citreoline Trogon",
+				"credit": "Sergio Gómez Villaverde"
+			},
+			{
+				"thumb": asset("images/cinnamon-tailed-sparrow-sergio-md.webp"),
+				"full": asset("images/cinnamon-tailed-sparrow-sergio-full.webp"),
+				"alt": "Cinnamon-tailed Sparrow",
+				"caption": "Cinnamon-tailed Sparrow",
+				"credit": "Sergio Gómez Villaverde"
 			}
 		],
 		"length": "3 days · Pacific slope to the volcano",
@@ -1137,6 +1228,48 @@ export const tourDetails: TourDetail[] = [
 				"alt": "Collared Aracari",
 				"caption": "Collared Aracari",
 				"credit": "Jaime Pérez"
+			},
+			{
+				"thumb": asset("images/orange-breasted-bunting-sergio-md.webp"),
+				"full": asset("images/orange-breasted-bunting-sergio-full.webp"),
+				"alt": "Orange-breasted Bunting",
+				"caption": "Orange-breasted Bunting",
+				"credit": "Sergio Gómez Villaverde"
+			},
+			{
+				"thumb": asset("images/citreoline-trogon-sergio-md.webp"),
+				"full": asset("images/citreoline-trogon-sergio-full.webp"),
+				"alt": "Citreoline Trogon",
+				"caption": "Citreoline Trogon",
+				"credit": "Sergio Gómez Villaverde"
+			},
+			{
+				"thumb": asset("images/cinnamon-tailed-sparrow-sergio-md.webp"),
+				"full": asset("images/cinnamon-tailed-sparrow-sergio-full.webp"),
+				"alt": "Cinnamon-tailed Sparrow",
+				"caption": "Cinnamon-tailed Sparrow",
+				"credit": "Sergio Gómez Villaverde"
+			},
+			{
+				"thumb": asset("images/navas-wren-sergio-md.webp"),
+				"full": asset("images/navas-wren-sergio-full.webp"),
+				"alt": "Nava's Wren",
+				"caption": "Nava's Wren",
+				"credit": "Sergio Gómez Villaverde"
+			},
+			{
+				"thumb": asset("images/lesser-roadrunner-sergio-md.webp"),
+				"full": asset("images/lesser-roadrunner-sergio-full.webp"),
+				"alt": "Lesser Roadrunner",
+				"caption": "Lesser Roadrunner",
+				"credit": "Sergio Gómez Villaverde"
+			},
+			{
+				"thumb": asset("images/rose-bellied-bunting-sergio-md.webp"),
+				"full": asset("images/rose-bellied-bunting-sergio-full.webp"),
+				"alt": "Rose-bellied Bunting",
+				"caption": "Rose-bellied Bunting",
+				"credit": "Sergio Gómez Villaverde"
 			}
 		],
 		"length": "9–10 days · The complete sweep, highlands to volcano",
