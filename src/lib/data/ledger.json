@@ -676,12 +676,17 @@
 			"star": false,
 			"credit": "",
 			"files": [
-				"red-faced-warbler-m2Wa3zBX1PiLDJw9.jpg"
+				"red-faced-warbler-m2Wa3zBX1PiLDJw9.jpg",
+				"red-faced-warbler-sergio.jpg"
 			],
 			"used_on": [
 				"Day: San Cristóbal"
 			],
-			"note": ""
+			"note": "1 added from Sergio, September 2026.",
+			"credits": [
+				"",
+				"Sergio Gómez Villaverde"
+			]
 		},
 		"gartered-trogon": {
 			"name": "Gartered Trogon",
@@ -750,12 +755,17 @@
 			"star": false,
 			"credit": "",
 			"files": [
-				"sabes_aves_rivolis_hummingbird-4K4YnfKdpJWaTbqo.JPG"
+				"sabes_aves_rivolis_hummingbird-4K4YnfKdpJWaTbqo.JPG",
+				"rivolis-hummingbird-sergio.jpg"
 			],
 			"used_on": [
 				"Day: San Cristóbal"
 			],
-			"note": ""
+			"note": "1 added from Sergio, September 2026.",
+			"credits": [
+				"",
+				"Sergio Gómez Villaverde"
+			]
 		},
 		"rufous-collared-sparrow": {
 			"name": "Rufous Collared Sparrow",
@@ -774,12 +784,17 @@
 			"star": false,
 			"credit": "",
 			"files": [
-				"saves_aves_golden-cheeked_warbler-fO82HsR2CVu7j9hq.png"
+				"saves_aves_golden-cheeked_warbler-fO82HsR2CVu7j9hq.png",
+				"golden-cheeked-warbler-sergio.png"
 			],
 			"used_on": [
 				"Day: San Cristóbal"
 			],
-			"note": "migratory, small range; may not be on site yet"
+			"note": "migratory, small range; may not be on site yet 1 added from Sergio, September 2026.",
+			"credits": [
+				"",
+				"Sergio Gómez Villaverde"
+			]
 		},
 		"wine-throated-hummingbird": {
 			"name": "Wine-throated Hummingbird",
@@ -895,13 +910,18 @@
 			"star": true,
 			"credit": "Nagi Aboulenein",
 			"files": [
-				"rose-bellied-bunting-m2Wa32VjWETn9NkA.png"
+				"rose-bellied-bunting-m2Wa32VjWETn9NkA.png",
+				"rose-bellied-bunting-sergio.jpg"
 			],
 			"used_on": [
 				"Multi-day card: Full Endemics",
 				"Multi-day hub"
 			],
-			"note": "really good image"
+			"note": "really good image 1 added from Sergio, September 2026.",
+			"credits": [
+				"Nagi Aboulenein",
+				"Sergio Gómez Villaverde"
+			]
 		},
 		"pink-headed-warbler": {
 			"name": "Pink Headed Warbler",
@@ -1117,10 +1137,15 @@
 			"star": false,
 			"credit": "",
 			"files": [
-				"gray-throated-chat-zTM9es3GfozKWyeu.jpg"
+				"gray-throated-chat-zTM9es3GfozKWyeu.jpg",
+				"gray-throated-chat-sergio.jpg"
 			],
 			"used_on": [],
-			"note": ""
+			"note": "1 added from Sergio, September 2026.",
+			"credits": [
+				"",
+				"Sergio Gómez Villaverde"
+			]
 		},
 		"crimson-collared-tanager": {
 			"name": "Crimson-collared Tanager",
@@ -1137,10 +1162,15 @@
 			"star": true,
 			"credit": "",
 			"files": [
-				"lesser-roadrunner-xdL38EH9td5Y7xwb.jpg"
+				"lesser-roadrunner-xdL38EH9td5Y7xwb.jpg",
+				"lesser-roadrunner-sergio.jpg"
 			],
 			"used_on": [],
-			"note": ""
+			"note": "1 added from Sergio, September 2026.",
+			"credits": [
+				"",
+				"Sergio Gómez Villaverde"
+			]
 		},
 		"black-collared-hawk": {
 			"name": "Black-collared Hawk",
@@ -1228,10 +1258,17 @@
 			"star": true,
 			"credit": "",
 			"files": [
-				"sparkling-tailed-hummingbird-rx6NUrWTCsWDxH5N.png"
+				"sparkling-tailed-hummingbird-rx6NUrWTCsWDxH5N.png",
+				"sparkling-tailed-hummingbird-sergio-2.png",
+				"sparkling-tailed-hummingbird-sergio-3.png"
 			],
 			"used_on": [],
-			"note": ""
+			"note": "2 added from Sergio, September 2026.",
+			"credits": [
+				"",
+				"Sergio Gómez Villaverde",
+				"Sergio Gómez Villaverde"
+			]
 		},
 		"rufous-sabrewing": {
 			"name": "Rufous Sabrewing",
@@ -1375,6 +1412,78 @@
 				"Trip reports"
 			],
 			"note": "File was already in the image set and used on the site; the ledger entry was missing, so the map showed no photo for it."
+		},
+		"orange-breasted-bunting": {
+			"name": "Orange-breasted Bunting",
+			"star": true,
+			"credit": "Sergio Gómez Villaverde",
+			"files": [
+				"orange-breasted-bunting-sergio.jpg"
+			],
+			"used_on": [],
+			"note": "Added September 2026 from Sergio."
+		},
+		"lesser-ground-cuckoo": {
+			"name": "Lesser Ground-Cuckoo",
+			"star": true,
+			"credit": "Sergio Gómez Villaverde",
+			"files": [
+				"lesser-ground-cuckoo-sergio.jpg"
+			],
+			"used_on": [],
+			"note": "Added September 2026 from Sergio."
+		},
+		"citreoline-trogon": {
+			"name": "Citreoline Trogon",
+			"star": true,
+			"credit": "Sergio Gómez Villaverde",
+			"files": [
+				"citreoline-trogon-sergio.jpg",
+				"citreoline-trogon-sergio-2.jpg"
+			],
+			"used_on": [],
+			"note": "Added September 2026 from Sergio."
+		},
+		"green-fronted-hummingbird": {
+			"name": "Green-fronted Hummingbird",
+			"star": true,
+			"credit": "Sergio Gómez Villaverde",
+			"files": [
+				"green-fronted-hummingbird-sergio.png"
+			],
+			"used_on": [],
+			"note": "Added September 2026 from Sergio."
+		},
+		"flame-colored-tanager": {
+			"name": "Flame-colored Tanager",
+			"star": true,
+			"credit": "Sergio Gómez Villaverde",
+			"files": [
+				"flame-colored-tanager-sergio.png"
+			],
+			"used_on": [],
+			"note": "Added September 2026 from Sergio."
+		},
+		"cinnamon-tailed-sparrow": {
+			"name": "Cinnamon-tailed Sparrow",
+			"star": true,
+			"credit": "Sergio Gómez Villaverde",
+			"files": [
+				"cinnamon-tailed-sparrow-sergio.png"
+			],
+			"used_on": [],
+			"note": "Added September 2026 from Sergio."
+		},
+		"navas-wren": {
+			"name": "Nava's Wren",
+			"star": true,
+			"credit": "Sergio Gómez Villaverde",
+			"files": [
+				"navas-wren-sergio.png",
+				"navas-wren-sergio-2.png"
+			],
+			"used_on": [],
+			"note": "Added September 2026 from Sergio."
 		}
 	},
 	"tours": {

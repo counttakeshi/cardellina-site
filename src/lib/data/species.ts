@@ -1,4 +1,3 @@
-import { asset } from '$lib/ledger';
 import type { TierCode, ZoneCode } from './taxonomy';
 
 export interface Species {
@@ -10,8 +9,6 @@ export interface Species {
 	zones: ZoneCode[];
 	/** Short badge shown beside the name (MX / W-MX / NCA). Absent for non-endemics. */
 	tierBadge?: string;
-	/** Full-size photos shown in the inline gallery panel. */
-	photos?: string[];
 	/** True when the bird has a full account page at /birds/<slug>. */
 	hasAccount?: boolean;
 }
@@ -43,8 +40,7 @@ export const species: Species[] = [
 		scientificName: "Penelope purpurascens",
 		family: "Guans, Chachalacas & Quail",
 		tier: "wide",
-		zones: ["rainforest"],
-		photos: [asset("images/crested-guan-CKPoAxdUhmbgjmxZ-full.webp"),asset("images/crested-guan-2-IwURyHPiaRvtUSCZ-full.webp")]
+		zones: ["rainforest"]
 	},
 	{
 		slug: "great-curassow",
@@ -71,7 +67,6 @@ export const species: Species[] = [
 		tier: "nca",
 		zones: ["cloud"],
 		tierBadge: "NCA",
-		photos: [asset("images/horned-guan-mv02ExGWQJC0k2xv-full.webp")],
 		hasAccount: true
 	},
 	{
@@ -257,8 +252,7 @@ export const species: Species[] = [
 		family: "Hummingbirds",
 		tier: "nca",
 		zones: ["cloud"],
-		tierBadge: "NCA",
-		photos: [asset("images/green-throated-mountain-gem-1-BsIEUutE5zt2I5cS-full.webp"),asset("images/green-throated-mountain-gem-2-AfkqjWFIZA8j6CIi-full.webp")]
+		tierBadge: "NCA"
 	},
 	{
 		slug: "plain-capped-starthroat",
@@ -282,8 +276,7 @@ export const species: Species[] = [
 		scientificName: "Eugenes fulgens",
 		family: "Hummingbirds",
 		tier: "mxca",
-		zones: ["pineoak"],
-		photos: [asset("images/sabes_aves_rivolis_hummingbird-4K4YnfKdpJWaTbqo-full.webp")]
+		zones: ["pineoak"]
 	},
 	{
 		slug: "scaly-breasted-hummingbird",
@@ -300,8 +293,7 @@ export const species: Species[] = [
 		family: "Hummingbirds",
 		tier: "nca",
 		zones: ["pineoak"],
-		tierBadge: "NCA",
-		photos: [asset("images/slender-sheartail-qMw7TVBhS9Q1882N-full.webp")]
+		tierBadge: "NCA"
 	},
 	{
 		slug: "stripe-tailed-hummingbird",
@@ -317,8 +309,7 @@ export const species: Species[] = [
 		scientificName: "Basilinna leucotis",
 		family: "Hummingbirds",
 		tier: "mxca",
-		zones: ["pineoak"],
-		photos: [asset("images/sabes_aves_basilina_leucotis-KRKtKHveZzcPOm7i-full.webp")]
+		zones: ["pineoak"]
 	},
 	{
 		slug: "agami-heron",
@@ -374,8 +365,7 @@ export const species: Species[] = [
 		scientificName: "Spizaetus ornatus",
 		family: "Raptors",
 		tier: "wide",
-		zones: ["rainforest"],
-		photos: [asset("images/ornate-hawk-eagle-mP4OGNwpvehoNJQq-full.webp")]
+		zones: ["rainforest"]
 	},
 	{
 		slug: "black-and-white-owl",
@@ -383,8 +373,7 @@ export const species: Species[] = [
 		scientificName: "Strix nigrolineata",
 		family: "Owls",
 		tier: "mxca",
-		zones: ["rainforest"],
-		photos: [asset("images/black-and-white-owl-photo_-jaime-pa-c-rez-AR0L0bvD6wckvp2o-full.webp")]
+		zones: ["rainforest"]
 	},
 	{
 		slug: "crested-owl",
@@ -424,8 +413,7 @@ export const species: Species[] = [
 		scientificName: "Trogon melanocephalus",
 		family: "Trogons & Quetzal",
 		tier: "mxca",
-		zones: ["rainforest"],
-		photos: [asset("images/black-headed-trogon-8fNX9TIpLIQYBb1q-full.webp")]
+		zones: ["rainforest"]
 	},
 	{
 		slug: "citreoline-trogon",
@@ -442,8 +430,7 @@ export const species: Species[] = [
 		scientificName: "Trogon caligatus",
 		family: "Trogons & Quetzal",
 		tier: "mxca",
-		zones: ["rainforest"],
-		photos: [asset("images/gartered-trogon-mP432bzGwoUoL9jv-full.webp")]
+		zones: ["rainforest"]
 	},
 	{
 		slug: "mountain-trogon",
@@ -451,8 +438,7 @@ export const species: Species[] = [
 		scientificName: "Trogon mexicanus",
 		family: "Trogons & Quetzal",
 		tier: "mxca",
-		zones: ["pineoak"],
-		photos: [asset("images/mountain-trogon-M4lDamBkHGnFnPex-full.webp")]
+		zones: ["pineoak"]
 	},
 	{
 		slug: "resplendent-quetzal",
@@ -479,8 +465,7 @@ export const species: Species[] = [
 		family: "Motmots",
 		tier: "nca",
 		zones: ["cloud"],
-		tierBadge: "NCA",
-		photos: [asset("images/sabes_aves_blue-throated_motmot-NFfUHZuU255VnhZE-full.webp")]
+		tierBadge: "NCA"
 	},
 	{
 		slug: "russet-crowned-motmot",
@@ -489,8 +474,7 @@ export const species: Species[] = [
 		family: "Motmots",
 		tier: "wmx",
 		zones: ["thorn"],
-		tierBadge: "W-MX",
-		photos: [asset("images/russet-crowned-motmot-AR0MD0JLlJi4JGXO-full.webp")]
+		tierBadge: "W-MX"
 	},
 	{
 		slug: "turquoise-browed-motmot",
@@ -498,8 +482,7 @@ export const species: Species[] = [
 		scientificName: "Eumomota superciliosa",
 		family: "Motmots",
 		tier: "mxca",
-		zones: ["thorn"],
-		photos: [asset("images/turquoise-browed-motmot-hwikmYfulmi5nHCi-full.webp"),asset("images/turquoise-browed-motmot-Aq2WEx31G4floEx0-full.webp")]
+		zones: ["thorn"]
 	},
 	{
 		slug: "collared-aracari",
@@ -507,8 +490,7 @@ export const species: Species[] = [
 		scientificName: "Pteroglossus torquatus",
 		family: "Toucans",
 		tier: "mxca",
-		zones: ["rainforest"],
-		photos: [asset("images/collared-aracari-photo_-jaime-pa-c-rez-AMq1q4LoPbF5nQvP-full.webp"),asset("images/collared-aracari-2-LXlUuKMlNxIaN8DU-full.webp")]
+		zones: ["rainforest"]
 	},
 	{
 		slug: "keel-billed-toucan",
@@ -516,8 +498,7 @@ export const species: Species[] = [
 		scientificName: "Ramphastos sulfuratus",
 		family: "Toucans",
 		tier: "mxca",
-		zones: ["rainforest"],
-		photos: [asset("images/1759259147357-Y4LPxjKeznsOKOKp-full.webp")]
+		zones: ["rainforest"]
 	},
 	{
 		slug: "northern-emerald-toucanet",
@@ -567,8 +548,7 @@ export const species: Species[] = [
 		scientificName: "Amazona autumnalis",
 		family: "Parrots",
 		tier: "mxca",
-		zones: ["rainforest"],
-		photos: [asset("images/red-lored-amazon-MwRLmtrCILFf0EgE-full.webp")]
+		zones: ["rainforest"]
 	},
 	{
 		slug: "scarlet-macaw",
@@ -576,8 +556,7 @@ export const species: Species[] = [
 		scientificName: "Ara macao",
 		family: "Parrots",
 		tier: "wide",
-		zones: ["rainforest"],
-		photos: [asset("images/scarlet-macaw-VuZUDrvypQ0vU3dv-full.webp")]
+		zones: ["rainforest"]
 	},
 	{
 		slug: "yellow-headed-amazon",
@@ -586,8 +565,7 @@ export const species: Species[] = [
 		family: "Parrots",
 		tier: "mx",
 		zones: ["coast"],
-		tierBadge: "MX",
-		photos: [asset("images/yellow-headed-amazon-RwBRxOKOv3wii34L-full.webp")]
+		tierBadge: "MX"
 	},
 	{
 		slug: "yellow-naped-amazon",
@@ -604,8 +582,7 @@ export const species: Species[] = [
 		family: "Tyrant Flycatchers",
 		tier: "nca",
 		zones: ["thorn"],
-		tierBadge: "NCA",
-		photos: [asset("images/saves_aves_belted_flyctacher-yle4qopkavupwgkq_le_upscale_prime_light_ai_30-W0ccOL9OyvD1PW60-full.webp")]
+		tierBadge: "NCA"
 	},
 	{
 		slug: "flammulated-flycatcher",
@@ -623,8 +600,7 @@ export const species: Species[] = [
 		family: "Tyrant Flycatchers",
 		tier: "nca",
 		zones: ["cloud"],
-		tierBadge: "NCA",
-		photos: [asset("images/guatemalan-tyrannulet-HFmbr5dlTSRWWVe9-full.webp")]
+		tierBadge: "NCA"
 	},
 	{
 		slug: "pine-flycatcher",
@@ -649,8 +625,7 @@ export const species: Species[] = [
 		scientificName: "Platyrinchus cancrominus",
 		family: "Tyrant Flycatchers",
 		tier: "mxca",
-		zones: ["rainforest"],
-		photos: [asset("images/stub-tailed-spadebill-pyQ7sCdb07PFlsDi-full.webp")]
+		zones: ["rainforest"]
 	},
 	{
 		slug: "yellowish-flycatcher",
@@ -668,8 +643,7 @@ export const species: Species[] = [
 		family: "Cotingas & Manakins",
 		tier: "nca",
 		zones: ["pacslope"],
-		tierBadge: "NCA",
-		photos: [asset("images/long-tailed-manakin-photo_-jaime-pa-c-rez-AoPWPGpV7yI0kkl5-full.webp")]
+		tierBadge: "NCA"
 	},
 	{
 		slug: "lovely-cotinga",
@@ -709,8 +683,7 @@ export const species: Species[] = [
 		scientificName: "Cyanolyca cucullata",
 		family: "Jays",
 		tier: "mxca",
-		zones: ["cloud"],
-		photos: [asset("images/azure-hooded-jay-w6Bqp2psIEeDOfzQ-full.webp")]
+		zones: ["cloud"]
 	},
 	{
 		slug: "black-throated-jay",
@@ -745,8 +718,7 @@ export const species: Species[] = [
 		family: "Swallows",
 		tier: "nca",
 		zones: ["pineoak"],
-		tierBadge: "NCA",
-		photos: [asset("images/black-capped-swallow-vYDUGfI4yq2m07pL-full.webp")]
+		tierBadge: "NCA"
 	},
 	{
 		slug: "giant-wren",
@@ -755,8 +727,7 @@ export const species: Species[] = [
 		family: "Wrens",
 		tier: "mx",
 		zones: ["coast"],
-		tierBadge: "MX",
-		photos: [asset("images/_dsc0870-UHFcPZY27edAPFr1-full.webp")]
+		tierBadge: "MX"
 	},
 	{
 		slug: "nava-s-wren",
@@ -782,8 +753,7 @@ export const species: Species[] = [
 		family: "Wrens",
 		tier: "nca",
 		zones: ["cloud"],
-		tierBadge: "NCA",
-		photos: [asset("images/sabes_aves_rufous-browed_wren-ozWNJPc9Zns8f5zO-full.webp")]
+		tierBadge: "NCA"
 	},
 	{
 		slug: "russet-naped-wren",
@@ -817,8 +787,7 @@ export const species: Species[] = [
 		scientificName: "Catharus mexicanus",
 		family: "Thrushes & Solitaires",
 		tier: "mxca",
-		zones: ["cloud"],
-		photos: [asset("images/black-headed-nightingale-thrush-nTqJPgsmKfcxaxAu-full.webp")]
+		zones: ["cloud"]
 	},
 	{
 		slug: "mountain-thrush",
@@ -852,8 +821,7 @@ export const species: Species[] = [
 		scientificName: "Myadestes unicolor",
 		family: "Thrushes & Solitaires",
 		tier: "mxca",
-		zones: ["cloud"],
-		photos: [asset("images/slate-colored-solitaire-ED5x0xZ5NKF6Z27s-full.webp")]
+		zones: ["cloud"]
 	},
 	{
 		slug: "yellow-throated-nightingale-thrush",
@@ -871,8 +839,7 @@ export const species: Species[] = [
 		family: "Mockingbirds",
 		tier: "nca",
 		zones: ["cloud","pineoak"],
-		tierBadge: "NCA",
-		photos: [asset("images/blue-and-white-mockingbird-1-NCnEIapZ3vpQC2sm-full.webp"),asset("images/blue-and-white-mockingbird-2-XpFHUZKbXKFSe1oj-full.webp")]
+		tierBadge: "NCA"
 	},
 	{
 		slug: "black-capped-siskin",
@@ -890,8 +857,7 @@ export const species: Species[] = [
 		family: "Finches, Euphonias & Siskins",
 		tier: "nca",
 		zones: ["cloud"],
-		tierBadge: "NCA",
-		photos: [asset("images/sabes_aves_blue-crowned_chlorophonia-1-YD0w1yZbj5fb90o7-full.webp")]
+		tierBadge: "NCA"
 	},
 	{
 		slug: "pine-siskin",
@@ -967,8 +933,7 @@ export const species: Species[] = [
 		scientificName: "Atlapetes albinucha",
 		family: "Sparrows & Brushfinches",
 		tier: "mxca",
-		zones: ["cloud"],
-		photos: [asset("images/white-naped-brushfinch-EOFbbzpwUGpok9UL-full.webp")]
+		zones: ["cloud"]
 	},
 	{
 		slug: "bar-winged-oriole",
@@ -994,8 +959,7 @@ export const species: Species[] = [
 		family: "Blackbirds & Orioles",
 		tier: "wmx",
 		zones: ["thorn"],
-		tierBadge: "W-MX",
-		photos: [asset("images/yellow-winged-cacique-si9c5eXF04ZJMbgB-full.webp")]
+		tierBadge: "W-MX"
 	},
 	{
 		slug: "fan-tailed-warbler",
@@ -1019,8 +983,7 @@ export const species: Species[] = [
 		scientificName: "Setophaga chrysoparia",
 		family: "Warblers",
 		tier: "mxca",
-		zones: ["pineoak"],
-		photos: [asset("images/saves_aves_golden-cheeked_warbler-fO82HsR2CVu7j9hq-full.webp")]
+		zones: ["pineoak"]
 	},
 	{
 		slug: "gray-throated-chat",
@@ -1038,7 +1001,6 @@ export const species: Species[] = [
 		tier: "nca",
 		zones: ["pineoak","cloud"],
 		tierBadge: "NCA",
-		photos: [asset("images/pink-headed-warbler-Y4LDbp8VMLCx8rRX-full.webp")],
 		hasAccount: true
 	},
 	{
@@ -1100,7 +1062,6 @@ export const species: Species[] = [
 		tier: "mx",
 		zones: ["thorn"],
 		tierBadge: "MX",
-		photos: [asset("images/rose-bellied-bunting-m2Wa32VjWETn9NkA-full.webp")],
 		hasAccount: true
 	},
 	{
@@ -1109,8 +1070,7 @@ export const species: Species[] = [
 		scientificName: "Pheucticus chrysopeplus",
 		family: "Tanagers, Buntings & allies",
 		tier: "mxca",
-		zones: ["thorn"],
-		photos: [asset("images/yellow-grosbeak-EBPvotaS7J1A3VuE-full.webp")]
+		zones: ["thorn"]
 	}
 ];
 

@@ -35,8 +35,15 @@ export interface LedgerPhoto {
 	name: string;
 	/** Photo quality only — NOT an instruction to use it. */
 	star: boolean;
-	/** Photographer. Empty string means no credit required. */
+	/** Photographer for the entry. Empty string means no credit required. */
 	credit: string;
+	/**
+	 * Per-file photographers, index-matched to `files`, for the entries where one
+	 * species has pictures by more than one person. Absent means `credit` covers
+	 * every file. Without this a second photographer's work either takes the
+	 * first photographer's name or gives them ours — both are misattribution.
+	 */
+	credits?: string[];
 	/** First file is the primary image; the rest are alternates. */
 	files: string[];
 	used_on: string[];
@@ -127,9 +134,33 @@ export function imageFor(speciesName: string, variant: ImageVariant = 'full'): s
 	return photo?.files[0] ? imageUrl(photo.files[0], variant) : '';
 }
 
-/** Photographer for a species, or '' when none is required. */
+/** Photographer for a species' primary photo, or '' when none is required. */
 export function creditFor(speciesName: string): string {
-	return photoFor(speciesName)?.credit ?? '';
+	return creditForIndex(speciesName, 0);
+}
+
+/** Photographer for one of a species' photos, by position in `files`. */
+export function creditForIndex(speciesName: string, index: number): string {
+	const photo = photoFor(speciesName);
+	if (!photo) return '';
+	return photo.credits?.[index] ?? photo.credit ?? '';
+}
+
+/**
+ * Every photo we hold of a species, each with the right photographer beside it.
+ * Read from the ledger rather than from a list baked into species.ts, so adding
+ * a picture to the ledger is enough to make it appear.
+ */
+export function photosFor(
+	speciesName: string,
+	variant: ImageVariant = 'full'
+): { src: string; credit: string }[] {
+	const photo = photoFor(speciesName);
+	if (!photo) return [];
+	return photo.files.map((file, i) => ({
+		src: imageUrl(file, variant),
+		credit: photo.credits?.[i] ?? photo.credit ?? ''
+	}));
 }
 
 export function getLocation(id: string): LedgerLocation | undefined {

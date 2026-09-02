@@ -10,7 +10,7 @@
 	} from '$lib/data/taxonomy';
 	import HabitatIcon from '$lib/components/HabitatIcon.svelte';
 	import Lightbox from '$lib/components/Lightbox.svelte';
-	import { creditFor } from '$lib/ledger';
+	import { photosFor } from '$lib/ledger';
 	import type { TourPhoto } from '$lib/data/tourDetails';
 
 	let query = $state('');
@@ -30,19 +30,24 @@
 	let lightboxPhotos = $state<TourPhoto[]>([]);
 	let lightboxIndex = $state<number | null>(null);
 
-	/** Photographer, where the ledger records one. Not every photo needs a credit. */
-	function credit(bird: Species): string {
-		return creditFor(bird.commonName);
+	/**
+	 * Photos come from the ledger rather than a list baked into species.ts. The
+	 * two had drifted — nine birds had more pictures in the ledger than the
+	 * library was showing, the Pink-headed Warbler six against one — and each
+	 * photo carries its own photographer, so a species shot by two people credits
+	 * both correctly.
+	 */
+	function shots(bird: Species) {
+		return photosFor(bird.commonName);
 	}
 
 	function openLightbox(bird: Species, i: number) {
-		const by = credit(bird);
-		lightboxPhotos = (bird.photos ?? []).map((src, n) => ({
-			thumb: src,
-			full: src,
+		lightboxPhotos = shots(bird).map((p, n) => ({
+			thumb: p.src,
+			full: p.src,
 			alt: `${bird.commonName}, photo ${n + 1}`,
 			caption: bird.commonName,
-			credit: by || undefined
+			credit: p.credit || undefined
 		}));
 		lightboxIndex = i;
 	}
@@ -161,6 +166,7 @@
 		<h3 class="fam">{group.family}</h3>
 		<div class="fam-list">
 			{#each group.list as bird (bird.slug)}
+				{@const pics = shots(bird)}
 				<div class="sp">
 					<div class="sp-main">
 						<span class="bn">
@@ -177,7 +183,7 @@
 					</div>
 
 					<span class="right">
-						{#if bird.photos?.length}
+						{#if pics.length}
 							<button
 								class="mbtn"
 								class:active={openGallery === bird.slug}
@@ -192,8 +198,8 @@
 									<circle cx="12" cy="13" r="4" />
 								</svg>
 								<span class="mbtn-t">
-									{#if openGallery === bird.slug}Hide{:else if bird.photos.length > 1}{bird.photos
-												.length} photos{:else}Photo{/if}
+									{#if openGallery === bird.slug}Hide{:else if pics.length > 1}{pics.length}
+										photos{:else}Photo{/if}
 								</span>
 							</button>
 						{/if}
@@ -205,22 +211,22 @@
 					</span>
 				</div>
 
-				{#if openGallery === bird.slug && bird.photos?.length}
+				{#if openGallery === bird.slug && pics.length}
 					<div class="photo-panel">
 						<div class="pp-inner">
-							{#each bird.photos as photo, i (photo)}
+							{#each pics as pic, i (pic.src)}
 								<figure>
 									<button
 										class="pp-zoom"
 										onclick={() => openLightbox(bird, i)}
 										aria-label="View {bird.commonName} full size"
 									>
-										<img src={photo} alt="{bird.commonName} photo {i + 1}" loading="lazy" />
+										<img src={pic.src} alt="{bird.commonName} photo {i + 1}" loading="lazy" />
 										<span class="pp-hint">Full size ⤡</span>
 									</button>
 									<figcaption>
 										{bird.commonName}
-										{#if credit(bird)}<span class="pp-credit">photo by {credit(bird)}</span>{/if}
+										{#if pic.credit}<span class="pp-credit">photo by {pic.credit}</span>{/if}
 									</figcaption>
 								</figure>
 							{/each}
