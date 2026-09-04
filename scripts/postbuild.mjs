@@ -109,8 +109,16 @@ function stub(destination) {
 }
 
 const all = { ...redirects, ...wordpressOnly };
+// A stub must never land on top of a real page. Where an old slug survived onto
+// the new site unchanged, the page already answers that URL, and overwriting it
+// leaves a page that redirects to itself — an endless reload for the reader.
+const real = new Set(routes);
 let written = 0;
 for (const [from, to] of Object.entries(all)) {
+	if (real.has(from)) {
+		console.log(`postbuild: skipped ${from} — a real page already lives there`);
+		continue;
+	}
 	const slug = from.replace(/^\//, '');
 	const html = stub(to);
 	// Both forms: /old-slug and /old-slug/ — the WordPress spent months sending
@@ -120,4 +128,4 @@ for (const [from, to] of Object.entries(all)) {
 	writeFileSync(join(BUILD, slug, 'index.html'), html);
 	written += 2;
 }
-console.log(`postbuild: ${written} redirect stubs for ${Object.keys(all).length} old URLs`);
+console.log(`postbuild: ${written} redirect stubs for ${written / 2} old URLs`);

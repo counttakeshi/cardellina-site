@@ -15,7 +15,15 @@ self.addEventListener('install', e => {
 self.addEventListener('activate', e => {
   e.waitUntil(
     caches.keys()
-      .then(keys => Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k))))
+      // Only this app's own old caches. Caches are shared across a whole origin,
+      // and once the main site moves to cardellina.com this app sits on the same
+      // one — so deleting everything that isn't ours would wipe the birding
+      // site's caches for anybody who happens to open this page.
+      .then(keys =>
+        Promise.all(
+          keys.filter(k => k.startsWith('muni-') && k !== CACHE).map(k => caches.delete(k))
+        )
+      )
       .then(() => self.clients.claim())
   );
 });

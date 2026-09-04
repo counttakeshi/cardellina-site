@@ -23,9 +23,9 @@ export const redirects = {
 	'/partner-projects': '/partners',
 	'/birds-of-chiapas': '/birds',
 	'/chiapas-birdwatching-blog': '/trip-reports',
-	// Same slug on both sites, but it still needs a stub: the old URL had no
-	// trailing slash and the new route is a different file.
-	'/privacy-policy': '/privacy-policy',
+	// NB /privacy-policy is deliberately absent: the slug is identical on both
+	// sites, so the real page already answers that URL. A stub here would
+	// overwrite it with a page that redirects to itself.
 
 	// ── bird accounts ────────────────────────────────────────────────────
 	'/pink-headed-warbler': '/birds/pink-headed-warbler',
