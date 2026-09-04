@@ -37,12 +37,6 @@ export interface Guide {
 	/** Lead guides only: the line under the name. */
 	role?: string;
 	photo: string;
-	/**
-	 * Small 4:5 crop for the contact cards. Not a circle: as the homepage note
-	 * puts it, a circle throws away the binoculars, the scope and the habitat,
-	 * which is most of what makes a guide photo persuasive.
-	 */
-	avatar?: string;
 	/** Where they guide. A badge over the photo on lead blocks, a line on cards. */
 	tag: string;
 	bio: string[];
@@ -61,7 +55,6 @@ export const guides: Guide[] = [
 		name: 'Valente González',
 		role: 'Tour leader & guide · born in Chiapas',
 		photo: imageUrl('valente-guiding-photo-YBgb3LeK7nUXWJr2.jpg', 'full'),
-		avatar: imageUrl('valente-explaining.png', 'portrait'),
 		tag: 'Comitán, Chiapas',
 		bio: [
 			'Valente, born in San Cristóbal de las Casas, got his first pair of binoculars at seven years old. Watching birds in his garden as a child and learning their habitat ranges, he has been in love with birding ever since. His knowledge of Chiapas’s birds, their niches and secret habitats is unrivalled.',
@@ -106,7 +99,6 @@ export const guides: Guide[] = [
 		name: 'Ben Simmons',
 		role: 'Tour leader & guide · from London, in Latin America since 2011',
 		photo: imageUrl('ben-guide-photo-Awv4vr7rLzfqJD6j.jpg', 'full'),
-		avatar: imageUrl('ben-guide-photo-Awv4vr7rLzfqJD6j.jpg', 'portrait'),
 		tag: 'San Cristóbal de las Casas',
 		flip: true,
 		bio: [

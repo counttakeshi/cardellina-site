@@ -210,31 +210,6 @@
 	</div>
 </section>
 
-<!-- SPEAK TO ONE OF US -->
-<section class="direct">
-	<div class="wrap">
-		<p class="eyebrow">No middle man</p>
-		<h2>Speak to one of us directly</h2>
-		<p class="sub">
-			Pick whichever of us you'd rather talk to and the enquiry comes to them by name.
-		</p>
-		<div class="dgrid">
-			{#each leadGuides as guide (guide.slug)}
-				<a class="dcard" href="{base}/contact?guide={guide.slug}">
-					{#if guide.avatar}
-						<img src={guide.avatar} alt="" loading="lazy" />
-					{/if}
-					<span class="dtext">
-						<span class="dname">{guide.name}</span>
-						<span class="dwhere">{guide.tag}</span>
-					</span>
-					<span class="darrow" aria-hidden="true">→</span>
-				</a>
-			{/each}
-		</div>
-	</div>
-</section>
-
 <!-- VALUES -->
 <section class="values">
 	<div class="wrap">
@@ -603,78 +578,6 @@
 		border: 0;
 	}
 
-	.direct {
-		padding: 4.5rem 0;
-		background: var(--paper);
-	}
-	.direct h2 {
-		font-family: var(--display);
-		font-weight: 400;
-		font-size: clamp(24px, 3vw, 34px);
-		margin-bottom: 0.6rem;
-	}
-	.direct .sub {
-		color: var(--stone);
-		max-width: 56ch;
-		margin-bottom: 2.2rem;
-	}
-	.dgrid {
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		gap: 1.2rem;
-	}
-	.dcard {
-		display: flex;
-		align-items: center;
-		gap: 1.1rem;
-		background: var(--white);
-		border: 1px solid var(--rule);
-		border-radius: 8px;
-		padding: 1.1rem 1.3rem;
-		text-decoration: none;
-		color: inherit;
-		transition:
-			border-color 0.16s,
-			transform 0.16s;
-	}
-	.dcard:hover {
-		border-color: var(--canopy);
-		transform: translateY(-2px);
-	}
-	.dcard img {
-		width: 76px;
-		height: 95px;
-		border-radius: 6px;
-		object-fit: cover;
-		flex-shrink: 0;
-	}
-	.dtext {
-		display: flex;
-		flex-direction: column;
-		gap: 2px;
-		flex: 1;
-	}
-	.dname {
-		font-family: var(--display);
-		font-size: 20px;
-		line-height: 1.15;
-	}
-	.dwhere {
-		font-family: var(--mono);
-		font-size: 10px;
-		letter-spacing: 0.05em;
-		text-transform: uppercase;
-		color: var(--stone);
-	}
-	.darrow {
-		font-size: 18px;
-		color: var(--canopy);
-		flex-shrink: 0;
-	}
-	.dcard:hover .darrow {
-		color: var(--phwa);
-	}
-
 	.values {
 		background: var(--mist);
 		padding: 4.5rem 0;
@@ -727,7 +630,6 @@
 		}
 		.vgrid,
 		.wgrid,
-		.dgrid,
 		.tabs {
 			grid-template-columns: 1fr;
 		}
