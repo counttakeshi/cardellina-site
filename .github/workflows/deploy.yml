@@ -31,9 +31,14 @@ jobs:
       # Served from https://<user>.github.io/cardellina-site/, so every link needs
       # that prefix. When the custom domain goes live, set the repo variable
       # USE_CUSTOM_DOMAIN to "true" and this drops to an empty base path.
+      #
+      # The test is inverted on purpose. An empty string is falsy in an Actions
+      # expression, so with '' in the true slot the whole thing falls through to
+      # the fallback and the base path never empties. Keep the non-empty value
+      # in the true slot.
       - run: npm run build
         env:
-          BASE_PATH: ${{ vars.USE_CUSTOM_DOMAIN == 'true' && '' || format('/{0}', github.event.repository.name) }}
+          BASE_PATH: ${{ vars.USE_CUSTOM_DOMAIN != 'true' && format('/{0}', github.event.repository.name) || '' }}
 
       # CNAME must only be published once DNS actually points at GitHub Pages,
       # otherwise Pages tries to serve the custom domain and the project URL 404s.
