@@ -70,5 +70,8 @@ export const wordpressOnly = {
 	'/faqs': '/contact',
 	'/chiapas-coastline': '/trips',
 	'/chiapas-birdwatching-guides': '/guides',
-	'/chiapas-birdwatching-guide': '/guides'
+	// Singular and plural split on purpose, and this is not a typo: the plural
+	// was the page about the two of us, while the singular was a how-to about
+	// birding in Chiapas, which belongs with the bird accounts.
+	'/chiapas-birdwatching-guide': '/birds'
 };
