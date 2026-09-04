@@ -448,6 +448,33 @@
 		line-height: 1.5;
 	}
 
+	/* ═══ SECTION SEAMS ═══
+	   Every section takes the global 5.5rem top and bottom, so the gap between
+	   any two is a uniform 176px. That reads correctly only where the change of
+	   background band marks the boundary — measured, those seams sit at 13–16:1
+	   contrast. Three of the seven are near-invisible instead:
+
+	     .case → .trips    white → paper   1.07:1
+	     .reviews → .genus  mist → paper   1.16:1
+	     .genus → .how     paper → mist    1.16:1
+
+	   At those, 176px of blank has nothing saying a section ended, so it reads
+	   as a hole in the page rather than a transition. A hairline was the first
+	   thing tried and is barely perceptible — --rule is itself within a few
+	   points of mist. Tightening the seam is what actually works. Stated as a
+	   pair rule rather than as padding on the six sections, so reordering them
+	   cannot leave the wrong side tightened. */
+	.case:has(+ .trips),
+	.reviews:has(+ .genus),
+	.genus:has(+ .how) {
+		padding-bottom: 3.25rem;
+	}
+	.case + .trips,
+	.reviews + .genus,
+	.genus + .how {
+		padding-top: 3.25rem;
+	}
+
 	/* ═══ THE CASE ═══ */
 	.case {
 		background: var(--white);
