@@ -37,9 +37,14 @@ jobs:
 
       # CNAME must only be published once DNS actually points at GitHub Pages,
       # otherwise Pages tries to serve the custom domain and the project URL 404s.
+      #
+      # www, not the apex: every one of the 29 indexed URLs from the old site is
+      # on www.cardellina.com, and moving platform and canonical host in the same
+      # step would be two migrations at once. Pages redirects the apex to www on
+      # its own, so cardellina.com still works.
       - name: Add CNAME for the custom domain
         if: vars.USE_CUSTOM_DOMAIN == 'true'
-        run: echo "cardellina.com" > build/CNAME
+        run: echo "www.cardellina.com" > build/CNAME
 
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
