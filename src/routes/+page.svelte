@@ -21,7 +21,7 @@
 	<title>Cardellina Birdwatching Tours in Chiapas | Cardellina - Chiapas Birding Tours</title>
 	<meta
 		name="description"
-		content="Nearly 700 species and more than forty endemics and near-endemics. Small-group and bespoke birding tours across Chiapas, guided by two obsessives who live here."
+		content="Nearly 700 species and more than forty endemics and near-endemics. Small-group and bespoke birding tours across Chiapas, guided by birders who live here."
 	/>
 </svelte:head>
 

@@ -214,7 +214,7 @@
 			"blurb": "A Pacific-slope foothill site above the coastal plain, adding dry-forest and foothill species to a coastal loop.",
 			"key_species": [
 				"Blue-tailed Hummingbird",
-				"Sparkling-tailed Woodstar",
+				"Sparkling-tailed Hummingbird",
 				"Russet-crowned Motmot",
 				"Long-tailed Manakin",
 				"Rufous-and-white Wren",
@@ -308,7 +308,7 @@
 			"key_species": [
 				"Azure-rumped Tanager",
 				"Blue-tailed Hummingbird",
-				"Sparkling-tailed Woodstar",
+				"Sparkling-tailed Hummingbird",
 				"White-faced Quail-Dove",
 				"Rufous Sabrewing",
 				"Middle American Leaftosser",
@@ -926,7 +926,7 @@
 		"pink-headed-warbler": {
 			"name": "Pink Headed Warbler",
 			"star": false,
-			"credit": "Sergio Gómez Villaverde / Jaime Pérez",
+			"credit": "Sergio Gómez Villaverde",
 			"files": [
 				"pink-headed-warbler-1-aLtT3eAXkiqtjRWh.jpg",
 				"pink-headed-warbler-2-PKTVisrKq3xo673F.jpg",
@@ -938,7 +938,15 @@
 			"used_on": [
 				"Homepage"
 			],
-			"note": "6 images: 1-5 Sergio, last one Jaime Pérez"
+			"note": "6 images. The first five are Sergio. The last is unconfirmed, so it carries no credit rather than a guessed one.",
+			"credits": [
+				"Sergio Gómez Villaverde",
+				"Sergio Gómez Villaverde",
+				"Sergio Gómez Villaverde",
+				"Sergio Gómez Villaverde",
+				"Sergio Gómez Villaverde",
+				""
+			]
 		},
 		"green-jay": {
 			"name": "Green Jay",
@@ -1135,17 +1143,12 @@
 		"gray-throated-chat": {
 			"name": "Gray-throated Chat",
 			"star": false,
-			"credit": "",
+			"credit": "Sergio Gómez Villaverde",
 			"files": [
-				"gray-throated-chat-zTM9es3GfozKWyeu.jpg",
 				"gray-throated-chat-sergio.jpg"
 			],
 			"used_on": [],
-			"note": "1 added from Sergio, September 2026.",
-			"credits": [
-				"",
-				"Sergio Gómez Villaverde"
-			]
+			"note": "Sergio. The Zyro-era copy was the same photograph and was dropped."
 		},
 		"crimson-collared-tanager": {
 			"name": "Crimson-collared Tanager",
@@ -1160,17 +1163,12 @@
 		"lesser-roadrunner": {
 			"name": "Lesser Roadrunner",
 			"star": true,
-			"credit": "",
+			"credit": "Sergio Gómez Villaverde",
 			"files": [
-				"lesser-roadrunner-xdL38EH9td5Y7xwb.jpg",
 				"lesser-roadrunner-sergio.jpg"
 			],
 			"used_on": [],
-			"note": "1 added from Sergio, September 2026.",
-			"credits": [
-				"",
-				"Sergio Gómez Villaverde"
-			]
+			"note": "Sergio. The Zyro-era copy was the same photograph and was dropped."
 		},
 		"black-collared-hawk": {
 			"name": "Black-collared Hawk",

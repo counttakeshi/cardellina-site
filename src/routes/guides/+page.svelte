@@ -1,10 +1,49 @@
 <script lang="ts">
 	import { base } from '$app/paths';
 	import { guides, guideValues } from '$lib/data/guides';
-	import { partners } from '$lib/data/partners';
 	import { asset } from '$lib/ledger';
 
 	let videoPlaying = $state(false);
+
+	// ── the two tiers ─────────────────────────────────────────────────────────
+	const leadGuides = guides.filter((g) => g.tier === 'lead');
+	const widerGuides = guides.filter((g) => g.tier === 'wider');
+
+	type Tab = 'your-guides' | 'wider-team';
+
+	const TABS: { id: Tab; label: string; blurb: string }[] = [
+		{ id: 'your-guides', label: 'Your guides', blurb: 'Meet Cardellina founders Ben & Valente' },
+		{
+			id: 'wider-team',
+			label: 'The wider team',
+			blurb: 'Guides that help us from time to time'
+		}
+	];
+
+	let tab = $state<Tab>('your-guides');
+
+	// Same reasoning as the trips page: this route is prerendered, so searchParams
+	// are unavailable and a hash is the only thing that can carry which tier is
+	// open. The buttons carry the ids, so #wider-team is a real anchor too.
+	function tabFromHash(hash: string): Tab | null {
+		const id = hash.replace(/^#/, '');
+		return TABS.some((t) => t.id === id) ? (id as Tab) : null;
+	}
+
+	$effect(() => {
+		const sync = () => {
+			const found = tabFromHash(window.location.hash);
+			if (found) tab = found;
+		};
+		sync();
+		window.addEventListener('hashchange', sync);
+		return () => window.removeEventListener('hashchange', sync);
+	});
+
+	function show(id: Tab) {
+		tab = id;
+		history.replaceState(null, '', `#${id}`);
+	}
 </script>
 
 <svelte:head>
@@ -19,55 +58,105 @@
 	<p class="eyebrow">Your guides</p>
 	<h1>The two of us, and the birds we know</h1>
 	<p>
-		Two guides who'd rather you felt like you were birding with friends. We can bird at a gentle pace
+		Guides who'd rather you felt like you were birding with friends. We can bird at a gentle pace
 		or unleash our inner listers at a moment's notice, and we build each trip around our guests,
 		drawing on our experience across many cultures and languages.
 	</p>
 </div>
 
-{#each guides as guide, i (guide.slug)}
-	{#if i > 0}
-		<div class="wrap"><div class="divider"></div></div>
-	{/if}
-	<div class="wrap">
-		<div class="guide" class:flip={guide.flip}>
-			<div class="g-photo">
-				<img src={guide.photo} alt="{guide.name}, Chiapas bird guide" />
-				<span class="tag">{guide.tag}</span>
-			</div>
-			<div class="g-copy">
-				<h2 class="g-name">{guide.name}</h2>
-				<p class="g-role">{guide.role}</p>
-				<div class="g-bio">
-					{#each guide.bio as para (para)}
-						<p>{para}</p>
-					{/each}
-				</div>
+<div class="wrap">
+	<nav class="tabs" aria-label="Who guides with us">
+		{#each TABS as t (t.id)}
+			<button id={t.id} class="tab" class:on={tab === t.id} onclick={() => show(t.id)}>
+				<span class="t-label">{t.label}</span>
+				<span class="t-blurb">{t.blurb}</span>
+			</button>
+		{/each}
+	</nav>
+</div>
 
-				<div class="facts">
-					{#each guide.facts as fact (fact.label)}
-						<div class="fact" class:wide={fact.wide}>
-							<div class="flbl">{fact.label}</div>
-							<div class="fval">{@html fact.html}</div>
+<div class="tier" hidden={tab !== 'wider-team'}>
+	<section class="wider">
+		<div class="wrap">
+			<div class="wgrid">
+				{#each widerGuides as guide (guide.slug)}
+					<article class="wcard">
+						<div class="wcard-body">
+							<img
+								class="wcard-img"
+								src={guide.photo}
+								alt="{guide.name}, Chiapas bird guide"
+								loading="lazy"
+							/>
+							<h2>{guide.name}</h2>
+							<p class="wwhere">{guide.tag}</p>
+							{#each guide.bio as para (para)}
+								<p>{para}</p>
+							{/each}
+							{#if guide.projectLink}
+								<a class="wlink" href={guide.projectLink.url} target="_blank" rel="noopener">
+									{guide.projectLink.label} →
+								</a>
+							{/if}
+						</div>
+					</article>
+				{/each}
+			</div>
+		</div>
+	</section>
+</div>
+
+<div class="tier" hidden={tab !== 'your-guides'}>
+	{#each leadGuides as guide, i (guide.slug)}
+		{#if i > 0}
+			<div class="wrap"><div class="divider"></div></div>
+		{/if}
+		<div class="wrap">
+			<div class="guide" class:flip={guide.flip}>
+				<div class="g-photo">
+					<img src={guide.photo} alt="{guide.name}, Chiapas bird guide" />
+					<span class="tag">{guide.tag}</span>
+				</div>
+				<div class="g-copy">
+					<h2 class="g-name">{guide.name}</h2>
+					{#if guide.role}
+						<p class="g-role">{guide.role}</p>
+					{/if}
+					<div class="g-bio">
+						{#each guide.bio as para (para)}
+							<p>{para}</p>
+						{/each}
+					</div>
+
+					{#if guide.facts?.length}
+						<div class="facts">
+							{#each guide.facts as fact (fact.label)}
+								<div class="fact" class:wide={fact.wide}>
+									<div class="flbl">{fact.label}</div>
+									<div class="fval">{@html fact.html}</div>
+								</div>
+							{/each}
+						</div>
+					{/if}
+				</div>
+			</div>
+
+			<!-- Outside the two-column grid on purpose: three quotes stacked in a
+			     narrow column were most of what made the text run so far past the
+			     photo. Across the full width they are one row instead of three. -->
+			{#if guide.reviews?.length}
+				<div class="g-reviews">
+					{#each guide.reviews as review (review.who)}
+						<div class="g-review">
+							<p>{review.quote}</p>
+							<p class="who">{review.who}</p>
 						</div>
 					{/each}
 				</div>
-			</div>
+			{/if}
 		</div>
-
-		<!-- Outside the two-column grid on purpose: three quotes stacked in a
-		     narrow column were most of what made the text run so far past the
-		     photo. Across the full width they are one row instead of three. -->
-		<div class="g-reviews">
-			{#each guide.reviews as review (review.who)}
-				<div class="g-review">
-					<p>{review.quote}</p>
-					<p class="who">{review.who}</p>
-				</div>
-			{/each}
-		</div>
-	</div>
-{/each}
+	{/each}
+</div>
 
 <!-- VIDEO FEATURE -->
 <section class="film">
@@ -121,40 +210,28 @@
 	</div>
 </section>
 
-<!-- PARTNER PROJECTS -->
-<section class="partners">
+<!-- SPEAK TO ONE OF US -->
+<section class="direct">
 	<div class="wrap">
-		<p class="eyebrow">Alongside us</p>
-		<h2>People and projects we work with</h2>
+		<p class="eyebrow">No middle man</p>
+		<h2>Speak to one of us directly</h2>
 		<p class="sub">
-			These experts with incredible projects guide with us from time to time, and are worth knowing
-			about in their own right.
+			Pick whichever of us you'd rather talk to and the enquiry comes to them by name.
 		</p>
-		<div class="pgrid">
-			{#each partners as partner (partner.slug)}
-				<div class="pcard">
-					<div class="pcard-img">
-						<img
-							src={partner.image}
-							alt={partner.imageAlt}
-							style="--pos:{partner.imagePosition}"
-							loading="lazy"
-						/>
-					</div>
-					<div class="pcard-body">
-						<div class="pcard-logo">
-							<img src={partner.logo} alt="{partner.name} logo" loading="lazy" />
-						</div>
-						<div>
-							<h3>{partner.name}</h3>
-							<p class="pwhere">{partner.where}</p>
-							<p>{partner.teaser}</p>
-						</div>
-					</div>
-				</div>
+		<div class="dgrid">
+			{#each leadGuides as guide (guide.slug)}
+				<a class="dcard" href="{base}/contact?guide={guide.slug}">
+					{#if guide.avatar}
+						<img src={guide.avatar} alt="" loading="lazy" />
+					{/if}
+					<span class="dtext">
+						<span class="dname">{guide.name}</span>
+						<span class="dwhere">{guide.tag}</span>
+					</span>
+					<span class="darrow" aria-hidden="true">→</span>
+				</a>
 			{/each}
 		</div>
-		<a class="plink" href="{base}/partners">More about both projects →</a>
 	</div>
 </section>
 
@@ -194,6 +271,132 @@
 		color: var(--stone);
 		line-height: 1.65;
 		max-width: 66ch;
+	}
+
+	.tier[hidden] {
+		display: none;
+	}
+
+	/* Matches the trips page tab strip, so the two sub-navs on the site behave and
+	   read the same way. */
+	.tabs {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 0.8rem;
+		margin-top: 2rem;
+	}
+	.tab {
+		display: flex;
+		flex-direction: column;
+		gap: 4px;
+		text-align: left;
+		background: var(--white);
+		border: 1px solid var(--rule);
+		border-radius: 5px;
+		padding: 0.9rem 1.1rem;
+		cursor: pointer;
+		transition:
+			border-color 0.16s,
+			background 0.16s;
+	}
+	.tab:hover {
+		border-color: var(--canopy);
+	}
+	.tab.on {
+		background: var(--ink);
+		border-color: var(--ink);
+	}
+	.t-label {
+		font-family: var(--display);
+		font-size: 19px;
+		color: var(--ink);
+		line-height: 1.15;
+	}
+	.tab.on .t-label {
+		color: #fff;
+	}
+	.t-blurb {
+		font-size: 13px;
+		line-height: 1.45;
+		color: var(--stone);
+	}
+	.tab.on .t-blurb {
+		color: rgba(255, 255, 255, 0.66);
+	}
+
+	/* The wider team: a card, not a block. Deliberately lighter than a lead
+	   guide — no fact cards, no quotes — because the difference in weight is
+	   what tells you who leads your trip. */
+	.wider {
+		padding: 2.8rem 0 1rem;
+	}
+	.wgrid {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 1.5rem;
+	}
+	.wcard {
+		background: var(--white);
+		border: 1px solid var(--rule);
+		border-radius: 8px;
+	}
+	/* Floated rather than given its own grid column. A column stretches to the
+	   card's full height, and these are phone photos in portrait: at 190px wide
+	   against a 500px card that crop threw away the bird in Andrea's hand. A
+	   float keeps the picture at its own 4:5 shape and lets the bio close up
+	   underneath it, so neither the photo nor the card carries dead space. */
+	.wcard-img {
+		float: left;
+		width: 168px;
+		aspect-ratio: 4/5;
+		object-fit: cover;
+		border-radius: 6px;
+		background: var(--ink);
+		margin: 0 1.2rem 0.6rem 0;
+	}
+	.wcard-body {
+		padding: 1.4rem 1.5rem 1.5rem;
+		overflow: hidden;
+	}
+	.wcard-body::after {
+		content: '';
+		display: block;
+		clear: both;
+	}
+	.wcard h2 {
+		font-family: var(--display);
+		font-weight: 500;
+		font-size: 22px;
+		line-height: 1.15;
+		margin-bottom: 0.15rem;
+	}
+	.wwhere {
+		font-family: var(--mono);
+		font-size: 10px;
+		letter-spacing: 0.05em;
+		text-transform: uppercase;
+		color: var(--stone);
+		margin-bottom: 0.8rem;
+	}
+	.wcard-body p:not(.wwhere) {
+		font-size: 14.5px;
+		line-height: 1.6;
+		color: var(--stone);
+		margin-bottom: 0.7rem;
+	}
+	.wlink {
+		display: inline-block;
+		margin-top: 0.4rem;
+		font-weight: 700;
+		font-size: 13.5px;
+		color: var(--canopy);
+		text-decoration: none;
+		border-bottom: 1.5px solid var(--canopy);
+		padding-bottom: 2px;
+	}
+	.wlink:hover {
+		color: var(--phwa);
+		border-color: var(--phwa);
 	}
 
 	.guide {
@@ -400,98 +603,76 @@
 		border: 0;
 	}
 
-	.partners {
+	.direct {
 		padding: 4.5rem 0;
 		background: var(--paper);
 	}
-	.partners h2 {
+	.direct h2 {
 		font-family: var(--display);
 		font-weight: 400;
 		font-size: clamp(24px, 3vw, 34px);
 		margin-bottom: 0.6rem;
 	}
-	.partners .sub {
+	.direct .sub {
 		color: var(--stone);
-		max-width: 60ch;
+		max-width: 56ch;
 		margin-bottom: 2.2rem;
 	}
-	.pgrid {
+	.dgrid {
 		display: grid;
 		grid-template-columns: 1fr 1fr;
-		gap: 1.5rem;
+		gap: 1.2rem;
 	}
-	.pcard {
+	.dcard {
+		display: flex;
+		align-items: center;
+		gap: 1.1rem;
 		background: var(--white);
 		border: 1px solid var(--rule);
 		border-radius: 8px;
-		overflow: hidden;
+		padding: 1.1rem 1.3rem;
+		text-decoration: none;
+		color: inherit;
+		transition:
+			border-color 0.16s,
+			transform 0.16s;
+	}
+	.dcard:hover {
+		border-color: var(--canopy);
+		transform: translateY(-2px);
+	}
+	.dcard img {
+		width: 76px;
+		height: 95px;
+		border-radius: 6px;
+		object-fit: cover;
+		flex-shrink: 0;
+	}
+	.dtext {
 		display: flex;
 		flex-direction: column;
+		gap: 2px;
+		flex: 1;
 	}
-	.pcard-img {
-		aspect-ratio: 16/10;
-		overflow: hidden;
-		background: var(--ink);
-	}
-	.pcard-img img {
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-		object-position: var(--pos, 50% 50%);
-	}
-	.pcard-body {
-		padding: 1.4rem 1.5rem 1.5rem;
-		display: flex;
-		gap: 1rem;
-		align-items: flex-start;
-	}
-	.pcard-logo {
-		flex-shrink: 0;
-		width: 56px;
-		height: 56px;
-		border-radius: 5px;
-		background: var(--paper);
-		border: 1px solid var(--rule);
-		padding: 5px;
-	}
-	.pcard-logo img {
-		width: 100%;
-		height: 100%;
-		object-fit: contain;
-	}
-	.pcard h3 {
+	.dname {
 		font-family: var(--display);
-		font-weight: 500;
 		font-size: 20px;
 		line-height: 1.15;
-		margin-bottom: 0.15rem;
 	}
-	.pcard .pwhere {
+	.dwhere {
 		font-family: var(--mono);
 		font-size: 10px;
 		letter-spacing: 0.05em;
 		text-transform: uppercase;
 		color: var(--stone);
-		margin-bottom: 0.6rem;
 	}
-	.pcard p {
-		font-size: 14.5px;
-		color: var(--stone);
-		line-height: 1.6;
-	}
-	.plink {
-		display: inline-block;
-		margin-top: 1.8rem;
-		font-weight: 700;
-		font-size: 14.5px;
+	.darrow {
+		font-size: 18px;
 		color: var(--canopy);
-		text-decoration: none;
-		border-bottom: 1.5px solid var(--canopy);
-		padding-bottom: 2px;
+		flex-shrink: 0;
 	}
-	.plink:hover {
+	.dcard:hover .darrow {
 		color: var(--phwa);
-		border-color: var(--phwa);
 	}
 
 	.values {
@@ -545,8 +726,13 @@
 			position: static;
 		}
 		.vgrid,
-		.pgrid {
+		.wgrid,
+		.dgrid,
+		.tabs {
 			grid-template-columns: 1fr;
+		}
+		.tabs {
+			gap: 0.6rem;
 		}
 		.film-grid .film-copy {
 			order: 2;
@@ -555,6 +741,14 @@
 	@media (max-width: 520px) {
 		.facts {
 			grid-template-columns: 1fr;
+		}
+		/* On a phone a 168px float leaves about twenty characters beside it, so the
+		   photo goes full width and the bio runs underneath. */
+		.wcard-img {
+			float: none;
+			width: 100%;
+			aspect-ratio: 3/2;
+			margin: 0 0 1rem;
 		}
 	}
 </style>

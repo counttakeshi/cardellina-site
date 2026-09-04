@@ -297,8 +297,8 @@ export const species: Species[
 		tierBadge: "NCA"
 	},
 	{
-		slug: "sparkling-tailed-woodstar",
-		commonName: "Sparkling-tailed Woodstar",
+		slug: "sparkling-tailed-hummingbird",
+		commonName: "Sparkling-tailed Hummingbird",
 		scientificName: "Tilmatura dupontii",
 		family: "Hummingbirds",
 		tier: "nca",

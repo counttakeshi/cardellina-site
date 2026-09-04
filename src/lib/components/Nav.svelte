@@ -42,7 +42,7 @@
 			id: 'birds',
 			label: 'Chiapas Birds',
 			children: [
-				{ label: 'Bird Library', href: '/birds', hint: 'Every endemic and speciality, with a map' },
+				{ label: 'Bird Library', href: '/birds', hint: 'Every endemic and speciality in the state' },
 				{
 					label: 'Trip Reports',
 					href: '/trip-reports',
@@ -54,7 +54,7 @@
 			id: 'guides',
 			label: 'Guides',
 			children: [
-				{ label: 'Valente & Ben', href: '/guides', hint: 'The two of us, and how we guide' },
+				{ label: 'Valente & Ben', href: '/guides', hint: 'The two of us, and our wider team' },
 				{ label: 'Partners', href: '/partners', hint: 'Projects and people we work with' }
 			]
 		}

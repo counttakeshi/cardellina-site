@@ -31,13 +31,17 @@
 
 	const booking = $derived(kind === 'day' || kind === 'multi-day');
 
-	const subject = $derived(
-		tourName
+	const subject = $derived.by(() => {
+		const base = tourName
 			? `${kind === 'day' ? 'Day tour' : 'Multi-day'} booking: ${tourName}`
 			: kind === 'personalised'
 				? 'Personalised trip enquiry from cardellina.com'
-				: 'New enquiry from cardellina.com'
-	);
+				: 'New enquiry from cardellina.com';
+		// When they picked one of us on the guides page, say so in the subject:
+		// otherwise the name is only visible once the email is opened.
+		const asked = prefill?.['Asked for'];
+		return asked ? `${base} — for ${asked}` : base;
+	});
 
 	async function handleSubmit(event: SubmitEvent) {
 		event.preventDefault();

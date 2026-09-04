@@ -13,16 +13,43 @@ export interface GuideReview {
 	who: string;
 }
 
+/**
+ * Which treatment a guide gets on the page.
+ *
+ *   lead  — the two of us: full block, fact cards, reviews
+ *   wider — people who guide with us: photo, name, where, bio, project link
+ *
+ * The lighter card is the point, not a shortfall of content. Padding a wider-team
+ * card out to match a lead block would erase the distinction the tier exists to
+ * draw.
+ */
+export type GuideTier = 'lead' | 'wider';
+
+export interface GuideLink {
+	label: string;
+	url: string;
+}
+
 export interface Guide {
 	slug: string;
 	name: string;
-	role: string;
+	tier: GuideTier;
+	/** Lead guides only: the line under the name. */
+	role?: string;
 	photo: string;
-	/** Location badge shown over the photo. */
+	/**
+	 * Small 4:5 crop for the contact cards. Not a circle: as the homepage note
+	 * puts it, a circle throws away the binoculars, the scope and the habitat,
+	 * which is most of what makes a guide photo persuasive.
+	 */
+	avatar?: string;
+	/** Where they guide. A badge over the photo on lead blocks, a line on cards. */
 	tag: string;
 	bio: string[];
-	facts: GuideFact[];
-	reviews: GuideReview[];
+	/** Optional throughout: a guide without them renders no empty block. */
+	facts?: GuideFact[];
+	reviews?: GuideReview[];
+	projectLink?: GuideLink;
 	/** Mirrors the live layout, which alternates photo/copy sides. */
 	flip?: boolean;
 }
@@ -30,9 +57,11 @@ export interface Guide {
 export const guides: Guide[] = [
 	{
 		slug: 'valente',
+		tier: 'lead',
 		name: 'Valente González',
 		role: 'Tour leader & guide · born in Chiapas',
 		photo: imageUrl('valente-guiding-photo-YBgb3LeK7nUXWJr2.jpg', 'full'),
+		avatar: imageUrl('valente-explaining.png', 'portrait'),
 		tag: 'Comitán, Chiapas',
 		bio: [
 			'Valente, born in San Cristóbal de las Casas, got his first pair of binoculars at seven years old. Watching birds in his garden as a child and learning their habitat ranges, he has been in love with birding ever since. His knowledge of Chiapas’s birds, their niches and secret habitats is unrivalled.',
@@ -73,9 +102,11 @@ export const guides: Guide[] = [
 	},
 	{
 		slug: 'ben',
+		tier: 'lead',
 		name: 'Ben Simmons',
 		role: 'Tour leader & guide · from London, in Latin America since 2011',
 		photo: imageUrl('ben-guide-photo-Awv4vr7rLzfqJD6j.jpg', 'full'),
+		avatar: imageUrl('ben-guide-photo-Awv4vr7rLzfqJD6j.jpg', 'portrait'),
 		tag: 'San Cristóbal de las Casas',
 		flip: true,
 		bio: [
@@ -113,6 +144,28 @@ export const guides: Guide[] = [
 					'“Spent a great four days birding with Valente and Ben. [...] Saw almost all the birds I was hoping to see, (including Pink-headed Warbler!). Their knowledge of the sites and the calls was impressive, and it felt more like I was birding with friends than with a guide. Would thoroughly recommend Sabes Aves for the serious or casual birder alike.”',
 				who: 'Nick Brickle'
 			}
+		]
+	},
+	{
+		slug: 'gabriel',
+		tier: 'wider',
+		name: 'Gabriel Hernández',
+		photo: imageUrl('gabriel-hernandez.jpg', 'portrait'),
+		tag: 'Palenque',
+		bio: [
+			'What began as a school project on bird ecology became a lifelong passion. Gabriel started out birding in his native semi-desert of San Luis Potosí, and that passion led him to conservation work in the Lacandón rainforest.',
+			'Trained as an environmental engineer in the classroom and as a naturalist in the field, he now lives in Palenque, where he’s found his second home. His knowledge of the local forest and his ear and eye for identification are exactly what you want for building your life list, he even holds the first eBird record of White-faced Ground-Sparrow for the municipality of Palenque.'
+		]
+	},
+	{
+		slug: 'andrea',
+		tier: 'wider',
+		name: 'Andrea Quintero',
+		photo: imageUrl('andrea-quintero.jpg', 'portrait'),
+		tag: 'San Cristóbal & the coast',
+		bio: [
+			'A marine biologist and naturalist who grew up in the pine-oak highlands outside Mexico City. She’s now completing a master’s on a multi-species waterbird nesting colony in a coastal Chiapas lagoon, working alongside the local fishing communities on ethical birdwatching and conservation of the lagoon.',
+			'Before Chiapas she spent eight years guiding in Baja California Sur, snorkelling, diving and whale-watching across the Gulf of California, including three seasons as a certified whale-shark guide in La Paz Bay. Birds and nature photography drew her in during the pandemic, and Chiapas captured her heart.'
 		]
 	}
 ];

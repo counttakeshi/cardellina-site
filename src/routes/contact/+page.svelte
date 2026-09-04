@@ -3,6 +3,7 @@
 	import { page } from '$app/state';
 	import ContactForm from '$lib/components/ContactForm.svelte';
 	import { dayTours, multiDayTrips } from '$lib/data/trips';
+	import { guides } from '$lib/data/guides';
 
 	const WHATSAPP = 'https://wa.me/5219615164020';
 
@@ -10,6 +11,15 @@
 	// of them, so the query string is only read in the browser — SvelteKit rejects
 	// touching searchParams during prerendering, since the HTML can't vary by query.
 	const slug = $derived(browser ? page.url.searchParams.get('tour') : null);
+
+	// The guides page links here as /contact?guide=<slug> so an enquiry can be
+	// addressed to one of us by name. Read in the browser only, for the same
+	// reason as `tour` above.
+	const askedFor = $derived.by(() => {
+		if (!browser) return null;
+		const g = page.url.searchParams.get('guide');
+		return guides.find((x) => x.slug === g) ?? null;
+	});
 
 	const context = $derived.by(() => {
 		if (!slug) return { kind: 'general' as const };
@@ -32,7 +42,11 @@
 	});
 
 	const heading = $derived(
-		context.tourName ? `Book ${context.tourName}` : "Let's plan your trip"
+		context.tourName
+			? `Book ${context.tourName}`
+			: askedFor
+				? `Speak to ${askedFor.name.split(' ')[0]}`
+				: "Let's plan your trip"
 	);
 </script>
 
@@ -69,7 +83,12 @@
 </div>
 
 <div class="wrap c-form">
-	<ContactForm kind={context.kind} tourName={context.tourName} tourMeta={context.tourMeta} />
+	<ContactForm
+		kind={context.kind}
+		tourName={context.tourName}
+		tourMeta={context.tourMeta}
+		prefill={askedFor ? { 'Asked for': askedFor.name } : undefined}
+	/>
 </div>
 
 <div class="wrap c-info">

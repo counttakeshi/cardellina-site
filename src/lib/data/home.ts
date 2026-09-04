@@ -178,7 +178,7 @@ export const guides = [
 		role: 'Co-founder & Guide',
 		avatar: avatar('valente-guiding-photo-YBgb3LeK7nUXWJr2.jpg'),
 		portrait: portrait('valente-explaining.png'),
-		bio: 'A Chiapaneco from birth and a birder since childhood, Valente pores over historical records and satellite imagery to track down birds in places nobody thought to look. He brings deep local knowledge and three languages to every trip.',
+		bio: 'A Chiapaneco from birth and a birder since childhood, Valente pores over historical records and satellite imagery to track down birds in places nobody thought to look. He brings deep local knowledge and three languages to the field.',
 		superpower: 'Owl ears'
 	}
 ];

@@ -85,8 +85,6 @@ export function slugifySpecies(name: string): string {
 const PHOTO_ALIASES: Record<string, string> = {
 	// Ledger writes "Mountaingem" in species lists but "mountain-gem" as the key.
 	'green-throated-mountaingem': 'green-throated-mountain-gem',
-	// Tilmatura dupontii: renamed Woodstar, still filed under the old name.
-	'sparkling-tailed-woodstar': 'sparkling-tailed-hummingbird',
 	// The ledger's own note: "Spizaetus tyrannus = Black Hawk-Eagle".
 	'black-hawk-eagle': 'black-crested-eagle',
 	// Same bird, longer form used as the photo key.
