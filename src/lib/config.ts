@@ -33,4 +33,4 @@ export const EBIRD_TARGETS =
  * one thing that decides whether we are recording sessions, so it lives here
  * rather than being buried in a template.
  */
-export const CLARITY_PROJECT_ID = '';
+export const CLARITY_PROJECT_ID = 'x2y20srabx';
