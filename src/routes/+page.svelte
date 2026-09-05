@@ -896,6 +896,12 @@
 	.genus-mark img {
 		width: 100%;
 		max-width: 290px;
+		/* Required, because the img carries width and height attributes. Without
+		   a CSS height the attribute becomes the used height, and a 420-tall box
+		   at 290 wide stretched the logo out of shape. The attributes are there
+		   so the browser can reserve the right space before the file arrives;
+		   height:auto is what lets it keep the proportions while doing so. */
+		height: auto;
 	}
 	.genus-mark figcaption {
 		font-family: var(--mono);

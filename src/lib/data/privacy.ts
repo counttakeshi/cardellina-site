@@ -1,8 +1,74 @@
 /**
- * Privacy policy body, transcribed from the live site (effective 18 April 2025).
+ * Privacy policy body.
  *
- * NOTE: this still describes the Hostinger-era stack (Google Analytics, Microsoft
- * Clarity, Mailchimp, Hostinger). It must be revised before launch to match what
- * the new site actually uses — see the migration plan.
+ * Keep it blunt and factual. It is a legal document, not a page that needs to
+ * persuade anybody of anything.
+ *
+ * Section 4 is the real set of companies that receive visitor data: anything the
+ * site connects to that is not a plain outbound link belongs in it. Email moves
+ * off Hostinger at some point and will need the new name there.
  */
-export const privacyPolicyHtml = "<p><strong>Effective Date:</strong> April 18, 2025</p><p>At <em>Cardellina Birding Tours</em> (\"we\", \"us\", or \"our\"), accessible from <a href=\"https://www.cardellina.com\">https://www.cardellina.com</a>, we value your privacy. This Privacy Policy explains what personal information we collect, how we use it, and how we keep it safe.</p><h2>1. Information We Collect</h2><p>We may collect the following information when you use our website:</p><ul><li><p><strong>Personal Information</strong>: Name and email address (when you fill out our contact form or subscribe to our newsletter).</p></li><li><p><strong>Usage Data</strong>: IP address, browser type, pages visited, and other behavioral data through <strong>Google Analytics</strong>.</p></li><li><p><strong>Cookies</strong>: We use cookies to enhance your browsing experience and analyze site traffic.<br></p></li></ul><h2>2. How We Use Your Information</h2><p>We use the collected information to:</p><ul><li><p>Respond to your inquiries or messages</p></li><li><p>Send newsletters or updates (if you opted in)</p></li><li><p>Analyze and improve the performance of our website<br></p></li></ul><h2>3. Third-Party Services</h2><p>We may share your information with trusted third parties that help us operate our website:</p><ul><li><p><strong>Google Analytics</strong> – for tracking user behavior and website usage</p></li><li><p><strong>Microsoft Clarity</strong> – to better understand how users interact with our site through heatmaps and session recordings</p></li><li><p><strong>Mailchimp</strong> – to manage and send our email newsletters</p></li><li><p><strong>Hostinger</strong> – our web hosting provider</p></li><li><p><strong>Embedded Content</strong> – in the future, our site may include content from YouTube or Google Maps, which may collect data as if you were visiting those websites directly</p></li></ul><p>Each of these third parties has its own privacy policy. We recommend reviewing them for more information.</p><h2>4. Cookies</h2><p>We use cookies to:</p><ul><li><p>Understand how visitors use our site</p></li><li><p>Save preferences or settings<br>You can choose to disable cookies through your browser settings.<br></p></li></ul><h2>5. Data Retention</h2><p>We retain personal data only as long as needed to fulfill the purposes outlined above unless required by law to keep it longer.</p><h2>6. Your Rights</h2><p>Depending on where you are located, you may have the right to:</p><ul><li><p>Access or request a copy of your personal information</p></li><li><p>Request that we correct or delete your information</p></li><li><p>Withdraw consent (e.g., unsubscribe from newsletters)</p></li></ul><p>To exercise these rights, contact us at info@cardellina.com.</p><h2>7. International Considerations (GDPR &amp; CCPA)</h2><p>We are based in <strong>Mexico</strong>, but if you are visiting from the <strong>EU</strong> or <strong>California</strong>, your data may be subject to the <strong>GDPR</strong> or <strong>CCPA</strong>. While we are not legally required to comply fully, we strive to follow best practices for privacy and data protection globally.</p><h2>8. Changes to This Policy</h2><p>We may update this Privacy Policy occasionally. Changes will be posted on this page with a revised effective date.</p><h2>9. Contact Us</h2><p>If you have any questions or concerns about this policy, contact us at:</p><p>📧 <strong>info@cardellina.com</strong><br>🌐 <strong><a href=\"https://www.cardellina.com\">https://www.cardellina.com</a></strong></p>";
+export const privacyPolicyHtml = `
+<p><strong>Effective date:</strong> 5 September 2026</p>
+
+<p>Cardellina Birding Tours, San Cristóbal de las Casas, Chiapas, Mexico. This covers the website at cardellina.com.</p>
+
+<h2>1. What we collect</h2>
+
+<p>From the contact form: your name, email address, and phone number if given. Your message and trip details — tour, dates, group size, where you are travelling from, target species, birding experience, fitness, and any dietary or mobility needs. All optional except a name and an email address.</p>
+
+<p>While you browse: page views, mouse movement and scrolling, via Microsoft Clarity. Our host records IP address, browser and pages requested in its server logs.</p>
+
+<p>We have no newsletter and no mailing list.</p>
+
+<h2>2. Why</h2>
+
+<p>To answer your enquiry and plan your trip. To see which pages are used.</p>
+
+<h2>3. Cookies</h2>
+
+<p>Microsoft Clarity sets cookies to recognise repeat page views as one visit. Your cookie choice is stored in your browser and does not leave your device; we ask again after a year.</p>
+
+<p>In the European Economic Area, the United Kingdom and Switzerland, Clarity does not load until you agree. Declining means it is never loaded. Elsewhere it loads with the page.</p>
+
+<p>You can clear cookies in your browser settings. The site works the same either way.</p>
+
+<h2>4. Who receives it</h2>
+
+<ul>
+<li><p><strong>GitHub</strong> — website hosting</p></li>
+<li><p><strong>Formspree</strong> — carries contact form submissions to us</p></li>
+<li><p><strong>Microsoft</strong> — Clarity analytics</p></li>
+<li><p><strong>Hostinger</strong> — our email provider</p></li>
+<li><p><strong>YouTube</strong> — one embedded video, loads only if you press play</p></li>
+</ul>
+
+<p>All are outside Mexico, mostly in the United States, so your data is transferred internationally. Each has its own privacy policy.</p>
+
+<p>Nothing you enter on this site goes to anyone beyond that list. We do not sell or rent your data, and we run no advertising.</p>
+
+<h2>5. How long</h2>
+
+<p>Enquiries are kept in our email as a record of what was agreed. Clarity data is kept for Clarity's own retention period.</p>
+
+<h2>6. Your rights</h2>
+
+<p>You may request access to your data, correction, deletion, or that we stop using it. Contact <a href="mailto:info@cardellina.com">info@cardellina.com</a>.</p>
+
+<p>Under the GDPR and UK GDPR you may also complain to your national data protection authority. California residents have comparable rights under the CCPA. We are subject to Mexico's <em>Ley Federal de Protección de Datos Personales en Posesión de los Particulares</em>.</p>
+
+<h2>7. Children</h2>
+
+<p>The site is not directed at children and we do not knowingly collect their data.</p>
+
+<h2>8. Changes</h2>
+
+<p>Changes are posted here with a revised effective date.</p>
+
+<h2>9. Contact</h2>
+
+<p><a href="mailto:info@cardellina.com">info@cardellina.com</a><br />
+Cardellina Birding Tours<br />
+Prol. Los Arcos 10, Barrio de Cuxtitali<br />
+San Cristóbal de las Casas, 29250, Chiapas, Mexico</p>
+`;

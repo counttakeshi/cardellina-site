@@ -60,18 +60,52 @@ const EXTRA_ZONES = new Set([
 	'America/Guadeloupe' // France
 ]);
 
-/** Whether this visitor is somewhere that requires being asked first. */
+/**
+ * Region codes of the EEA, the UK and Switzerland, as they appear in a browser
+ * language tag: the `AT` in `de-AT`.
+ */
+const REGIONS = new Set([
+	'AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HU',
+	'IE', 'IT', 'LV', 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES',
+	'SE', 'IS', 'LI', 'NO', 'GB', 'UK', 'CH'
+]);
+
+/**
+ * Whether this visitor is somewhere that requires being asked first.
+ *
+ * Two independent signals, and either one is enough to ask. Neither costs a
+ * network request, which matters: looking a visitor up in a geo-IP service to
+ * decide whether to ask permission would mean handing their address to a third
+ * party in order to do it. The one endpoint that reports a country accurately
+ * sets a cookie of its own on the way, which for a consent mechanism is
+ * self-defeating.
+ *
+ *   timezone — catches residents, whose clock matches where they live
+ *   language — catches travellers, whose clock has followed them but whose
+ *              browser still says de-AT
+ *
+ * Neither sees through a VPN, because a VPN changes the address and nothing
+ * else. That is a testing inconvenience rather than a compliance hole: if both
+ * signals are wrong, Clarity's own enforcement reads the real address, finds no
+ * consent signal from us, and runs without a cookie. See Clarity.svelte.
+ */
 export function consentRequired(): boolean {
 	if (!browser) return false;
+
 	try {
 		const zone = Intl.DateTimeFormat().resolvedOptions().timeZone ?? '';
-		return zone.startsWith('Europe/') || EXTRA_ZONES.has(zone);
+		if (zone.startsWith('Europe/') || EXTRA_ZONES.has(zone)) return true;
 	} catch {
-		// No timezone available — a locked-down browser, or an old one. Ask, since
-		// the alternative is setting cookies on someone who may be entitled to
-		// refuse them.
+		// No timezone available — a locked-down or very old browser. Ask, since the
+		// alternative is setting cookies on somebody who may be entitled to refuse.
 		return true;
 	}
+
+	const tags = navigator.languages?.length ? navigator.languages : [navigator.language];
+	return tags.some((tag) => {
+		const region = tag?.split('-')[1]?.toUpperCase();
+		return !!region && REGIONS.has(region);
+	});
 }
 
 /** The stored answer, or null if they have not answered or it has expired. */
