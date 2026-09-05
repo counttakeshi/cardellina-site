@@ -23,6 +23,12 @@
 		name="description"
 		content="Nearly 700 species and more than forty endemics and near-endemics. Small-group and bespoke birding tours across Chiapas, guided by birders who live here."
 	/>
+	<!-- The hero is a CSS background set from a style attribute, so the browser's
+	     preload scanner cannot see it while parsing HTML — it only learns the URL
+	     once the stylesheet has arrived and been applied. That cost 730ms of dead
+	     time before the largest element on the page even started downloading.
+	     Naming it here starts the fetch with the first bytes of the document. -->
+	<link rel="preload" as="image" href={HERO_IMG} fetchpriority="high" />
 </svelte:head>
 
 <!-- ═══ HERO ═══ -->
@@ -274,7 +280,7 @@
 		<div class="genus-grid">
 			<figure class="genus-mark">
 				<img
-					src={asset('images/cardellina-logo-r-ouLe0QMSi7BFi1G9-md.webp')}
+					src={asset('images/cardellina-logo-r-ouLe0QMSi7BFi1G9-thumb.webp')}
 					alt="The Cardellina Birding Tours logo: three Cardellina warblers"
 					loading="lazy"
 				/>
@@ -979,7 +985,7 @@
 		display: flex;
 		align-items: center;
 		gap: 9px;
-		font-family: 'Roboto', var(--body);
+		font-family: var(--body);
 		font-size: 18px;
 		font-weight: 500;
 		color: #3c4043;
@@ -990,7 +996,7 @@
 		gap: 9px;
 	}
 	.rev-score b {
-		font-family: 'Roboto', var(--body);
+		font-family: var(--body);
 		font-size: 26px;
 		font-weight: 500;
 		color: #3c4043;
@@ -1046,10 +1052,10 @@
 		font-size: 13px;
 		font-weight: 500;
 		flex-shrink: 0;
-		font-family: 'Roboto', var(--body);
+		font-family: var(--body);
 	}
 	.rev-name {
-		font-family: 'Roboto', var(--body);
+		font-family: var(--body);
 		font-size: 14px;
 		font-weight: 500;
 		color: #3c4043;
@@ -1062,7 +1068,7 @@
 		display: block;
 	}
 	.rev blockquote {
-		font-family: 'Roboto', var(--body);
+		font-family: var(--body);
 		font-size: 15px;
 		line-height: 1.65;
 		font-weight: 400;

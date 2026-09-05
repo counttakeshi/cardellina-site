@@ -3,7 +3,7 @@
 	import { page } from '$app/state';
 	import { asset } from '$lib/ledger';
 
-	const LOGO = asset('images/cardellina-logo-r-ouLe0QMSi7BFi1G9-md.webp');
+	const LOGO = asset('images/cardellina-logo-r-ouLe0QMSi7BFi1G9-thumb.webp');
 
 	interface NavChild {
 		label: string;

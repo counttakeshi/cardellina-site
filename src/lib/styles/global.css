@@ -1,13 +1,96 @@
+/**
+ * Self-hosted fonts.
+ *
+ * These were a <link> to fonts.googleapis.com, which cost 750ms of blocked
+ * rendering before a single word appeared: a separate DNS lookup and TLS
+ * handshake, then a stylesheet, and only then were the font URLs even known.
+ * Served from our own origin the browser already has the connection, and the
+ * @font-face rules arrive inside CSS it was fetching anyway.
+ *
+ * Two further savings are baked into the files themselves:
+ *
+ *   latin only — Google splits each face across nine unicode ranges. Every
+ *   accent this site sets (á é í ó ú ñ, in Comitán, San Cristóbal, Yaxchilán)
+ *   lives in U+0000-00FF, so latin-ext and the rest never rendered a glyph.
+ *
+ *   static, not variable — Newsreader's variable font carries an optical-size
+ *   axis from 6pt to 72pt. We pick weights by hand and never touch that axis,
+ *   and it was 56.7KB per face against 22KB for a fixed instance.
+ *
+ * Regenerate with scripts/fetch-fonts.py if a weight is ever added.
+ */
+@font-face {
+	font-family: 'Newsreader';
+	font-style: normal;
+	font-weight: 300;
+	font-display: swap;
+	src: url('../fonts/newsreader-300.woff2') format('woff2');
+}
+@font-face {
+	font-family: 'Newsreader';
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+	src: url('../fonts/newsreader-400.woff2') format('woff2');
+}
+@font-face {
+	font-family: 'Newsreader';
+	font-style: normal;
+	font-weight: 500;
+	font-display: swap;
+	src: url('../fonts/newsreader-500.woff2') format('woff2');
+}
+@font-face {
+	font-family: 'Newsreader';
+	font-style: italic;
+	font-weight: 400;
+	font-display: swap;
+	src: url('../fonts/newsreader-400italic.woff2') format('woff2');
+}
+@font-face {
+	font-family: 'Lato';
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+	src: url('../fonts/lato-400.woff2') format('woff2');
+}
+@font-face {
+	font-family: 'Lato';
+	font-style: normal;
+	font-weight: 700;
+	font-display: swap;
+	src: url('../fonts/lato-700.woff2') format('woff2');
+}
+@font-face {
+	font-family: 'JetBrains Mono';
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+	src: url('../fonts/jetbrains-mono-400.woff2') format('woff2');
+}
+@font-face {
+	font-family: 'JetBrains Mono';
+	font-style: normal;
+	font-weight: 500;
+	font-display: swap;
+	src: url('../fonts/jetbrains-mono-500.woff2') format('woff2');
+}
+
 /* Design tokens ported verbatim from the live cardellina.com build. */
 :root {
 	--ink: #16241f; /* cloud-forest shade, near-black green */
 	--canopy: #2f4a3c; /* deep canopy */
-	--moss: #5a7060; /* muted foliage — secondary text on dark */
-	--stone: #6e7671; /* secondary text on light */
+	--moss: #7a8c7f; /* muted foliage — secondary text on dark. Lightened from
+	   #5a7060, which put the 11px stat labels at 3.0:1 against --ink. */
+	--stone: #6b736e; /* secondary text on light. Three points darker than
+	   #6e7671, which sat just under 4.5:1 on --paper. */
 	--mist: #e4e8e1; /* the fog */
 	--paper: #f8f7f3; /* page */
 	--white: #ffffff;
-	--phwa: #d6446f; /* Pink-headed Warbler — the logo bird */
+	--phwa: #c93c66; /* Pink-headed Warbler — the logo bird. Darkened from
+	   #d6446f: the eyebrows set in it, and the white text on the buttons filled
+	   with it, both sat at 4.27:1. One shift fixes text on pink and pink on
+	   white at once. */
 	--lichen: #a8762f; /* endemic flag */
 	--rule: #d9ddd5;
 

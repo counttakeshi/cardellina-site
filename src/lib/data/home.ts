@@ -3,7 +3,7 @@ import { imageUrl } from '$lib/ledger';
 // Portrait flagship cards and the small strip/avatar thumbnails all read well
 // enough from the square crop; the taller originals are only needed full size.
 const card = (file: string) => imageUrl(file, 'sq');
-const strip = (file: string) => imageUrl(file, 'sq');
+const strip = (file: string) => imageUrl(file, 'thumb');
 const avatar = (file: string) => imageUrl(file, 'sq');
 // 4:5 crops. A circle throws away the binoculars, the scope and the habitat,
 // which is most of what makes a guide photo persuasive.

@@ -14,12 +14,15 @@ import ledger from './data/ledger.json';
  * Zyro resized on the fly; GitHub Pages only serves files, so the sizes the site
  * uses are baked once and picked here.
  *
- *   full — max 1600px wide, for heroes and the lightbox
- *   md   — max 800px wide, for cards and strips
- *   card — 800x600 crop, for 4:3 gallery tiles
- *   sq   — 600x600 crop, for square gallery tiles
+ *   full  — max 1600px wide, for heroes and the lightbox
+ *   md    — max 800px wide, for cards and strips
+ *   card  — 800x600 crop, for 4:3 gallery tiles
+ *   sq    — 600x600 crop, for square gallery tiles
+ *   thumb — 420x420 crop, for anything rendered at 210 CSS pixels. Two device
+ *           pixels per CSS pixel is what a phone wants; the 600px sq crop this
+ *           replaced was carrying roughly twice the bytes for no visible gain.
  */
-export type ImageVariant = 'full' | 'md' | 'card' | 'sq' | 'portrait';
+export type ImageVariant = 'full' | 'md' | 'card' | 'sq' | 'thumb' | 'portrait';
 
 export interface LedgerLocation {
 	name: string;
