@@ -279,9 +279,14 @@
 	<div class="wrap">
 		<div class="genus-grid">
 			<figure class="genus-mark">
+				<!-- Sized so the browser reserves the space before the file arrives.
+				     Without these the caption and everything under it jumped when the
+				     logo loaded, which was most of one of the layout shifts. -->
 				<img
 					src={asset('images/cardellina-logo-r-ouLe0QMSi7BFi1G9-thumb.webp')}
 					alt="The Cardellina Birding Tours logo: three Cardellina warblers"
+					width="420"
+					height="420"
 					loading="lazy"
 				/>
 				<figcaption>Red Warbler · Red-faced Warbler · Pink-headed Warbler</figcaption>
