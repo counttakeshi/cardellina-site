@@ -3,9 +3,15 @@
 	import Nav from '$lib/components/Nav.svelte';
 	import Footer from '$lib/components/Footer.svelte';
 	import Clarity from '$lib/components/Clarity.svelte';
+	import CookieBanner from '$lib/components/CookieBanner.svelte';
 	import { asset } from '$lib/ledger';
+	import type { ConsentChoice } from '$lib/consent';
 
 	let { children } = $props();
+
+	// Passed straight to Clarity so an answer takes effect on the page the
+	// visitor is already on, rather than waiting for the next navigation.
+	let consent = $state<ConsentChoice | null>(null);
 </script>
 
 <svelte:head>
@@ -22,7 +28,7 @@
 	<link rel="apple-touch-icon" sizes="180x180" href={asset('apple-touch-icon.png')} />
 </svelte:head>
 
-<Clarity />
+<Clarity choice={consent} />
 
 <Nav />
 
@@ -31,3 +37,5 @@
 </main>
 
 <Footer />
+
+<CookieBanner onchoice={(c) => (consent = c)} />
