@@ -35,9 +35,20 @@
 	 * an IP address — to a third party before being allowed to, which is the
 	 * thing the rule is about. Declining here means the script never arrives.
 	 *
-	 * Everywhere else it loads immediately and consent is signalled as granted,
-	 * because no opt-in is required and Clarity now needs the signal regardless
-	 * to keep a visit together.
+	 * Everywhere else it loads and says nothing about consent.
+	 *
+	 * Saying nothing is the important part. We work out the region from the
+	 * visitor's timezone, and Clarity works it out from their IP address, so the
+	 * two can disagree: a VPN, or somebody travelling, or a laptop still set to
+	 * the clock of wherever it was bought. When they disagree the wrong way — our
+	 * guess says Mexico, their address says Austria — signalling "granted" would
+	 * be claiming a consent nobody ever gave.
+	 *
+	 * So the guess is only ever allowed to *suppress* the banner, never to
+	 * manufacture an answer. If it is wrong, Clarity's own enforcement notices
+	 * the address, finds no signal, and runs in no-consent mode: an incomplete
+	 * session rather than a fabricated permission. Worse analytics is the right
+	 * way for this to fail.
 	 */
 	$effect(() => {
 		if (!CLARITY_PROJECT_ID) return;
@@ -51,6 +62,8 @@
 		}
 
 		load(CLARITY_PROJECT_ID);
-		signalClarity(decided ?? 'granted');
+		// Only if they were actually asked at some point — someone who answered in
+		// Berlin last month and is reading in Mexico City today.
+		if (decided) signalClarity(decided);
 	});
 </script>
