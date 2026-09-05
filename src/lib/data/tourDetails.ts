@@ -88,73 +88,73 @@ export const tourDetails: TourDetail[] = [
 		],
 		"gallery": [
 			{
-				"thumb": asset("images/sabes_aves_pink-headed_warbler-A0xjy2JlD8TLpRLX-md.webp"),
+				"thumb": asset("images/sabes_aves_pink-headed_warbler-A0xjy2JlD8TLpRLX-thumb.webp"),
 				"full": asset("images/sabes_aves_pink-headed_warbler-A0xjy2JlD8TLpRLX-full.webp"),
 				"alt": "Pink-headed Warbler",
 				"caption": "Pink-headed Warbler"
 			},
 			{
-				"thumb": asset("images/sabes_aves_wine-thorated_hummingbird-1-AoPJBzjDE8c8XVez-md.webp"),
+				"thumb": asset("images/sabes_aves_wine-thorated_hummingbird-1-AoPJBzjDE8c8XVez-thumb.webp"),
 				"full": asset("images/sabes_aves_wine-thorated_hummingbird-1-AoPJBzjDE8c8XVez-full.webp"),
 				"alt": "Wine-throated Hummingbird",
 				"caption": "Wine-throated Hummingbird"
 			},
 			{
-				"thumb": asset("images/sabes_aves_blue-throated_motmot-NFfUHZuU255VnhZE-md.webp"),
+				"thumb": asset("images/sabes_aves_blue-throated_motmot-NFfUHZuU255VnhZE-thumb.webp"),
 				"full": asset("images/sabes_aves_blue-throated_motmot-NFfUHZuU255VnhZE-full.webp"),
 				"alt": "Blue-throated Motmot",
 				"caption": "Blue-throated Motmot"
 			},
 			{
-				"thumb": asset("images/saves_aves_golden-cheeked_warbler-fO82HsR2CVu7j9hq-md.webp"),
+				"thumb": asset("images/saves_aves_golden-cheeked_warbler-fO82HsR2CVu7j9hq-thumb.webp"),
 				"full": asset("images/saves_aves_golden-cheeked_warbler-fO82HsR2CVu7j9hq-full.webp"),
 				"alt": "Golden-cheeked Warbler",
 				"caption": "Golden-cheeked Warbler"
 			},
 			{
-				"thumb": asset("images/red-faced-warbler-m2Wa3zBX1PiLDJw9-md.webp"),
+				"thumb": asset("images/red-faced-warbler-m2Wa3zBX1PiLDJw9-thumb.webp"),
 				"full": asset("images/red-faced-warbler-m2Wa3zBX1PiLDJw9-full.webp"),
 				"alt": "Red-faced Warbler",
 				"caption": "Red-faced Warbler"
 			},
 			{
-				"thumb": asset("images/sabes_aves_rufous-browed_wren-ozWNJPc9Zns8f5zO-md.webp"),
+				"thumb": asset("images/sabes_aves_rufous-browed_wren-ozWNJPc9Zns8f5zO-thumb.webp"),
 				"full": asset("images/sabes_aves_rufous-browed_wren-ozWNJPc9Zns8f5zO-full.webp"),
 				"alt": "Rufous-browed Wren",
 				"caption": "Rufous-browed Wren"
 			},
 			{
-				"thumb": asset("images/sabes_aves_basilina_leucotis-KRKtKHveZzcPOm7i-md.webp"),
+				"thumb": asset("images/sabes_aves_basilina_leucotis-KRKtKHveZzcPOm7i-thumb.webp"),
 				"full": asset("images/sabes_aves_basilina_leucotis-KRKtKHveZzcPOm7i-full.webp"),
 				"alt": "White-eared Hummingbird",
 				"caption": "White-eared Hummingbird"
 			},
 			{
-				"thumb": asset("images/sabes_aves_rivolis_hummingbird-4K4YnfKdpJWaTbqo-md.webp"),
+				"thumb": asset("images/sabes_aves_rivolis_hummingbird-4K4YnfKdpJWaTbqo-thumb.webp"),
 				"full": asset("images/sabes_aves_rivolis_hummingbird-4K4YnfKdpJWaTbqo-full.webp"),
 				"alt": "Rivoli's Hummingbird",
 				"caption": "Rivoli's Hummingbird"
 			},
 			{
-				"thumb": asset("images/myioborus_miniatus-mv021oK5pNcWexMQ-md.webp"),
+				"thumb": asset("images/myioborus_miniatus-mv021oK5pNcWexMQ-thumb.webp"),
 				"full": asset("images/myioborus_miniatus-mv021oK5pNcWexMQ-full.webp"),
 				"alt": "Slate-throated Redstart",
 				"caption": "Slate-throated Redstart"
 			},
 			{
-				"thumb": asset("images/rose-throated-becarad-A1aPGVEonbhDZBaW-md.webp"),
+				"thumb": asset("images/rose-throated-becarad-A1aPGVEonbhDZBaW-thumb.webp"),
 				"full": asset("images/rose-throated-becarad-A1aPGVEonbhDZBaW-full.webp"),
 				"alt": "Rose-throated Becard",
 				"caption": "Rose-throated Becard"
 			},
 			{
-				"thumb": asset("images/sabes_aves_rufous-collared_sparrow-GqOCJC9TabonSzXb-md.webp"),
+				"thumb": asset("images/sabes_aves_rufous-collared_sparrow-GqOCJC9TabonSzXb-thumb.webp"),
 				"full": asset("images/sabes_aves_rufous-collared_sparrow-GqOCJC9TabonSzXb-full.webp"),
 				"alt": "Rufous-collared Sparrow",
 				"caption": "Rufous-collared Sparrow"
 			},
 			{
-				"thumb": asset("images/cloud-forest-birding-montetik-viewpoint-profile-m6L2jlGWKxSEPljw-md.webp"),
+				"thumb": asset("images/cloud-forest-birding-montetik-viewpoint-profile-m6L2jlGWKxSEPljw-thumb.webp"),
 				"full": asset("images/cloud-forest-birding-montetik-viewpoint-profile-m6L2jlGWKxSEPljw-full.webp"),
 				"alt": "Cloud forest at the Montetik viewpoint",
 				"caption": "Cloud forest at the Montetik viewpoint"
@@ -215,40 +215,53 @@ export const tourDetails: TourDetail[] = [
 		],
 		"gallery": [
 			{
-				"thumb": asset("images/white-necked-jacobin-AQEeDwNj9zFG7X57-md.webp"),
+				"thumb": asset("images/white-necked-jacobin-AQEeDwNj9zFG7X57-thumb.webp"),
 				"full": asset("images/white-necked-jacobin-AQEeDwNj9zFG7X57-full.webp"),
 				"alt": "White-necked Jacobin",
 				"caption": "White-necked Jacobin"
 			},
 			{
-				"thumb": asset("images/white-necked-jacobin-female-Yan0qorZz9t99oea-md.webp"),
+				"thumb": asset("images/white-necked-jacobin-female-Yan0qorZz9t99oea-thumb.webp"),
 				"full": asset("images/white-necked-jacobin-female-Yan0qorZz9t99oea-full.webp"),
 				"alt": "White-necked Jacobin (female)",
 				"caption": "White-necked Jacobin (female)"
 			},
 			{
-				"thumb": asset("images/gartered-trogon-intense-Yg2qzJnl2RCoEXwK-md.webp"),
+				"thumb": asset("images/gartered-trogon-intense-Yg2qzJnl2RCoEXwK-thumb.webp"),
 				"full": asset("images/gartered-trogon-intense-Yg2qzJnl2RCoEXwK-full.webp"),
 				"alt": "Gartered Trogon",
 				"caption": "Gartered Trogon"
 			},
 			{
-				"thumb": asset("images/collared-aracari-photo_-jaime-pa-c-rez-AMq1q4LoPbF5nQvP-md.webp"),
+				"thumb": asset("images/collared-aracari-photo_-jaime-pa-c-rez-AMq1q4LoPbF5nQvP-thumb.webp"),
 				"full": asset("images/collared-aracari-photo_-jaime-pa-c-rez-AMq1q4LoPbF5nQvP-full.webp"),
 				"alt": "Collared Aracari",
 				"caption": "Collared Aracari"
 			},
 			{
-				"thumb": asset("images/1759259147499-YNqMPaEaERHeMOG8-md.webp"),
+				"thumb": asset("images/1759259147499-YNqMPaEaERHeMOG8-thumb.webp"),
 				"full": asset("images/1759259147499-YNqMPaEaERHeMOG8-full.webp"),
 				"alt": "Red-capped Manakin",
 				"caption": "Red-capped Manakin"
 			},
 			{
-				"thumb": asset("images/palenq-Yle4qa7Q10t5Q9gk-md.webp"),
+				"thumb": asset("images/palenq-Yle4qa7Q10t5Q9gk-thumb.webp"),
 				"full": asset("images/palenq-Yle4qa7Q10t5Q9gk-full.webp"),
 				"alt": "Rainforest around the ruins",
 				"caption": "Rainforest around the ruins"
+			},
+			{
+				"thumb": asset("images/1759259147357-Y4LPxjKeznsOKOKp-thumb.webp"),
+				"full": asset("images/1759259147357-Y4LPxjKeznsOKOKp-full.webp"),
+				"alt": "Keel-billed Toucan",
+				"caption": "Keel-billed Toucan"
+			},
+			{
+				"thumb": asset("images/black-headed-trogon-8fNX9TIpLIQYBb1q-thumb.webp"),
+				"full": asset("images/black-headed-trogon-8fNX9TIpLIQYBb1q-full.webp"),
+				"alt": "Black-headed Trogon",
+				"caption": "Black-headed Trogon",
+				"credit": "Sergio Gómez Villaverde"
 			}
 		],
 		"habitat": "Tropical rainforest · Maya ruins",
@@ -309,85 +322,85 @@ export const tourDetails: TourDetail[] = [
 		],
 		"gallery": [
 			{
-				"thumb": asset("images/sabes_aves_canon_del_sumidero-mePJl0M91pTLG4Ja-card.webp"),
+				"thumb": asset("images/sabes_aves_canon_del_sumidero-mePJl0M91pTLG4Ja-thumb.webp"),
 				"full": asset("images/sabes_aves_canon_del_sumidero-mePJl0M91pTLG4Ja-full.webp"),
 				"alt": "Sumidero Canyon",
 				"caption": "Sumidero Canyon"
 			},
 			{
-				"thumb": asset("images/belted-flycatcher-great-photo-iZzV6wprekrFaMzq-card.webp"),
+				"thumb": asset("images/belted-flycatcher-great-photo-iZzV6wprekrFaMzq-thumb.webp"),
 				"full": asset("images/belted-flycatcher-great-photo-iZzV6wprekrFaMzq-full.webp"),
 				"alt": "Belted Flycatcher",
 				"caption": "Belted Flycatcher"
 			},
 			{
-				"thumb": asset("images/russet-crowned-motmot-AR0MD0JLlJi4JGXO-card.webp"),
+				"thumb": asset("images/russet-crowned-motmot-AR0MD0JLlJi4JGXO-thumb.webp"),
 				"full": asset("images/russet-crowned-motmot-AR0MD0JLlJi4JGXO-full.webp"),
 				"alt": "Russet-crowned Motmot",
 				"caption": "Russet-crowned Motmot"
 			},
 			{
-				"thumb": asset("images/banded-wren-YanqLvXMD1UNgz3v-card.webp"),
+				"thumb": asset("images/banded-wren-YanqLvXMD1UNgz3v-thumb.webp"),
 				"full": asset("images/banded-wren-YanqLvXMD1UNgz3v-full.webp"),
 				"alt": "Banded Wren",
 				"caption": "Banded Wren"
 			},
 			{
-				"thumb": asset("images/blue-and-white-mockingbird-1-NCnEIapZ3vpQC2sm-card.webp"),
+				"thumb": asset("images/blue-and-white-mockingbird-1-NCnEIapZ3vpQC2sm-thumb.webp"),
 				"full": asset("images/blue-and-white-mockingbird-1-NCnEIapZ3vpQC2sm-full.webp"),
 				"alt": "Blue-and-white Mockingbird",
 				"caption": "Blue-and-white Mockingbird"
 			},
 			{
-				"thumb": asset("images/white-throated-magpie-jay-4ffUHK2dtXrFJStK-card.webp"),
+				"thumb": asset("images/white-throated-magpie-jay-4ffUHK2dtXrFJStK-thumb.webp"),
 				"full": asset("images/white-throated-magpie-jay-4ffUHK2dtXrFJStK-full.webp"),
 				"alt": "White-throated Magpie-Jay",
 				"caption": "White-throated Magpie-Jay"
 			},
 			{
-				"thumb": asset("images/white-tipped-dove-mccoQMMMqHQh5lRi-card.webp"),
+				"thumb": asset("images/white-tipped-dove-mccoQMMMqHQh5lRi-thumb.webp"),
 				"full": asset("images/white-tipped-dove-mccoQMMMqHQh5lRi-full.webp"),
 				"alt": "White-tipped Dove",
 				"caption": "White-tipped Dove"
 			},
 			{
-				"thumb": asset("images/townsend-s-warbler-4n0x0K8n4youCbQE-card.webp"),
+				"thumb": asset("images/townsend-s-warbler-4n0x0K8n4youCbQE-thumb.webp"),
 				"full": asset("images/townsend-s-warbler-4n0x0K8n4youCbQE-full.webp"),
 				"alt": "Townsend's Warbler",
 				"caption": "Townsend's Warbler"
 			},
 			{
-				"thumb": asset("images/merlin-QepCw15OZpgUuZuE-card.webp"),
+				"thumb": asset("images/merlin-QepCw15OZpgUuZuE-thumb.webp"),
 				"full": asset("images/merlin-QepCw15OZpgUuZuE-full.webp"),
 				"alt": "Merlin",
 				"caption": "Merlin"
 			},
 			{
-				"thumb": asset("images/gray-collared-becard-KpdJ5QKgEmAxvp3r-card.webp"),
+				"thumb": asset("images/gray-collared-becard-KpdJ5QKgEmAxvp3r-thumb.webp"),
 				"full": asset("images/gray-collared-becard-KpdJ5QKgEmAxvp3r-full.webp"),
 				"alt": "Gray-collared Becard",
 				"caption": "Gray-collared Becard"
 			},
 			{
-				"thumb": asset("images/fan-tailed-warbler-NpvZdySIwrPR9t9N-card.webp"),
+				"thumb": asset("images/fan-tailed-warbler-NpvZdySIwrPR9t9N-thumb.webp"),
 				"full": asset("images/fan-tailed-warbler-NpvZdySIwrPR9t9N-full.webp"),
 				"alt": "Fan-tailed Warbler",
 				"caption": "Fan-tailed Warbler"
 			},
 			{
-				"thumb": asset("images/gartered-trogon-mP432bzGwoUoL9jv-card.webp"),
+				"thumb": asset("images/gartered-trogon-mP432bzGwoUoL9jv-thumb.webp"),
 				"full": asset("images/gartered-trogon-mP432bzGwoUoL9jv-full.webp"),
 				"alt": "Gartered Trogon",
 				"caption": "Gartered Trogon"
 			},
 			{
-				"thumb": asset("images/feizal-and-valente-birdwatching-at-sumidero-canyon-AE0P0plDJlTR6J5M-card.webp"),
+				"thumb": asset("images/feizal-and-valente-birdwatching-at-sumidero-canyon-AE0P0plDJlTR6J5M-thumb.webp"),
 				"full": asset("images/feizal-and-valente-birdwatching-at-sumidero-canyon-AE0P0plDJlTR6J5M-full.webp"),
 				"alt": "Birding the canyon rim",
 				"caption": "Birding the canyon rim"
 			},
 			{
-				"thumb": asset("images/lesser-ground-cuckoo-sergio-md.webp"),
+				"thumb": asset("images/lesser-ground-cuckoo-sergio-thumb.webp"),
 				"full": asset("images/lesser-ground-cuckoo-sergio-full.webp"),
 				"alt": "Lesser Ground-Cuckoo",
 				"caption": "Lesser Ground-Cuckoo",
@@ -445,40 +458,54 @@ export const tourDetails: TourDetail[] = [
 		],
 		"gallery": [
 			{
-				"thumb": asset("images/saves_aves_slender_sheartail-mk3JZ2XwRgceMJ7G-card.webp"),
+				"thumb": asset("images/saves_aves_slender_sheartail-mk3JZ2XwRgceMJ7G-thumb.webp"),
 				"full": asset("images/saves_aves_slender_sheartail-mk3JZ2XwRgceMJ7G-full.webp"),
 				"alt": "Slender Sheartail",
 				"caption": "Slender Sheartail"
 			},
 			{
-				"thumb": asset("images/saves_aves_belted_flyctacher-yle4qopkavupwgkq_le_upscale_prime_light_ai_30-W0ccOL9OyvD1PW60-card.webp"),
+				"thumb": asset("images/saves_aves_belted_flyctacher-yle4qopkavupwgkq_le_upscale_prime_light_ai_30-W0ccOL9OyvD1PW60-thumb.webp"),
 				"full": asset("images/saves_aves_belted_flyctacher-yle4qopkavupwgkq_le_upscale_prime_light_ai_30-W0ccOL9OyvD1PW60-full.webp"),
 				"alt": "Belted Flycatcher",
 				"caption": "Belted Flycatcher"
 			},
 			{
-				"thumb": asset("images/yellow-grosbeak-EBPvotaS7J1A3VuE-card.webp"),
+				"thumb": asset("images/yellow-grosbeak-EBPvotaS7J1A3VuE-thumb.webp"),
 				"full": asset("images/yellow-grosbeak-EBPvotaS7J1A3VuE-full.webp"),
 				"alt": "Yellow Grosbeak",
 				"caption": "Yellow Grosbeak"
 			},
 			{
-				"thumb": asset("images/green-jay-YyvZrOK740uXWDkj-card.webp"),
+				"thumb": asset("images/green-jay-YyvZrOK740uXWDkj-thumb.webp"),
 				"full": asset("images/green-jay-YyvZrOK740uXWDkj-full.webp"),
 				"alt": "Green Jay",
 				"caption": "Green Jay"
 			},
 			{
-				"thumb": asset("images/tenam-puente-m6Ljg0VxNXhzeewd-card.webp"),
+				"thumb": asset("images/tenam-puente-m6Ljg0VxNXhzeewd-thumb.webp"),
 				"full": asset("images/tenam-puente-m6Ljg0VxNXhzeewd-full.webp"),
 				"alt": "Tenam Puente ruins",
 				"caption": "Tenam Puente ruins"
 			},
 			{
-				"thumb": asset("images/lesser-roadrunner-sergio-md.webp"),
+				"thumb": asset("images/lesser-roadrunner-sergio-thumb.webp"),
 				"full": asset("images/lesser-roadrunner-sergio-full.webp"),
 				"alt": "Lesser Roadrunner",
 				"caption": "Lesser Roadrunner",
+				"credit": "Sergio Gómez Villaverde"
+			},
+			{
+				"thumb": asset("images/blue-and-white-mockingbird-2-XpFHUZKbXKFSe1oj-thumb.webp"),
+				"full": asset("images/blue-and-white-mockingbird-2-XpFHUZKbXKFSe1oj-full.webp"),
+				"alt": "Blue-and-white Mockingbird",
+				"caption": "Blue-and-white Mockingbird",
+				"credit": "Sergio Gómez Villaverde"
+			},
+			{
+				"thumb": asset("images/white-tailed-kite-UDrixPz9z9AO6Ugu-thumb.webp"),
+				"full": asset("images/white-tailed-kite-UDrixPz9z9AO6Ugu-full.webp"),
+				"alt": "White-tailed Kite",
+				"caption": "White-tailed Kite",
 				"credit": "Sergio Gómez Villaverde"
 			}
 		],
@@ -539,10 +566,37 @@ export const tourDetails: TourDetail[] = [
 		],
 		"gallery": [
 			{
-				"thumb": asset("images/resplendent-quetzal-mnlW0616OoTEDEj3-card.webp"),
+				"thumb": asset("images/resplendent-quetzal-mnlW0616OoTEDEj3-thumb.webp"),
 				"full": asset("images/resplendent-quetzal-mnlW0616OoTEDEj3-full.webp"),
 				"alt": "Resplendent Quetzal",
 				"caption": "Resplendent Quetzal"
+			},
+			{
+				"thumb": asset("images/slate-colored-solitaire-ED5x0xZ5NKF6Z27s-thumb.webp"),
+				"full": asset("images/slate-colored-solitaire-ED5x0xZ5NKF6Z27s-full.webp"),
+				"alt": "Slate-colored Solitaire",
+				"caption": "Slate-colored Solitaire",
+				"credit": "Sergio Gómez Villaverde"
+			},
+			{
+				"thumb": asset("images/black-headed-nightingale-thrush-nTqJPgsmKfcxaxAu-thumb.webp"),
+				"full": asset("images/black-headed-nightingale-thrush-nTqJPgsmKfcxaxAu-full.webp"),
+				"alt": "Black-headed Nightingale-Thrush",
+				"caption": "Black-headed Nightingale-Thrush",
+				"credit": "Sergio Gómez Villaverde"
+			},
+			{
+				"thumb": asset("images/green-throated-mountain-gem-1-BsIEUutE5zt2I5cS-thumb.webp"),
+				"full": asset("images/green-throated-mountain-gem-1-BsIEUutE5zt2I5cS-full.webp"),
+				"alt": "Green-throated Mountain-gem",
+				"caption": "Green-throated Mountain-gem",
+				"credit": "Sergio Gómez Villaverde"
+			},
+			{
+				"thumb": asset("images/osprey-Y4LxML4DgKIOb7R0-thumb.webp"),
+				"full": asset("images/osprey-Y4LxML4DgKIOb7R0-full.webp"),
+				"alt": "Osprey",
+				"caption": "Osprey"
 			}
 		],
 		"habitat": "Pine-oak & cloud forest · lakes",
@@ -615,38 +669,45 @@ export const tourDetails: TourDetail[] = [
 		],
 		"gallery": [
 			{
-				"thumb": asset("images/5a00c77407956732f80e74b002410be9-mk3qQ8RrkvuyPp7o-card.webp"),
+				"thumb": asset("images/5a00c77407956732f80e74b002410be9-mk3qQ8RrkvuyPp7o-thumb.webp"),
 				"full": asset("images/5a00c77407956732f80e74b002410be9-mk3qQ8RrkvuyPp7o-full.webp"),
 				"alt": "Rose-bellied Bunting",
 				"caption": "Rose-bellied Bunting"
 			},
 			{
-				"thumb": asset("images/orange-breasted-bunting-sergio-md.webp"),
+				"thumb": asset("images/orange-breasted-bunting-sergio-thumb.webp"),
 				"full": asset("images/orange-breasted-bunting-sergio-full.webp"),
 				"alt": "Orange-breasted Bunting",
 				"caption": "Orange-breasted Bunting",
 				"credit": "Sergio Gómez Villaverde"
 			},
 			{
-				"thumb": asset("images/citreoline-trogon-sergio-md.webp"),
+				"thumb": asset("images/citreoline-trogon-sergio-thumb.webp"),
 				"full": asset("images/citreoline-trogon-sergio-full.webp"),
 				"alt": "Citreoline Trogon",
 				"caption": "Citreoline Trogon",
 				"credit": "Sergio Gómez Villaverde"
 			},
 			{
-				"thumb": asset("images/green-fronted-hummingbird-sergio-md.webp"),
+				"thumb": asset("images/green-fronted-hummingbird-sergio-thumb.webp"),
 				"full": asset("images/green-fronted-hummingbird-sergio-full.webp"),
 				"alt": "Green-fronted Hummingbird",
 				"caption": "Green-fronted Hummingbird",
 				"credit": "Sergio Gómez Villaverde"
 			},
 			{
-				"thumb": asset("images/cinnamon-tailed-sparrow-sergio-md.webp"),
+				"thumb": asset("images/cinnamon-tailed-sparrow-sergio-thumb.webp"),
 				"full": asset("images/cinnamon-tailed-sparrow-sergio-full.webp"),
 				"alt": "Cinnamon-tailed Sparrow",
 				"caption": "Cinnamon-tailed Sparrow",
 				"credit": "Sergio Gómez Villaverde"
+			},
+			{
+				"thumb": asset("images/long-tailed-manakin-photo_-jaime-pa-c-rez-AoPWPGpV7yI0kkl5-thumb.webp"),
+				"full": asset("images/long-tailed-manakin-photo_-jaime-pa-c-rez-AoPWPGpV7yI0kkl5-full.webp"),
+				"alt": "Long-tailed Manakin",
+				"caption": "Long-tailed Manakin",
+				"credit": "Jaime Pérez"
 			}
 		],
 		"habitat": "Sierra Madre · dry to humid forest",
@@ -689,114 +750,115 @@ export const tourDetails: TourDetail[] = [
 		],
 		"gallery": [
 			{
-				"thumb": asset("images/belted-flycatcher-great-photo-iZzV6wprekrFaMzq-sq.webp"),
-				"full": asset("images/belted-flycatcher-great-photo-iZzV6wprekrFaMzq-full.webp"),
-				"alt": "Belted Flycatcher",
-				"caption": "Belted Flycatcher"
+				"thumb": asset("images/mountain-trogon-2-SLizb4Wf8opo6wqS-thumb.webp"),
+				"full": asset("images/mountain-trogon-2-SLizb4Wf8opo6wqS-full.webp"),
+				"alt": "Mountain Trogon",
+				"caption": "Mountain Trogon",
+				"credit": "Sergio Gómez Villaverde"
 			},
 			{
-				"thumb": asset("images/pink-headed-warbler-2-PKTVisrKq3xo673F-sq.webp"),
+				"thumb": asset("images/pink-headed-warbler-2-PKTVisrKq3xo673F-thumb.webp"),
 				"full": asset("images/pink-headed-warbler-2-PKTVisrKq3xo673F-full.webp"),
 				"alt": "Pink-headed Warbler",
 				"caption": "Pink-headed Warbler",
 				"credit": "Sergio Gómez Villaverde"
 			},
 			{
-				"thumb": asset("images/blue-and-white-mockingbird-1-NCnEIapZ3vpQC2sm-sq.webp"),
-				"full": asset("images/blue-and-white-mockingbird-1-NCnEIapZ3vpQC2sm-full.webp"),
-				"alt": "Blue-and-white Mockingbird",
-				"caption": "Blue-and-white Mockingbird",
+				"thumb": asset("images/crested-guan-2-IwURyHPiaRvtUSCZ-thumb.webp"),
+				"full": asset("images/crested-guan-2-IwURyHPiaRvtUSCZ-full.webp"),
+				"alt": "Crested Guan",
+				"caption": "Crested Guan",
 				"credit": "Sergio Gómez Villaverde"
 			},
 			{
-				"thumb": asset("images/rose-bellied-bunting-m2Wa32VjWETn9NkA-sq.webp"),
+				"thumb": asset("images/rose-bellied-bunting-m2Wa32VjWETn9NkA-thumb.webp"),
 				"full": asset("images/rose-bellied-bunting-m2Wa32VjWETn9NkA-full.webp"),
 				"alt": "Rose-bellied Bunting",
 				"caption": "Rose-bellied Bunting",
 				"credit": "Nagi Aboulenein"
 			},
 			{
-				"thumb": asset("images/unicolored-jay-s7sJYdXMbsQy4iJO-sq.webp"),
+				"thumb": asset("images/unicolored-jay-s7sJYdXMbsQy4iJO-thumb.webp"),
 				"full": asset("images/unicolored-jay-s7sJYdXMbsQy4iJO-full.webp"),
 				"alt": "Unicolored Jay",
 				"caption": "Unicolored Jay"
 			},
 			{
-				"thumb": asset("images/sabes_aves_blue-throated_motmot-NFfUHZuU255VnhZE-sq.webp"),
+				"thumb": asset("images/sabes_aves_blue-throated_motmot-NFfUHZuU255VnhZE-thumb.webp"),
 				"full": asset("images/sabes_aves_blue-throated_motmot-NFfUHZuU255VnhZE-full.webp"),
 				"alt": "Blue-throated Motmot",
 				"caption": "Blue-throated Motmot"
 			},
 			{
-				"thumb": asset("images/slender-sheartail-qMw7TVBhS9Q1882N-sq.webp"),
+				"thumb": asset("images/slender-sheartail-qMw7TVBhS9Q1882N-thumb.webp"),
 				"full": asset("images/slender-sheartail-qMw7TVBhS9Q1882N-full.webp"),
 				"alt": "Slender Sheartail",
 				"caption": "Slender Sheartail",
 				"credit": "Sergio Gómez Villaverde"
 			},
 			{
-				"thumb": asset("images/bearded-screech-owl-B5Fngu1MgWbNIBDY-sq.webp"),
+				"thumb": asset("images/bearded-screech-owl-B5Fngu1MgWbNIBDY-thumb.webp"),
 				"full": asset("images/bearded-screech-owl-B5Fngu1MgWbNIBDY-full.webp"),
 				"alt": "Bearded Screech-Owl",
 				"caption": "Bearded Screech-Owl",
 				"credit": "Sergio Gómez Villaverde"
 			},
 			{
-				"thumb": asset("images/collared-aracari-photo_-jaime-pa-c-rez-AMq1q4LoPbF5nQvP-sq.webp"),
+				"thumb": asset("images/collared-aracari-photo_-jaime-pa-c-rez-AMq1q4LoPbF5nQvP-thumb.webp"),
 				"full": asset("images/collared-aracari-photo_-jaime-pa-c-rez-AMq1q4LoPbF5nQvP-full.webp"),
 				"alt": "Collared Aracari",
 				"caption": "Collared Aracari",
 				"credit": "Jaime Pérez"
 			},
 			{
-				"thumb": asset("images/keel-billed-toucan-N3wJ3xiANHuwBTFC-sq.webp"),
+				"thumb": asset("images/keel-billed-toucan-N3wJ3xiANHuwBTFC-thumb.webp"),
 				"full": asset("images/keel-billed-toucan-N3wJ3xiANHuwBTFC-full.webp"),
 				"alt": "Keel-billed Toucan",
 				"caption": "Keel-billed Toucan"
 			},
 			{
-				"thumb": asset("images/ornate-hawk-eagle-mP4OGNwpvehoNJQq-sq.webp"),
+				"thumb": asset("images/ornate-hawk-eagle-mP4OGNwpvehoNJQq-thumb.webp"),
 				"full": asset("images/ornate-hawk-eagle-mP4OGNwpvehoNJQq-full.webp"),
 				"alt": "Ornate Hawk-Eagle",
 				"caption": "Ornate Hawk-Eagle",
 				"credit": "Jaime Pérez"
 			},
 			{
-				"thumb": asset("images/rufous-browed-wren-3phBg9ChWPaz4qiV-sq.webp"),
+				"thumb": asset("images/rufous-browed-wren-3phBg9ChWPaz4qiV-thumb.webp"),
 				"full": asset("images/rufous-browed-wren-3phBg9ChWPaz4qiV-full.webp"),
 				"alt": "Rufous-browed Wren",
 				"caption": "Rufous-browed Wren"
 			},
 			{
-				"thumb": asset("images/black-capped-swallow-vYDUGfI4yq2m07pL-sq.webp"),
+				"thumb": asset("images/black-capped-swallow-vYDUGfI4yq2m07pL-thumb.webp"),
 				"full": asset("images/black-capped-swallow-vYDUGfI4yq2m07pL-full.webp"),
 				"alt": "Black-capped Swallow",
 				"caption": "Black-capped Swallow",
 				"credit": "Sergio Gómez Villaverde"
 			},
 			{
-				"thumb": asset("images/orange-breasted-bunting-sergio-md.webp"),
+				"thumb": asset("images/orange-breasted-bunting-sergio-thumb.webp"),
 				"full": asset("images/orange-breasted-bunting-sergio-full.webp"),
 				"alt": "Orange-breasted Bunting",
 				"caption": "Orange-breasted Bunting",
 				"credit": "Sergio Gómez Villaverde"
 			},
 			{
-				"thumb": asset("images/citreoline-trogon-sergio-md.webp"),
+				"thumb": asset("images/citreoline-trogon-sergio-thumb.webp"),
 				"full": asset("images/citreoline-trogon-sergio-full.webp"),
 				"alt": "Citreoline Trogon",
 				"caption": "Citreoline Trogon",
 				"credit": "Sergio Gómez Villaverde"
 			},
 			{
-				"thumb": asset("images/cinnamon-tailed-sparrow-sergio-md.webp"),
+				"thumb": asset("images/cinnamon-tailed-sparrow-sergio-thumb.webp"),
 				"full": asset("images/cinnamon-tailed-sparrow-sergio-full.webp"),
 				"alt": "Cinnamon-tailed Sparrow",
 				"caption": "Cinnamon-tailed Sparrow",
 				"credit": "Sergio Gómez Villaverde"
 			},
 			{
-				"thumb": asset("images/navas-wren-sergio-md.webp"),
+				"thumb": asset("images/navas-wren-sergio-thumb.webp"),
 				"full": asset("images/navas-wren-sergio-full.webp"),
 				"alt": "Nava's Wren",
 				"caption": "Nava's Wren",
@@ -868,105 +930,103 @@ export const tourDetails: TourDetail[] = [
 		],
 		"gallery": [
 			{
-				"thumb": asset("images/horned-guan-mv02ExGWQJC0k2xv-sq.webp"),
+				"thumb": asset("images/horned-guan-mv02ExGWQJC0k2xv-thumb.webp"),
 				"full": asset("images/horned-guan-mv02ExGWQJC0k2xv-full.webp"),
 				"alt": "Horned Guan",
 				"caption": "Horned Guan"
 			},
 			{
-				"thumb": asset("images/pink-headed-warbler-3-qDv5NS68FdQ7onyM-sq.webp"),
+				"thumb": asset("images/pink-headed-warbler-3-qDv5NS68FdQ7onyM-thumb.webp"),
 				"full": asset("images/pink-headed-warbler-3-qDv5NS68FdQ7onyM-full.webp"),
 				"alt": "Pink-headed Warbler",
 				"caption": "Pink-headed Warbler",
 				"credit": "Sergio Gómez Villaverde"
 			},
 			{
-				"thumb": asset("images/blue-and-white-mockingbird-1-NCnEIapZ3vpQC2sm-sq.webp"),
-				"full": asset("images/blue-and-white-mockingbird-1-NCnEIapZ3vpQC2sm-full.webp"),
-				"alt": "Blue-and-white Mockingbird",
-				"caption": "Blue-and-white Mockingbird",
-				"credit": "Sergio Gómez Villaverde"
+				"thumb": asset("images/yellow-headed-amazon-RwBRxOKOv3wii34L-thumb.webp"),
+				"full": asset("images/yellow-headed-amazon-RwBRxOKOv3wii34L-full.webp"),
+				"alt": "Yellow-headed Amazon",
+				"caption": "Yellow-headed Amazon"
 			},
 			{
-				"thumb": asset("images/_dsc0870-UHFcPZY27edAPFr1-sq.webp"),
+				"thumb": asset("images/_dsc0870-UHFcPZY27edAPFr1-thumb.webp"),
 				"full": asset("images/_dsc0870-UHFcPZY27edAPFr1-full.webp"),
 				"alt": "Giant Wren",
 				"caption": "Giant Wren"
 			},
 			{
-				"thumb": asset("images/rose-bellied-bunting-m2Wa32VjWETn9NkA-sq.webp"),
-				"full": asset("images/rose-bellied-bunting-m2Wa32VjWETn9NkA-full.webp"),
-				"alt": "Rose-bellied Bunting",
-				"caption": "Rose-bellied Bunting",
-				"credit": "Nagi Aboulenein"
+				"thumb": asset("images/sparkling-tailed-hummingbird-rx6NUrWTCsWDxH5N-thumb.webp"),
+				"full": asset("images/sparkling-tailed-hummingbird-rx6NUrWTCsWDxH5N-full.webp"),
+				"alt": "Sparkling-tailed Hummingbird",
+				"caption": "Sparkling-tailed Hummingbird"
 			},
 			{
-				"thumb": asset("images/sabes_aves_blue-crowned_chlorophonia-1-YD0w1yZbj5fb90o7-sq.webp"),
+				"thumb": asset("images/sabes_aves_blue-crowned_chlorophonia-1-YD0w1yZbj5fb90o7-thumb.webp"),
 				"full": asset("images/sabes_aves_blue-crowned_chlorophonia-1-YD0w1yZbj5fb90o7-full.webp"),
 				"alt": "Blue-crowned Chlorophonia",
 				"caption": "Blue-crowned Chlorophonia"
 			},
 			{
-				"thumb": asset("images/sabes_aves_blue-throated_motmot-NFfUHZuU255VnhZE-sq.webp"),
+				"thumb": asset("images/sabes_aves_blue-throated_motmot-NFfUHZuU255VnhZE-thumb.webp"),
 				"full": asset("images/sabes_aves_blue-throated_motmot-NFfUHZuU255VnhZE-full.webp"),
 				"alt": "Blue-throated Motmot",
 				"caption": "Blue-throated Motmot"
 			},
 			{
-				"thumb": asset("images/hooded-grosbeak-Jnoa3lBHTMdjXHGh-sq.webp"),
+				"thumb": asset("images/hooded-grosbeak-Jnoa3lBHTMdjXHGh-thumb.webp"),
 				"full": asset("images/hooded-grosbeak-Jnoa3lBHTMdjXHGh-full.webp"),
 				"alt": "Hooded Grosbeak",
 				"caption": "Hooded Grosbeak"
 			},
 			{
-				"thumb": asset("images/wine-throated-hummingbird-1KaFhnbxIE9aAt0U-sq.webp"),
+				"thumb": asset("images/wine-throated-hummingbird-1KaFhnbxIE9aAt0U-thumb.webp"),
 				"full": asset("images/wine-throated-hummingbird-1KaFhnbxIE9aAt0U-full.webp"),
 				"alt": "Wine-throated Hummingbird",
 				"caption": "Wine-throated Hummingbird"
 			},
 			{
-				"thumb": asset("images/rufous-sabrewing-8lgcv1ND0RJovnoi-sq.webp"),
+				"thumb": asset("images/rufous-sabrewing-8lgcv1ND0RJovnoi-thumb.webp"),
 				"full": asset("images/rufous-sabrewing-8lgcv1ND0RJovnoi-full.webp"),
 				"alt": "Rufous Sabrewing",
 				"caption": "Rufous Sabrewing"
 			},
 			{
-				"thumb": asset("images/turquoise-browed-motmot-hwikmYfulmi5nHCi-sq.webp"),
+				"thumb": asset("images/turquoise-browed-motmot-hwikmYfulmi5nHCi-thumb.webp"),
 				"full": asset("images/turquoise-browed-motmot-hwikmYfulmi5nHCi-full.webp"),
 				"alt": "Turquoise-browed Motmot",
 				"caption": "Turquoise-browed Motmot",
 				"credit": "Sergio Gómez Villaverde"
 			},
 			{
-				"thumb": asset("images/guatemalan-tyrannulet-HFmbr5dlTSRWWVe9-sq.webp"),
+				"thumb": asset("images/guatemalan-tyrannulet-HFmbr5dlTSRWWVe9-thumb.webp"),
 				"full": asset("images/guatemalan-tyrannulet-HFmbr5dlTSRWWVe9-full.webp"),
 				"alt": "Guatemalan Tyrannulet",
 				"caption": "Guatemalan Tyrannulet",
 				"credit": "Sergio Gómez Villaverde"
 			},
 			{
-				"thumb": asset("images/long-tailed-manakin-tqWbPcfxlxP9AoST-sq.webp"),
+				"thumb": asset("images/long-tailed-manakin-tqWbPcfxlxP9AoST-thumb.webp"),
 				"full": asset("images/long-tailed-manakin-tqWbPcfxlxP9AoST-full.webp"),
 				"alt": "Long-tailed Manakin",
 				"caption": "Long-tailed Manakin",
 				"credit": "Jaime Pérez"
 			},
 			{
-				"thumb": asset("images/orange-breasted-bunting-sergio-md.webp"),
+				"thumb": asset("images/orange-breasted-bunting-sergio-thumb.webp"),
 				"full": asset("images/orange-breasted-bunting-sergio-full.webp"),
 				"alt": "Orange-breasted Bunting",
 				"caption": "Orange-breasted Bunting",
 				"credit": "Sergio Gómez Villaverde"
 			},
 			{
-				"thumb": asset("images/citreoline-trogon-sergio-md.webp"),
+				"thumb": asset("images/citreoline-trogon-sergio-thumb.webp"),
 				"full": asset("images/citreoline-trogon-sergio-full.webp"),
 				"alt": "Citreoline Trogon",
 				"caption": "Citreoline Trogon",
 				"credit": "Sergio Gómez Villaverde"
 			},
 			{
-				"thumb": asset("images/cinnamon-tailed-sparrow-sergio-md.webp"),
+				"thumb": asset("images/cinnamon-tailed-sparrow-sergio-thumb.webp"),
 				"full": asset("images/cinnamon-tailed-sparrow-sergio-full.webp"),
 				"alt": "Cinnamon-tailed Sparrow",
 				"caption": "Cinnamon-tailed Sparrow",
@@ -1038,37 +1098,44 @@ export const tourDetails: TourDetail[] = [
 		],
 		"gallery": [
 			{
-				"thumb": asset("images/keel-billed-toucan-N3wJ3xiANHuwBTFC-sq.webp"),
+				"thumb": asset("images/keel-billed-toucan-N3wJ3xiANHuwBTFC-thumb.webp"),
 				"full": asset("images/keel-billed-toucan-N3wJ3xiANHuwBTFC-full.webp"),
 				"alt": "Keel-billed Toucan",
 				"caption": "Keel-billed Toucan"
 			},
 			{
-				"thumb": asset("images/ornate-hawk-eagle-mP4OGNwpvehoNJQq-sq.webp"),
+				"thumb": asset("images/ornate-hawk-eagle-mP4OGNwpvehoNJQq-thumb.webp"),
 				"full": asset("images/ornate-hawk-eagle-mP4OGNwpvehoNJQq-full.webp"),
 				"alt": "Ornate Hawk-Eagle",
 				"caption": "Ornate Hawk-Eagle",
 				"credit": "Jaime Pérez"
 			},
 			{
-				"thumb": asset("images/lovely-cotinga-kMeBqQD8MqFZoxbw-sq.webp"),
+				"thumb": asset("images/lovely-cotinga-kMeBqQD8MqFZoxbw-thumb.webp"),
 				"full": asset("images/lovely-cotinga-kMeBqQD8MqFZoxbw-full.webp"),
 				"alt": "Lovely Cotinga",
 				"caption": "Lovely Cotinga"
 			},
 			{
-				"thumb": asset("images/scarlet-macaw-VuZUDrvypQ0vU3dv-sq.webp"),
+				"thumb": asset("images/scarlet-macaw-VuZUDrvypQ0vU3dv-thumb.webp"),
 				"full": asset("images/scarlet-macaw-VuZUDrvypQ0vU3dv-full.webp"),
 				"alt": "Scarlet Macaw",
 				"caption": "Scarlet Macaw",
 				"credit": "Sergio Gómez Villaverde"
 			},
 			{
-				"thumb": asset("images/tropical-royal-flycatcher-1-anIw6HaxJjuJCPks-sq.webp"),
+				"thumb": asset("images/tropical-royal-flycatcher-1-anIw6HaxJjuJCPks-thumb.webp"),
 				"full": asset("images/tropical-royal-flycatcher-1-anIw6HaxJjuJCPks-full.webp"),
 				"alt": "Tropical Royal Flycatcher",
 				"caption": "Tropical Royal Flycatcher",
 				"credit": "Sergio Gómez Villaverde"
+			},
+			{
+				"thumb": asset("images/spizaetus-tyrannus-photo_-juan-pa-c-rez-reduced-A0xlxV8pqZf88PkK-thumb.webp"),
+				"full": asset("images/spizaetus-tyrannus-photo_-juan-pa-c-rez-reduced-A0xlxV8pqZf88PkK-full.webp"),
+				"alt": "Black Hawk-Eagle",
+				"caption": "Black Hawk-Eagle",
+				"credit": "Juan Pérez"
 			}
 		],
 		"length": "4 days · Jungle, rivers and Maya ruins",
@@ -1146,126 +1213,131 @@ export const tourDetails: TourDetail[] = [
 		],
 		"gallery": [
 			{
-				"thumb": asset("images/pink-headed-warbler-1-aLtT3eAXkiqtjRWh-sq.webp"),
+				"thumb": asset("images/pink-headed-warbler-1-aLtT3eAXkiqtjRWh-thumb.webp"),
 				"full": asset("images/pink-headed-warbler-1-aLtT3eAXkiqtjRWh-full.webp"),
 				"alt": "Pink-headed Warbler",
 				"caption": "Pink-headed Warbler",
 				"credit": "Sergio Gómez Villaverde"
 			},
 			{
-				"thumb": asset("images/belted-flycatcher-great-photo-iZzV6wprekrFaMzq-sq.webp"),
-				"full": asset("images/belted-flycatcher-great-photo-iZzV6wprekrFaMzq-full.webp"),
-				"alt": "Belted Flycatcher",
-				"caption": "Belted Flycatcher"
-			},
-			{
-				"thumb": asset("images/blue-and-white-mockingbird-1-NCnEIapZ3vpQC2sm-sq.webp"),
-				"full": asset("images/blue-and-white-mockingbird-1-NCnEIapZ3vpQC2sm-full.webp"),
-				"alt": "Blue-and-white Mockingbird",
-				"caption": "Blue-and-white Mockingbird",
+				"thumb": asset("images/mountain-trogon-M4lDamBkHGnFnPex-thumb.webp"),
+				"full": asset("images/mountain-trogon-M4lDamBkHGnFnPex-full.webp"),
+				"alt": "Mountain Trogon",
+				"caption": "Mountain Trogon",
 				"credit": "Sergio Gómez Villaverde"
 			},
 			{
-				"thumb": asset("images/horned-guan-mv02ExGWQJC0k2xv-sq.webp"),
-				"full": asset("images/horned-guan-mv02ExGWQJC0k2xv-full.webp"),
-				"alt": "Horned Guan",
-				"caption": "Horned Guan"
-			},
-			{
-				"thumb": asset("images/unicolored-jay-s7sJYdXMbsQy4iJO-sq.webp"),
-				"full": asset("images/unicolored-jay-s7sJYdXMbsQy4iJO-full.webp"),
-				"alt": "Unicolored Jay",
-				"caption": "Unicolored Jay"
-			},
-			{
-				"thumb": asset("images/sabes_aves_blue-crowned_chlorophonia-1-YD0w1yZbj5fb90o7-sq.webp"),
-				"full": asset("images/sabes_aves_blue-crowned_chlorophonia-1-YD0w1yZbj5fb90o7-full.webp"),
-				"alt": "Blue-crowned Chlorophonia",
-				"caption": "Blue-crowned Chlorophonia"
-			},
-			{
-				"thumb": asset("images/sabes_aves_blue-throated_motmot-NFfUHZuU255VnhZE-sq.webp"),
-				"full": asset("images/sabes_aves_blue-throated_motmot-NFfUHZuU255VnhZE-full.webp"),
-				"alt": "Blue-throated Motmot",
-				"caption": "Blue-throated Motmot"
-			},
-			{
-				"thumb": asset("images/slender-sheartail-qMw7TVBhS9Q1882N-sq.webp"),
-				"full": asset("images/slender-sheartail-qMw7TVBhS9Q1882N-full.webp"),
-				"alt": "Slender Sheartail",
-				"caption": "Slender Sheartail",
+				"thumb": asset("images/red-faced-warbler-sergio-thumb.webp"),
+				"full": asset("images/red-faced-warbler-sergio-full.webp"),
+				"alt": "Red-faced Warbler",
+				"caption": "Red-faced Warbler",
 				"credit": "Sergio Gómez Villaverde"
 			},
 			{
-				"thumb": asset("images/agami-heron-CwzZQHYqe6AfiDTq-sq.webp"),
+				"thumb": asset("images/rivolis-hummingbird-sergio-thumb.webp"),
+				"full": asset("images/rivolis-hummingbird-sergio-full.webp"),
+				"alt": "Rivoli's Hummingbird",
+				"caption": "Rivoli's Hummingbird",
+				"credit": "Sergio Gómez Villaverde"
+			},
+			{
+				"thumb": asset("images/golden-cheeked-warbler-sergio-thumb.webp"),
+				"full": asset("images/golden-cheeked-warbler-sergio-full.webp"),
+				"alt": "Golden-cheeked Warbler",
+				"caption": "Golden-cheeked Warbler",
+				"credit": "Sergio Gómez Villaverde"
+			},
+			{
+				"thumb": asset("images/green-throated-mountain-gem-2-AfkqjWFIZA8j6CIi-thumb.webp"),
+				"full": asset("images/green-throated-mountain-gem-2-AfkqjWFIZA8j6CIi-full.webp"),
+				"alt": "Green-throated Mountaingem",
+				"caption": "Green-throated Mountaingem",
+				"credit": "Sergio Gómez Villaverde"
+			},
+			{
+				"thumb": asset("images/flame-colored-tanager-sergio-thumb.webp"),
+				"full": asset("images/flame-colored-tanager-sergio-full.webp"),
+				"alt": "Flame-colored Tanager",
+				"caption": "Flame-colored Tanager",
+				"credit": "Sergio Gómez Villaverde"
+			},
+			{
+				"thumb": asset("images/white-tailed-kite-2-Rpm2S7mudryHaM0P-thumb.webp"),
+				"full": asset("images/white-tailed-kite-2-Rpm2S7mudryHaM0P-full.webp"),
+				"alt": "White-tailed Kite",
+				"caption": "White-tailed Kite",
+				"credit": "Sergio Gómez Villaverde"
+			},
+			{
+				"thumb": asset("images/agami-heron-CwzZQHYqe6AfiDTq-thumb.webp"),
 				"full": asset("images/agami-heron-CwzZQHYqe6AfiDTq-full.webp"),
 				"alt": "Agami Heron",
 				"caption": "Agami Heron"
 			},
 			{
-				"thumb": asset("images/azure-hooded-jay-w6Bqp2psIEeDOfzQ-sq.webp"),
+				"thumb": asset("images/azure-hooded-jay-w6Bqp2psIEeDOfzQ-thumb.webp"),
 				"full": asset("images/azure-hooded-jay-w6Bqp2psIEeDOfzQ-full.webp"),
 				"alt": "Azure-hooded Jay",
 				"caption": "Azure-hooded Jay",
 				"credit": "Sergio Gómez Villaverde"
 			},
 			{
-				"thumb": asset("images/bearded-screech-owl-B5Fngu1MgWbNIBDY-sq.webp"),
-				"full": asset("images/bearded-screech-owl-B5Fngu1MgWbNIBDY-full.webp"),
-				"alt": "Bearded Screech-Owl",
-				"caption": "Bearded Screech-Owl",
+				"thumb": asset("images/crested-guan-CKPoAxdUhmbgjmxZ-thumb.webp"),
+				"full": asset("images/crested-guan-CKPoAxdUhmbgjmxZ-full.webp"),
+				"alt": "Crested Guan",
+				"caption": "Crested Guan",
 				"credit": "Sergio Gómez Villaverde"
 			},
 			{
-				"thumb": asset("images/black-collared-hawk-oFYKYtW5m1pBiNws-sq.webp"),
+				"thumb": asset("images/black-collared-hawk-oFYKYtW5m1pBiNws-thumb.webp"),
 				"full": asset("images/black-collared-hawk-oFYKYtW5m1pBiNws-full.webp"),
 				"alt": "Black-collared Hawk",
 				"caption": "Black-collared Hawk"
 			},
 			{
-				"thumb": asset("images/collared-aracari-photo_-jaime-pa-c-rez-AMq1q4LoPbF5nQvP-sq.webp"),
-				"full": asset("images/collared-aracari-photo_-jaime-pa-c-rez-AMq1q4LoPbF5nQvP-full.webp"),
+				"thumb": asset("images/screech-owl-dOq8VPoBxgFQDKM9-thumb.webp"),
+				"full": asset("images/screech-owl-dOq8VPoBxgFQDKM9-full.webp"),
+				"alt": "Bearded Screech-Owl",
+				"caption": "Bearded Screech-Owl",
+				"credit": "Sergio Gómez Villaverde"
+			},
+			{
+				"thumb": asset("images/collared-aracari-2-LXlUuKMlNxIaN8DU-thumb.webp"),
+				"full": asset("images/collared-aracari-2-LXlUuKMlNxIaN8DU-full.webp"),
 				"alt": "Collared Aracari",
 				"caption": "Collared Aracari",
 				"credit": "Jaime Pérez"
 			},
 			{
-				"thumb": asset("images/orange-breasted-bunting-sergio-md.webp"),
-				"full": asset("images/orange-breasted-bunting-sergio-full.webp"),
-				"alt": "Orange-breasted Bunting",
-				"caption": "Orange-breasted Bunting",
+				"thumb": asset("images/lesson-s-motmot-uLlfoaLMwwDd96FJ-thumb.webp"),
+				"full": asset("images/lesson-s-motmot-uLlfoaLMwwDd96FJ-full.webp"),
+				"alt": "Lesson's Motmot",
+				"caption": "Lesson's Motmot",
 				"credit": "Sergio Gómez Villaverde"
 			},
 			{
-				"thumb": asset("images/citreoline-trogon-sergio-md.webp"),
-				"full": asset("images/citreoline-trogon-sergio-full.webp"),
-				"alt": "Citreoline Trogon",
-				"caption": "Citreoline Trogon",
+				"thumb": asset("images/stub-tailed-spadebill-pyQ7sCdb07PFlsDi-thumb.webp"),
+				"full": asset("images/stub-tailed-spadebill-pyQ7sCdb07PFlsDi-full.webp"),
+				"alt": "Stub-tailed Spadebill",
+				"caption": "Stub-tailed Spadebill",
 				"credit": "Sergio Gómez Villaverde"
 			},
 			{
-				"thumb": asset("images/cinnamon-tailed-sparrow-sergio-md.webp"),
-				"full": asset("images/cinnamon-tailed-sparrow-sergio-full.webp"),
-				"alt": "Cinnamon-tailed Sparrow",
-				"caption": "Cinnamon-tailed Sparrow",
+				"thumb": asset("images/tropical-royal-flycatcher-2-MBjoqrsHyfL3xJAi-thumb.webp"),
+				"full": asset("images/tropical-royal-flycatcher-2-MBjoqrsHyfL3xJAi-full.webp"),
+				"alt": "Royal Flycatcher",
+				"caption": "Royal Flycatcher",
 				"credit": "Sergio Gómez Villaverde"
 			},
 			{
-				"thumb": asset("images/navas-wren-sergio-md.webp"),
-				"full": asset("images/navas-wren-sergio-full.webp"),
+				"thumb": asset("images/navas-wren-sergio-2-thumb.webp"),
+				"full": asset("images/navas-wren-sergio-2-full.webp"),
 				"alt": "Nava's Wren",
 				"caption": "Nava's Wren",
 				"credit": "Sergio Gómez Villaverde"
 			},
 			{
-				"thumb": asset("images/lesser-roadrunner-sergio-md.webp"),
-				"full": asset("images/lesser-roadrunner-sergio-full.webp"),
-				"alt": "Lesser Roadrunner",
-				"caption": "Lesser Roadrunner",
-				"credit": "Sergio Gómez Villaverde"
-			},
-			{
-				"thumb": asset("images/rose-bellied-bunting-sergio-md.webp"),
+				"thumb": asset("images/rose-bellied-bunting-sergio-thumb.webp"),
 				"full": asset("images/rose-bellied-bunting-sergio-full.webp"),
 				"alt": "Rose-bellied Bunting",
 				"caption": "Rose-bellied Bunting",

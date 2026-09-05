@@ -31,14 +31,17 @@
 	let lightboxIndex = $state<number | null>(null);
 
 	/**
-	 * Photos come from the ledger rather than a list baked into species.ts. The
-	 * two had drifted — nine birds had more pictures in the ledger than the
-	 * library was showing, the Pink-headed Warbler six against one — and each
-	 * photo carries its own photographer, so a species shot by two people credits
-	 * both correctly.
+	 * One photograph per bird, from the ledger rather than a list baked into
+	 * species.ts — the two had drifted, and each photo carries its own
+	 * photographer, so a species shot by two people credits the right one.
+	 *
+	 * One and not all of them: this is a reference, and a row of six Pink-headed
+	 * Warblers tells a reader nothing the first does not. It also frees the other
+	 * five for the tour galleries, where a second picture of the same bird is
+	 * what stops two tours showing the identical frame.
 	 */
 	function shots(bird: Species) {
-		return photosFor(bird.commonName);
+		return photosFor(bird.commonName).slice(0, 1);
 	}
 
 	function openLightbox(bird: Species, i: number) {
