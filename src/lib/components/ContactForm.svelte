@@ -313,6 +313,16 @@
 			></textarea>
 		</div>
 
+		<!-- Unticked, and it stays unticked. Adding an enquirer to a mailing list
+		     without asking is the thing that generates complaints, and in the EU
+		     a pre-ticked box is not consent at all — so the tick here is what
+		     makes the list lawful, not the paragraph in the privacy policy.
+		     Someone already writing in about a trip ticks this readily. -->
+		<label class="optin">
+			<input type="checkbox" name="Mailing list" value="Yes, add me" />
+			<span>Send me the occasional trip report and news of new routes. No more than a few a year.</span>
+		</label>
+
 		<button class="submit-btn" type="submit" disabled={status === 'sending'}>
 			{status === 'sending'
 				? 'Sending…'
@@ -439,6 +449,30 @@
 		align-items: center;
 		gap: 7px;
 		margin: 0;
+	}
+
+	.optin {
+		display: flex;
+		align-items: flex-start;
+		gap: 0.6rem;
+		margin-bottom: 1.4rem;
+		font-size: 14px;
+		line-height: 1.55;
+		color: var(--stone);
+		cursor: pointer;
+		max-width: 56ch;
+	}
+	.optin input {
+		width: 16px;
+		height: 16px;
+		margin-top: 0.18em;
+		flex-shrink: 0;
+		accent-color: var(--phwa);
+		cursor: pointer;
+	}
+	.optin input:focus-visible {
+		outline: 2px solid var(--canopy);
+		outline-offset: 2px;
 	}
 
 	.submit-btn {
