@@ -28,10 +28,13 @@
 	<!-- Fixed rather than in the flow: a bar that pushed the page down would
 	     move the content under a reader who is already reading it. -->
 	<section class="cookie" aria-label="Cookie choice">
+		<!-- The floor for valid consent is what it is for, a link to the detail,
+		     and two equal choices. Anything past that is justification, and the
+		     privacy policy is where detail belongs. No count of cookies and no
+		     "no advertising" claim, either: both go stale the day that changes. -->
 		<p>
-			We'd like to set one cookie, so we can see which pages people actually read and write more of
-			what works. No advertising, and nothing passed on to anyone.
-			<a href="{base}/privacy-policy">What we collect</a>
+			We use cookies to see how the site is used.
+			<a href="{base}/privacy-policy">Privacy policy</a>
 		</p>
 		<div class="acts">
 			<button class="ok" onclick={() => answer('granted')}>Allow</button>
