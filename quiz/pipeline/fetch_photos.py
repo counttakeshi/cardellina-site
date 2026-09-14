@@ -337,6 +337,26 @@ def export_bank(cache: dict) -> tuple[int, int]:
 
     fallback = pack_inat()
 
+    # A Macaulay bank this thin is not a bank: the app shows whichever source
+    # wins outright, so one Macaulay photograph would mean the same picture
+    # every single time that species came up. Where iNaturalist has more, hand
+    # the species back to it rather than carry a Macaulay entry that blocks it.
+    # (Elegant Trogon came back with one asset from an otherwise clean harvest,
+    # which is how this was found.)
+    MIN_ML = 10
+    handed_back = sorted(
+        code
+        for code, rows in species.items()
+        if len(rows) < MIN_ML and len(fallback["s"].get(code) or []) > len(rows)
+    )
+    for code in handed_back:
+        total -= len(species.pop(code))
+    if handed_back:
+        print(
+            f"  {len(handed_back)} species left to iNaturalist, too thin on Macaulay: "
+            + ", ".join(handed_back)
+        )
+
     # The iNaturalist block is a fallback, so carrying species Macaulay already
     # covers is pure weight - and it is half the file. Only the species with no
     # Macaulay photographs at all are kept. The full harvest stays in
