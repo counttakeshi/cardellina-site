@@ -259,6 +259,12 @@ DEFAULT_DIAGNOSTIC_DIRECTORY = "macaulay_diagnostics"
 
 EXPORT_EVERY = 25
 
+# Saving the state file costs about six seconds, because it is rewritten whole.
+# Doing that per species is most of the wall time on a resumed run, so batch it.
+# A hard kill loses at most this many species of work, and they are re-fetchable;
+# a normal exit or Ctrl-C still flushes through the finally block.
+SAVE_EVERY = 10
+
 
 # ============================================================
 # BROWSER-SIDE SCRIPTS
@@ -396,6 +402,14 @@ class MacaulayUrlHarvester:
         self.rules_export = Path(rules_export)
         self.excel_export = Path(excel_export)
         self.all_variants = all_variants
+
+        # Set when a species actually fetched something, cleared when the CSV
+        # and Excel exports are written. A resumed run that fetches nothing
+        # should not rewrite them.
+        self.pending_export = False
+
+        # Species fetched since the state file was last written.
+        self.unsaved = 0
         self.taxonomy: dict[str, dict[str, str]] = {}
         self.family_rules = dict(FAMILY_RULES)
         self.genus_rules = dict(GENUS_RULES)
@@ -524,10 +538,12 @@ class MacaulayUrlHarvester:
 
             with temporary_file.open("w", encoding="utf-8") as f:
 
+                # Compact, not pretty: nothing reads this by eye, and
+                # indent=2 costs 15 MB and about two seconds every write.
                 json.dump(
                     self.state,
                     f,
-                    indent=2,
+                    separators=(",", ":"),
                     ensure_ascii=False,
                 )
 
@@ -2109,6 +2125,12 @@ class MacaulayUrlHarvester:
 
                 summary: list[str] = []
 
+                # Everything below - saving the 72 MB state file, the CSV and
+                # Excel exports, the courtesy delay - exists to record work.
+                # A species whose variants are all already in the state file
+                # did none, so none of it should run for it.
+                fetched_any = False
+
                 wanted, rule = self.variants_for(taxon)
 
                 for variant in wanted:
@@ -2227,12 +2249,22 @@ class MacaulayUrlHarvester:
                         ),
                     }
 
+                    fetched_any = True
+
                     summary.append(
                         f"{variant}:{len(records)}"
                         + ("" if kept else "(thin)")
                     )
 
-                self.save_state()
+                # Writing the whole state file per species costs ~72 MB of IO
+                # each time. Over a resumed run that is tens of gigabytes spent
+                # recording that nothing changed.
+                if fetched_any:
+                    self.unsaved += 1
+                    self.pending_export = True
+                    if self.unsaved >= SAVE_EVERY:
+                        self.save_state()
+                        self.unsaved = 0
 
                 processed += 1
 
@@ -2255,11 +2287,18 @@ class MacaulayUrlHarvester:
                     f"   |   ~{remaining / 60:.0f} min remaining",
                 )
 
-                if processed % EXPORT_EVERY == 0:
+                if (
+                    self.pending_export
+                    and processed % EXPORT_EVERY == 0
+                ):
                     self.export_urls()
                     self.export_excel()
+                    self.pending_export = False
 
-                if self.delay > 0:
+                # The delay is there to be polite to Macaulay. A skipped
+                # species never touched it, so there is nothing to be polite
+                # about - and 0.3s across a thousand skips is five minutes.
+                if fetched_any and self.delay > 0:
                     time.sleep(self.delay)
 
         finally:
