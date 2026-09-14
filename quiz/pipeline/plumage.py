@@ -49,16 +49,21 @@ class Plumage:
         are additions to it, never replacements, because age and sex tagging
         is optional on upload and sparse for most species.
 
-        Where ages differ, `adult` is collected alongside the young ones. It is
-        the only way to ask for an adult: leaving it out means the quiz can
-        drill juveniles but cannot exclude them.
+        Where ages differ, `adult` is collected too - but only if the sexes
+        look alike. Macaulay's male and female searches are both sent with
+        age=adult, so where the sexes differ those banks already are the adult
+        deck and a separate `adult` request buys almost nothing. Where they
+        look alike there is nothing to borrow from, and without an adult tier
+        the quiz can drill young birds but cannot exclude them.
         """
         flags = self.flags(code, family)
         out = ["any"]
         if flags["sexes"]:
             out += ["male", "female"]
         if flags["ages"]:
-            out += ["adult", "juvenile", "immature"]
+            if not flags["sexes"]:
+                out.append("adult")
+            out += ["juvenile", "immature"]
         return out
 
 

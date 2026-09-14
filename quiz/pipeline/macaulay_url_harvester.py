@@ -1050,21 +1050,30 @@ class MacaulayUrlHarvester:
     ) -> tuple[list[str], dict[str, Any]]:
         """
         The unfiltered tier is always collected. Male and female are
-        added only where the sexes differ, and where immatures are
-        worth separating both that age tier and `adult` are added.
+        added only where the sexes differ, and an age tier where
+        immatures are worth separating.
 
-        `adult` matters because the unfiltered tier is not a substitute
-        for it: `any` is whatever Macaulay's best-rated photographs
-        show, which for a raptor is full of untagged juveniles. Without
-        an adult tier the quiz can drill young birds but cannot exclude
-        them, so a raptor deck is always part juvenile.
+        `adult` is added only where an age tier applies *and* the sexes
+        look alike. The unfiltered tier is no substitute for it - `any`
+        is whatever Macaulay's best-rated photographs show, which for a
+        raptor is full of untagged juveniles - but the sex tiers are:
+        both are requested with age=adult, so a bird in the male or
+        female bank is already an adult. Asking for `adult` as well
+        where the sexes differ would buy almost nothing for 234 extra
+        requests, so it is skipped.
+
+        What is left is the species where ages differ and the sexes do
+        not: gulls, raptors, shorebirds, herons. Those have no sex bank
+        to borrow an adult from, and they are the ones this exists for.
         """
 
         rule = self.rule_for(taxon)
 
         variants = ["any"]
 
-        if self.all_variants or rule.get("female"):
+        sexes_differ = bool(self.all_variants or rule.get("female"))
+
+        if sexes_differ:
             variants.extend(["male", "female"])
 
         age = rule.get("age")
@@ -1073,7 +1082,9 @@ class MacaulayUrlHarvester:
             age = "juvenile"
 
         if age:
-            variants.extend(["adult", age])
+            if not sexes_differ:
+                variants.append("adult")
+            variants.append(age)
 
         return variants, rule
 
