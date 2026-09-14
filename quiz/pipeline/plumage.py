@@ -21,9 +21,10 @@ import common  # noqa: E402
 CLASSES = common.DATA / "plumage_classes.csv"
 
 # Must match VARIANT_FILTERS in the harvester and VARIANTS in
-# src/lib/quiz/photos.ts. The order is the wire format's variant index, so
-# appending is safe and reordering is not.
-VARIANTS = ["any", "male", "female", "juvenile", "immature"]
+# src/lib/quiz/pins.ts. The order is the wire format's variant index, so
+# appending is safe and reordering is not - which is why `adult` sits at the
+# end rather than next to the other ages. The app has its own display order.
+VARIANTS = ["any", "male", "female", "juvenile", "immature", "adult"]
 
 
 class Plumage:
@@ -42,17 +43,22 @@ class Plumage:
     def variants_for(self, code: str, family: str) -> list[str]:
         """The variants worth harvesting for this species.
 
-        `any` is always first and is not a male-only search - it is simply the
-        best-rated photographs of the species, whatever they show. The filtered
-        variants are additions to it, never replacements, because age and sex
-        tagging is optional on upload and sparse for most species.
+        `any` is always first and is not an adult-only search - it is simply
+        the best-rated photographs of the species, whatever they show, so for
+        a raptor it holds plenty of untagged juveniles. The filtered variants
+        are additions to it, never replacements, because age and sex tagging
+        is optional on upload and sparse for most species.
+
+        Where ages differ, `adult` is collected alongside the young ones. It is
+        the only way to ask for an adult: leaving it out means the quiz can
+        drill juveniles but cannot exclude them.
         """
         flags = self.flags(code, family)
         out = ["any"]
         if flags["sexes"]:
             out += ["male", "female"]
         if flags["ages"]:
-            out += ["juvenile", "immature"]
+            out += ["adult", "juvenile", "immature"]
         return out
 
 

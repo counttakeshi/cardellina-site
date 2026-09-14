@@ -7,12 +7,27 @@
 /**
  * Plumage variants, indexed. Must match VARIANTS in quiz/pipeline/plumage.py -
  * the index is the wire format, so appending is safe and reordering is not.
+ * That is why `adult` sits at the end rather than beside the other ages.
  *
  * Defined in this module rather than photos.ts because photos.ts imports from
  * here; putting it the other way round makes a cycle for no benefit.
  */
-export const VARIANTS = ['any', 'male', 'female', 'juvenile', 'immature'] as const;
+export const VARIANTS = ['any', 'male', 'female', 'juvenile', 'immature', 'adult'] as const;
 export type PlumageVariant = (typeof VARIANTS)[number];
+
+/**
+ * The order to offer them in, which is not the wire order.
+ *
+ * Age runs oldest to youngest so the pills read the way a birder thinks, and
+ * `any` is left out because the setup screen shows it as "All".
+ */
+export const VARIANT_ORDER: readonly PlumageVariant[] = [
+	'male',
+	'female',
+	'adult',
+	'immature',
+	'juvenile'
+];
 
 /** Spellings people actually type, mapped to the canonical variant. */
 const VARIANT_WORDS: Record<string, PlumageVariant> = {
@@ -25,7 +40,8 @@ const VARIANT_WORDS: Record<string, PlumageVariant> = {
 	juvie: 'juvenile',
 	immature: 'immature',
 	imm: 'immature',
-	adult: 'any',
+	adult: 'adult',
+	ad: 'adult',
 	any: 'any'
 };
 

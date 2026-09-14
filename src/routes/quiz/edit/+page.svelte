@@ -8,7 +8,7 @@
 		prunePins,
 		countPins,
 		parseAssets,
-		VARIANTS,
+		VARIANT_ORDER,
 		type PinMap,
 		type PlumageVariant
 	} from '$lib/quiz/pins';
@@ -220,7 +220,7 @@
 			<textarea bind:value={paste} rows="3" placeholder="ML624095658, ML640146019"></textarea>
 			<div class="row">
 				<select bind:value={pasteVariant}>
-					{#each VARIANTS as variant (variant)}
+					{#each ['any', ...VARIANT_ORDER] as variant (variant)}
 						<option value={variant}>{variant === 'any' ? 'unspecified plumage' : variant}</option>
 					{/each}
 				</select>

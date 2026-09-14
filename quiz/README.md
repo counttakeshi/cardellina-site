@@ -240,6 +240,19 @@ because being handed a juvenile and still having to name the species is the
 actual skill. The plumage is revealed *after* you answer - saying "juvenile" up
 front rules out most of the board by itself.
 
+### `any` is not `adult`
+
+This is the trap. `any` is the **unfiltered** search: the best-rated
+photographs of the species, whatever they show. For a raptor that means plenty
+of untagged juveniles, because juvenile raptors are abundant and photogenic. So
+an "All" deck for Crane Hawk is not 77% adults and 23% immatures - it is 23%
+*tagged* immature plus an unknown slice of the `any` bank that is also young.
+
+Which is why `adult` is a harvested variant of its own, collected wherever an
+age tier is. Without it the quiz can drill young birds but cannot exclude them,
+and there is no way to ask for an adult at all: leaving the filter off gets you
+everything, and no combination of the other pills is the complement.
+
 ## Importing a URL harvest
 
 `quiz/pipeline/import_ml_csv.py` folds a CSV of asset ids into the bank:
@@ -248,7 +261,13 @@ front rules out most of the board by itself.
     ~/anaconda3/python.exe quiz/pipeline/fetch_photos.py --sync
 
 It reads `taxon`, `asset_id`, `rating`, `photographer`, `license`, `location`,
-and `variant` if the file has one. Two things it fixes on the way in:
+and `variant` if the file has one. Three things it fixes on the way in:
+
+- **The same photograph in two banks.** A bird tagged `immature` also comes
+  back from the unfiltered search, so without care one asset sits in both the
+  `any` and `immature` banks - drawn twice as often, and labelled `immature`
+  one time and `any` the next. The most specific tag wins and the rest are
+  dropped. On the first full variant harvest that was 4,844 rows.
 
 - **The rating skew.** A harvester that asks for 50 and keeps 50 returns the 50
   best-rated, and a bank of five-star photographs is a bank of perched adults in
@@ -262,6 +281,16 @@ and `variant` if the file has one. Two things it fixes on the way in:
 
 Named variants get a smaller bank than the unfiltered search (15 against 50),
 which is what stops 477 species with variants tripling the file.
+
+The importer **never trades down**: an import that would shrink a species
+leaves it alone, so a partial or crashed harvest cannot wipe a good bank. That
+rule also blocks a legitimate shrink, which is what deduplication is - so pass
+`--rebuild` to ignore the cache and build it from the CSV alone:
+
+    ~/anaconda3/python.exe quiz/pipeline/import_ml_csv.py macaulay_image_urls.csv --rebuild
+
+Only safe when the CSV covers every species in the cache. Check with
+`plumage.py --bank` afterwards.
 
 ## Pinning photographs by hand
 

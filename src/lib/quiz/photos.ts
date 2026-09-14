@@ -22,7 +22,7 @@
 
 import photoData from '$lib/data/quiz/photos.json';
 import pinData from '$lib/data/quiz/photo_pins.json';
-import { VARIANTS, type PinMap, type PlumageVariant } from './pins';
+import { VARIANTS, VARIANT_ORDER, type PinMap, type PlumageVariant } from './pins';
 
 export type { PlumageVariant };
 
@@ -203,7 +203,8 @@ export function photographedCodes(): Set<string> {
 export function variantsFor(speciesCode: string): PlumageVariant[] {
 	const seen = new Set<PlumageVariant>();
 	for (const photo of photosFor(speciesCode)) seen.add(photo.variant);
-	return VARIANTS.filter((v) => seen.has(v));
+	// Display order, not wire order: this feeds the setup screen's pills.
+	return ['any' as const, ...VARIANT_ORDER].filter((v) => seen.has(v));
 }
 
 /** How far the Macaulay upgrade has got, for showing on the setup screen. */

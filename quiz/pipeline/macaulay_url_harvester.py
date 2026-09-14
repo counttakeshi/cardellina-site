@@ -1050,8 +1050,14 @@ class MacaulayUrlHarvester:
     ) -> tuple[list[str], dict[str, Any]]:
         """
         The unfiltered tier is always collected. Male and female are
-        added only where the sexes differ, and one age tier is added
-        where immatures are worth separating.
+        added only where the sexes differ, and where immatures are
+        worth separating both that age tier and `adult` are added.
+
+        `adult` matters because the unfiltered tier is not a substitute
+        for it: `any` is whatever Macaulay's best-rated photographs
+        show, which for a raptor is full of untagged juveniles. Without
+        an adult tier the quiz can drill young birds but cannot exclude
+        them, so a raptor deck is always part juvenile.
         """
 
         rule = self.rule_for(taxon)
@@ -1067,7 +1073,7 @@ class MacaulayUrlHarvester:
             age = "juvenile"
 
         if age:
-            variants.append(age)
+            variants.extend(["adult", age])
 
         return variants, rule
 

@@ -109,6 +109,15 @@ def main() -> int:
         action="store_true",
         help="take the best-rated instead of sampling across bands",
     )
+    parser.add_argument(
+        "--rebuild",
+        action="store_true",
+        help=(
+            "discard the existing cache and build it from this CSV alone. "
+            "Needed when the import should SHRINK a species, which the "
+            "never-trade-down rule otherwise refuses"
+        ),
+    )
     args = parser.parse_args()
 
     path = Path(args.csv_path)
@@ -157,17 +166,52 @@ def main() -> int:
     print(f"  {len({c for c, _ in by_species}):,} species with at least one usable photograph")
 
     cache: dict = {}
-    if CACHE.exists():
+    if CACHE.exists() and not args.rebuild:
         try:
             cache = json.loads(CACHE.read_text(encoding="utf-8"))
         except json.JSONDecodeError:
             print(f"  ! {CACHE.name} was unreadable; starting a fresh one")
+    elif args.rebuild:
+        print("  --rebuild: ignoring the existing cache")
 
     def held(code: str) -> int:
         value = cache.get(code)
         if isinstance(value, dict):
             return len(value.get("p") or [])
         return len(value or [])
+
+    # One photograph can come back from several variant searches - a bird
+    # tagged "immature" is also in the unfiltered results - so the same asset
+    # would otherwise sit in two banks at once. That inflates the counts, makes
+    # it twice as likely to be drawn, and labels it "immature" one time and
+    # "any" the next. Keep the most specific tag for each asset and drop the
+    # rest: a named variant tells us something, "any" tells us nothing.
+    best_variant: dict[tuple[str, int], str] = {}
+    for (code, variant), rows in by_species.items():
+        for row in rows:
+            key = (code, row["a"])
+            # `held` would shadow the held() helper defined below.
+            current = best_variant.get(key)
+            if current is None:
+                best_variant[key] = variant
+            elif current == "any" and variant != "any":
+                best_variant[key] = variant
+            elif current != "any" and variant != "any":
+                # Contradictory tagging, e.g. male and juvenile on one asset.
+                # VARIANTS order is arbitrary but stable, so reruns agree.
+                if plumage.VARIANTS.index(variant) < plumage.VARIANTS.index(current):
+                    best_variant[key] = variant
+
+    deduped = 0
+    for (code, variant), rows in list(by_species.items()):
+        kept = [r for r in rows if best_variant[(code, r["a"])] == variant]
+        deduped += len(rows) - len(kept)
+        if kept:
+            by_species[(code, variant)] = kept
+        else:
+            del by_species[(code, variant)]
+    if deduped:
+        print(f"  {deduped:,} rows dropped as the same asset under another variant")
 
     # Cap each variant separately, then pool them per species.
     pooled: dict[str, list[dict]] = {}

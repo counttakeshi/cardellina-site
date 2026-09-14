@@ -9,7 +9,7 @@
 		type Question
 	} from '$lib/quiz/engine';
 	import { photosFor, hasPhotos, variantsFor } from '$lib/quiz/photos';
-	import { VARIANTS, type PlumageVariant } from '$lib/quiz/pins';
+	import { VARIANT_ORDER, type PlumageVariant } from '$lib/quiz/pins';
 	import { loadNotes, noteFor, type NoteMap } from '$lib/quiz/notes';
 	import { asset } from '$lib/ledger';
 	import { base } from '$app/paths';
@@ -245,7 +245,7 @@
 									class:on={pick.variants.length === 0}
 									onclick={() => (picks = picks.map((p) => (p.code === pick.code ? { ...p, variants: [] } : p)))}
 								>All</button>
-								{#each VARIANTS.filter((v) => v !== 'any' && available.includes(v)) as variant (variant)}
+								{#each VARIANT_ORDER.filter((v) => available.includes(v)) as variant (variant)}
 									<button
 										type="button"
 										class:on={pick.variants.includes(variant)}
