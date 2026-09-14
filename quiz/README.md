@@ -205,6 +205,25 @@ it decided:
 As it stands that is **596 species needing nothing and 477 needing something** -
 176 for sex, 161 for age, 140 for both.
 
+What the rules *want* and what the bank actually *holds* are different
+questions, and the second is the one that decides what the quiz can offer. Add
+`--bank` to read the packed photos.json the same way the app does:
+
+    ~/anaconda3/python.exe quiz/pipeline/plumage.py --bank
+    ~/anaconda3/python.exe quiz/pipeline/plumage.py --bank --list Trogonidae
+
+That also lists the species the rules asked variants for and the harvest found
+none of, which is the list a re-harvest would shorten. Currently **606 species
+of 1,073 have a sex or age bank**: 404 male, 378 female, 281 immature, 194
+juvenile.
+
+Which variants a species ends up with follows Macaulay's taggers, not the
+rules. Raptors come back as `immature` far more than `juvenile`, so the black
+hawks offer *All | immature* and nothing else. Thirty-two species the rules
+wanted variants for have none at all — meadowlarks, oropendolas and
+wood-partridges mostly, where nobody bothers tagging a sex because the sexes
+look alike.
+
 There is no free dataset for this, which is worth knowing before you go looking.
 The published comparative work on plumage dichromatism covers passerines, which
 is the half that matters least here - the hard cases are raptors, gulls and
@@ -295,8 +314,14 @@ a bash heredoc gets mangled.
 
 ## Known gap
 
-Every photograph in the bank is currently tagged `any`, because the harvest that
-filled it ran without variant filters. The per-species plumage pickers therefore
-have nothing to filter, and notes that describe males and females separately —
-the trogons, the orioles, Rufous-collared Thrush — are ahead of the photographs.
-Re-harvesting with variant filters and a larger pool is what closes it.
+The notes are the gap now, not the photographs. 362 of the 2,014 same-genus
+pairs in the bank have one. Nine genera are complete — Buteogallus, Catharus,
+Chordeiles, Columbina, Myiarchus, Piranga, Trogon, Turdus and Tyrannus — and
+Empidonax, Setophaga and Vireo have their confusable clusters covered. The
+biggest holes are the ones you would expect: **Setophaga** (239 pairs
+unwritten, though most of those are warbler pairs nobody confuses),
+**Icterus** (16 species, 120 pairs), **Vireo** (113), **Calidris** (78) and
+**Larus** (66).
+
+The orioles are the ones to do next, because they are a daily Chiapas problem
+*and* because they now have sexed photographs the notes do not yet describe.
