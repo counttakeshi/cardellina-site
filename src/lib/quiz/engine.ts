@@ -5,7 +5,7 @@
  * in play; the quiz shows a photograph of one of them and asks which it is.
  */
 
-import type { PlumageVariant } from './pins';
+import { satisfiesVariant, type PlumageVariant } from './pins';
 
 export interface SpeciesEntry {
 	/** eBird species code, the primary key everywhere. */
@@ -183,7 +183,7 @@ export function makeQuestion(
 			return {
 				code: pick.code,
 				allowed: pick.variants.length
-					? all.filter(({ v }) => pick.variants.includes(v))
+					? all.filter(({ v }) => pick.variants.some((w) => satisfiesVariant(v, w)))
 					: all
 			};
 		})

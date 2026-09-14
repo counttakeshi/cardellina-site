@@ -29,6 +29,23 @@ export const VARIANT_ORDER: readonly PlumageVariant[] = [
 	'juvenile'
 ];
 
+/**
+ * Does a photograph's own plumage satisfy the plumage you asked for?
+ *
+ * Usually that is just equality, with one exception worth its own function:
+ * **a bird sexed in the field is an adult**. In most groups the sex is only
+ * determinable once the bird has adult plumage, and the harvest bakes that in
+ * anyway - Macaulay's male and female searches are both sent with `age=adult`,
+ * so every photograph in those banks is an adult by construction.
+ *
+ * That is what gives 407 species an adult deck without harvesting anything new.
+ * It only runs one way: asking for `male` must not return an untyped adult.
+ */
+export function satisfiesVariant(stored: PlumageVariant, wanted: PlumageVariant): boolean {
+	if (stored === wanted) return true;
+	return wanted === 'adult' && (stored === 'male' || stored === 'female');
+}
+
 /** Spellings people actually type, mapped to the canonical variant. */
 const VARIANT_WORDS: Record<string, PlumageVariant> = {
 	male: 'male',

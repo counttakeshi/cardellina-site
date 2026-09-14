@@ -203,6 +203,9 @@ export function photographedCodes(): Set<string> {
 export function variantsFor(speciesCode: string): PlumageVariant[] {
 	const seen = new Set<PlumageVariant>();
 	for (const photo of photosFor(speciesCode)) seen.add(photo.variant);
+	// A sexed bird is an adult, so offer the adult pill even where nothing is
+	// tagged `adult` outright - see satisfiesVariant.
+	if (seen.has('male') || seen.has('female')) seen.add('adult');
 	// Display order, not wire order: this feeds the setup screen's pills.
 	return ['any' as const, ...VARIANT_ORDER].filter((v) => seen.has(v));
 }

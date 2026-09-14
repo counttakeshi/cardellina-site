@@ -51,6 +51,14 @@ PER_SPECIES = 50
 # them modest is what stops 477 species with variants tripling the file.
 PER_VARIANT = 15
 
+# `adult` is the exception, and gets the full bank. For a raptor or a gull the
+# adult is not a niche plumage you occasionally drill - it is the default view
+# of the bird, and the one the unfiltered bank was failing to give. Capping it
+# at 15 would also throw away photographs we already hold: the adult search
+# re-identifies assets already sitting in the `any` bank, and anything over the
+# cap would be dropped from both.
+PER_ADULT = PER_SPECIES
+
 # Bands to sample evenly from, best last. Taking equal shares from each means a
 # species with any spread at all contributes some ordinary photographs, not
 # just its portfolio pieces.
@@ -103,6 +111,7 @@ def main() -> int:
     parser.add_argument("csv_path", help="the harvester's macaulay_image_urls.csv")
     parser.add_argument("--per-species", type=int, default=PER_SPECIES)
     parser.add_argument("--per-variant", type=int, default=PER_VARIANT)
+    parser.add_argument("--per-adult", type=int, default=PER_ADULT)
     parser.add_argument("--min-rating", type=float, default=MIN_RATING)
     parser.add_argument(
         "--top",
@@ -220,7 +229,12 @@ def main() -> int:
         # Dedupe by asset: the same photograph can appear under several region
         # tiers in one harvest.
         unique = {row["a"]: row for row in rows}
-        want = args.per_species if variant == "any" else args.per_variant
+        if variant == "any":
+            want = args.per_species
+        elif variant == "adult":
+            want = args.per_adult
+        else:
+            want = args.per_variant
         chosen = (
             sorted(unique.values(), key=lambda r: -r["r"])[:want]
             if args.top

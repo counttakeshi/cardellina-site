@@ -138,10 +138,43 @@ def report_bank(plumage: Plumage, rows: dict[str, dict], family: str | None) -> 
         count = sum(1 for c in held.values() if c.get(variant))
         print(f"{variant:<12}{total:>9,}{count:>10,}")
 
+    # A sexed bird is an adult - Macaulay's male and female searches are both
+    # sent with age=adult - so the app counts those toward the adult deck. The
+    # stored `adult` row above is only what was harvested under that name; this
+    # is what the quiz will actually offer.
+    eff_photos = sum(
+        c.get("adult", 0) + c.get("male", 0) + c.get("female", 0) for c in held.values()
+    )
+    eff_species = sum(
+        1 for c in held.values() if c.get("adult") or c.get("male") or c.get("female")
+    )
+    print(f"{'adult (effective)':<12}{eff_photos:>9,}{eff_species:>10,}")
+    print("  ^ adult + male + female: a bird sexed in the field is an adult")
+
     withv = [c for c, v in held.items() if any(v.get(x) for x in VARIANTS[1:])]
     print()
     print(f"{len(withv)} species have a sex or age bank, {len(held) - len(withv)} have only 'any'")
     print("Only those with more than one variant show the pill row on /quiz.")
+
+    # The species an adult harvest would still help: ages differ, sexes do not,
+    # so nothing implies an adult and none was collected.
+    need = []
+    for code, row in rows.items():
+        if code not in held:
+            continue
+        counts = held[code]
+        if counts.get("adult") or counts.get("male") or counts.get("female"):
+            continue
+        if counts.get("juvenile") or counts.get("immature"):
+            need.append((row["family"], row["common_name"]))
+    print()
+    print(f"{len(need)} species have young birds but no adult deck - these are what an")
+    print("adult harvest would fix (ages differ, sexes look alike):")
+    fams: dict[str, int] = {}
+    for fam, _ in need:
+        fams[fam] = fams.get(fam, 0) + 1
+    for fam, n in sorted(fams.items(), key=lambda kv: -kv[1])[:8]:
+        print(f"  {fam:<20} {n}")
 
     # Where the rules and the bank disagree: the interesting list, because it
     # is what a re-harvest would fix.

@@ -253,6 +253,22 @@ age tier is. Without it the quiz can drill young birds but cannot exclude them,
 and there is no way to ask for an adult at all: leaving the filter off gets you
 everything, and no combination of the other pills is the complement.
 
+### A sexed bird is an adult
+
+Most of that came for free. Macaulay's male and female searches are both sent
+with `age=adult`, so **every photograph in a sex bank is an adult by
+construction** - 11,174 of them across 407 species. Asking for `adult`
+therefore accepts `male` and `female` too (`satisfiesVariant` in pins.ts), and
+those species get an adult deck without harvesting anything.
+
+The implication runs one way only: asking for `male` must not return an
+unsexed adult.
+
+What it cannot cover is the species where **ages differ but sexes look alike**,
+because those have no sex bank to borrow from. That is 199 species and they are
+exactly the hard ones - 34 gulls, 34 raptors, 32 shorebirds, 21 thrushes, 16
+herons. `plumage.py --bank` lists them.
+
 ## Importing a URL harvest
 
 `quiz/pipeline/import_ml_csv.py` folds a CSV of asset ids into the bank:
