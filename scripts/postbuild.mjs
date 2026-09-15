@@ -1,14 +1,12 @@
 /**
  * Runs after `vite build`, over the finished `build/` directory.
  *
- * Three jobs, all of which have to happen after prerendering because they need
+ * Two jobs, both of which have to happen after prerendering because they need
  * to know what the site actually produced:
  *
  *   1. sitemap.xml — built from the real page list, not a hand-kept array, so
  *      it cannot drift from the site.
- *   2. quiz.webmanifest — the bird quiz's web app manifest, which has to carry
- *      the base path and so cannot be a checked-in file.
- *   3. Redirect stubs for every old cardellina.com URL, so the domain move
+ *   2. Redirect stubs for every old cardellina.com URL, so the domain move
  *      doesn't drop 29 indexed pages. GitHub Pages serves files and cannot
  *      issue a 301, so each stub carries a canonical link plus a zero-delay
  *      meta refresh — the pair Google treats as a permanent move.
@@ -57,13 +55,6 @@ function pages(dir = BUILD, prefix = '') {
 const routes = pages().sort();
 console.log(`postbuild: ${routes.length} prerendered pages`);
 
-// The bird quiz is a personal study tool, not part of the public site: it shows
-// other people's photographs under CC terms for one person's practice, and its
-// editor writes to the repo. Both pages carry `noindex`, and a sitemap that
-// listed them would contradict that - a sitemap is a request to index.
-const isPrivate = (route) => route === '/quiz' || route.startsWith('/quiz/');
-const publicRoutes = routes.filter((route) => !isPrivate(route));
-
 // ── 1. sitemap ──────────────────────────────────────────────────────────────
 // One date for the whole build. Per-page git timestamps would be more precise
 // but lastmod is a hint, and a wrong-but-confident date is worse than a broad one.
@@ -71,7 +62,7 @@ const today = new Date().toISOString().slice(0, 10);
 const sitemap = [
 	'<?xml version="1.0" encoding="UTF-8"?>',
 	'<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
-	...publicRoutes.map((route) => {
+	...routes.map((route) => {
 		const loc = `${ORIGIN}${base}${route === '/' ? '/' : route}`;
 		return `\t<url><loc>${loc}</loc><lastmod>${today}</lastmod></url>`;
 	}),
@@ -79,9 +70,7 @@ const sitemap = [
 	''
 ].join('\n');
 writeFileSync(join(BUILD, 'sitemap.xml'), sitemap);
-console.log(
-	`postbuild: sitemap.xml with ${publicRoutes.length} URLs (${routes.length - publicRoutes.length} private pages left out)`
-);
+console.log(`postbuild: sitemap.xml with ${routes.length} URLs`);
 
 // robots.txt ships from static/, so rewrite it here rather than hardcoding an
 // origin into a checked-in file that has to serve both deploy targets.
@@ -96,40 +85,7 @@ const robots = isProduction
 robots.push(`Sitemap: ${ORIGIN}${base}/sitemap.xml`, '');
 writeFileSync(join(BUILD, 'robots.txt'), robots.join('\n'));
 
-// ── 2. quiz web app manifest ────────────────────────────────────────────────
-// Generated rather than checked in, for the same reason robots.txt is: it has
-// to carry the base path, which differs between the custom domain and the
-// project URL, and a static file cannot know which build it is in.
-//
-// `id` is what the browser uses to decide whether an install is the same app as
-// one already installed. Pinning it to the scope means the staging copy and the
-// real site are treated as two apps rather than fighting over one installation.
-const quizManifest = {
-	id: `${base}/quiz`,
-	name: 'Cardellina Bird ID Quiz',
-	short_name: 'Bird Quiz',
-	description: 'Practise the confusion species of Chiapas, head to head.',
-	start_url: `${base}/quiz`,
-	scope: `${base}/quiz`,
-	display: 'standalone',
-	orientation: 'portrait',
-	background_color: '#f8f7f3',
-	theme_color: '#2f4a3c',
-	icons: [
-		{ src: `${base}/quiz-icon-192.png`, sizes: '192x192', type: 'image/png' },
-		{ src: `${base}/quiz-icon-512.png`, sizes: '512x512', type: 'image/png' },
-		{
-			src: `${base}/quiz-icon-maskable-512.png`,
-			sizes: '512x512',
-			type: 'image/png',
-			purpose: 'maskable'
-		}
-	]
-};
-writeFileSync(join(BUILD, 'quiz.webmanifest'), JSON.stringify(quizManifest, null, '\t') + '\n');
-console.log('postbuild: quiz.webmanifest');
-
-// ── 3. redirect stubs ───────────────────────────────────────────────────────
+// ── 2. redirect stubs ───────────────────────────────────────────────────────
 const escape = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
 
 function stub(destination) {
