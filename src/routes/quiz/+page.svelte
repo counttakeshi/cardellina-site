@@ -290,9 +290,16 @@
 				<figcaption>
 					<span>
 						{photo.credit}
+						{#if photo.source === 'macaulay'}
+							<span class="holder">Cornell Lab of Ornithology · Macaulay Library</span>
+						{:else}
+							<span class="holder">iNaturalist</span>
+						{/if}
 						{#if photo.rating !== undefined}<span class="stars">{photo.rating.toFixed(1)}★</span>{/if}
 					</span>
-					<a href={photo.href} target="_blank" rel="noopener noreferrer">Macaulay ↗</a>
+					<a href={photo.href} target="_blank" rel="noopener noreferrer">
+						{photo.source === 'macaulay' ? 'Macaulay' : 'iNaturalist'} ↗
+					</a>
 				</figcaption>
 			{/if}
 		</figure>
@@ -677,6 +684,15 @@
 		margin-left: 0.35rem;
 		color: var(--canopy);
 		white-space: nowrap;
+	}
+
+	/* Cornell asks for the rights holder alongside the photographer, not just
+	   the name: "Species © Contributor; Cornell Lab of Ornithology | Macaulay
+	   Library". Quieter than the photographer, who is the person being
+	   credited, but present. */
+	.holder {
+		margin-left: 0.35rem;
+		color: var(--stone);
 	}
 
 	.plate figcaption a {

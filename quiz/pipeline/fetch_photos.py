@@ -235,6 +235,11 @@ def fetch_species(code: str, want: int) -> tuple[list[dict], int, bool]:
     return chosen, wrong_total, failed
 
 
+# iNaturalist bakes the licence into its attribution string, so this is the
+# only signal available without re-querying their API.
+ALL_RIGHTS_RESERVED = "all rights reserved"
+
+
 def pack_inat() -> dict:
     """The old iNaturalist harvest, packed as a fallback block.
 
@@ -255,11 +260,22 @@ def pack_inat() -> dict:
     seen: dict[str, int] = {}
     species: dict[str, list] = {}
 
+    restricted = 0
+
     for code, value in sorted(photos.items()):
         rows = []
         for photo in entry_photos(value):
             url = photo.get("u") or ""
             credit = photo.get("a") or ""
+            # iNaturalist writes the licence into the attribution string, and a
+            # good share of it is "all rights reserved" - the photographer
+            # granted nothing. Macaulay's material is at least covered by their
+            # embedding terms; these are covered by nothing, so drop them.
+            # It costs about a quarter of five species and removes the only
+            # photographs in the bank with no licence at all.
+            if ALL_RIGHTS_RESERVED in credit.lower():
+                restricted += 1
+                continue
             if credit not in seen:
                 seen[credit] = len(credits)
                 credits.append(credit)
@@ -280,6 +296,9 @@ def pack_inat() -> dict:
             )
         if rows:
             species[code] = rows
+
+    if restricted:
+        print(f"  {restricted} iNaturalist photographs dropped: all rights reserved")
 
     return {"c": credits, "s": species}
 
