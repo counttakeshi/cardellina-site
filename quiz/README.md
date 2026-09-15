@@ -19,7 +19,7 @@ species, because what separates Alder from Willow is not a fact about Alder.
 
 Everything below is run from the site folder:
 
-    cd "C:/Users/52967/Pictures/Cardellina/site"
+    cd "C:/Users/52967/Cardellina/website"
 
 **To play the quiz**, start the dev server and leave it running:
 
