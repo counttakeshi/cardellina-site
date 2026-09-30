@@ -1,23 +1,30 @@
 <script lang="ts">
 	import { browser } from '$app/environment';
+	import { base } from '$app/paths';
 	import { page } from '$app/state';
 	import ContactForm from '$lib/components/ContactForm.svelte';
 	import { dayTours, multiDayTrips } from '$lib/data/trips';
-
-	const WHATSAPP = 'https://wa.me/5219615164020';
+	import { faq } from '$lib/data/faq';
+	import { whatsappLink, WHATSAPP_DISPLAY, CONTACT_EMAIL } from '$lib/config';
 
 	// Tour cards link here as /contact?tour=<slug>. One prerendered page serves all
 	// of them, so the query string is only read in the browser — SvelteKit rejects
 	// touching searchParams during prerendering, since the HTML can't vary by query.
 	const slug = $derived(browser ? page.url.searchParams.get('tour') : null);
 
-	const context = $derived.by(() => {
-		if (!slug) return { kind: 'general' as const };
+	type Context = {
+		kind: 'general' | 'day' | 'multi-day';
+		tourName?: string;
+		tourMeta?: string;
+	};
+
+	const context = $derived.by((): Context => {
+		if (!slug) return { kind: 'general' };
 
 		const day = dayTours.find((t) => t.slug === slug);
 		if (day) {
 			return {
-				kind: 'day' as const,
+				kind: 'day',
 				tourName: day.name,
 				tourMeta: `${day.priceUsd} USD · ${day.party}`
 			};
@@ -25,22 +32,25 @@
 
 		const trip = multiDayTrips.find((t) => t.slug === slug);
 		if (trip) {
-			return { kind: 'multi-day' as const, tourName: trip.name, tourMeta: trip.days };
+			return { kind: 'multi-day', tourName: trip.name, tourMeta: trip.days };
 		}
 
-		return { kind: 'general' as const };
+		return { kind: 'general' };
 	});
 
 	const heading = $derived(
-		context.tourName ? `Book ${context.tourName}` : "Let's plan your trip"
+		context.tourName ? `Book ${context.tourName}` : 'What can we help you with?'
 	);
+
+	/** WhatsApp opens on an empty thread, so the tour goes in the first message. */
+	const waHref = $derived(whatsappLink(context.tourName));
 </script>
 
 <svelte:head>
 	<title>Contact | Cardellina - Chiapas Birding Tours</title>
 	<meta
 		name="description"
-		content="Tell us what you'd like to see and when you're thinking of coming, and we'll come back with ideas for your Chiapas birding trip."
+		content="Ask us anything about birding in Chiapas — a species you're chasing, what a tour costs, or how to get here. You don't need a plan to get in touch."
 	/>
 </svelte:head>
 
@@ -49,36 +59,74 @@
 	<h1>{heading}</h1>
 	<p>
 		{#if context.kind === 'general'}
-			Tell us what you'd like to see, when you're thinking of coming, and how you like to bird.
-			We'll come back with ideas, whether that's one of our set trips or something built from
-			scratch.
+			Whether you're planning a birding trip to Chiapas, looking for a particular species or simply
+			have a question about our tours, we'd be happy to hear from you.
 		{:else}
 			Tell us your dates and who's coming, and we'll confirm availability and everything else you
 			need to know. Nothing is booked until we've replied and agreed the details with you.
 		{/if}
 	</p>
-	<a class="wa" href={WHATSAPP} target="_blank" rel="noopener">
-		<svg viewBox="0 0 24 24" width="18" height="18" fill="#fff" aria-hidden="true">
-			<path
-				d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.6.1-.2.3-.7.9-.8 1-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.2-.4.1-.2 0-.3 0-.5 0-.1-.6-1.5-.8-2.1-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.3.2-.7.2-1.2.2-1.3-.1-.2-.3-.2-.6-.3zM12 2a10 10 0 0 0-8.5 15.3L2 22l4.8-1.3A10 10 0 1 0 12 2z"
-			/>
-		</svg>
-		Message us on WhatsApp
-	</a>
-	<p class="form-label">Or talk to us via email</p>
+
+	<div class="direct">
+		<a class="wa" href={waHref} target="_blank" rel="noopener">
+			<svg viewBox="0 0 24 24" width="18" height="18" fill="#fff" aria-hidden="true">
+				<path
+					d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.6.1-.2.3-.7.9-.8 1-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.2-.4.1-.2 0-.3 0-.5 0-.1-.6-1.5-.8-2.1-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.3.2-.7.2-1.2.2-1.3-.1-.2-.3-.2-.6-.3zM12 2a10 10 0 0 0-8.5 15.3L2 22l4.8-1.3A10 10 0 1 0 12 2z"
+				/>
+			</svg>
+			Message us on WhatsApp
+		</a>
+		<span class="or">or email <a href="mailto:{CONTACT_EMAIL}">{CONTACT_EMAIL}</a></span>
+	</div>
+
+	<p class="form-label">Or write to us here</p>
 </div>
 
 <div class="wrap c-form">
 	<ContactForm kind={context.kind} tourName={context.tourName} tourMeta={context.tourMeta} />
 </div>
 
+<!--
+	The FAQ sits after the form, not before it. Somebody who arrived ready to ask
+	should not have to read eight answers first — but somebody who stalled halfway
+	down the form usually stalled on something factual, and this is where they are
+	when it happens. Native <details>, so it works with no JavaScript, opens to an
+	in-page search, and is keyboard-operable without any of our help.
+-->
+<div class="wrap c-faq">
+	<h2>FAQs</h2>
+	<div class="faq-list">
+		{#each faq as item (item.q)}
+			<details>
+				<summary>
+					<span class="q-text">{item.q}</span>
+					<span class="q-mark" aria-hidden="true"></span>
+				</summary>
+				<div class="answer">
+					{#each item.a as para (para)}
+						<p>{para}</p>
+					{/each}
+					{#if item.link}
+						<a class="faq-link" href="{base}{item.link.href}">
+							{item.link.label} <span aria-hidden="true">→</span>
+						</a>
+					{/if}
+				</div>
+			</details>
+		{/each}
+	</div>
+	<p class="faq-foot">
+		Not covered? That's what the form is for — ask, and one of us will answer properly.
+	</p>
+</div>
+
 <div class="wrap c-info">
 	<div class="info-grid">
 		<div class="info-card">
-			<div class="lbl">Email &amp; phone</div>
-			<p class="big"><a href="mailto:info@cardellina.com">info@cardellina.com</a></p>
+			<div class="lbl">Email &amp; WhatsApp</div>
+			<p class="big"><a href="mailto:{CONTACT_EMAIL}">{CONTACT_EMAIL}</a></p>
 			<p class="big spaced">
-				<a href={WHATSAPP} target="_blank" rel="noopener">+52 961 516 4020</a>
+				<a href={waHref} target="_blank" rel="noopener">{WHATSAPP_DISPLAY}</a>
 			</p>
 		</div>
 
@@ -118,7 +166,7 @@
 						/>
 					</svg>
 				</a>
-				<a href={WHATSAPP} target="_blank" rel="noopener" aria-label="WhatsApp">
+				<a href={waHref} target="_blank" rel="noopener" aria-label="WhatsApp">
 					<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
 						<path
 							d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.6.1-.2.3-.7.9-.8 1-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.2-.4.1-.2 0-.3 0-.5 0-.1-.6-1.5-.8-2.1-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.3.2-.7.2-1.2.2-1.3-.1-.2-.3-.2-.6-.3zM12 2a10 10 0 0 0-8.5 15.3L2 22l4.8-1.3A10 10 0 1 0 12 2z"
@@ -159,11 +207,20 @@
 		color: var(--stone);
 		line-height: 1.6;
 	}
+
+	/* WhatsApp and email side by side, because they are the same offer at
+	   different speeds and neither should look like the consolation prize. */
+	.direct {
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+		gap: 0.8rem 1.3rem;
+		margin-top: 1.6rem;
+	}
 	.wa {
 		display: inline-flex;
 		align-items: center;
 		gap: 9px;
-		margin-top: 1.6rem;
 		background: #25d366;
 		color: #fff;
 		text-decoration: none;
@@ -175,6 +232,21 @@
 	.wa:hover {
 		background: #1eb356;
 	}
+	.or {
+		font-size: 16px;
+		color: var(--stone);
+	}
+	.or a {
+		color: var(--ink);
+		text-decoration: none;
+		border-bottom: 1px solid var(--rule);
+		padding-bottom: 1px;
+	}
+	.or a:hover {
+		color: var(--phwa);
+		border-color: var(--phwa);
+	}
+
 	.form-label {
 		font-family: var(--mono);
 		font-size: 11px;
@@ -186,6 +258,114 @@
 
 	.c-form {
 		padding-bottom: 1rem;
+	}
+
+	/* ── FAQ ── */
+	.c-faq {
+		padding-top: 3rem;
+	}
+	.c-faq h2 {
+		font-family: var(--display);
+		font-weight: 400;
+		font-size: clamp(24px, 3vw, 32px);
+		margin-bottom: 1.2rem;
+	}
+	.faq-list {
+		border-top: 1px solid var(--rule);
+		max-width: 780px;
+	}
+	.faq-list details {
+		border-bottom: 1px solid var(--rule);
+	}
+	.faq-list summary {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1rem;
+		padding: 1.05rem 0;
+		cursor: pointer;
+		list-style: none;
+		color: var(--ink);
+	}
+	.faq-list summary::-webkit-details-marker {
+		display: none;
+	}
+	.faq-list summary:focus-visible {
+		outline: 2px solid var(--phwa);
+		outline-offset: 2px;
+	}
+	.q-text {
+		font-family: var(--display);
+		font-size: 19px;
+		line-height: 1.35;
+	}
+	details[open] .q-text {
+		color: var(--phwa);
+	}
+	/* Drawn rather than a glyph, so it rotates cleanly and needs no font. */
+	.q-mark {
+		position: relative;
+		width: 13px;
+		height: 13px;
+		flex-shrink: 0;
+		transition: transform 0.2s ease;
+	}
+	.q-mark::before,
+	.q-mark::after {
+		content: '';
+		position: absolute;
+		background: var(--phwa);
+		border-radius: 1px;
+	}
+	.q-mark::before {
+		top: 6px;
+		left: 0;
+		width: 13px;
+		height: 1.5px;
+	}
+	.q-mark::after {
+		left: 6px;
+		top: 0;
+		width: 1.5px;
+		height: 13px;
+		transition: opacity 0.2s ease;
+	}
+	details[open] .q-mark::after {
+		opacity: 0;
+	}
+	@media (prefers-reduced-motion: reduce) {
+		.q-mark,
+		.q-mark::after {
+			transition: none;
+		}
+	}
+	.answer {
+		padding: 0 0 1.3rem;
+		max-width: 64ch;
+	}
+	.answer p {
+		font-size: 16px;
+		line-height: 1.7;
+		color: var(--stone);
+		margin-bottom: 0.7rem;
+	}
+	.faq-link {
+		display: inline-block;
+		font-weight: 700;
+		font-size: 14.5px;
+		color: var(--canopy);
+		text-decoration: none;
+		border-bottom: 1.5px solid var(--canopy);
+		padding-bottom: 2px;
+	}
+	.faq-link:hover {
+		color: var(--phwa);
+		border-color: var(--phwa);
+	}
+	.faq-foot {
+		margin-top: 1.3rem;
+		font-size: 15px;
+		color: var(--stone);
 	}
 
 	.c-info {

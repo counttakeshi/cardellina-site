@@ -41,7 +41,7 @@
 			the stunning birds of the tropical lowlands. Guided by two passionate birders.
 		</p>
 		<div class="hero-actions">
-			<a href="{base}/contact" class="btn btn-primary">Plan your trip</a>
+			<a href="{base}/plan" class="btn btn-primary">Plan your trip</a>
 			<a href="{base}/birds" class="btn btn-ghost">Explore the birds</a>
 			<a class="hero-rating" href={GOOGLE_REVIEWS_URL} target="_blank" rel="noopener">
 				<span class="stars">★★★★★</span> <b>5.0</b> · 51 Google reviews

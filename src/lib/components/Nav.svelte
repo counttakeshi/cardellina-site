@@ -203,7 +203,7 @@
 				{/each}
 
 				<li class="cta-item">
-					<a class="cta" class:active={isActive('/contact')} href="{base}/contact">Plan a trip</a>
+					<a class="cta" class:active={isActive('/plan') || isActive('/contact')} href="{base}/plan">Plan a trip</a>
 				</li>
 			</ul>
 		</nav>

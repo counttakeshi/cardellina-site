@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { CONTACT_ENDPOINT, CONTACT_EMAIL } from '$lib/config';
+	import { CONTACT_ENDPOINT, CONTACT_EMAIL, ENQUIRY_TOPICS, whatsappLink } from '$lib/config';
 
 	export type EnquiryKind = 'general' | 'day' | 'multi-day' | 'personalised';
 
@@ -28,6 +28,8 @@
 
 	let status = $state<Status>('idle');
 	let errorMessage = $state('');
+	/** The optional topic, held in state only so it can shape the subject line. */
+	let topic = $state('');
 
 	const booking = $derived(kind === 'day' || kind === 'multi-day');
 
@@ -36,11 +38,19 @@
 			? `${kind === 'day' ? 'Day tour' : 'Multi-day'} booking: ${tourName}`
 			: kind === 'personalised'
 				? 'Personalised trip enquiry from cardellina.com'
-				: 'New enquiry from cardellina.com'
+				: topic
+					? `Enquiry: ${topic}`
+					: 'New enquiry from cardellina.com'
 	);
 
 	async function handleSubmit(event: SubmitEvent) {
 		event.preventDefault();
+
+		// A second submit while the first is in flight would send the enquiry twice.
+		// The button is disabled as well, but Enter pressed in a text field can beat
+		// the re-render, so the guard lives here too.
+		if (status === 'sending') return;
+
 		const form = event.currentTarget as HTMLFormElement;
 
 		status = 'sending';
@@ -61,8 +71,12 @@
 				throw new Error(detail || `Request failed (${res.status})`);
 			}
 
+			// Only past this line has anything actually been delivered. Nothing above
+			// claims it was: a form that says "sent" when it wasn't costs us the
+			// enquiry and the sender never learns to try again.
 			status = 'sent';
 			form.reset();
+			topic = '';
 		} catch (err) {
 			status = 'error';
 			errorMessage = err instanceof Error ? err.message : 'Something went wrong.';
@@ -71,20 +85,33 @@
 </script>
 
 {#if status === 'sent'}
-	<div class="done">
+	<div class="done" role="status" aria-live="polite">
 		<h3>Thanks — that's with us.</h3>
 		<p>
 			{#if booking && tourName}
-				We've got your enquiry about <strong>{tourName}</strong> and we'll come back to you within
-				24 hours, usually sooner.
+				We've got your enquiry about <strong>{tourName}</strong>. One of us will read it and reply
+				within 24 hours, usually sooner. Nothing is booked until we've agreed the details with you.
 			{:else}
-				We'll come back to you within 24 hours, usually sooner.
+				One of us will read it and reply within 24 hours, usually sooner. The reply comes from
+				<strong>{CONTACT_EMAIL}</strong>, so it is worth a glance in your spam folder if nothing
+				turns up.
 			{/if}
 		</p>
 		<button class="again" onclick={() => (status = 'idle')}>Send another enquiry</button>
 	</div>
 {:else}
-	<form onsubmit={handleSubmit}>
+	<!--
+		action and method are set for the case where this form is submitted before
+		Svelte has hydrated, or on a visit where the JavaScript never arrives at all.
+		The browser default for a form with neither is a GET to the current URL,
+		which reloads the page, discards the enquiry, and writes the sender's name,
+		address and message into the query string, the history and the referrer.
+		Pointing the fallback at the real endpoint means a submit that beats
+		hydration still delivers; it simply lands on Formspree's own confirmation
+		page rather than ours. handleSubmit prevents the default once hydrated, so
+		this path is only ever the safety net.
+	-->
+	<form action={CONTACT_ENDPOINT} method="post" onsubmit={handleSubmit}>
 		<!-- Context for the notification email, so enquiries are sortable in the inbox. -->
 		<input type="hidden" name="_subject" value={subject} />
 		{#if tourName}
@@ -108,10 +135,6 @@
 			<input type="hidden" name={label} value={value} />
 		{/each}
 
-		<!-- Honeypot: off-screen rather than display:none, since some bots skip
-		     hidden inputs but will fill anything they can read. -->
-		<input class="gotcha" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" />
-
 		{#if booking && tourName}
 			<p class="booking-banner">
 				<span class="bb-label">Enquiring about</span>
@@ -131,16 +154,18 @@
 			</div>
 		</div>
 
-		<div class="field-row">
-			<div class="field">
-				<label for="cf-phone">WhatsApp or phone</label>
-				<input id="cf-phone" name="Phone" type="tel" autocomplete="tel" />
+		{#if kind !== 'general'}
+			<div class="field-row">
+				<div class="field">
+					<label for="cf-phone">WhatsApp or phone</label>
+					<input id="cf-phone" name="Phone" type="tel" autocomplete="tel" />
+				</div>
+				<div class="field">
+					<label for="cf-country">Where are you travelling from?</label>
+					<input id="cf-country" name="Travelling from" type="text" autocomplete="country-name" />
+				</div>
 			</div>
-			<div class="field">
-				<label for="cf-country">Where are you travelling from?</label>
-				<input id="cf-country" name="Travelling from" type="text" autocomplete="country-name" />
-			</div>
-		</div>
+		{/if}
 
 		{#if kind === 'day'}
 			<div class="field-row">
@@ -179,7 +204,13 @@
 			<div class="field-row">
 				<div class="field">
 					<label for="cf-start">Preferred start date or month *</label>
-					<input id="cf-start" name="Preferred start" type="text" placeholder="e.g. March 2027" required />
+					<input
+						id="cf-start"
+						name="Preferred start"
+						type="text"
+						placeholder="e.g. March 2027"
+						required
+					/>
 				</div>
 				<div class="field">
 					<label for="cf-flex">How flexible are those dates?</label>
@@ -258,29 +289,22 @@
 				</div>
 			</div>
 		{:else}
-			<div class="field-row">
-				<div class="field">
-					<label for="cf-dates">Preferred dates or months</label>
-					<input id="cf-dates" name="Preferred dates" type="text" />
-				</div>
-				<div class="field">
-					<label for="cf-group">Group size</label>
-					<input id="cf-group" name="Group size" type="text" />
-				</div>
+			<!-- General enquiry: four fields, one of them optional. Somebody who only
+			     wants to ask a question has not decided anything yet — dates, group
+			     size and a target list are the things they came here to work out, so
+			     asking for them here is asking for the answer before the question. -->
+			<div class="field">
+				<label for="cf-topic">What it's about <span class="opt">optional</span></label>
+				<select id="cf-topic" name="Topic" bind:value={topic}>
+					<option value="">No need to pick one — it just helps us answer faster</option>
+					{#each ENQUIRY_TOPICS as t (t)}
+						<option>{t}</option>
+					{/each}
+				</select>
 			</div>
-
-			<fieldset class="field">
-				<legend>What sort of trip?</legend>
-				<div class="radios">
-					<label><input type="radio" name="Trip type" value="Day tour" /> Day tour</label>
-					<label><input type="radio" name="Trip type" value="Multi-day tour" /> Multi-day tour</label>
-					<label><input type="radio" name="Trip type" value="Bespoke itinerary" /> Bespoke itinerary</label>
-					<label><input type="radio" name="Trip type" value="Not sure yet" /> Not sure yet</label>
-				</div>
-			</fieldset>
 		{/if}
 
-		{#if kind !== 'personalised'}
+		{#if booking}
 			<div class="field">
 				<label for="cf-species">Target species</label>
 				<input
@@ -290,9 +314,7 @@
 					placeholder="Birds you'd most like to see"
 				/>
 			</div>
-		{/if}
 
-		{#if booking}
 			<div class="field">
 				<label for="cf-needs">Dietary or mobility needs</label>
 				<input id="cf-needs" name="Dietary or mobility needs" type="text" />
@@ -301,14 +323,19 @@
 
 		<div class="field">
 			<label for="cf-msg">
-				{booking || kind === 'personalised'
-					? 'Anything else we should know?'
-					: "Anything else you'd like to tell us *"}
+				{#if booking || kind === 'personalised'}
+					Anything else we should know?
+				{:else}
+					Your message *
+				{/if}
 			</label>
 			<textarea
 				id="cf-msg"
 				name="Message"
 				rows="5"
+				placeholder={kind === 'general'
+					? "A question, a bird you're chasing, or just where you've got to in planning"
+					: ''}
 				required={kind === 'general'}
 			></textarea>
 		</div>
@@ -323,22 +350,43 @@
 			<span>Send me the occasional trip report and news of new routes. No more than a few a year.</span>
 		</label>
 
-		<button class="submit-btn" type="submit" disabled={status === 'sending'}>
-			{status === 'sending'
-				? 'Sending…'
-				: booking
-					? 'Send booking enquiry'
-					: kind === 'personalised'
-						? 'Send this to us'
-						: 'Send enquiry'}
-		</button>
+		<!-- Honeypot: off-screen rather than display:none, since some bots skip
+		     hidden inputs but will fill anything they can read. Last in the form
+		     rather than first — an unlabelled text input at the top of a contact
+		     form is exactly what a password manager or an eager autofill reaches
+		     for, and anything landing here gets the enquiry silently binned as
+		     spam while the sender is still shown a success message. -->
+		<input
+			class="gotcha"
+			type="text"
+			name="_gotcha"
+			tabindex="-1"
+			autocomplete="off"
+			aria-hidden="true"
+		/>
 
-		{#if status === 'error'}
-			<p class="status err">
-				Couldn't send that ({errorMessage}). Please email
-				<a href="mailto:{CONTACT_EMAIL}">{CONTACT_EMAIL}</a> directly.
-			</p>
-		{/if}
+		<div class="actions">
+			<button class="submit-btn" type="submit" disabled={status === 'sending'}>
+				{#if status === 'sending'}
+					Sending…
+				{:else if booking}
+					Send booking enquiry
+				{:else if kind === 'personalised'}
+					Send this to us
+				{:else}
+					Send it
+				{/if}
+			</button>
+			<p class="fine">We reply within 24 hours. Your details stay with us.</p>
+		</div>
+
+		<p class="status err" role="alert" aria-live="assertive" hidden={status !== 'error'}>
+			That didn't send ({errorMessage}). Please email
+			<a href="mailto:{CONTACT_EMAIL}">{CONTACT_EMAIL}</a>
+			or
+			<a href={whatsappLink()} target="_blank" rel="noopener">message us on WhatsApp</a> — we would
+			much rather hear from you than lose the question.
+		</p>
 	</form>
 {/if}
 
@@ -380,16 +428,30 @@
 		color: var(--stone);
 	}
 
-	.field label,
-	legend {
+	/* 12px and the ink, not 11px and the stone. These are the only thing telling
+	   somebody what to type, they are set in uppercase mono with letter-spacing,
+	   and a good share of the people reading them are birders in their sixties
+	   on a phone in daylight. */
+	.field label {
 		display: block;
 		font-family: var(--mono);
-		font-size: 11px;
+		font-size: 12px;
+		font-weight: 500;
 		letter-spacing: 0.05em;
 		text-transform: uppercase;
-		color: var(--stone);
+		color: var(--ink);
 		margin-bottom: 0.4rem;
 		padding: 0;
+	}
+
+	.opt {
+		font-weight: 400;
+		letter-spacing: 0.04em;
+		color: var(--stone);
+		text-transform: none;
+	}
+	.opt::before {
+		content: '· ';
 	}
 
 	.field input[type='text'],
@@ -401,24 +463,34 @@
 	.field textarea {
 		width: 100%;
 		font-family: var(--body);
-		font-size: 15px;
+		/* 16px, or iOS zooms the page in on focus and never zooms back out. */
+		font-size: 16px;
 		color: var(--ink);
 		background: var(--white);
-		border: 1px solid var(--rule);
+		/* --rule against --paper is 1.28:1, well under the 3:1 WCAG asks of a
+		   control's boundary — white boxes on off-white paper, findable only by
+		   their labels. This is the border that makes them read as fields. */
+		border: 1px solid #8b918c;
 		border-radius: 3px;
-		padding: 11px 13px;
+		padding: 12px 13px;
 	}
 
 	.field input:focus,
 	.field select:focus,
 	.field textarea:focus {
-		outline: none;
+		outline: 2px solid var(--phwa);
+		outline-offset: -1px;
 		border-color: var(--phwa);
+	}
+
+	.field input::placeholder,
+	.field textarea::placeholder {
+		color: var(--stone);
 	}
 
 	.field textarea {
 		resize: vertical;
-		min-height: 110px;
+		min-height: 120px;
 	}
 
 	.field-row {
@@ -427,35 +499,11 @@
 		gap: 1rem;
 	}
 
-	fieldset {
-		border: 0;
-		padding: 0;
-		margin: 0;
-	}
-
-	.radios {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 0.5rem 1.4rem;
-	}
-
-	.radios label {
-		font-family: var(--body);
-		font-size: 15px;
-		text-transform: none;
-		letter-spacing: 0;
-		color: var(--ink);
-		display: inline-flex;
-		align-items: center;
-		gap: 7px;
-		margin: 0;
-	}
-
 	.optin {
 		display: flex;
 		align-items: flex-start;
 		gap: 0.6rem;
-		margin-bottom: 1.4rem;
+		margin-top: 0.2rem;
 		font-size: 14px;
 		line-height: 1.55;
 		color: var(--stone);
@@ -463,9 +511,9 @@
 		max-width: 56ch;
 	}
 	.optin input {
-		width: 16px;
-		height: 16px;
-		margin-top: 0.18em;
+		width: 18px;
+		height: 18px;
+		margin-top: 0.14em;
 		flex-shrink: 0;
 		accent-color: var(--phwa);
 		cursor: pointer;
@@ -475,6 +523,14 @@
 		outline-offset: 2px;
 	}
 
+	.actions {
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+		gap: 0.6rem 1.2rem;
+		margin-top: 0.6rem;
+	}
+
 	.submit-btn {
 		background: var(--phwa);
 		color: #fff;
@@ -482,27 +538,41 @@
 		border-radius: 3px;
 		font-family: var(--body);
 		font-weight: 700;
-		font-size: 15px;
+		font-size: 16px;
 		letter-spacing: 0.02em;
-		padding: 14px 30px;
+		padding: 15px 32px;
+		min-height: 48px;
 		cursor: pointer;
-		align-self: flex-start;
 		transition: background 0.18s;
 	}
 	.submit-btn:hover:not(:disabled) {
 		background: #bf3a61;
+	}
+	.submit-btn:focus-visible {
+		outline: 2px solid var(--ink);
+		outline-offset: 2px;
 	}
 	.submit-btn:disabled {
 		opacity: 0.55;
 		cursor: not-allowed;
 	}
 
+	.fine {
+		font-size: 13.5px;
+		color: var(--stone);
+		margin: 0;
+	}
+
 	.status {
 		font-size: 15px;
+		line-height: 1.6;
 		margin: 0;
 	}
 	.status.err {
-		color: #b8305a;
+		color: #a82a52;
+	}
+	.status[hidden] {
+		display: none;
 	}
 
 	.gotcha {
@@ -529,6 +599,7 @@
 	}
 	.done p {
 		color: var(--stone);
+		line-height: 1.65;
 		margin-bottom: 1rem;
 	}
 	.again {
@@ -550,6 +621,9 @@
 	@media (max-width: 560px) {
 		.field-row {
 			grid-template-columns: 1fr;
+		}
+		.submit-btn {
+			width: 100%;
 		}
 	}
 </style>

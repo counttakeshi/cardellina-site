@@ -254,7 +254,7 @@
 				where.
 			</p>
 		</div>
-		<a class="btn" href="{base}/contact">Plan a trip</a>
+		<a class="btn" href="{base}/plan">Plan a trip</a>
 	</div>
 </div>
 

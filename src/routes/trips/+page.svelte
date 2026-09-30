@@ -162,6 +162,16 @@
 	<section class="panel">
 		<div class="wrap">
 			<div class="build">
+				<!-- An exit, at the top, before anybody has invested four questions in a
+				     thing that turns out not to be what they wanted. The builder is the
+				     best way to reach us when you know the shape of your trip and the
+				     worst when you do not, and the ones who do not are exactly the ones
+				     who quietly close the tab instead of asking. -->
+				<p class="build-out">
+					Not ready to plan a trip?
+					<a href="{base}/contact">Just ask us a question →</a>
+				</p>
+
 				<div class="q">
 					<h3><span class="qn">1</span> How long do you have?</h3>
 					<div class="chips">
@@ -551,6 +561,26 @@
 		flex-direction: column;
 		gap: 2.8rem;
 	}
+	/* Deliberately quiet: an exit, not a competing offer. The gap on .build is
+	   2.8rem, which would leave this floating a long way from question 1, so it
+	   pulls its own bottom margin back in. */
+	.build-out {
+		margin-bottom: -2rem;
+		font-size: 15px;
+		color: var(--stone);
+	}
+	.build-out a {
+		color: var(--canopy);
+		font-weight: 700;
+		text-decoration: none;
+		border-bottom: 1.5px solid var(--canopy);
+		padding-bottom: 1px;
+	}
+	.build-out a:hover {
+		color: var(--phwa);
+		border-color: var(--phwa);
+	}
+
 	.q h3 {
 		font-family: var(--display);
 		font-weight: 500;

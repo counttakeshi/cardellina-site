@@ -34,3 +34,45 @@ export const EBIRD_TARGETS =
  * rather than being buried in a template.
  */
 export const CLARITY_PROJECT_ID = 'x2y20srabx';
+
+/**
+ * WhatsApp, in the shape wa.me expects: country code then number, no plus, no
+ * spaces. Unchanged from the number the business has always used — the format
+ * is worth checking from a real handset if messages ever stop arriving, since
+ * Mexico's mobile numbering changed under WhatsApp and the legacy `1` after the
+ * 52 is carried here.
+ */
+export const WHATSAPP_NUMBER = '5219615164020';
+
+/** The same number as a person would write it. */
+export const WHATSAPP_DISPLAY = '+52 961 516 4020';
+
+/**
+ * A wa.me link with the first message already typed.
+ *
+ * The prefill does more work than it looks like it does. WhatsApp opens on an
+ * empty thread with no subject and no referrer, so without one we get "hi" from
+ * an unknown number and have to spend the first reply asking what they were
+ * reading. Naming the site, and the tour when there is one, means the first
+ * answer can be the useful one.
+ */
+export function whatsappLink(about?: string): string {
+	const text = about
+		? `Hello Cardellina — I'm on cardellina.com looking at ${about}, and I have a question.`
+		: `Hello Cardellina — I'm on cardellina.com and I have a question about birding in Chiapas.`;
+	return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
+}
+
+/**
+ * The topic selector on the general enquiry form. Optional by design: it sorts
+ * the inbox and tells us which page of the site failed to answer the question,
+ * but nobody should have to classify their own enquiry before asking it.
+ */
+export const ENQUIRY_TOPICS = [
+	'Birding in Chiapas',
+	'Finding a particular bird',
+	'Tour availability',
+	'Prices and what’s included',
+	'Travel and logistics',
+	'Something else'
+] as const;
