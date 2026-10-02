@@ -84,6 +84,28 @@ function htmlFor(route) {
 	return '';
 }
 
+/**
+ * The photographs on a page, as absolute URLs, for the image sitemap.
+ *
+ * Nearly every image here is a bird somebody went a long way to photograph, and
+ * Google Images is a real way birders find a guide. Listing them is how a
+ * crawler learns they exist without having to render the page first.
+ *
+ * The logo is skipped, since it is in the header of all 28 pages and is not
+ * content. Duplicates within a page are dropped: the lightbox renders some
+ * photographs twice.
+ */
+function imagesIn(html) {
+	const urls = new Set();
+	for (const m of html.matchAll(/<img\b[^>]*\bsrc=["']([^"']+)["']/g)) {
+		const src = m[1];
+		if (!src.includes('/images/')) continue;
+		if (src.includes('cardellina-logo')) continue;
+		urls.add(`${ORIGIN}${base}/images/${src.replace(/^.*\/images\//, '')}`);
+	}
+	return [...urls];
+}
+
 const today = new Date().toISOString().slice(0, 10);
 const NOINDEX = /<meta[^>]+name=["']robots["'][^>]*content=["'][^"']*noindex/i;
 const DATE = /"date(?:Modified|Published)":"(\d{4}-\d{2}-\d{2})/;
@@ -100,22 +122,27 @@ for (const route of routes) {
 		continue;
 	}
 	const found = html.match(DATE);
-	indexable.push({ route, lastmod: found ? found[1] : today });
+	indexable.push({ route, lastmod: found ? found[1] : today, images: imagesIn(html) });
 }
 
 const sitemap = [
 	'<?xml version="1.0" encoding="UTF-8"?>',
-	'<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
-	...indexable.map(({ route, lastmod }) => {
+	'<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"',
+	'\txmlns:image="http://www.google.com/schemas/sitemap-image/1.1">',
+	...indexable.map(({ route, lastmod, images }) => {
 		const loc = `${ORIGIN}${base}${route === '/' ? '/' : route}`;
-		return `\t<url><loc>${loc}</loc><lastmod>${lastmod}</lastmod></url>`;
+		const pics = images
+			.map((url) => `\n\t\t<image:image><image:loc>${url}</image:loc></image:image>`)
+			.join('');
+		return `\t<url><loc>${loc}</loc><lastmod>${lastmod}</lastmod>${pics}${pics ? '\n\t' : ''}</url>`;
 	}),
 	'</urlset>',
 	''
 ].join('\n');
 writeFileSync(join(BUILD, 'sitemap.xml'), sitemap);
+const pictured = indexable.reduce((n, p) => n + p.images.length, 0);
 console.log(
-	`postbuild: sitemap.xml with ${indexable.length} URLs` +
+	`postbuild: sitemap.xml with ${indexable.length} URLs and ${pictured} images` +
 		(excluded ? ` (${excluded} noindex excluded)` : '')
 );
 

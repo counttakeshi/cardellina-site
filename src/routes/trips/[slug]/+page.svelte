@@ -11,6 +11,7 @@
 	import RelatedLinks from '$lib/components/RelatedLinks.svelte';
 	import { tourBirdLinks, routesIncludingSite, reportsForTour } from '$lib/related';
 	import { imageAttrs } from '$lib/imageSize';
+	import { altFor } from '$lib/ledger';
 
 	let { data } = $props();
 	const tour = $derived(data.tour);
@@ -57,7 +58,7 @@
 	<img
 		class="hero-img"
 		src={tour.hero} {...imageAttrs(tour.hero)}
-		alt={tour.title}
+		alt={altFor(tour.hero, tour.title)}
 		style="object-position: {tour.heroFocus ?? '50% 40%'}"
 	/>
 	<div class="hero-shade"></div>

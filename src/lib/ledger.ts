@@ -248,3 +248,37 @@ export function speciesWithoutPhotos(): string[] {
 	for (const t of Object.values(tours)) for (const s of t.must_show) all.add(s);
 	return [...all].filter((s) => !photoFor(s)).sort();
 }
+
+/**
+ * The subject of a photograph, looked up from its URL.
+ *
+ * Tour cards and tour heroes label their image with the name of the tour, which
+ * is right when the picture is of a place and wrong when it is of a bird. The
+ * Full Endemics hero is a Rose-bellied Bunting and the Montebello Lakes card is
+ * a Resplendent Quetzal; both were announced to a screen reader, and to an
+ * image search, as the name of a tour.
+ *
+ * Returns null for anything the ledger does not know, which is most landscapes,
+ * so those keep whatever alt text they already have.
+ */
+const PHOTO_NAME_BY_STEM: Map<string, string> = (() => {
+	const map = new Map<string, string>();
+	for (const photo of Object.values(photos)) {
+		for (const file of photo.files ?? []) {
+			map.set(file.replace(/\.[^.]+$/, ''), photo.name);
+		}
+	}
+	return map;
+})();
+
+export function photoSubject(src: string | undefined | null): string | null {
+	if (!src) return null;
+	const m = src.match(/(?:^|\/)images\/(.+?)-(?:full|md|card|sq|thumb|portrait)\.webp$/);
+	if (!m) return null;
+	return PHOTO_NAME_BY_STEM.get(m[1]) ?? null;
+}
+
+/** The photo's subject if the ledger knows it, otherwise what the caller had. */
+export function altFor(src: string | undefined | null, fallback: string): string {
+	return photoSubject(src) ?? fallback;
+}
