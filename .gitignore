@@ -65,3 +65,6 @@ vite.config.ts.timestamp-*
 /ebird_taxonomy.csv
 /Bird Taxon Codes Reference*.xlsx
 
+
+# Transient: written by scripts/page-text.mjs to diff against docs/seo/baseline.
+docs/seo/after/
