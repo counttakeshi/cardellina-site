@@ -16,6 +16,7 @@
 	import { pageTitle, pageDescription, fixedSeo } from '$lib/seo';
 	import { crumbsFor } from '$lib/breadcrumbs';
 	import { breadcrumbJsonLd } from '$lib/jsonld';
+	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
 
 	/** Title and description overrides for this page; empty until Ben fills them. */
 	const seo = fixedSeo('/birds');
@@ -104,6 +105,8 @@
 	title={pageTitle(seo.seoTitle, 'Birdwatching Guide to Chiapas | Cardellina - Chiapas Birding Tours')}
 	description={pageDescription(seo.metaDescription, 'A working reference to the endemics, near-endemics and specialities of Chiapas, with habitat and elevation. Filter by range or habitat, or search by name.')}
 />
+
+<Breadcrumbs crumbs={crumbsFor('/birds')} />
 
 <div class="wrap masthead">
 	<p class="eyebrow">Chiapas Bird Library</p>

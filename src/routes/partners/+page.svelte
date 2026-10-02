@@ -4,6 +4,7 @@
 	import { pageTitle, pageDescription, fixedSeo } from '$lib/seo';
 	import { crumbsFor } from '$lib/breadcrumbs';
 	import { breadcrumbJsonLd } from '$lib/jsonld';
+	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
 
 	/** Title and description overrides for this page; empty until Ben fills them. */
 	const seo = fixedSeo('/partners');
@@ -14,6 +15,8 @@
 	title={pageTitle(seo.seoTitle, 'Partner Projects | Cardellina - Chiapas Birding Tours')}
 	description={pageDescription(seo.metaDescription, 'The projects and companion guides we work with in Chiapas and neighbouring Oaxaca: OATL and Siyaj Chan.')}
 />
+
+<Breadcrumbs crumbs={crumbsFor('/partners')} />
 
 <div class="wrap masthead">
 	<p class="eyebrow">Partner projects</p>

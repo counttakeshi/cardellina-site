@@ -6,6 +6,9 @@
 	import { crumbsFor } from '$lib/breadcrumbs';
 	import { breadcrumbJsonLd, articleJsonLd } from '$lib/jsonld';
 	import { SITE_ORIGIN } from '$lib/config';
+	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
+	import RelatedLinks from '$lib/components/RelatedLinks.svelte';
+	import { toursForReport, birdsInReport } from '$lib/related';
 
 	let { data } = $props();
 	const report = $derived(data.report);
@@ -45,6 +48,8 @@
 	type="article"
 />
 
+<Breadcrumbs crumbs={crumbsFor('/trip-reports/' + report.slug, report.title)} />
+
 <header class="hero">
 	<img class="hero-img" src={report.hero} alt={report.heroAlt} />
 	<div class="hero-shade"></div>
@@ -76,6 +81,12 @@
 			</p>
 			<a class="btn" href="{base}/trips#personalised">Build your own trip →</a>
 		</div>
+
+		<RelatedLinks heading="The tour behind this report" links={toursForReport(report.slug, base)} />
+		<RelatedLinks
+			heading="Birds in this report with full accounts"
+			links={birdsInReport(report.slug, base)}
+		/>
 
 		{#if others.length}
 			<div class="more">

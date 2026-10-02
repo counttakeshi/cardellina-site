@@ -5,6 +5,9 @@
 	import { crumbsFor } from '$lib/breadcrumbs';
 	import { breadcrumbJsonLd, articleJsonLd } from '$lib/jsonld';
 	import { SITE_ORIGIN } from '$lib/config';
+	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
+	import RelatedLinks from '$lib/components/RelatedLinks.svelte';
+	import { toursForBird, reportsForBird } from '$lib/related';
 	let { data } = $props();
 	const account = $derived(data.account);
 
@@ -32,6 +35,8 @@
 	image={'og/birds-' + account.slug + '.jpg'}
 	type="article"
 />
+
+<Breadcrumbs crumbs={crumbsFor('/birds/' + account.slug, account.title)} />
 
 <div class="page-wrap">
 	<h1 class="page-title">{account.title}</h1>
@@ -94,6 +99,9 @@
 			</ol>
 		</div>
 	{/if}
+
+	<RelatedLinks heading="Tours that look for this bird" links={toursForBird(account.title, base)} />
+	<RelatedLinks heading="Trip reports" links={reportsForBird(account.title, base)} />
 </div>
 
 <style>

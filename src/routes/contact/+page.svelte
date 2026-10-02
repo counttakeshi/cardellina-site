@@ -10,6 +10,7 @@
 	import { pageTitle, pageDescription, fixedSeo } from '$lib/seo';
 	import { crumbsFor } from '$lib/breadcrumbs';
 	import { breadcrumbJsonLd } from '$lib/jsonld';
+	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
 
 	/** Title and description overrides for this page; empty until Ben fills them. */
 	const seo = fixedSeo('/contact');
@@ -58,6 +59,8 @@
 	title={pageTitle(seo.seoTitle, 'Contact | Cardellina - Chiapas Birding Tours')}
 	description={pageDescription(seo.metaDescription, "Ask us anything about birding in Chiapas — a species you're chasing, what a tour costs, or how to get here. You don't need a plan to get in touch.")}
 />
+
+<Breadcrumbs crumbs={crumbsFor('/contact')} />
 
 <div class="wrap c-head">
 	<p class="eyebrow">{context.kind === 'general' ? 'Get in touch' : 'Booking enquiry'}</p>

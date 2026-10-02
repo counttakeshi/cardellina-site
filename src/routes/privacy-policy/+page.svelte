@@ -4,12 +4,15 @@
 	import { pageTitle, pageDescription, fixedSeo } from '$lib/seo';
 	import { crumbsFor } from '$lib/breadcrumbs';
 	import { breadcrumbJsonLd } from '$lib/jsonld';
+	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
 
 	/** Title and description overrides for this page; empty until Ben fills them. */
 	const seo = fixedSeo('/privacy-policy');
 </script>
 
 <Seo jsonLd={[breadcrumbJsonLd(crumbsFor('/privacy-policy'))]} title={pageTitle(seo.seoTitle, 'Privacy Policy | Cardellina - Chiapas Birding Tours')} noindex />
+
+<Breadcrumbs crumbs={crumbsFor('/privacy-policy')} />
 
 <div class="wrap policy">
 	<h1>Privacy Policy</h1>

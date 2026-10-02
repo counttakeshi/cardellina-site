@@ -7,6 +7,9 @@
 	import { breadcrumbJsonLd, tourJsonLd } from '$lib/jsonld';
 	import { SITE_ORIGIN, whatsappLink } from '$lib/config';
 	import { dayTours } from '$lib/data/trips';
+	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
+	import RelatedLinks from '$lib/components/RelatedLinks.svelte';
+	import { tourBirdLinks, routesIncludingSite, reportsForTour } from '$lib/related';
 
 	let { data } = $props();
 	const tour = $derived(data.tour);
@@ -46,6 +49,8 @@
 	)}
 	image={'og/trips-' + tour.slug + '.jpg'}
 />
+
+<Breadcrumbs crumbs={crumbsFor('/trips/' + tour.slug, tour.title)} />
 
 <header class="hero">
 	<img
@@ -177,9 +182,20 @@
 	</div>
 </div>
 
+<div class="wrap related-wrap">
+	<RelatedLinks heading="Birds on this tour with full accounts" links={tourBirdLinks(tour.slug, base)} />
+	<RelatedLinks heading="Routes that include this site" links={routesIncludingSite(tour.slug, base)} />
+	<RelatedLinks heading="Trip reports from here" links={reportsForTour(tour.slug, base)} />
+</div>
+
 <Lightbox photos={tour.gallery} bind:index={lightboxIndex} />
 
 <style>
+	.related-wrap {
+		max-width: 1120px;
+		padding-bottom: 3rem;
+	}
+
 	.hero {
 		position: relative;
 		min-height: clamp(260px, 34vw, 420px);

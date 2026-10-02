@@ -7,6 +7,7 @@
 	import { pageTitle, pageDescription, fixedSeo } from '$lib/seo';
 	import { crumbsFor } from '$lib/breadcrumbs';
 	import { breadcrumbJsonLd } from '$lib/jsonld';
+	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
 
 	/** Title and description overrides for this page; empty until Ben fills them. */
 	const seo = fixedSeo('/plan');
@@ -34,6 +35,8 @@
 	title={pageTitle(seo.seoTitle, 'Plan a trip | Cardellina - Chiapas Birding Tours')}
 	description={pageDescription(seo.metaDescription, 'Build a trip around your own dates and target birds, ask us a question, or browse the day tours and multi-day routes we run in Chiapas.')}
 />
+
+<Breadcrumbs crumbs={crumbsFor('/plan')} />
 
 <header class="hero" style="--hero-img:url('{HERO}')">
 	<div class="wrap hero-inner">
