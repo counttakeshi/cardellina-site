@@ -103,8 +103,20 @@
 	</nav>
 </div>
 
-{#if panel === 'day'}
-	<section class="panel">
+<!--
+	All three panels are in the HTML, with the inactive ones hidden, rather than
+	only the open one being rendered.
+
+	This is why the four multi-day routes were invisible to search engines. The
+	page prerenders with the day panel open, so /trips shipped the six day tours
+	and nothing else: the only links to the routes lived inside a branch that
+	never ran at build time, and a crawler reading the static file could not
+	reach /trips/full-endemics at all.
+
+	The hash behaviour is untouched. `hidden` costs the weight of the markup and
+	buys four pages that can be found.
+-->
+<section class="panel" hidden={panel !== 'day'}>
 		<div class="wrap">
 			<div class="grid">
 				{#each dayTours as tour (tour.slug)}
@@ -132,8 +144,8 @@
 			</div>
 		</div>
 	</section>
-{:else if panel === 'multi-day'}
-	<section class="panel">
+
+<section class="panel" hidden={panel !== 'multi-day'}>
 		<div class="wrap">
 			<div class="grid">
 				{#each multiDayTrips as trip (trip.slug)}
@@ -163,8 +175,8 @@
 			</p>
 		</div>
 	</section>
-{:else}
-	<section class="panel">
+
+<section class="panel" hidden={panel !== 'personalised'}>
 		<div class="wrap">
 			<div class="build">
 				<!-- An exit, at the top, before anybody has invested four questions in a
@@ -297,7 +309,6 @@
 			</div>
 		</div>
 	</section>
-{/if}
 
 <style>
 	.hero {
@@ -558,6 +569,10 @@
 	.inline-link:hover {
 		color: var(--phwa);
 		border-color: var(--phwa);
+	}
+
+	.panel[hidden] {
+		display: none;
 	}
 
 	/* ── builder ── */
