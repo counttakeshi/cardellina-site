@@ -46,6 +46,10 @@ function pages(dir = BUILD, prefix = '') {
 			found.push(...pages(full, `${prefix}/${entry}`));
 		} else if (entry.endsWith('.html')) {
 			const name = entry.slice(0, -'.html'.length);
+			// The adapter's SPA fallback, which GitHub Pages serves for anything it
+			// cannot find. It is a 404 wearing a 200, so listing it in the sitemap
+			// would be asking search engines to index the error page.
+			if (prefix === '' && name === '404') continue;
 			found.push(name === 'index' ? prefix || '/' : `${prefix}/${name}`);
 		}
 	}

@@ -21,7 +21,10 @@ export default defineConfig({
 			adapter: adapter({
 				pages: 'build',
 				assets: 'build',
-				fallback: undefined,
+				// GitHub Pages serves 404.html for anything it cannot find, so this is
+				// what turns a mistyped or dead URL into the site's own error page with
+				// its nav and a way onward, rather than GitHub's bare default.
+				fallback: '404.html',
 				precompress: false,
 				strict: true
 			}),
