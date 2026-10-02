@@ -146,7 +146,7 @@ export const accounts: SpeciesAccount[] = [
 		],
 		"cta": {
 			"html": "The Horned Guan is the flagship target species on our Tacaná Volcano expeditions, and a key draw on multi-day bespoke itineraries into the highlands of Chiapas.",
-			"href": "/trips#multi-day",
+			"href": "/trips/volcano-endemics",
 			"label": "See our Chiapas birding tours"
 		},
 		"sources": [
@@ -238,7 +238,7 @@ export const accounts: SpeciesAccount[] = [
 		],
 		"cta": {
 			"html": "The Resplendent Quetzal is a target on our Montebello Lakes day tour and a highlight of multi-day bespoke itineraries through the Chiapas highlands.",
-			"href": "/trips#day",
+			"href": "/trips/montebello-lakes",
 			"label": "See our Chiapas birding tours"
 		},
 		"sources": []
@@ -347,7 +347,7 @@ export const accounts: SpeciesAccount[] = [
 		],
 		"cta": {
 			"html": "The Pink-headed Warbler is a target species on our San Cristóbal highlands day tour, and a key draw on multi-day bespoke itineraries to Tacaná Volcano.",
-			"href": "/trips#day",
+			"href": "/trips/san-cristobal",
 			"label": "See our Chiapas birding tours"
 		},
 		"sources": [
@@ -446,7 +446,7 @@ export const accounts: SpeciesAccount[] = [
 		],
 		"cta": {
 			"html": "The Rose-bellied Bunting is the flagship target on our La Sepultura day tour, and features on our longer trips through the Pacific slope.",
-			"href": "/trips#day",
+			"href": "/trips/la-sepultura",
 			"label": "See our Chiapas birding tours"
 		},
 		"sources": [
