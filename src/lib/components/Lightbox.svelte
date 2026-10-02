@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { TourPhoto } from '$lib/data/tourDetails';
+	import { imageAttrs } from '$lib/imageSize';
 
 	interface Props {
 		photos: TourPhoto[];
@@ -60,7 +61,7 @@
 		{/if}
 
 		<figure>
-			<img src={photo.full} alt={photo.alt} />
+			<img src={photo.full} {...imageAttrs(photo.full)} alt={photo.alt} />
 			{#if photo.caption}
 				<figcaption>
 					{photo.caption}

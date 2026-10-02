@@ -5,6 +5,7 @@
 	import { crumbsFor } from '$lib/breadcrumbs';
 	import { breadcrumbJsonLd } from '$lib/jsonld';
 	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
+	import { imageAttrs } from '$lib/imageSize';
 
 	/** Title and description overrides for this page; empty until Ben fills them. */
 	const seo = fixedSeo('/partners');
@@ -35,7 +36,7 @@
 		<div class="proj" class:flip={partner.flip}>
 			<div class="pj-media">
 				<img
-					src={partner.image}
+					src={partner.image} {...imageAttrs(partner.image)}
 					alt={partner.imageAlt}
 					style="--pos:{partner.imagePosition}"
 					loading="lazy"
@@ -44,7 +45,7 @@
 			<div>
 				<div class="pj-head">
 					<div class="pj-logo">
-						<img src={partner.logo} alt="{partner.name} logo" loading="lazy" />
+						<img src={partner.logo} {...imageAttrs(partner.logo)} alt="{partner.name} logo" loading="lazy" />
 					</div>
 					<div>
 						<div class="pj-name">{partner.name}</div>

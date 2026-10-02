@@ -7,6 +7,7 @@
 	import { crumbsFor } from '$lib/breadcrumbs';
 	import { breadcrumbJsonLd } from '$lib/jsonld';
 	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
+	import { imageAttrs } from '$lib/imageSize';
 
 	/** Title and description overrides for this page; empty until Ben fills them. */
 	const seo = fixedSeo('/trip-reports');
@@ -42,7 +43,7 @@
 			{#each tripReports as report (report.slug)}
 				<article class="card">
 					<div class="c-img">
-						<img src={report.hero} alt={report.heroAlt} loading="lazy" />
+						<img src={report.hero} {...imageAttrs(report.hero)} alt={report.heroAlt} loading="lazy" />
 					</div>
 					<div class="c-body">
 						<p class="c-when">

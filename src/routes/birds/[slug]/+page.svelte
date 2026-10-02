@@ -8,6 +8,7 @@
 	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
 	import RelatedLinks from '$lib/components/RelatedLinks.svelte';
 	import { toursForBird, reportsForBird } from '$lib/related';
+	import { imageAttrs } from '$lib/imageSize';
 	let { data } = $props();
 	const account = $derived(data.account);
 
@@ -48,7 +49,7 @@
 		</div>
 	{:else if account.hero}
 		<figure class="hero-image">
-			<img src={account.hero.src} alt={account.hero.alt} />
+			<img src={account.hero.src} {...imageAttrs(account.hero.src)} alt={account.hero.alt} />
 			{#if account.creditHtml}
 				<figcaption class="photo-credit">{@html account.creditHtml}</figcaption>
 			{/if}

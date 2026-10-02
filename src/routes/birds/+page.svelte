@@ -17,6 +17,7 @@
 	import { crumbsFor } from '$lib/breadcrumbs';
 	import { breadcrumbJsonLd } from '$lib/jsonld';
 	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
+	import { imageAttrs } from '$lib/imageSize';
 
 	/** Title and description overrides for this page; empty until Ben fills them. */
 	const seo = fixedSeo('/birds');
@@ -232,7 +233,7 @@
 										onclick={() => openLightbox(bird, i)}
 										aria-label="View {bird.commonName} full size"
 									>
-										<img src={pic.src} alt="{bird.commonName} photo {i + 1}" loading="lazy" />
+										<img src={pic.src} {...imageAttrs(pic.src)} alt="{bird.commonName} photo {i + 1}" loading="lazy" />
 										<span class="pp-hint">Full size ⤡</span>
 									</button>
 									<figcaption>

@@ -4,6 +4,7 @@
 	import { species } from '$lib/data/species';
 	import { photoFor, imageUrl } from '$lib/ledger';
 	import mapBase from './map-base.svg?raw';
+	import { imageAttrs } from '$lib/imageSize';
 
 	type Mode = 'site' | 'species';
 
@@ -272,7 +273,7 @@
 					{@const shot = birdPhoto(activeBird.name)}
 					<div class="site-card">
 						{#if shot}
-							<img class="sc-photo" src={shot.src} alt={activeBird.name} loading="lazy" />
+							<img class="sc-photo" src={shot.src} {...imageAttrs(shot.src)} alt={activeBird.name} loading="lazy" />
 						{/if}
 						<div class="sc-hab">
 							{activeBird.sites.length === 1
@@ -326,7 +327,7 @@
 					{#if SITE_PHOTOS[selectedSite.id]}
 						<img
 							class="sc-photo"
-							src={imageUrl(SITE_PHOTOS[selectedSite.id], 'card')}
+							src={imageUrl(SITE_PHOTOS[selectedSite.id], 'card')} {...imageAttrs(imageUrl(SITE_PHOTOS[selectedSite.id], 'card'))}
 							alt={selectedSite.name}
 							loading="lazy"
 						/>
@@ -375,7 +376,7 @@
 						{@const shot = birdPhoto(openBird)}
 						<div class="bpop">
 							{#if shot}
-								<img src={shot.src} alt={openBird} loading="lazy" />
+								<img src={shot.src} {...imageAttrs(shot.src)} alt={openBird} loading="lazy" />
 							{:else}
 								<p class="bpop-none">No photo of this one yet.</p>
 							{/if}

@@ -7,6 +7,7 @@
 	import { websiteJsonLd, organisationJsonLd } from '$lib/jsonld';
 	import Seo from '$lib/components/Seo.svelte';
 	import { pageTitle, pageDescription, fixedSeo } from '$lib/seo';
+	import { imageAttrs } from '$lib/imageSize';
 
 	/** Title and description overrides for this page; empty until Ben fills them. */
 	const seo = fixedSeo('/');
@@ -105,7 +106,7 @@
 		<div class="headliners">
 			{#each headliners as bird (bird.name)}
 				<a class="hl" href={base + bird.href}>
-					<span class="hl-img"><img src={bird.img} alt={bird.name} loading="lazy" /></span>
+					<span class="hl-img"><img src={bird.img} {...imageAttrs(bird.img)} alt={bird.name} loading="lazy" /></span>
 					<span class="hl-name">{bird.name}</span>
 					<span class="hl-sci">{bird.sci}</span>
 					<span class="hl-blurb">{bird.blurb}</span>
@@ -142,7 +143,7 @@
 				<article class="trip-card">
 					<div class="strip">
 						{#each card.strip as img (img.src)}
-							<div><img src={img.src} alt={img.alt} loading="lazy" /></div>
+							<div><img src={img.src} {...imageAttrs(img.src)} alt={img.alt} loading="lazy" /></div>
 						{/each}
 					</div>
 					<div class="trip-body">
@@ -195,7 +196,7 @@
 		<div class="guide-grid">
 			{#each guides as guide (guide.name)}
 				<article class="guide">
-					<img class="portrait" src={guide.portrait} alt={guide.name} loading="lazy" />
+					<img class="portrait" src={guide.portrait} {...imageAttrs(guide.portrait)} alt={guide.name} loading="lazy" />
 					<div class="guide-body">
 						<div class="nm">{guide.name}</div>
 						<div class="role">{guide.role}</div>
@@ -224,7 +225,7 @@
 				>
 					<img
 						class="lite-thumb"
-						src={asset('images/dsc01506-edit-gmwe9PWpByoJSYdo-md.webp')}
+						src={asset('images/dsc01506-edit-gmwe9PWpByoJSYdo-md.webp')} {...imageAttrs(asset('images/dsc01506-edit-gmwe9PWpByoJSYdo-md.webp'))}
 						alt="Cloud forest on Tacaná Volcano"
 						loading="lazy"
 					/>
@@ -372,7 +373,7 @@
 			</div>
 			<figure class="how-img">
 				<img
-					src={asset('images/customer-birding-with-sabes-aves-and-valente-A85E1ZjQr2IV3DBy-full.webp')}
+					src={asset('images/customer-birding-with-sabes-aves-and-valente-A85E1ZjQr2IV3DBy-full.webp')} {...imageAttrs(asset('images/customer-birding-with-sabes-aves-and-valente-A85E1ZjQr2IV3DBy-full.webp'))}
 					alt="Valente watching a guest get onto a bird in the highlands"
 					loading="lazy"
 				/>

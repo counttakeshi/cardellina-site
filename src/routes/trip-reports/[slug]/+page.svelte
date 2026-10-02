@@ -3,6 +3,7 @@
 	import { tripReports } from '$lib/data/tripReports';
 	import Seo from '$lib/components/Seo.svelte';
 	import { pageTitle, pageDescription } from '$lib/seo';
+	import { imageAttrs, imageSize } from '$lib/imageSize';
 	import { crumbsFor } from '$lib/breadcrumbs';
 	import { breadcrumbJsonLd, articleJsonLd } from '$lib/jsonld';
 	import { SITE_ORIGIN } from '$lib/config';
@@ -17,7 +18,24 @@
 	// base is only known at runtime — the same reason every other image on the
 	// site goes through asset(). Here the markup is opaque HTML, so the swap
 	// happens on the string instead.
-	const body = $derived(report.body.replaceAll('__ASSET__', `${base}/`));
+	const body = $derived(withImageSizes(report.body.replaceAll('__ASSET__', `${base}/`)));
+
+	/**
+	 * The report bodies are transcribed HTML held as strings, so their images
+	 * cannot take width and height from imageAttrs the way every Svelte tag on
+	 * the site now does. Five images across two reports, each one shoving the
+	 * text down as it loads. Rewriting the string is the way in short of
+	 * re-transcribing the markup.
+	 */
+	function withImageSizes(html: string): string {
+		return html.replace(/<img[^>]*>/g, (tag) => {
+			if (tag.includes('width=')) return tag;
+			const src = tag.match(/src=["']([^"']+)["']/)?.[1];
+			const size = imageSize(src);
+			if (!size) return tag;
+			return tag.replace('<img', `<img width="${size.width}" height="${size.height}"`);
+		});
+	}
 
 	const others = $derived(tripReports.filter((r) => r.slug !== report.slug).slice(0, 2));
 
@@ -51,7 +69,7 @@
 <Breadcrumbs crumbs={crumbsFor('/trip-reports/' + report.slug, report.title)} />
 
 <header class="hero">
-	<img class="hero-img" src={report.hero} alt={report.heroAlt} />
+	<img class="hero-img" src={report.hero} {...imageAttrs(report.hero)} alt={report.heroAlt} />
 	<div class="hero-shade"></div>
 	<div class="wrap hero-inner">
 		<p class="kicker">Trip report · {report.dates}</p>

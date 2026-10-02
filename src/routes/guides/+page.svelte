@@ -7,6 +7,7 @@
 	import { crumbsFor } from '$lib/breadcrumbs';
 	import { breadcrumbJsonLd, personJsonLd } from '$lib/jsonld';
 	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
+	import { imageAttrs } from '$lib/imageSize';
 
 	/** Title and description overrides for this page; empty until Ben fills them. */
 	const seo = fixedSeo('/guides');
@@ -106,7 +107,7 @@
 						<div class="wcard-body">
 							<img
 								class="wcard-img"
-								src={guide.photo}
+								src={guide.photo} {...imageAttrs(guide.photo)}
 								alt="{guide.name}, Chiapas bird guide"
 								loading="lazy"
 							/>
@@ -136,7 +137,7 @@
 		<div class="wrap">
 			<div class="guide" class:flip={guide.flip}>
 				<div class="g-photo">
-					<img src={guide.photo} alt="{guide.name}, Chiapas bird guide" />
+					<img src={guide.photo} {...imageAttrs(guide.photo)} alt="{guide.name}, Chiapas bird guide" />
 					<span class="tag">{guide.tag}</span>
 				</div>
 				<div class="g-copy">
@@ -201,7 +202,7 @@
 				>
 					<img
 						class="lite-thumb"
-						src={asset('images/dsc01506-edit-gmwe9PWpByoJSYdo-md.webp')}
+						src={asset('images/dsc01506-edit-gmwe9PWpByoJSYdo-md.webp')} {...imageAttrs(asset('images/dsc01506-edit-gmwe9PWpByoJSYdo-md.webp'))}
 						alt="Cloud forest on Tacaná Volcano"
 						loading="lazy"
 					/>

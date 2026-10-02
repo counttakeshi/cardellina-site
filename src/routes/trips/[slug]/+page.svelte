@@ -10,6 +10,7 @@
 	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
 	import RelatedLinks from '$lib/components/RelatedLinks.svelte';
 	import { tourBirdLinks, routesIncludingSite, reportsForTour } from '$lib/related';
+	import { imageAttrs } from '$lib/imageSize';
 
 	let { data } = $props();
 	const tour = $derived(data.tour);
@@ -55,7 +56,7 @@
 <header class="hero">
 	<img
 		class="hero-img"
-		src={tour.hero}
+		src={tour.hero} {...imageAttrs(tour.hero)}
 		alt={tour.title}
 		style="object-position: {tour.heroFocus ?? '50% 40%'}"
 	/>
@@ -116,7 +117,7 @@
 						{#each tour.gallery as photo, i (photo.full + i)}
 							<figure>
 								<button onclick={() => (lightboxIndex = i)} aria-label="Enlarge {photo.alt}">
-									<img src={photo.thumb} alt={photo.alt} loading="lazy" />
+									<img src={photo.thumb} {...imageAttrs(photo.thumb)} alt={photo.alt} loading="lazy" />
 								</button>
 								<figcaption>{photo.caption}</figcaption>
 							</figure>

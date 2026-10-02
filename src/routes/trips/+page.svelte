@@ -10,6 +10,7 @@
 	import { crumbsFor } from '$lib/breadcrumbs';
 	import { breadcrumbJsonLd } from '$lib/jsonld';
 	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
+	import { imageAttrs } from '$lib/imageSize';
 
 	/** Title and description overrides for this page; empty until Ben fills them. */
 	const seo = fixedSeo('/trips');
@@ -124,7 +125,7 @@
 			<div class="grid">
 				{#each dayTours as tour (tour.slug)}
 					<article class="card">
-						<div class="c-img"><img src={tour.image} alt={tour.name} loading="lazy" /></div>
+						<div class="c-img"><img src={tour.image} {...imageAttrs(tour.image)} alt={tour.name} loading="lazy" /></div>
 						<div class="c-body">
 							<p class="c-kicker">{tour.habitat}</p>
 							<h3 class="c-name">
@@ -154,7 +155,7 @@
 				{#each multiDayTrips as trip (trip.slug)}
 					<article class="card">
 						<div class="c-img">
-							<img src={trip.image} alt={trip.name} loading="lazy" />
+							<img src={trip.image} {...imageAttrs(trip.image)} alt={trip.name} loading="lazy" />
 							<span class="c-days">{trip.days}</span>
 						</div>
 						<div class="c-body">

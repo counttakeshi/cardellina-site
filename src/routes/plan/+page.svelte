@@ -8,6 +8,7 @@
 	import { crumbsFor } from '$lib/breadcrumbs';
 	import { breadcrumbJsonLd } from '$lib/jsonld';
 	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
+	import { imageAttrs } from '$lib/imageSize';
 
 	/** Title and description overrides for this page; empty until Ben fills them. */
 	const seo = fixedSeo('/plan');
@@ -58,7 +59,7 @@
 
 	<div class="pair">
 		<a class="route" href="{base}/contact">
-			<span class="art"><img src={ASK_IMG} alt="A guest birding with one of our guides" loading="lazy" /></span>
+			<span class="art"><img src={ASK_IMG} {...imageAttrs(ASK_IMG)} alt="A guest birding with one of our guides" loading="lazy" /></span>
 			<span class="txt">
 				<span class="r-title">Ask us a question</span>
 				<span class="r-line">No dates or plan needed.</span>
@@ -66,7 +67,7 @@
 		</a>
 
 		<a class="route" href="{base}/trips">
-			<span class="art"><img src={TOURS_IMG} alt="The Tacaná volcano above cloud forest" loading="lazy" /></span>
+			<span class="art"><img src={TOURS_IMG} {...imageAttrs(TOURS_IMG)} alt="The Tacaná volcano above cloud forest" loading="lazy" /></span>
 			<span class="txt">
 				<span class="r-title">Explore our tours</span>
 				<span class="r-line">From day trips to a full fortnight.</span>
