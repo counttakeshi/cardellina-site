@@ -23,8 +23,10 @@
 		crumbs: Crumb[];
 		/** Blocks built from existing data, rendered under the body. */
 		children?: import('svelte').Snippet;
+		/** Anything that belongs above the prose: a hero, a facts table. */
+		aboveBody?: import('svelte').Snippet;
 	}
-	let { page, path, crumbs, children }: Props = $props();
+	let { page, path, crumbs, children, aboveBody }: Props = $props();
 
 	const fm = $derived(page.frontmatter);
 	const draft = $derived(fm.status !== 'live');
@@ -60,6 +62,10 @@
 	{/if}
 
 	<h1>{fm.title}</h1>
+
+	{#if aboveBody}
+		{@render aboveBody()}
+	{/if}
 
 	<article class="prose">
 		{@html page.html}

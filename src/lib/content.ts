@@ -146,3 +146,20 @@ export function contentFor(slug: string): ContentPage | undefined {
 
 /** How many gaps a page still has. Used by the SEO report. */
 export const copyGaps = (page: ContentPage) => (page.markdown.match(/COPY:/g) ?? []).length;
+
+/**
+ * Slugs of species that have an account a reader can actually open.
+ *
+ * Two sources, because the accounts are mid-changeover: the four originals in
+ * accounts.ts, and any Markdown account that is live. Pages used to be linked
+ * from a hasAccount flag hand-kept in species.ts, which is a third copy of the
+ * same fact and the one most likely to be wrong: a flag set before the account
+ * exists links the library at a 404, and one forgotten after hides a page that
+ * is there.
+ *
+ * Derived, so it cannot drift. accounts.ts is imported lazily by the caller to
+ * keep this module free of a cycle.
+ */
+export function liveMarkdownAccountSlugs(): Set<string> {
+	return new Set(contentIn('birds').map((p) => p.slug.replace(/^birds\//, '')));
+}

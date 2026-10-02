@@ -241,6 +241,26 @@ export const accounts: SpeciesAccount[] = [
 			"href": "/trips/montebello-lakes",
 			"label": "See our Chiapas birding tours"
 		},
+		/*
+		 * NEEDS BEN: this account was transcribed without its sources. These are
+		 * the ones that fit what it says; confirm each before moving them into
+		 * the array above, where they would be rendered.
+		 *
+		 *   BirdLife International. Species factsheet: Resplendent Quetzal
+		 *   Pharomachrus mocinno.
+		 *   https://datazone.birdlife.org/species/factsheet/resplendent-quetzal-pharomachrus-mocinno
+		 *
+		 *   Birds of the World. Resplendent Quetzal (Pharomachrus mocinno).
+		 *   Cornell Lab of Ornithology.
+		 *   https://birdsoftheworld.org/bow/species/resque1/cur/introduction
+		 *
+		 *   eBird. Resplendent Quetzal range map and bar chart.
+		 *   https://ebird.org/species/resque1
+		 *
+		 * Neither URL has been opened and checked. scripts/check-sources.mjs
+		 * does that for the Markdown accounts; these are a comment, so it cannot
+		 * reach them.
+		 */
 		"sources": []
 	},
 	{

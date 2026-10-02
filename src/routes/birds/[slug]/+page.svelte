@@ -9,15 +9,83 @@
 	import RelatedLinks from '$lib/components/RelatedLinks.svelte';
 	import { toursForBird, reportsForBird } from '$lib/related';
 	import { imageAttrs } from '$lib/imageSize';
+	import ContentPage from '$lib/components/ContentPage.svelte';
+	import { imageFor, creditFor } from '$lib/ledger';
 	let { data } = $props();
 	const account = $derived(data.account);
 
+	/**
+	 * A Markdown account, when there is a live one. The four originals in
+	 * accounts.ts render through the markup below; everything written from here
+	 * on goes through ContentPage, so the two coexist without a migration.
+	 */
+	const md = $derived(data.markdown);
+	const mdName = $derived(md?.frontmatter.title ?? '');
+	const mdHero = $derived(mdName ? imageFor(mdName, 'full') : '');
+	const mdCredit = $derived(mdName ? creditFor(mdName) : '');
+	const mdCta = $derived(md?.frontmatter.cta as { text?: string; href?: string } | undefined);
+
+	/** The quick-reference rows, skipping any Ben has not filled. */
+	const mdFacts = $derived(
+		!md
+			? []
+			: (
+					[
+						['Scientific name', md.frontmatter.scientificName],
+						['Conservation status', md.frontmatter.conservationStatus],
+						['Range', md.frontmatter.range],
+						['Elevation', md.frontmatter.elevation],
+						['Best months', md.frontmatter.bestMonths],
+						['Difficulty', md.frontmatter.difficulty]
+					] as [string, unknown][]
+				)
+					.map(([label, value]) => [label, typeof value === 'string' ? value.trim() : ''] as const)
+					.filter(([, value]) => value !== '')
+	);
+
 	/** A placeholder hero is not an image, so the Article goes without one. */
 	const heroSrc = $derived(
-		account.hero && !('placeholder' in account.hero) ? account.hero.src : undefined
+		account?.hero && !('placeholder' in account.hero) ? account.hero.src : undefined
 	);
 </script>
 
+{#if md}
+	<ContentPage
+		page={md}
+		path={'/birds/' + md.slug.replace('birds/', '')}
+		crumbs={crumbsFor('/birds/' + md.slug.replace('birds/', ''), md.frontmatter.title)}
+	>
+		{#snippet aboveBody()}
+			{#if mdHero}
+				<figure class="hero-image">
+					<img src={mdHero} {...imageAttrs(mdHero)} alt="{mdName} ({md.frontmatter.scientificName})" />
+					{#if mdCredit}<figcaption class="photo-credit">photo by {mdCredit}</figcaption>{/if}
+				</figure>
+			{/if}
+			{#if mdFacts.length}
+				<table class="quick-ref">
+					<tbody>
+						{#each mdFacts as [label, value] (label)}
+							<tr><th>{label}</th><td>{value}</td></tr>
+						{/each}
+					</tbody>
+				</table>
+			{/if}
+		{/snippet}
+
+		{#snippet children()}
+			{#if mdCta?.text && mdCta?.href}
+				<div class="cta-block">
+					<p>{mdCta.text}</p>
+					<a href={base + mdCta.href} class="btn">See the tour</a>
+				</div>
+			{/if}
+			<RelatedLinks heading="Tours that look for this bird" links={toursForBird(mdName, base)} />
+			<RelatedLinks heading="Trip reports" links={reportsForBird(mdName, base)} />
+		{/snippet}
+	</ContentPage>
+{:else if account}
+<!-- One of the four originals, still TypeScript in accounts.ts. -->
 <Seo
 	jsonLd={[
 		breadcrumbJsonLd(crumbsFor('/birds/' + account.slug, account.title)),
@@ -104,8 +172,40 @@
 	<RelatedLinks heading="Tours that look for this bird" links={toursForBird(account.title, base)} />
 	<RelatedLinks heading="Trip reports" links={reportsForBird(account.title, base)} />
 </div>
+{/if}
 
 <style>
+	/* The Markdown accounts' quick-reference table. The originals in
+	   accounts.ts keep their own .quick-ref further down; this is scoped the
+	   same way and shares the look. */
+	.quick-ref {
+		width: 100%;
+		max-width: 620px;
+		border-collapse: collapse;
+		margin: 0 0 2rem;
+	}
+	.quick-ref th {
+		text-align: left;
+		font-family: var(--mono);
+		font-size: 11px;
+		font-weight: 500;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+		color: var(--stone);
+		padding: 0.6rem 1.2rem 0.6rem 0;
+		white-space: nowrap;
+		vertical-align: top;
+	}
+	.quick-ref td {
+		font-size: 16px;
+		line-height: 1.5;
+		padding: 0.6rem 0;
+		border-bottom: 1px solid var(--rule);
+	}
+	.quick-ref th {
+		border-bottom: 1px solid var(--rule);
+	}
+
 	.page-wrap {
 		max-width: 860px;
 		margin: 0 auto;
