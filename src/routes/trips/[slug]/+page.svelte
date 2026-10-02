@@ -5,7 +5,7 @@
 	import { pageTitle, pageDescription } from '$lib/seo';
 	import { crumbsFor } from '$lib/breadcrumbs';
 	import { breadcrumbJsonLd, tourJsonLd } from '$lib/jsonld';
-	import { SITE_ORIGIN } from '$lib/config';
+	import { SITE_ORIGIN, whatsappLink } from '$lib/config';
 	import { dayTours } from '$lib/data/trips';
 
 	let { data } = $props();
@@ -158,6 +158,20 @@
 			{/if}
 			<a class="book" href="{base}/contact?tour={tour.slug}">
 				{tour.kind === 'day' ? 'Book this tour' : 'Enquire about this trip'}
+			</a>
+			<!--
+				C9. The enquiry form is a page away and asks for a name and an address
+				before it asks anything else. Plenty of people would rather just ask,
+				and in Mexico that means WhatsApp. The message arrives naming the tour,
+				so the first reply can answer rather than ask what they were reading.
+			-->
+			<a class="wa" href={whatsappLink(tour.title)} target="_blank" rel="noopener">
+				<svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden="true">
+					<path
+						d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.6.1-.2.3-.7.9-.8 1-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.2-.4.1-.2 0-.3 0-.5 0-.1-.6-1.5-.8-2.1-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.3.2-.7.2-1.2.2-1.3-.1-.2-.3-.2-.6-.3zM12 2a10 10 0 0 0-8.5 15.3L2 22l4.8-1.3A10 10 0 1 0 12 2z"
+					/>
+				</svg>
+				WhatsApp
 			</a>
 		</aside>
 	</div>
@@ -435,6 +449,39 @@
 		border-radius: 3px;
 		transition: background 0.18s;
 	}
+	/* Secondary to the booking button, not a competing offer: same width, no
+	   fill, WhatsApp's own green only on the mark. */
+	.wa {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 8px;
+		margin-top: 0.6rem;
+		padding: 12px 20px;
+		border: 1px solid var(--rule);
+		border-radius: 3px;
+		font-family: var(--body);
+		font-weight: 700;
+		font-size: 15px;
+		color: var(--ink);
+		text-decoration: none;
+		transition:
+			border-color 0.18s,
+			color 0.18s;
+	}
+	.wa svg {
+		color: #25d366;
+		flex-shrink: 0;
+	}
+	.wa:hover {
+		border-color: #25d366;
+		color: #1a9e4b;
+	}
+	.wa:focus-visible {
+		outline: 2px solid var(--canopy);
+		outline-offset: 2px;
+	}
+
 	.book:hover {
 		background: #bf3a61;
 	}
