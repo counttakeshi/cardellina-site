@@ -14,7 +14,7 @@
  * The sitemap is written before the stubs so the stubs never end up in it:
  * a sitemap should list destinations, never redirects.
  */
-import { readdirSync, writeFileSync, mkdirSync, statSync } from 'node:fs';
+import { readdirSync, readFileSync, writeFileSync, mkdirSync, statSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { redirects, wordpressOnly } from './redirects.js';
@@ -46,10 +46,6 @@ function pages(dir = BUILD, prefix = '') {
 			found.push(...pages(full, `${prefix}/${entry}`));
 		} else if (entry.endsWith('.html')) {
 			const name = entry.slice(0, -'.html'.length);
-			// The adapter's SPA fallback, which GitHub Pages serves for anything it
-			// cannot find. It is a 404 wearing a 200, so listing it in the sitemap
-			// would be asking search engines to index the error page.
-			if (prefix === '' && name === '404') continue;
 			found.push(name === 'index' ? prefix || '/' : `${prefix}/${name}`);
 		}
 	}
@@ -62,19 +58,66 @@ console.log(`postbuild: ${routes.length} prerendered pages`);
 // ── 1. sitemap ──────────────────────────────────────────────────────────────
 // One date for the whole build. Per-page git timestamps would be more precise
 // but lastmod is a hint, and a wrong-but-confident date is worse than a broad one.
+/**
+ * What goes in the sitemap is decided by reading the built HTML, not by keeping
+ * a second list in step with the routes. A page that declares itself noindex is
+ * excluded, which covers the 404 fallback, the privacy policy and every draft
+ * page without this file needing to know what a draft is.
+ *
+ * lastmod comes from the page's own dateModified or datePublished where its
+ * structured data has one, and falls back to the build date. A page that has
+ * not changed in a year should not claim it changed today: a sitemap that
+ * re-dates everything on every deploy teaches a crawler to ignore the field.
+ */
+function htmlFor(route) {
+	const candidates =
+		route === '/'
+			? ['index.html']
+			: [`${route.slice(1)}.html`, join(route.slice(1), 'index.html')];
+	for (const c of candidates) {
+		try {
+			return readFileSync(join(BUILD, c), 'utf8');
+		} catch {
+			// try the next shape
+		}
+	}
+	return '';
+}
+
 const today = new Date().toISOString().slice(0, 10);
+const NOINDEX = /<meta[^>]+name=["']robots["'][^>]*content=["'][^"']*noindex/i;
+const DATE = /"date(?:Modified|Published)":"(\d{4}-\d{2}-\d{2})/;
+
+const indexable = [];
+let excluded = 0;
+for (const route of routes) {
+	const html = htmlFor(route);
+	// The adapter's fallback is an unrendered shell: its noindex is added by the
+	// error page once JavaScript runs, so there is nothing in the file to read.
+	// It has to be named.
+	if (route === '/404' || NOINDEX.test(html)) {
+		excluded++;
+		continue;
+	}
+	const found = html.match(DATE);
+	indexable.push({ route, lastmod: found ? found[1] : today });
+}
+
 const sitemap = [
 	'<?xml version="1.0" encoding="UTF-8"?>',
 	'<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
-	...routes.map((route) => {
+	...indexable.map(({ route, lastmod }) => {
 		const loc = `${ORIGIN}${base}${route === '/' ? '/' : route}`;
-		return `\t<url><loc>${loc}</loc><lastmod>${today}</lastmod></url>`;
+		return `\t<url><loc>${loc}</loc><lastmod>${lastmod}</lastmod></url>`;
 	}),
 	'</urlset>',
 	''
 ].join('\n');
 writeFileSync(join(BUILD, 'sitemap.xml'), sitemap);
-console.log(`postbuild: sitemap.xml with ${routes.length} URLs`);
+console.log(
+	`postbuild: sitemap.xml with ${indexable.length} URLs` +
+		(excluded ? ` (${excluded} noindex excluded)` : '')
+);
 
 // robots.txt ships from static/, so rewrite it here rather than hardcoding an
 // origin into a checked-in file that has to serve both deploy targets.
