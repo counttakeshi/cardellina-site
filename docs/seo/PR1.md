@@ -51,7 +51,7 @@ names.
 | **C2** | The four routes by name on the homepage. |
 | **C3** | Each account's CTA points at the tour its own copy already names. Wording unchanged. |
 | **C4** | Related-link blocks on tours, accounts and reports, plus a visible breadcrumb trail. |
-| **C5** | Footer links to all six sections. |
+| **C5** | **Reverted after review.** The six footer links were redundant: every one is already in the prerendered header, and `seo:links` reports zero orphans without them. The footer keeps the contact details. |
 | **C6** | All 205 images declare width and height; alt text comes from the ledger where it knows the subject; 176 images in the sitemap; two audit CSVs. **One bullet outstanding, see below.** |
 | **C7** | Optional "How did you find us?" on every enquiry kind. |
 | **C8** | `enquiry_submit`, `whatsapp_click`, `email_click`, `phone_click` to Clarity, under the existing consent logic. |
@@ -82,7 +82,7 @@ word on every page rather than a few viewports.
 before any change. `node scripts/page-text.mjs docs/seo/after` rebuilds it for
 comparison.
 
-**283 lines added, 10 replaced, 0 lost.** All ten replacements are the tour
+**Roughly 250 lines added, 10 replaced, 0 lost.** All ten replacements are the tour
 booking button gaining "WhatsApp" on the same line.
 
 Every addition is accounted for:
@@ -90,7 +90,6 @@ Every addition is accounted for:
 | Change | Pages | What appears |
 |---|---|---|
 | Breadcrumb trail (C4) | 27 | `Home › Trips › Palenque` |
-| Footer sections (C5) | 28 | `Trips Bird Library Trip Reports Guides Partners Contact` |
 | Hidden panels (C1) | `/trips` | 82 lines: the four routes and the builder |
 | Route names (C2) | `/` | four route names |
 | Related links (C4) | tours, accounts, reports | the blocks listed below |
@@ -158,9 +157,6 @@ All of these are renameable in one place each.
 **Breadcrumb labels** (`src/lib/breadcrumbs.ts`), all words the site already
 used: Home, Trips, Bird Library, Trip Reports, Guides, Partners, Contact, Plan
 a trip, Privacy policy.
-
-**Footer section links** (`Footer.svelte`), the nav's own labels: Trips, Bird
-Library, Trip Reports, Guides, Partners, Contact.
 
 **404 page** (`+error.svelte`): "Page not found", and Trips / Bird Library /
 Contact.
