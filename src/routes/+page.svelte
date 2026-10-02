@@ -2,6 +2,8 @@
 	import { asset } from '$lib/ledger';
 	import { base } from '$app/paths';
 	import { headliners, tripTeasers, guides, warblers, reviews, principles } from '$lib/data/home';
+	import { allGuideLanguages } from '$lib/data/guides';
+	import { websiteJsonLd, organisationJsonLd } from '$lib/jsonld';
 	import Seo from '$lib/components/Seo.svelte';
 	import { pageTitle, pageDescription, fixedSeo } from '$lib/seo';
 
@@ -23,6 +25,15 @@
 </script>
 
 <Seo
+	jsonLd={[
+		websiteJsonLd(),
+		organisationJsonLd({
+			logo: asset('images/cardellina-logo-r-ouLe0QMSi7BFi1G9-thumb.webp'),
+			image: HERO_IMG,
+			languages: allGuideLanguages,
+			founderSlugs: ['valente', 'ben']
+		})
+	]}
 	title={pageTitle(seo.seoTitle, 'Cardellina Birdwatching Tours in Chiapas | Cardellina - Chiapas Birding Tours')}
 	description={pageDescription(seo.metaDescription, 'Nearly 700 species and more than forty endemics and near-endemics. Small-group and bespoke birding tours across Chiapas, guided by birders who live here.')}
 />

@@ -7,6 +7,8 @@
 	import { EBIRD_TARGETS } from '$lib/config';
 	import Seo from '$lib/components/Seo.svelte';
 	import { pageTitle, pageDescription, fixedSeo } from '$lib/seo';
+	import { crumbsFor } from '$lib/breadcrumbs';
+	import { breadcrumbJsonLd } from '$lib/jsonld';
 
 	/** Title and description overrides for this page; empty until Ben fills them. */
 	const seo = fixedSeo('/trips');
@@ -76,6 +78,7 @@
 </script>
 
 <Seo
+	jsonLd={[breadcrumbJsonLd(crumbsFor('/trips'))]}
 	title={pageTitle(seo.seoTitle, 'Birding Tours in Chiapas | Cardellina - Chiapas Birding Tours')}
 	description={pageDescription(seo.metaDescription, 'Day tours, multi-day routes, and trips built from scratch around your target birds, across the whole of Chiapas.')}
 />

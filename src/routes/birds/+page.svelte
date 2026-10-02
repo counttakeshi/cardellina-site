@@ -14,6 +14,8 @@
 	import type { TourPhoto } from '$lib/data/tourDetails';
 	import Seo from '$lib/components/Seo.svelte';
 	import { pageTitle, pageDescription, fixedSeo } from '$lib/seo';
+	import { crumbsFor } from '$lib/breadcrumbs';
+	import { breadcrumbJsonLd } from '$lib/jsonld';
 
 	/** Title and description overrides for this page; empty until Ben fills them. */
 	const seo = fixedSeo('/birds');
@@ -98,6 +100,7 @@
 </script>
 
 <Seo
+	jsonLd={[breadcrumbJsonLd(crumbsFor('/birds'))]}
 	title={pageTitle(seo.seoTitle, 'Birdwatching Guide to Chiapas | Cardellina - Chiapas Birding Tours')}
 	description={pageDescription(seo.metaDescription, 'A working reference to the endemics, near-endemics and specialities of Chiapas, with habitat and elevation. Filter by range or habitat, or search by name.')}
 />

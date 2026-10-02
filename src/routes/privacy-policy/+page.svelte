@@ -2,12 +2,14 @@
 	import { privacyPolicyHtml } from '$lib/data/privacy';
 	import Seo from '$lib/components/Seo.svelte';
 	import { pageTitle, pageDescription, fixedSeo } from '$lib/seo';
+	import { crumbsFor } from '$lib/breadcrumbs';
+	import { breadcrumbJsonLd } from '$lib/jsonld';
 
 	/** Title and description overrides for this page; empty until Ben fills them. */
 	const seo = fixedSeo('/privacy-policy');
 </script>
 
-<Seo title={pageTitle(seo.seoTitle, 'Privacy Policy | Cardellina - Chiapas Birding Tours')} noindex />
+<Seo jsonLd={[breadcrumbJsonLd(crumbsFor('/privacy-policy'))]} title={pageTitle(seo.seoTitle, 'Privacy Policy | Cardellina - Chiapas Birding Tours')} noindex />
 
 <div class="wrap policy">
 	<h1>Privacy Policy</h1>

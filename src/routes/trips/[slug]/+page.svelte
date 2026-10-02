@@ -3,6 +3,10 @@
 	import Lightbox from '$lib/components/Lightbox.svelte';
 	import Seo from '$lib/components/Seo.svelte';
 	import { pageTitle, pageDescription } from '$lib/seo';
+	import { crumbsFor } from '$lib/breadcrumbs';
+	import { breadcrumbJsonLd, tourJsonLd } from '$lib/jsonld';
+	import { SITE_ORIGIN } from '$lib/config';
+	import { dayTours } from '$lib/data/trips';
 
 	let { data } = $props();
 	const tour = $derived(data.tour);
@@ -11,9 +15,30 @@
 	const backLabel = $derived(tour.kind === 'day' ? 'All day tours' : 'All multi-day tours');
 
 	let lightboxIndex = $state<number | null>(null);
+
+	// The price lives in trips.ts with the listing cards, not in the detail data,
+	// so the offer is looked up rather than duplicated.
+	const dayTour = $derived(
+		tour.kind === 'day' ? dayTours.find((t) => t.slug === tour.slug) : undefined
+	);
+	const tourUrl = $derived(`${SITE_ORIGIN}/trips/${tour.slug}`);
 </script>
 
 <Seo
+	jsonLd={[
+		breadcrumbJsonLd(crumbsFor('/trips/' + tour.slug, tour.title)),
+		tourJsonLd({
+			name: tour.title,
+			description: tour.kind === 'day' ? (tour.intro[0] ?? tour.tagline) : tour.summary,
+			image: tour.hero,
+			url: tourUrl,
+			// Multi-day routes carry no offer until Ben fills fromPriceUsd (D4):
+			// a trip advertised with no price is better than one advertised wrong.
+			offer: dayTour ? { priceUsd: dayTour.priceUsd, note: dayTour.party } : undefined,
+			itinerary:
+				tour.kind === 'multi-day' ? tour.days.map((d) => ({ name: d.title })) : undefined
+		})
+	]}
 	title={pageTitle(tour.seoTitle, tour.title + ' | Cardellina - Chiapas Birding Tours')}
 	description={pageDescription(
 		tour.metaDescription,

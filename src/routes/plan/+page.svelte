@@ -5,6 +5,8 @@
 	import { whatsappLink, CONTACT_EMAIL } from '$lib/config';
 	import Seo from '$lib/components/Seo.svelte';
 	import { pageTitle, pageDescription, fixedSeo } from '$lib/seo';
+	import { crumbsFor } from '$lib/breadcrumbs';
+	import { breadcrumbJsonLd } from '$lib/jsonld';
 
 	/** Title and description overrides for this page; empty until Ben fills them. */
 	const seo = fixedSeo('/plan');
@@ -28,6 +30,7 @@
 </script>
 
 <Seo
+	jsonLd={[breadcrumbJsonLd(crumbsFor('/plan'))]}
 	title={pageTitle(seo.seoTitle, 'Plan a trip | Cardellina - Chiapas Birding Tours')}
 	description={pageDescription(seo.metaDescription, 'Build a trip around your own dates and target birds, ask us a question, or browse the day tours and multi-day routes we run in Chiapas.')}
 />

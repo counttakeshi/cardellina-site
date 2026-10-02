@@ -3,6 +3,9 @@
 	import { tripReports } from '$lib/data/tripReports';
 	import Seo from '$lib/components/Seo.svelte';
 	import { pageTitle, pageDescription } from '$lib/seo';
+	import { crumbsFor } from '$lib/breadcrumbs';
+	import { breadcrumbJsonLd, articleJsonLd } from '$lib/jsonld';
+	import { SITE_ORIGIN } from '$lib/config';
 
 	let { data } = $props();
 	const report = $derived(data.report);
@@ -25,6 +28,17 @@
 </script>
 
 <Seo
+	jsonLd={[
+		breadcrumbJsonLd(crumbsFor('/trip-reports/' + report.slug, report.title)),
+		articleJsonLd({
+			headline: report.title,
+			image: report.hero,
+			url: `${SITE_ORIGIN}/trip-reports/${report.slug}`,
+			authorSlug: report.author,
+			datePublished: report.published,
+			dateModified: report.dateModified
+		})
+	]}
 	title={pageTitle(report.seoTitle, report.title + ' — Trip Report | Cardellina - Chiapas Birding Tours')}
 	description={pageDescription(report.metaDescription, report.description)}
 	image={'og/trip-reports-' + report.slug + '.jpg'}

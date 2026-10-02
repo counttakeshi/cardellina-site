@@ -2,11 +2,31 @@
 	import { base } from '$app/paths';
 	import Seo from '$lib/components/Seo.svelte';
 	import { pageTitle, pageDescription } from '$lib/seo';
+	import { crumbsFor } from '$lib/breadcrumbs';
+	import { breadcrumbJsonLd, articleJsonLd } from '$lib/jsonld';
+	import { SITE_ORIGIN } from '$lib/config';
 	let { data } = $props();
 	const account = $derived(data.account);
+
+	/** A placeholder hero is not an image, so the Article goes without one. */
+	const heroSrc = $derived(
+		account.hero && !('placeholder' in account.hero) ? account.hero.src : undefined
+	);
 </script>
 
 <Seo
+	jsonLd={[
+		breadcrumbJsonLd(crumbsFor('/birds/' + account.slug, account.title)),
+		articleJsonLd({
+			headline: account.title,
+			image: heroSrc,
+			url: `${SITE_ORIGIN}/birds/${account.slug}`,
+			authorSlug: account.author,
+			datePublished: account.datePublished,
+			dateModified: account.dateModified,
+			sources: account.sources
+		})
+	]}
 	title={pageTitle(account.seoTitle, account.metaTitle + ' | Cardellina - Chiapas Birding Tours')}
 	description={pageDescription(account.metaDescription)}
 	image={'og/birds-' + account.slug + '.jpg'}

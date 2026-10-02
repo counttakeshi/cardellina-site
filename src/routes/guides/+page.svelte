@@ -4,6 +4,8 @@
 	import { asset } from '$lib/ledger';
 	import Seo from '$lib/components/Seo.svelte';
 	import { pageTitle, pageDescription, fixedSeo } from '$lib/seo';
+	import { crumbsFor } from '$lib/breadcrumbs';
+	import { breadcrumbJsonLd, personJsonLd } from '$lib/jsonld';
 
 	/** Title and description overrides for this page; empty until Ben fills them. */
 	const seo = fixedSeo('/guides');
@@ -52,6 +54,21 @@
 </script>
 
 <Seo
+	jsonLd={[
+		breadcrumbJsonLd(crumbsFor('/guides')),
+		// jobTitle is the part of the role line before the middot, so it is the
+		// page's own words rather than a new description of the job.
+		...guides.map((g) =>
+			personJsonLd({
+				slug: g.slug,
+				name: g.name,
+				jobTitle: g.role?.split('·')[0].trim(),
+				image: g.photo,
+				languages: g.languages,
+				profiles: g.profiles
+			})
+		)
+	]}
 	title={pageTitle(seo.seoTitle, 'Valente & Ben | Cardellina - Chiapas Birding Tours')}
 	description={pageDescription(seo.metaDescription, 'Meet Valente González and Ben Simmons, the two birders behind Cardellina, and the way we run a trip in Chiapas.')}
 />

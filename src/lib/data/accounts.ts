@@ -34,6 +34,16 @@ export interface SpeciesAccount {
 		| null;
 	/** Photo credit markup, including the photographer's link. */
 	creditHtml: string | null;
+	/**
+	 * COPY: who wrote it, as a guide slug from guides.ts ('valente' or 'ben').
+	 * Left out of the markup entirely until filled: a named author is a strong
+	 * signal, an invented one is a lie.
+	 */
+	author?: string;
+	/** COPY: ISO date first published, e.g. '2026-03-14'. */
+	datePublished?: string;
+	/** COPY: ISO date last meaningfully revised. Falls back to datePublished. */
+	dateModified?: string;
 	quickRef: QuickRefRow[];
 	body: AccountBlock[];
 	cta: { html: string; href: string; label: string } | null;

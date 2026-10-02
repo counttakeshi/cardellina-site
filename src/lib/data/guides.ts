@@ -46,12 +46,37 @@ export interface Guide {
 	projectLink?: GuideLink;
 	/** Mirrors the live layout, which alternates photo/copy sides. */
 	flip?: boolean;
+	/**
+	 * Languages this guide works in, for the Person in the structured data.
+	 * Taken from what the bios above already say, not added to them.
+	 *
+	 * NEEDS BEN: confirm. The bios give Valente English, Spanish and Dutch, and
+	 * Ben English, Spanish and Portuguese; the multi-day tour pages advertise
+	 * "English, Spanish, Dutch", which leaves Portuguese out.
+	 */
+	languages?: string[];
+	/**
+	 * Profile URLs for this guide's `sameAs`. These are what let a search engine
+	 * join a guide's eBird record, their photographs and this page into one
+	 * person rather than three strangers who share a name.
+	 *
+	 * NEEDS BEN: the URLs. One slot each for eBird, iNaturalist and Instagram.
+	 * An empty entry is dropped before the markup is written, so a slot left
+	 * blank costs nothing, but a wrong URL claims the wrong person.
+	 */
+	profiles?: string[];
 }
 
 export const guides: Guide[] = [
 	{
 		slug: 'valente',
 		tier: 'lead',
+		languages: ['English', 'Spanish', 'Dutch'],
+		profiles: [
+			'' // eBird
+			// '' — iNaturalist
+			// '' — Instagram
+		],
 		name: 'Valente González',
 		role: 'Tour leader & guide · born in Chiapas',
 		photo: imageUrl('valente-guiding-photo-YBgb3LeK7nUXWJr2.jpg', 'full'),
@@ -97,6 +122,12 @@ export const guides: Guide[] = [
 		slug: 'ben',
 		tier: 'lead',
 		name: 'Ben Simmons',
+		languages: ['English', 'Spanish', 'Portuguese'],
+		profiles: [
+			'' // eBird
+			// '' — iNaturalist
+			// '' — Instagram
+		],
 		role: 'Tour leader & guide · from London, in Latin America since 2011',
 		photo: imageUrl('ben-guide-photo-Awv4vr7rLzfqJD6j.jpg', 'full'),
 		tag: 'San Cristóbal de las Casas',
@@ -175,4 +206,13 @@ export const guideValues = [
 		title: 'Built around you',
 		body: "Beginner or hardened lister, we shape each trip to your pace, your interests and your targets, and keep you comfortable and well fed while we're at it."
 	}
+];
+
+
+/**
+ * Every language any guide works in, for the organisation's knowsLanguage.
+ * Derived rather than listed, so it cannot drift from the guides above.
+ */
+export const allGuideLanguages: string[] = [
+	...new Set(guides.flatMap((g) => g.languages ?? []))
 ];

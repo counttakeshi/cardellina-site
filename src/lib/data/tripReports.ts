@@ -18,6 +18,12 @@ export interface TripReport {
 	dates: string;
 	/** ISO date the report was published, for ordering and <time>. */
 	published: string;
+	/**
+	 * COPY: who wrote it, as a guide slug from guides.ts. Omitted until filled.
+	 */
+	author?: string;
+	/** COPY: ISO date last meaningfully revised. Falls back to `published`. */
+	dateModified?: string;
 	description: string;
 	hero: string;
 	heroAlt: string;

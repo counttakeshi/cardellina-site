@@ -4,6 +4,8 @@
 	import { tripReports } from '$lib/data/tripReports';
 	import Seo from '$lib/components/Seo.svelte';
 	import { pageTitle, pageDescription, fixedSeo } from '$lib/seo';
+	import { crumbsFor } from '$lib/breadcrumbs';
+	import { breadcrumbJsonLd } from '$lib/jsonld';
 
 	/** Title and description overrides for this page; empty until Ben fills them. */
 	const seo = fixedSeo('/trip-reports');
@@ -19,6 +21,7 @@
 </script>
 
 <Seo
+	jsonLd={[breadcrumbJsonLd(crumbsFor('/trip-reports'))]}
 	title={pageTitle(seo.seoTitle, 'Birding Trip Reports from Chiapas | Cardellina - Chiapas Birding Tours')}
 	description={pageDescription(seo.metaDescription, "Reports from trips we've run in Chiapas, with the sites we birded, what we found, and links to the eBird checklists.")}
 />
