@@ -2,6 +2,7 @@
 	import { asset } from '$lib/ledger';
 	import { base } from '$app/paths';
 	import { headliners, tripTeasers, guides, warblers, reviews, principles } from '$lib/data/home';
+	import { multiDayTrips } from '$lib/data/trips';
 	import { allGuideLanguages } from '$lib/data/guides';
 	import { websiteJsonLd, organisationJsonLd } from '$lib/jsonld';
 	import Seo from '$lib/components/Seo.svelte';
@@ -147,6 +148,20 @@
 					<div class="trip-body">
 						<h3>{card.title}</h3>
 						<p>{card.body}</p>
+						<!--
+							The routes themselves, by name, under the card that describes
+							them. The homepage is the most linked page on the site, and
+							until now the only way to a route page from here was a link to
+							a tab on /trips which did not render those links either. Four
+							pages with nothing pointing at them.
+						-->
+						{#if card.href === '/trips#multi-day'}
+							<ul class="route-list">
+								{#each multiDayTrips as trip (trip.slug)}
+									<li><a href="{base}/trips/{trip.slug}">{trip.name}</a></li>
+								{/each}
+							</ul>
+						{/if}
 						<a class="arrow-link" href={base + card.href}>{card.cta}</a>
 					</div>
 				</article>
@@ -696,6 +711,26 @@
 		flex-direction: column;
 		flex: 1;
 	}
+	.route-list {
+		list-style: none;
+		margin: -0.3rem 0 1rem;
+		padding: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 0.3rem;
+	}
+	.route-list a {
+		font-size: 15px;
+		color: var(--canopy);
+		text-decoration: none;
+		border-bottom: 1px solid var(--rule);
+		padding-bottom: 1px;
+	}
+	.route-list a:hover {
+		color: var(--phwa);
+		border-color: var(--phwa);
+	}
+
 	.trip-body h3 {
 		font-size: 26px;
 		margin-bottom: 0.7rem;
