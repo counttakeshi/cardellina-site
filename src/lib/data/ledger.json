@@ -560,6 +560,16 @@
 			"used_on": [],
 			"note": ""
 		},
+		"elegant-euphonia": {
+			"name": "Elegant Euphonia",
+			"star": true,
+			"credit": "Sergio Gómez Villaverde",
+			"files": [
+				"elegant-euphonia-sergio.jpg"
+			],
+			"used_on": [],
+			"note": ""
+		},
 		"azure-hooded-jay": {
 			"name": "Azure Hooded Jay",
 			"star": true,
