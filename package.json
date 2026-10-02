@@ -13,7 +13,8 @@
 		"seo:jsonld": "node scripts/check-jsonld.mjs",
 		"seo:images": "node scripts/image-audit.mjs",
 		"seo:report": "node scripts/seo-report.mjs",
-		"seo:links": "node scripts/seo-links.mjs"
+		"seo:links": "node scripts/seo-links.mjs",
+		"seo:sources": "node scripts/check-sources.mjs"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-static": "^3.0.10",
