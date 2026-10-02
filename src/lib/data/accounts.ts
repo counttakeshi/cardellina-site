@@ -14,6 +14,16 @@ export type AccountBlock =
 
 export interface SpeciesAccount {
 	slug: Species['slug'];
+	/**
+	 * COPY: a <title> written for search, roughly 50 characters before the brand
+	 * tail. Empty keeps the title the page uses today, exactly as it is.
+	 */
+	seoTitle?: string;
+	/**
+	 * COPY: the description shown under the result, roughly 150 to 160
+	 * characters. Empty keeps today's behaviour.
+	 */
+	metaDescription?: string;
 	/** <title> used on the live account page — better for SEO than the bare name. */
 	metaTitle: string;
 	title: string;

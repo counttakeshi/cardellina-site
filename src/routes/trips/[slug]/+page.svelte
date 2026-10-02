@@ -2,6 +2,7 @@
 	import { base } from '$app/paths';
 	import Lightbox from '$lib/components/Lightbox.svelte';
 	import Seo from '$lib/components/Seo.svelte';
+	import { pageTitle, pageDescription } from '$lib/seo';
 
 	let { data } = $props();
 	const tour = $derived(data.tour);
@@ -13,8 +14,11 @@
 </script>
 
 <Seo
-	title={tour.title + ' | Cardellina - Chiapas Birding Tours'}
-	description={tour.kind === 'day' ? (tour.intro[0] ?? tour.tagline) : tour.summary}
+	title={pageTitle(tour.seoTitle, tour.title + ' | Cardellina - Chiapas Birding Tours')}
+	description={pageDescription(
+		tour.metaDescription,
+		tour.kind === 'day' ? (tour.intro[0] ?? tour.tagline) : tour.summary
+	)}
 />
 
 <header class="hero">

@@ -1,9 +1,13 @@
 <script lang="ts">
 	import { privacyPolicyHtml } from '$lib/data/privacy';
 	import Seo from '$lib/components/Seo.svelte';
+	import { pageTitle, pageDescription, fixedSeo } from '$lib/seo';
+
+	/** Title and description overrides for this page; empty until Ben fills them. */
+	const seo = fixedSeo('/privacy-policy');
 </script>
 
-<Seo title="Privacy Policy | Cardellina - Chiapas Birding Tours" noindex />
+<Seo title={pageTitle(seo.seoTitle, 'Privacy Policy | Cardellina - Chiapas Birding Tours')} noindex />
 
 <div class="wrap policy">
 	<h1>Privacy Policy</h1>

@@ -3,6 +3,10 @@
 	import { guides, guideValues } from '$lib/data/guides';
 	import { asset } from '$lib/ledger';
 	import Seo from '$lib/components/Seo.svelte';
+	import { pageTitle, pageDescription, fixedSeo } from '$lib/seo';
+
+	/** Title and description overrides for this page; empty until Ben fills them. */
+	const seo = fixedSeo('/guides');
 
 	let videoPlaying = $state(false);
 
@@ -48,8 +52,8 @@
 </script>
 
 <Seo
-	title="Valente & Ben | Cardellina - Chiapas Birding Tours"
-	description="Meet Valente González and Ben Simmons, the two birders behind Cardellina, and the way we run a trip in Chiapas."
+	title={pageTitle(seo.seoTitle, 'Valente & Ben | Cardellina - Chiapas Birding Tours')}
+	description={pageDescription(seo.metaDescription, 'Meet Valente González and Ben Simmons, the two birders behind Cardellina, and the way we run a trip in Chiapas.')}
 />
 
 <div class="wrap masthead">

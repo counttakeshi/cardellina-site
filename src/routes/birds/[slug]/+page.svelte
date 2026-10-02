@@ -1,11 +1,16 @@
 <script lang="ts">
 	import { base } from '$app/paths';
 	import Seo from '$lib/components/Seo.svelte';
+	import { pageTitle, pageDescription } from '$lib/seo';
 	let { data } = $props();
 	const account = $derived(data.account);
 </script>
 
-<Seo title={account.metaTitle + ' | Cardellina - Chiapas Birding Tours'} type="article" />
+<Seo
+	title={pageTitle(account.seoTitle, account.metaTitle + ' | Cardellina - Chiapas Birding Tours')}
+	description={pageDescription(account.metaDescription)}
+	type="article"
+/>
 
 <div class="page-wrap">
 	<h1 class="page-title">{account.title}</h1>

@@ -3,6 +3,16 @@ import { imageUrl } from '$lib/ledger';
 export interface TripReport {
 	slug: string;
 	title: string;
+	/**
+	 * COPY: a <title> written for search, roughly 50 characters before the brand
+	 * tail. Empty keeps the title the page uses today, exactly as it is.
+	 */
+	seoTitle?: string;
+	/**
+	 * COPY: the description shown under the result, roughly 150 to 160
+	 * characters. Empty keeps today's behaviour.
+	 */
+	metaDescription?: string;
 	subtitle: string;
 	/** When the trip happened, as written. Not a parseable date. */
 	dates: string;

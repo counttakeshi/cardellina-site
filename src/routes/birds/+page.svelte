@@ -13,6 +13,10 @@
 	import { photosFor } from '$lib/ledger';
 	import type { TourPhoto } from '$lib/data/tourDetails';
 	import Seo from '$lib/components/Seo.svelte';
+	import { pageTitle, pageDescription, fixedSeo } from '$lib/seo';
+
+	/** Title and description overrides for this page; empty until Ben fills them. */
+	const seo = fixedSeo('/birds');
 
 	let query = $state('');
 	let activeTiers = $state<TierGroupCode[]>([]);
@@ -94,8 +98,8 @@
 </script>
 
 <Seo
-	title="Birdwatching Guide to Chiapas | Cardellina - Chiapas Birding Tours"
-	description="A working reference to the endemics, near-endemics and specialities of Chiapas, with habitat and elevation. Filter by range or habitat, or search by name."
+	title={pageTitle(seo.seoTitle, 'Birdwatching Guide to Chiapas | Cardellina - Chiapas Birding Tours')}
+	description={pageDescription(seo.metaDescription, 'A working reference to the endemics, near-endemics and specialities of Chiapas, with habitat and elevation. Filter by range or habitat, or search by name.')}
 />
 
 <div class="wrap masthead">

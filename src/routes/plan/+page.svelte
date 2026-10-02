@@ -4,6 +4,10 @@
 	import RouteIcon from '$lib/components/RouteIcon.svelte';
 	import { whatsappLink, CONTACT_EMAIL } from '$lib/config';
 	import Seo from '$lib/components/Seo.svelte';
+	import { pageTitle, pageDescription, fixedSeo } from '$lib/seo';
+
+	/** Title and description overrides for this page; empty until Ben fills them. */
+	const seo = fixedSeo('/plan');
 
 	/**
 	 * The fork in the road. Everything that says "plan a trip" lands here rather
@@ -24,8 +28,8 @@
 </script>
 
 <Seo
-	title="Plan a trip | Cardellina - Chiapas Birding Tours"
-	description="Build a trip around your own dates and target birds, ask us a question, or browse the day tours and multi-day routes we run in Chiapas."
+	title={pageTitle(seo.seoTitle, 'Plan a trip | Cardellina - Chiapas Birding Tours')}
+	description={pageDescription(seo.metaDescription, 'Build a trip around your own dates and target birds, ask us a question, or browse the day tours and multi-day routes we run in Chiapas.')}
 />
 
 <header class="hero" style="--hero-img:url('{HERO}')">

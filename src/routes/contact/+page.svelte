@@ -7,6 +7,10 @@
 	import { faq } from '$lib/data/faq';
 	import { whatsappLink, WHATSAPP_DISPLAY, CONTACT_EMAIL } from '$lib/config';
 	import Seo from '$lib/components/Seo.svelte';
+	import { pageTitle, pageDescription, fixedSeo } from '$lib/seo';
+
+	/** Title and description overrides for this page; empty until Ben fills them. */
+	const seo = fixedSeo('/contact');
 
 	// Tour cards link here as /contact?tour=<slug>. One prerendered page serves all
 	// of them, so the query string is only read in the browser — SvelteKit rejects
@@ -48,8 +52,8 @@
 </script>
 
 <Seo
-	title="Contact | Cardellina - Chiapas Birding Tours"
-	description="Ask us anything about birding in Chiapas — a species you're chasing, what a tour costs, or how to get here. You don't need a plan to get in touch."
+	title={pageTitle(seo.seoTitle, 'Contact | Cardellina - Chiapas Birding Tours')}
+	description={pageDescription(seo.metaDescription, "Ask us anything about birding in Chiapas — a species you're chasing, what a tour costs, or how to get here. You don't need a plan to get in touch.")}
 />
 
 <div class="wrap c-head">

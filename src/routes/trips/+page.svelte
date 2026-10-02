@@ -6,6 +6,10 @@
 	import ContactForm from '$lib/components/ContactForm.svelte';
 	import { EBIRD_TARGETS } from '$lib/config';
 	import Seo from '$lib/components/Seo.svelte';
+	import { pageTitle, pageDescription, fixedSeo } from '$lib/seo';
+
+	/** Title and description overrides for this page; empty until Ben fills them. */
+	const seo = fixedSeo('/trips');
 
 	const HERO = asset('images/dscn5960-AGB2B6qXevFLZNPP-full.webp');
 
@@ -72,8 +76,8 @@
 </script>
 
 <Seo
-	title="Birding Tours in Chiapas | Cardellina - Chiapas Birding Tours"
-	description="Day tours, multi-day routes, and trips built from scratch around your target birds, across the whole of Chiapas."
+	title={pageTitle(seo.seoTitle, 'Birding Tours in Chiapas | Cardellina - Chiapas Birding Tours')}
+	description={pageDescription(seo.metaDescription, 'Day tours, multi-day routes, and trips built from scratch around your target birds, across the whole of Chiapas.')}
 />
 
 <header class="hero" style="--hero-img:url('{HERO}')">

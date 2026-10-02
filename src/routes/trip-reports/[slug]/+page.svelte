@@ -2,6 +2,7 @@
 	import { base } from '$app/paths';
 	import { tripReports } from '$lib/data/tripReports';
 	import Seo from '$lib/components/Seo.svelte';
+	import { pageTitle, pageDescription } from '$lib/seo';
 
 	let { data } = $props();
 	const report = $derived(data.report);
@@ -24,8 +25,8 @@
 </script>
 
 <Seo
-	title={report.title + ' — Trip Report | Cardellina - Chiapas Birding Tours'}
-	description={report.description}
+	title={pageTitle(report.seoTitle, report.title + ' — Trip Report | Cardellina - Chiapas Birding Tours')}
+	description={pageDescription(report.metaDescription, report.description)}
 	type="article"
 />
 

@@ -35,6 +35,16 @@ export interface ItineraryDay {
 interface TourBase {
 	slug: string;
 	title: string;
+	/**
+	 * COPY: a <title> written for search, roughly 50 characters before the brand
+	 * tail. Empty keeps the title the page uses today, exactly as it is.
+	 */
+	seoTitle?: string;
+	/**
+	 * COPY: the description shown under the result, roughly 150 to 160
+	 * characters. Empty keeps today's behaviour.
+	 */
+	metaDescription?: string;
 	hero: string;
 	/** object-position for the hero crop, from the original CDN gravity. */
 	heroFocus?: string;

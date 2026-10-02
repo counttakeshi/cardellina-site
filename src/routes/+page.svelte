@@ -3,6 +3,10 @@
 	import { base } from '$app/paths';
 	import { headliners, tripTeasers, guides, warblers, reviews, principles } from '$lib/data/home';
 	import Seo from '$lib/components/Seo.svelte';
+	import { pageTitle, pageDescription, fixedSeo } from '$lib/seo';
+
+	/** Title and description overrides for this page; empty until Ben fills them. */
+	const seo = fixedSeo('/');
 
 	const HERO_IMG = asset('images/sabes_aves_pink-headed_warbler-A0xjy2JlD8TLpRLX-full.webp');
 	const GOOGLE_REVIEWS_URL = 'https://share.google/P1kf5lWkcsJoRDRXU';
@@ -19,8 +23,8 @@
 </script>
 
 <Seo
-	title="Cardellina Birdwatching Tours in Chiapas | Cardellina - Chiapas Birding Tours"
-	description="Nearly 700 species and more than forty endemics and near-endemics. Small-group and bespoke birding tours across Chiapas, guided by birders who live here."
+	title={pageTitle(seo.seoTitle, 'Cardellina Birdwatching Tours in Chiapas | Cardellina - Chiapas Birding Tours')}
+	description={pageDescription(seo.metaDescription, 'Nearly 700 species and more than forty endemics and near-endemics. Small-group and bespoke birding tours across Chiapas, guided by birders who live here.')}
 />
 
 <svelte:head>

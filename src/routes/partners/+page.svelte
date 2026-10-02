@@ -1,11 +1,15 @@
 <script lang="ts">
 	import { partners } from '$lib/data/partners';
 	import Seo from '$lib/components/Seo.svelte';
+	import { pageTitle, pageDescription, fixedSeo } from '$lib/seo';
+
+	/** Title and description overrides for this page; empty until Ben fills them. */
+	const seo = fixedSeo('/partners');
 </script>
 
 <Seo
-	title="Partner Projects | Cardellina - Chiapas Birding Tours"
-	description="The projects and companion guides we work with in Chiapas and neighbouring Oaxaca: OATL and Siyaj Chan."
+	title={pageTitle(seo.seoTitle, 'Partner Projects | Cardellina - Chiapas Birding Tours')}
+	description={pageDescription(seo.metaDescription, 'The projects and companion guides we work with in Chiapas and neighbouring Oaxaca: OATL and Siyaj Chan.')}
 />
 
 <div class="wrap masthead">
