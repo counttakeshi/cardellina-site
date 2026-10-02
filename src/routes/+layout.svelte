@@ -6,12 +6,35 @@
 	import CookieBanner from '$lib/components/CookieBanner.svelte';
 	import { asset } from '$lib/ledger';
 	import type { ConsentChoice } from '$lib/consent';
+	import { track, linkEvent } from '$lib/analytics';
 
 	let { children } = $props();
 
 	// Passed straight to Clarity so an answer takes effect on the page the
 	// visitor is already on, rather than waiting for the next navigation.
 	let consent = $state<ConsentChoice | null>(null);
+
+	/**
+	 * C8. One delegated listener for every outbound contact link on the site.
+	 *
+	 * These sit in the nav, the footer, the contact page, the plan page, every
+	 * tour page and inside the enquiry form's error state. A handler per link
+	 * would have to be remembered at each new one, and a forgotten one is
+	 * invisible: the link still works, the event simply never arrives.
+	 *
+	 * Capture phase, because a WhatsApp link navigates away and a listener that
+	 * waits its turn can lose the race.
+	 */
+	$effect(() => {
+		const onClick = (e: MouseEvent) => {
+			const link = (e.target as Element | null)?.closest?.('a[href]');
+			if (!link) return;
+			const event = linkEvent(link.getAttribute('href') ?? '');
+			if (event) track(event);
+		};
+		document.addEventListener('click', onClick, { capture: true });
+		return () => document.removeEventListener('click', onClick, { capture: true });
+	});
 </script>
 
 <svelte:head>

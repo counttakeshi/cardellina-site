@@ -117,3 +117,26 @@ export const SOCIAL_PROFILES: string[] = [
 	'https://www.tripadvisor.com.mx/Attraction_Review-g150802-d33020997-Reviews-Birding_Tours_in_Chiapas_with_Sabes_Aves-San_Cristobal_de_las_Casas_Southern_Mex.html'
 	// '' — Google Business Profile
 ].filter(Boolean);
+
+/**
+ * "How did you find us?" on the enquiry form.
+ *
+ * Optional, and last, because it is the only question on the form that serves
+ * us rather than the person filling it in. It is worth asking because nothing
+ * else can answer it: Clarity sees the session, not the decision, and a referrer
+ * is empty for most of this list. An AI assistant leaves no referrer at all, a
+ * recommendation from a friend leaves nothing anywhere, and those may well be
+ * two of the largest sources.
+ */
+export const REFERRAL_SOURCES = [
+	'Google search',
+	'An AI assistant (ChatGPT, Gemini, Perplexity, Copilot)',
+	'Google Maps or Google reviews',
+	'Tripadvisor',
+	'BirdForum or another forum',
+	'eBird or a trip report',
+	'Instagram or Facebook',
+	'A friend or past client',
+	'A tour company or club',
+	'Other'
+] as const;

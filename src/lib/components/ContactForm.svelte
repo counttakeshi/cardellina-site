@@ -1,5 +1,12 @@
 <script lang="ts">
-	import { CONTACT_ENDPOINT, CONTACT_EMAIL, ENQUIRY_TOPICS, whatsappLink } from '$lib/config';
+	import {
+		CONTACT_ENDPOINT,
+		CONTACT_EMAIL,
+		ENQUIRY_TOPICS,
+		REFERRAL_SOURCES,
+		whatsappLink
+	} from '$lib/config';
+	import { track } from '$lib/analytics';
 
 	export type EnquiryKind = 'general' | 'day' | 'multi-day' | 'personalised';
 
@@ -75,6 +82,10 @@
 			// claims it was: a form that says "sent" when it wasn't costs us the
 			// enquiry and the sender never learns to try again.
 			status = 'sent';
+			// Only here, where Formspree has actually accepted it. An event fired on
+			// submit would count the failures as successes, which is the exact thing
+			// this is meant to be able to tell apart.
+			track('enquiry_submit');
 			form.reset();
 			topic = '';
 		} catch (err) {
@@ -338,6 +349,21 @@
 					: ''}
 				required={kind === 'general'}
 			></textarea>
+		</div>
+
+		<!--
+			C7. Last, optional, and on every kind of enquiry. It is the only question
+			here that serves us rather than the sender, so it goes after everything
+			they came to say, and nothing depends on an answer.
+		-->
+		<div class="field">
+			<label for="cf-found">How did you find us? <span class="opt">optional</span></label>
+			<select id="cf-found" name="How did you find us">
+				<option value="">Select…</option>
+				{#each REFERRAL_SOURCES as source (source)}
+					<option>{source}</option>
+				{/each}
+			</select>
 		</div>
 
 		<!-- Unticked, and it stays unticked. Adding an enquirer to a mailing list
