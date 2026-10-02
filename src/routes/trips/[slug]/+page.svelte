@@ -7,6 +7,8 @@
 	import { breadcrumbJsonLd, tourJsonLd } from '$lib/jsonld';
 	import { SITE_ORIGIN, whatsappLink } from '$lib/config';
 	import { dayTours } from '$lib/data/trips';
+	import { hitRatesFor } from '$lib/data/hitRates';
+	import { contentFor } from '$lib/content';
 	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
 	import RelatedLinks from '$lib/components/RelatedLinks.svelte';
 	import { tourBirdLinks, routesIncludingSite, reportsForTour } from '$lib/related';
@@ -27,6 +29,44 @@
 		tour.kind === 'day' ? dayTours.find((t) => t.slug === tour.slug) : undefined
 	);
 	const tourUrl = $derived(`${SITE_ORIGIN}/trips/${tour.slug}`);
+
+	// D4, D7, D8. Every one of these renders nothing until it is filled.
+	const rates = $derived(tour.hitRates ? hitRatesFor(tour.slug) : []);
+	const departures = $derived(tour.groupDepartures ?? []);
+	const extension = $derived(contentFor(`tours/${tour.slug}`));
+
+	/** The optional facts, skipping anything still empty. */
+	const extraFacts = $derived(
+		(
+			[
+				['Best months', tour.bestMonths],
+				['Difficulty', tour.difficulty],
+				['Highest point', tour.maxAltitudeM ? `${tour.maxAltitudeM.toLocaleString()} m` : ''],
+				['Starts', tour.startTime]
+			] as [string, unknown][]
+		)
+			.map(([l, v]) => [l, typeof v === 'string' ? v.trim() : v ? String(v) : ''] as const)
+			.filter(([, v]) => v !== '')
+	);
+
+	/** Whether any of the optional blocks has anything to show. */
+	const hasExtra = $derived(
+		extraFacts.length > 0 ||
+			departures.length > 0 ||
+			rates.length > 0 ||
+			(tour.pickupPoints?.length ?? 0) > 0 ||
+			(tour.whatToBring?.length ?? 0) > 0 ||
+			(tour.reviews?.length ?? 0) > 0 ||
+			extension !== undefined
+	);
+
+	const fmtDate = (iso: string) =>
+		new Date(iso + 'T00:00:00Z').toLocaleDateString('en-GB', {
+			day: 'numeric',
+			month: 'short',
+			year: 'numeric',
+			timeZone: 'UTC'
+		});
 </script>
 
 <Seo
@@ -39,7 +79,17 @@
 			url: tourUrl,
 			// Multi-day routes carry no offer until Ben fills fromPriceUsd (D4):
 			// a trip advertised with no price is better than one advertised wrong.
-			offer: dayTour ? { priceUsd: dayTour.priceUsd, note: dayTour.party } : undefined,
+			offer: dayTour
+				? { priceUsd: dayTour.priceUsd, note: dayTour.party }
+				: tour.fromPriceUsd
+					? { priceUsd: tour.fromPriceUsd, note: 'From, per person' }
+					: undefined,
+			departures: departures.map((d) => ({
+				start: d.start,
+				end: d.end,
+				priceUsd: d.priceUsd,
+				soldOut: d.status === 'full' || d.status === 'cancelled'
+			})),
 			itinerary:
 				tour.kind === 'multi-day' ? tour.days.map((d) => ({ name: d.title })) : undefined
 		})
@@ -184,6 +234,111 @@
 	</div>
 </div>
 
+{#if hasExtra}
+<div class="wrap tour-extra">
+	{#if extraFacts.length}
+		<table class="x-facts">
+			<tbody>
+				{#each extraFacts as [label, value] (label)}
+					<tr><th>{label}</th><td>{value}</td></tr>
+				{/each}
+			</tbody>
+		</table>
+	{/if}
+
+	{#if departures.length}
+		<section class="x-block">
+			<h2>Dates</h2>
+			<table class="x-dep">
+				<thead>
+					<tr><th>Dates</th><th>Price</th><th>Places</th></tr>
+				</thead>
+				<tbody>
+					{#each departures as d (d.start)}
+						<tr class:gone={d.status === 'full' || d.status === 'cancelled'}>
+							<td>{fmtDate(d.start)} to {fmtDate(d.end)}</td>
+							<td>{d.priceUsd.toLocaleString()} USD</td>
+							<td>
+								{#if d.status === 'full'}Full
+								{:else if d.status === 'cancelled'}Cancelled
+								{:else}{d.seatsLeft} of {d.seats}{/if}
+							</td>
+						</tr>
+					{/each}
+				</tbody>
+			</table>
+		</section>
+	{/if}
+
+	{#if rates.length}
+		<section class="x-block">
+			<h2>How often we find them</h2>
+			<ul class="x-rates">
+				{#each rates as r (r.species)}
+					<li>
+						<span class="r-sp">{r.species}</span>
+						<span class="r-n">
+							Seen on {r.outingsWithSpecies} of {r.outings} outings ({r.period})
+						</span>
+					</li>
+				{/each}
+			</ul>
+		</section>
+	{/if}
+
+	{#if tour.pickupPoints?.length}
+		<section class="x-block">
+			<h2>Pick-up</h2>
+			<ul class="x-list">
+				{#each tour.pickupPoints as place (place)}<li>{place}</li>{/each}
+			</ul>
+		</section>
+	{/if}
+
+	{#if tour.whatToBring?.length}
+		<section class="x-block">
+			<h2>What to bring</h2>
+			<ul class="x-list">
+				{#each tour.whatToBring as item (item)}<li>{item}</li>{/each}
+			</ul>
+		</section>
+	{/if}
+
+	{#if extension}
+		<!--
+			The long-form extension, src/content/tours/<slug>.md. A draft is not
+			built, so this is absent until Ben publishes it.
+		-->
+		<section class="x-block x-prose">
+			{@html extension.html}
+		</section>
+	{/if}
+
+	{#if tour.reviews?.length}
+		<section class="x-block">
+			<h2>What people said</h2>
+			<!--
+				Verbatim, and deliberately not marked up as structured data. Google's
+				guidance is that a business is ineligible for review stars on pages
+				where it controls the reviews about itself.
+			-->
+			{#each tour.reviews as review (review.quote)}
+				<figure class="x-review">
+					<blockquote>{review.quote}</blockquote>
+					<figcaption>
+						{review.name}{#if review.country}, {review.country}{/if}{#if review.month}
+							· {review.month}{/if}
+						{#if review.sourceUrl}
+							<a href={review.sourceUrl} target="_blank" rel="noopener">source</a>
+						{/if}
+					</figcaption>
+				</figure>
+			{/each}
+		</section>
+	{/if}
+</div>
+{/if}
+
 <div class="wrap related-wrap">
 	<RelatedLinks heading="Birds on this tour with full accounts" links={tourBirdLinks(tour.slug, base)} />
 	<RelatedLinks heading="Routes that include this site" links={routesIncludingSite(tour.slug, base)} />
@@ -193,6 +348,122 @@
 <Lightbox photos={tour.gallery} bind:index={lightboxIndex} />
 
 <style>
+	.tour-extra {
+		max-width: 1120px;
+	}
+	.x-block {
+		margin-top: 2.4rem;
+		max-width: 720px;
+	}
+	.x-block h2 {
+		font-family: var(--mono);
+		font-size: 11px;
+		font-weight: 500;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		color: var(--stone);
+		margin-bottom: 0.8rem;
+	}
+	.x-facts,
+	.x-dep {
+		width: 100%;
+		max-width: 620px;
+		border-collapse: collapse;
+		margin-top: 2rem;
+		font-size: 16px;
+	}
+	.x-facts th,
+	.x-dep th {
+		text-align: left;
+		font-family: var(--mono);
+		font-size: 11px;
+		font-weight: 500;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+		color: var(--stone);
+		padding: 0.6rem 1.2rem 0.6rem 0;
+		white-space: nowrap;
+		vertical-align: top;
+		border-bottom: 1px solid var(--rule);
+	}
+	.x-facts td,
+	.x-dep td {
+		padding: 0.6rem 1.2rem 0.6rem 0;
+		border-bottom: 1px solid var(--rule);
+		line-height: 1.5;
+	}
+	.x-dep tr.gone td {
+		color: var(--stone);
+		text-decoration: line-through;
+	}
+	.x-list,
+	.x-rates {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		font-size: 16px;
+		line-height: 1.7;
+	}
+	.x-list li {
+		padding-left: 1.1rem;
+		position: relative;
+	}
+	.x-list li::before {
+		content: '·';
+		position: absolute;
+		left: 0.2rem;
+		color: var(--phwa);
+	}
+	.x-rates li {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0 0.7rem;
+		align-items: baseline;
+		padding: 0.35rem 0;
+		border-bottom: 1px solid var(--rule);
+	}
+	.r-sp {
+		font-weight: 700;
+	}
+	.r-n {
+		font-family: var(--mono);
+		font-size: 12px;
+		color: var(--stone);
+	}
+	.x-prose :global(h2) {
+		font-family: var(--display);
+		font-weight: 400;
+		font-size: clamp(22px, 2.6vw, 28px);
+		text-transform: none;
+		letter-spacing: 0;
+		color: var(--ink);
+		margin: 2rem 0 0.8rem;
+	}
+	.x-prose :global(p) {
+		font-size: 17px;
+		line-height: 1.75;
+		margin-bottom: 1rem;
+	}
+	.x-review {
+		margin: 0 0 1.4rem;
+		padding-left: 1.1rem;
+		border-left: 3px solid var(--rule);
+	}
+	.x-review blockquote {
+		margin: 0 0 0.4rem;
+		font-size: 17px;
+		line-height: 1.7;
+	}
+	.x-review figcaption {
+		font-family: var(--mono);
+		font-size: 11px;
+		letter-spacing: 0.04em;
+		color: var(--stone);
+	}
+	.x-review a {
+		color: var(--canopy);
+	}
+
 	.related-wrap {
 		max-width: 1120px;
 		padding-bottom: 3rem;

@@ -32,6 +32,29 @@ export interface ItineraryDay {
 	stay: string;
 }
 
+
+export interface TourReview {
+	/** The quote, exactly as written. */
+	quote: string;
+	name: string;
+	country?: string;
+	/** When they travelled, e.g. "March 2026". */
+	month?: string;
+	/** Where it was published, so a reader can check it. */
+	sourceUrl?: string;
+}
+
+export interface GroupDeparture {
+	/** ISO date. */
+	start: string;
+	/** ISO date. */
+	end: string;
+	priceUsd: number;
+	seats: number;
+	seatsLeft: number;
+	status: 'open' | 'nearly full' | 'full' | 'cancelled';
+}
+
 interface TourBase {
 	slug: string;
 	title: string;
@@ -48,6 +71,48 @@ interface TourBase {
 	hero: string;
 	/** object-position for the hero crop, from the original CDN gravity. */
 	heroFocus?: string;
+
+	/**
+	 * D4. All optional, all empty, all rendering nothing until filled. A tour
+	 * page shows a block only when it has something to put in it, so filling one
+	 * field on one tour changes one page.
+	 */
+
+	/** COPY: e.g. "November to March". Feeds the table on /chiapas/when-to-go. */
+	bestMonths?: string;
+	/** COPY: e.g. "Moderate. Three to four hours walking, some of it uphill." */
+	difficulty?: string;
+	/** Metres. Shown as a fact; also the honest answer to an altitude question. */
+	maxAltitudeM?: number;
+	/** COPY: e.g. "05:30". Feeds the table on /chiapas/getting-there. */
+	startTime?: string;
+	/** COPY: the places you will collect from, most common first. */
+	pickupPoints?: string[];
+	/** COPY: one short line per item. Rendered as a list. */
+	whatToBring?: string[];
+	/**
+	 * Verbatim quotes from people who went. Never paraphrased, never composed:
+	 * a review the business wrote is not a review.
+	 *
+	 * NEEDS BEN: these are not marked up as structured data and should not be.
+	 * Google's guidance is that a business is ineligible for review stars on
+	 * pages where it controls the reviews about itself.
+	 */
+	reviews?: TourReview[];
+	/** D7. "Seen on X of Y outings" when present. From hitRates.ts. */
+	hitRates?: boolean;
+	/** Routes only. Until this is filled the TouristTrip carries no Offer. */
+	fromPriceUsd?: number;
+	/** D8. Fixed departures. The page shows a table and the offers follow. */
+	groupDepartures?: GroupDeparture[];
+	/**
+	 * True when the whole route stays outside every area named in the three
+	 * government advisories. Feeds the table on /chiapas/safety.
+	 *
+	 * NEEDS BEN: only set this where you have checked it against the current
+	 * advisories, and recheck when they change. It is a claim about safety.
+	 */
+	outsideAdvisoryAreas?: boolean;
 	facts: TourFact[];
 	gallery: TourPhoto[];
 }
