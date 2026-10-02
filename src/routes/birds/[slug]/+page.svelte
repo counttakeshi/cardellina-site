@@ -9,6 +9,7 @@
 <Seo
 	title={pageTitle(account.seoTitle, account.metaTitle + ' | Cardellina - Chiapas Birding Tours')}
 	description={pageDescription(account.metaDescription)}
+	image={'og/birds-' + account.slug + '.jpg'}
 	type="article"
 />
 

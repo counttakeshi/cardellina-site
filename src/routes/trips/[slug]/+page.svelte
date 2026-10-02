@@ -19,6 +19,7 @@
 		tour.metaDescription,
 		tour.kind === 'day' ? (tour.intro[0] ?? tour.tagline) : tour.summary
 	)}
+	image={'og/trips-' + tour.slug + '.jpg'}
 />
 
 <header class="hero">

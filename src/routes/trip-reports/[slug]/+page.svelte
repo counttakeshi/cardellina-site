@@ -27,6 +27,7 @@
 <Seo
 	title={pageTitle(report.seoTitle, report.title + ' — Trip Report | Cardellina - Chiapas Birding Tours')}
 	description={pageDescription(report.metaDescription, report.description)}
+	image={'og/trip-reports-' + report.slug + '.jpg'}
 	type="article"
 />
 
