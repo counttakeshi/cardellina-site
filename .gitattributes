@@ -1,0 +1,4 @@
+
+# The page-text baseline is compared byte for byte; CRLF would make every
+# line of every page look changed.
+docs/seo/baseline/** text eol=lf

@@ -201,7 +201,37 @@ export const warblers = [
 	}
 ];
 
-export const reviews = [
+/**
+ * What people said, copied from Google and Tripadvisor.
+ *
+ * The text is never touched. Everything added here is metadata about a review,
+ * not a change to one.
+ *
+ * `tours` is pre-filled only where the review names the place itself, which is
+ * one of them: Peter Standring says Palenque. The rest need Ben, who knows who
+ * went where. A guess would attach somebody's words to a trip they did not
+ * take.
+ *
+ * NEEDS BEN: tours, month, country and sourceUrl for every review but the one.
+ * sourceUrl matters most: a review a reader can go and check is worth more
+ * than one they cannot, and these are not marked up as structured data for the
+ * reason given in src/lib/jsonld.ts.
+ */
+export interface Review {
+	initials: string;
+	name: string;
+	/** Verbatim. Never edited. */
+	text: string;
+	/** Tour slugs this review is about. */
+	tours?: string[];
+	/** When they travelled, e.g. "March 2026". */
+	month?: string;
+	country?: string;
+	/** Where it was published. */
+	sourceUrl?: string;
+}
+
+export const reviews: Review[] = [
 	{
 		initials: 'NB',
 		name: 'Nick Brickle',
@@ -220,6 +250,9 @@ export const reviews = [
 	{
 		initials: 'PS',
 		name: 'Peter Standring',
+		// The only one the text itself places: "a great day of birding with
+		// Valente in Palenque".
+		tours: ['palenque'],
 		text: 'I had a great day of birding with Valente in Palenque. We started early, and hiked through the national park, not far from the famous ruins. Along the road, and in the forest we saw dozens and dozens of lovely birds. [...] toucans, trogons, parrots, raptors, flycatchers, hummingbirds, and all kinds of warblers. I think all total, I was able to add about 50 birds to my life list'
 	},
 	{
