@@ -86,14 +86,14 @@
 	description={pageDescription(seo.metaDescription, 'Day tours, multi-day routes, and trips built from scratch around your target birds, across the whole of Chiapas.')}
 />
 
-<Breadcrumbs crumbs={crumbsFor('/trips')} />
-
 <header class="hero" style="--hero-img:url('{HERO}')">
 	<div class="wrap hero-inner">
 		<h1>Trips</h1>
 		<p>A morning out, a fortnight across the state, or something built around your list.</p>
 	</div>
 </header>
+
+<Breadcrumbs crumbs={crumbsFor('/trips')} />
 
 <div class="wrap">
 	<nav class="tabs" aria-label="Kinds of trip">

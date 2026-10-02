@@ -201,6 +201,22 @@ a {
 img {
 	display: block;
 	max-width: 100%;
+	/*
+	 * Every image now carries width and height attributes, so the browser can
+	 * reserve the right box before the bytes arrive. Those attributes map to
+	 * presentational hints on the width and height properties, which means an
+	 * image sized by CSS width alone would take its height from the attribute
+	 * rather than from its own proportions.
+	 *
+	 * That turned the square tour gallery tiles, whose rule is aspect-ratio: 1,
+	 * into 174x420 slots that cropped 59% off the width of every photograph.
+	 * aspect-ratio only applies when one dimension is auto, so this is what
+	 * releases it.
+	 *
+	 * Anything that genuinely wants a fixed height sets one on a class, which
+	 * outranks this.
+	 */
+	height: auto;
 }
 
 :focus-visible {

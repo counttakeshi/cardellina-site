@@ -52,8 +52,6 @@
 	image={'og/trips-' + tour.slug + '.jpg'}
 />
 
-<Breadcrumbs crumbs={crumbsFor('/trips/' + tour.slug, tour.title)} />
-
 <header class="hero">
 	<img
 		class="hero-img"
@@ -70,6 +68,8 @@
 		{/if}
 	</div>
 </header>
+
+<Breadcrumbs crumbs={crumbsFor('/trips/' + tour.slug, tour.title)} />
 
 <div class="wrap page">
 	<a class="back" href="{base}{backHref}">← {backLabel}</a>

@@ -60,8 +60,19 @@ for (const stem of [...stems].sort()) {
 		console.log(`  no full-size source  ${stem}`);
 		continue;
 	}
+	// position: 'attention' rather than a centre crop. A square cut from the
+	// middle of a 4:3 photograph throws away a third of the width, and a bird is
+	// very often not in the middle of the frame: the gallery was showing half a
+	// motmot and a lot of branch. sharp's attention strategy keeps the region
+	// with the most detail, which on these photographs is the bird.
 	const info = await sharp(src)
-		.resize({ width: 420, height: 420, fit: 'cover', withoutEnlargement: true })
+		.resize({
+			width: 420,
+			height: 420,
+			fit: 'cover',
+			position: 'attention',
+			withoutEnlargement: true
+		})
 		.webp({ quality: 78 })
 		.toFile(out);
 	bytes += info.size;

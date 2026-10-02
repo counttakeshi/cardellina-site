@@ -28,14 +28,14 @@
 	description={pageDescription(seo.metaDescription, "Reports from trips we've run in Chiapas, with the sites we birded, what we found, and links to the eBird checklists.")}
 />
 
-<Breadcrumbs crumbs={crumbsFor('/trip-reports')} />
-
 <header class="hero" style="--hero-img:url('{HERO}')">
 	<div class="wrap hero-inner">
 		<h1>Trip reports</h1>
 		<p>Where we went, what we found, and the eBird checklists.</p>
 	</div>
 </header>
+
+<Breadcrumbs crumbs={crumbsFor('/trip-reports')} />
 
 <section class="list">
 	<div class="wrap">

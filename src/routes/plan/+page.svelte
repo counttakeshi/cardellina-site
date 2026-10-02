@@ -37,13 +37,13 @@
 	description={pageDescription(seo.metaDescription, 'Build a trip around your own dates and target birds, ask us a question, or browse the day tours and multi-day routes we run in Chiapas.')}
 />
 
-<Breadcrumbs crumbs={crumbsFor('/plan')} />
-
 <header class="hero" style="--hero-img:url('{HERO}')">
 	<div class="wrap hero-inner">
 		<h1>Plan a trip</h1>
 	</div>
 </header>
+
+<Breadcrumbs crumbs={crumbsFor('/plan')} />
 
 <div class="wrap routes">
 	<a class="route lead" href="{base}/trips#personalised">

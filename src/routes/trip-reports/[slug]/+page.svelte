@@ -66,8 +66,6 @@
 	type="article"
 />
 
-<Breadcrumbs crumbs={crumbsFor('/trip-reports/' + report.slug, report.title)} />
-
 <header class="hero">
 	<img class="hero-img" src={report.hero} {...imageAttrs(report.hero)} alt={report.heroAlt} />
 	<div class="hero-shade"></div>
@@ -77,6 +75,8 @@
 		<p class="sub">{report.subtitle}</p>
 	</div>
 </header>
+
+<Breadcrumbs crumbs={crumbsFor('/trip-reports/' + report.slug, report.title)} />
 
 <div class="wrap page">
 	<a class="back" href="{base}/trip-reports">← All trip reports</a>
