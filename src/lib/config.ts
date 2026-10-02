@@ -44,8 +44,11 @@ export const CLARITY_PROJECT_ID = 'x2y20srabx';
  */
 export const WHATSAPP_NUMBER = '5219615164020';
 
-/** The same number as a person would write it. */
-export const WHATSAPP_DISPLAY = '+52 961 516 4020';
+/** The number, as a person writes it. */
+export const PHONE = '+52 961 516 4020';
+
+/** The same thing under its older name, kept so existing call sites still work. */
+export const WHATSAPP_DISPLAY = PHONE;
 
 /**
  * A wa.me link with the first message already typed.
@@ -76,3 +79,41 @@ export const ENQUIRY_TOPICS = [
 	'Travel and logistics',
 	'Something else'
 ] as const;
+
+/**
+ * The canonical origin. Every absolute URL the site emits — canonicals, Open
+ * Graph, JSON-LD, the sitemap — is built from this and not from the host the
+ * page happens to be served by, so the github.io staging copy still points
+ * search engines at the real domain instead of competing with it.
+ */
+export const SITE_ORIGIN = 'https://www.cardellina.com';
+
+/**
+ * The name for structured data.
+ *
+ * NEEDS BEN: the site currently says three different things. The footer reads
+ * "Cardellina Birdwatching Tours", page titles read "Cardellina - Chiapas
+ * Birding Tours", and this says "Cardellina Birding Tours". Neither of the
+ * other two has been changed. Pick one and the rest can follow.
+ */
+export const BRAND_NAME = 'Cardellina Birding Tours';
+
+/** wa.me with no message attached, for structured data and plain links. */
+export const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}`;
+
+/**
+ * Profiles that are unmistakably this business, for the `sameAs` of the
+ * organisation. The point of sameAs is to let a search engine join a scattered
+ * set of listings into one entity, so a wrong entry is worse than a missing
+ * one: empty slots are filtered out before the JSON-LD is written.
+ *
+ * NEEDS BEN: the Google Business Profile. The homepage links its reviews
+ * through a share.google short link, which redirects and is no use here; the
+ * full maps.google.com URL for the listing is what belongs in this slot.
+ */
+export const SOCIAL_PROFILES: string[] = [
+	'https://www.facebook.com/CardellinaBirding',
+	'https://www.instagram.com/CardellinaBirding',
+	'https://www.tripadvisor.com.mx/Attraction_Review-g150802-d33020997-Reviews-Birding_Tours_in_Chiapas_with_Sabes_Aves-San_Cristobal_de_las_Casas_Southern_Mex.html'
+	// '' — Google Business Profile
+].filter(Boolean);
