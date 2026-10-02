@@ -29,7 +29,15 @@ const SECTIONS: Record<string, Crumb> = {
 	partners: { name: 'Partners', path: '/partners' },
 	contact: { name: 'Contact', path: '/contact' },
 	plan: { name: 'Plan a trip', path: '/plan' },
-	'privacy-policy': { name: 'Privacy policy', path: '/privacy-policy' }
+	'privacy-policy': { name: 'Privacy policy', path: '/privacy-policy' },
+	// Part D. These appear only once their page is live; a draft is not built,
+	// so nothing can reach a trail that ends nowhere.
+	chiapas: { name: 'Chiapas', path: '/chiapas' },
+	mexico: { name: 'Mexico', path: '/mexico' },
+	'tour-companies-and-clubs': {
+		name: 'For tour companies and clubs',
+		path: '/tour-companies-and-clubs'
+	}
 };
 
 /**
