@@ -2,6 +2,7 @@
 	import { base } from '$app/paths';
 	import { asset } from '$lib/ledger';
 	import { tripReports } from '$lib/data/tripReports';
+	import Seo from '$lib/components/Seo.svelte';
 
 	const HERO = asset('images/tacana-photo-YbNB1ybokJuXrOor-full.webp');
 
@@ -13,13 +14,10 @@
 		});
 </script>
 
-<svelte:head>
-	<title>Birding Trip Reports from Chiapas | Cardellina - Chiapas Birding Tours</title>
-	<meta
-		name="description"
-		content="Reports from trips we've run in Chiapas, with the sites we birded, what we found, and links to the eBird checklists."
-	/>
-</svelte:head>
+<Seo
+	title="Birding Trip Reports from Chiapas | Cardellina - Chiapas Birding Tours"
+	description="Reports from trips we've run in Chiapas, with the sites we birded, what we found, and links to the eBird checklists."
+/>
 
 <header class="hero" style="--hero-img:url('{HERO}')">
 	<div class="wrap hero-inner">

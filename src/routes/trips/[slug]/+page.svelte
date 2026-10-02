@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { base } from '$app/paths';
 	import Lightbox from '$lib/components/Lightbox.svelte';
+	import Seo from '$lib/components/Seo.svelte';
 
 	let { data } = $props();
 	const tour = $derived(data.tour);
@@ -11,13 +12,10 @@
 	let lightboxIndex = $state<number | null>(null);
 </script>
 
-<svelte:head>
-	<title>{tour.title} | Cardellina - Chiapas Birding Tours</title>
-	<meta
-		name="description"
-		content={tour.kind === 'day' ? tour.intro[0] ?? tour.tagline : tour.summary}
-	/>
-</svelte:head>
+<Seo
+	title={tour.title + ' | Cardellina - Chiapas Birding Tours'}
+	description={tour.kind === 'day' ? (tour.intro[0] ?? tour.tagline) : tour.summary}
+/>
 
 <header class="hero">
 	<img

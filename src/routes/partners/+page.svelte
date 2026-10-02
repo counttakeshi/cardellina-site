@@ -1,14 +1,12 @@
 <script lang="ts">
 	import { partners } from '$lib/data/partners';
+	import Seo from '$lib/components/Seo.svelte';
 </script>
 
-<svelte:head>
-	<title>Partner Projects | Cardellina - Chiapas Birding Tours</title>
-	<meta
-		name="description"
-		content="The projects and companion guides we work with in Chiapas and neighbouring Oaxaca: OATL and Siyaj Chan."
-	/>
-</svelte:head>
+<Seo
+	title="Partner Projects | Cardellina - Chiapas Birding Tours"
+	description="The projects and companion guides we work with in Chiapas and neighbouring Oaxaca: OATL and Siyaj Chan."
+/>
 
 <div class="wrap masthead">
 	<p class="eyebrow">Partner projects</p>

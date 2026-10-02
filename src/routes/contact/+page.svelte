@@ -6,6 +6,7 @@
 	import { dayTours, multiDayTrips } from '$lib/data/trips';
 	import { faq } from '$lib/data/faq';
 	import { whatsappLink, WHATSAPP_DISPLAY, CONTACT_EMAIL } from '$lib/config';
+	import Seo from '$lib/components/Seo.svelte';
 
 	// Tour cards link here as /contact?tour=<slug>. One prerendered page serves all
 	// of them, so the query string is only read in the browser — SvelteKit rejects
@@ -46,13 +47,10 @@
 	const waHref = $derived(whatsappLink(context.tourName));
 </script>
 
-<svelte:head>
-	<title>Contact | Cardellina - Chiapas Birding Tours</title>
-	<meta
-		name="description"
-		content="Ask us anything about birding in Chiapas — a species you're chasing, what a tour costs, or how to get here. You don't need a plan to get in touch."
-	/>
-</svelte:head>
+<Seo
+	title="Contact | Cardellina - Chiapas Birding Tours"
+	description="Ask us anything about birding in Chiapas — a species you're chasing, what a tour costs, or how to get here. You don't need a plan to get in touch."
+/>
 
 <div class="wrap c-head">
 	<p class="eyebrow">{context.kind === 'general' ? 'Get in touch' : 'Booking enquiry'}</p>

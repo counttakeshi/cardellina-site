@@ -5,6 +5,7 @@
 	import SiteMap from '$lib/components/SiteMap.svelte';
 	import ContactForm from '$lib/components/ContactForm.svelte';
 	import { EBIRD_TARGETS } from '$lib/config';
+	import Seo from '$lib/components/Seo.svelte';
 
 	const HERO = asset('images/dscn5960-AGB2B6qXevFLZNPP-full.webp');
 
@@ -70,13 +71,10 @@
 	);
 </script>
 
-<svelte:head>
-	<title>Birding Tours in Chiapas | Cardellina - Chiapas Birding Tours</title>
-	<meta
-		name="description"
-		content="Day tours, multi-day routes, and trips built from scratch around your target birds, across the whole of Chiapas."
-	/>
-</svelte:head>
+<Seo
+	title="Birding Tours in Chiapas | Cardellina - Chiapas Birding Tours"
+	description="Day tours, multi-day routes, and trips built from scratch around your target birds, across the whole of Chiapas."
+/>
 
 <header class="hero" style="--hero-img:url('{HERO}')">
 	<div class="wrap hero-inner">

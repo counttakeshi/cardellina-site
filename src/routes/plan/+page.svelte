@@ -3,6 +3,7 @@
 	import { base } from '$app/paths';
 	import RouteIcon from '$lib/components/RouteIcon.svelte';
 	import { whatsappLink, CONTACT_EMAIL } from '$lib/config';
+	import Seo from '$lib/components/Seo.svelte';
 
 	/**
 	 * The fork in the road. Everything that says "plan a trip" lands here rather
@@ -22,13 +23,10 @@
 	const TOURS_IMG = imageUrl('tacana-photo-YbNB1ybokJuXrOor.jpg', 'card');
 </script>
 
-<svelte:head>
-	<title>Plan a trip | Cardellina - Chiapas Birding Tours</title>
-	<meta
-		name="description"
-		content="Build a trip around your own dates and target birds, ask us a question, or browse the day tours and multi-day routes we run in Chiapas."
-	/>
-</svelte:head>
+<Seo
+	title="Plan a trip | Cardellina - Chiapas Birding Tours"
+	description="Build a trip around your own dates and target birds, ask us a question, or browse the day tours and multi-day routes we run in Chiapas."
+/>
 
 <header class="hero" style="--hero-img:url('{HERO}')">
 	<div class="wrap hero-inner">

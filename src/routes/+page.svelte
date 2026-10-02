@@ -2,6 +2,7 @@
 	import { asset } from '$lib/ledger';
 	import { base } from '$app/paths';
 	import { headliners, tripTeasers, guides, warblers, reviews, principles } from '$lib/data/home';
+	import Seo from '$lib/components/Seo.svelte';
 
 	const HERO_IMG = asset('images/sabes_aves_pink-headed_warbler-A0xjy2JlD8TLpRLX-full.webp');
 	const GOOGLE_REVIEWS_URL = 'https://share.google/P1kf5lWkcsJoRDRXU';
@@ -17,12 +18,12 @@
 	}
 </script>
 
+<Seo
+	title="Cardellina Birdwatching Tours in Chiapas | Cardellina - Chiapas Birding Tours"
+	description="Nearly 700 species and more than forty endemics and near-endemics. Small-group and bespoke birding tours across Chiapas, guided by birders who live here."
+/>
+
 <svelte:head>
-	<title>Cardellina Birdwatching Tours in Chiapas | Cardellina - Chiapas Birding Tours</title>
-	<meta
-		name="description"
-		content="Nearly 700 species and more than forty endemics and near-endemics. Small-group and bespoke birding tours across Chiapas, guided by birders who live here."
-	/>
 	<!-- The hero is a CSS background set from a style attribute, so the browser's
 	     preload scanner cannot see it while parsing HTML — it only learns the URL
 	     once the stylesheet has arrived and been applied. That cost 730ms of dead

@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { base } from '$app/paths';
 	import { tripReports } from '$lib/data/tripReports';
+	import Seo from '$lib/components/Seo.svelte';
 
 	let { data } = $props();
 	const report = $derived(data.report);
@@ -22,10 +23,11 @@
 		});
 </script>
 
-<svelte:head>
-	<title>{report.title} — Trip Report | Cardellina - Chiapas Birding Tours</title>
-	<meta name="description" content={report.description} />
-</svelte:head>
+<Seo
+	title={report.title + ' — Trip Report | Cardellina - Chiapas Birding Tours'}
+	description={report.description}
+	type="article"
+/>
 
 <header class="hero">
 	<img class="hero-img" src={report.hero} alt={report.heroAlt} />

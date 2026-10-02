@@ -1,11 +1,9 @@
 <script lang="ts">
 	import { privacyPolicyHtml } from '$lib/data/privacy';
+	import Seo from '$lib/components/Seo.svelte';
 </script>
 
-<svelte:head>
-	<title>Privacy Policy | Cardellina - Chiapas Birding Tours</title>
-	<meta name="robots" content="noindex" />
-</svelte:head>
+<Seo title="Privacy Policy | Cardellina - Chiapas Birding Tours" noindex />
 
 <div class="wrap policy">
 	<h1>Privacy Policy</h1>

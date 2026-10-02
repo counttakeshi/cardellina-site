@@ -2,6 +2,7 @@
 	import { base } from '$app/paths';
 	import { guides, guideValues } from '$lib/data/guides';
 	import { asset } from '$lib/ledger';
+	import Seo from '$lib/components/Seo.svelte';
 
 	let videoPlaying = $state(false);
 
@@ -46,13 +47,10 @@
 	}
 </script>
 
-<svelte:head>
-	<title>Valente & Ben | Cardellina - Chiapas Birding Tours</title>
-	<meta
-		name="description"
-		content="Meet Valente González and Ben Simmons, the two birders behind Cardellina, and the way we run a trip in Chiapas."
-	/>
-</svelte:head>
+<Seo
+	title="Valente & Ben | Cardellina - Chiapas Birding Tours"
+	description="Meet Valente González and Ben Simmons, the two birders behind Cardellina, and the way we run a trip in Chiapas."
+/>
 
 <div class="wrap masthead">
 	<p class="eyebrow">Your guides</p>

@@ -12,6 +12,7 @@
 	import Lightbox from '$lib/components/Lightbox.svelte';
 	import { photosFor } from '$lib/ledger';
 	import type { TourPhoto } from '$lib/data/tourDetails';
+	import Seo from '$lib/components/Seo.svelte';
 
 	let query = $state('');
 	let activeTiers = $state<TierGroupCode[]>([]);
@@ -92,13 +93,10 @@
 	);
 </script>
 
-<svelte:head>
-	<title>Birdwatching Guide to Chiapas | Cardellina - Chiapas Birding Tours</title>
-	<meta
-		name="description"
-		content="A working reference to the endemics, near-endemics and specialities of Chiapas, with habitat and elevation. Filter by range or habitat, or search by name."
-	/>
-</svelte:head>
+<Seo
+	title="Birdwatching Guide to Chiapas | Cardellina - Chiapas Birding Tours"
+	description="A working reference to the endemics, near-endemics and specialities of Chiapas, with habitat and elevation. Filter by range or habitat, or search by name."
+/>
 
 <div class="wrap masthead">
 	<p class="eyebrow">Chiapas Bird Library</p>
