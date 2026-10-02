@@ -11,6 +11,28 @@
 	is behind the site, and it costs one row.
 -->
 <footer class="footer">
+
+	<!--
+		C5. Every section, linked from every page.
+
+		Until now the footer named no page at all, so the only route into the bird
+		library or the trip reports was the nav dropdowns, which need a hover or a
+		tap to open and leave nothing in the HTML for a crawler to follow from
+		most pages. A footer is the one block that appears on all 28.
+
+		Labels are the nav's own words, so the same page is never called two
+		different things.
+	-->
+	<nav class="f-nav" aria-label="Sections">
+		<div class="wrap f-nav-inner">
+			<a href="{base}/trips">Trips</a>
+			<a href="{base}/birds">Bird Library</a>
+			<a href="{base}/trip-reports">Trip Reports</a>
+			<a href="{base}/guides">Guides</a>
+			<a href="{base}/partners">Partners</a>
+			<a href="{base}/contact">Contact</a>
+		</div>
+	</nav>
 	<div class="wrap footer-inner">
 		<div class="f-contact">
 			<a href="mailto:{CONTACT_EMAIL}">{CONTACT_EMAIL}</a>
@@ -29,6 +51,29 @@
 	.footer {
 		background: var(--paper);
 		border-top: 1px solid var(--rule);
+	}
+
+	.f-nav {
+		border-bottom: 1px solid var(--rule);
+	}
+	.f-nav-inner {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.6rem 1.8rem;
+		padding-block: 1.4rem;
+	}
+	.f-nav a {
+		font-family: var(--body);
+		font-size: 14.5px;
+		font-weight: 700;
+		color: var(--ink);
+		text-decoration: none;
+		border-bottom: 1px solid transparent;
+		padding-bottom: 1px;
+	}
+	.f-nav a:hover {
+		color: var(--phwa);
+		border-bottom-color: var(--phwa);
 	}
 
 	.footer-inner {
