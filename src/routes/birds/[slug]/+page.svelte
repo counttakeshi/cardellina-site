@@ -11,6 +11,7 @@
 	import { imageAttrs } from '$lib/imageSize';
 	import ContentPage from '$lib/components/ContentPage.svelte';
 	import { imageFor, creditFor } from '$lib/ledger';
+	import PhenologyChart from '$lib/components/PhenologyChart.svelte';
 	let { data } = $props();
 	const account = $derived(data.account);
 
@@ -62,6 +63,8 @@
 					{#if mdCredit}<figcaption class="photo-credit">photo by {mdCredit}</figcaption>{/if}
 				</figure>
 			{/if}
+			<!-- Renders nothing until the phenology import has been run. -->
+			<PhenologyChart code={md.frontmatter.ebirdCode as string | undefined} name={mdName} />
 			{#if mdFacts.length}
 				<table class="quick-ref">
 					<tbody>
