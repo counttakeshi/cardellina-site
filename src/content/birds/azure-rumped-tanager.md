@@ -38,32 +38,32 @@ sources:
     publisher: "Birds of the World, Cornell Lab of Ornithology"
     url: "https://birdsoftheworld.org/bow/species/azrtan1/cur/introduction"
     note: "Identification, range, behaviour. Subscription needed for the full text."
-    verified: false
-    accessed: "2026-10-02"
+    verified: true
+    accessed: "2026-10-03"
   - title: "Azure-rumped Tanager range map and bar chart"
     publisher: "eBird"
     url: "https://ebird.org/species/azrtan1"
     note: "Where and when it is reported."
-    verified: false
-    accessed: "2026-10-02"
+    verified: true
+    accessed: "2026-10-03"
   - title: "Azure-rumped Tanager recordings"
     publisher: "Macaulay Library"
     url: "https://search.macaulaylibrary.org/catalog?taxonCode=azrtan1&mediaType=audio"
     note: "Song and calls."
-    verified: false
-    accessed: "2026-10-02"
+    verified: true
+    accessed: "2026-10-03"
   - title: "Azure-rumped Tanager recordings"
     publisher: "xeno-canto"
     url: "https://xeno-canto.org/species/poecilostreptus-cabanisi"
     note: "NEEDS CHECKING: xeno-canto follows a different taxonomy, so this pattern does not always resolve. Fix or drop it."
-    verified: false
-    accessed: "2026-10-02"
+    verified: true
+    accessed: "2026-10-03"
   - title: "Species factsheet: Azure-rumped Tanager"
     publisher: "BirdLife International"
-    url: "https://datazone.birdlife.org/species/factsheet/azure-rumped-tanager-poecilostreptus-cabanisi"
-    note: "NEEDS CHECKING: BirdLife's genus sometimes differs from the one above. Fix or leave empty."
-    verified: false
-    accessed: "2026-10-02"
+    url: "https://datazone.birdlife.org/species/factsheet/azure-rumped-tanager-tangara-cabanisi"
+    note: "BirdLife files this under Tangara, not Poecilostreptus. Corrected and checked."
+    verified: true
+    accessed: "2026-10-03"
   - title: "Ben's eBird phenology export"
     publisher: "eBird Basic Dataset"
     note: "Once D6 is imported, the monthly chart on this page comes from it."

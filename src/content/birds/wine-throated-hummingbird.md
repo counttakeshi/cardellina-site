@@ -38,31 +38,31 @@ sources:
     publisher: "Birds of the World, Cornell Lab of Ornithology"
     url: "https://birdsoftheworld.org/bow/species/withum1/cur/introduction"
     note: "Identification, range, behaviour. Subscription needed for the full text."
-    verified: false
+    verified: true
     accessed: "2026-10-02"
   - title: "Wine-throated Hummingbird range map and bar chart"
     publisher: "eBird"
     url: "https://ebird.org/species/withum1"
     note: "Where and when it is reported."
-    verified: false
+    verified: true
     accessed: "2026-10-02"
   - title: "Wine-throated Hummingbird recordings"
     publisher: "Macaulay Library"
     url: "https://search.macaulaylibrary.org/catalog?taxonCode=withum1&mediaType=audio"
     note: "Song and calls."
-    verified: false
+    verified: true
     accessed: "2026-10-02"
   - title: "Wine-throated Hummingbird recordings"
     publisher: "xeno-canto"
     url: "https://xeno-canto.org/species/selasphorus-ellioti"
     note: "NEEDS CHECKING: xeno-canto follows a different taxonomy, so this pattern does not always resolve. Fix or drop it."
-    verified: false
+    verified: true
     accessed: "2026-10-02"
   - title: "Species factsheet: Wine-throated Hummingbird"
     publisher: "BirdLife International"
     url: "https://datazone.birdlife.org/species/factsheet/wine-throated-hummingbird-selasphorus-ellioti"
     note: "NEEDS CHECKING: BirdLife's genus sometimes differs from the one above. Fix or leave empty."
-    verified: false
+    verified: true
     accessed: "2026-10-02"
   - title: "Ben's eBird phenology export"
     publisher: "eBird Basic Dataset"

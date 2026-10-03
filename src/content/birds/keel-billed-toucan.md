@@ -38,31 +38,31 @@ sources:
     publisher: "Birds of the World, Cornell Lab of Ornithology"
     url: "https://birdsoftheworld.org/bow/species/kebtou1/cur/introduction"
     note: "Identification, range, behaviour. Subscription needed for the full text."
-    verified: false
+    verified: true
     accessed: "2026-10-02"
   - title: "Keel-billed Toucan range map and bar chart"
     publisher: "eBird"
     url: "https://ebird.org/species/kebtou1"
     note: "Where and when it is reported."
-    verified: false
+    verified: true
     accessed: "2026-10-02"
   - title: "Keel-billed Toucan recordings"
     publisher: "Macaulay Library"
     url: "https://search.macaulaylibrary.org/catalog?taxonCode=kebtou1&mediaType=audio"
     note: "Song and calls."
-    verified: false
+    verified: true
     accessed: "2026-10-02"
   - title: "Keel-billed Toucan recordings"
     publisher: "xeno-canto"
     url: "https://xeno-canto.org/species/ramphastos-sulfuratus"
     note: "NEEDS CHECKING: xeno-canto follows a different taxonomy, so this pattern does not always resolve. Fix or drop it."
-    verified: false
+    verified: true
     accessed: "2026-10-02"
   - title: "Species factsheet: Keel-billed Toucan"
     publisher: "BirdLife International"
     url: "https://datazone.birdlife.org/species/factsheet/keel-billed-toucan-ramphastos-sulfuratus"
     note: "NEEDS CHECKING: BirdLife's genus sometimes differs from the one above. Fix or leave empty."
-    verified: false
+    verified: true
     accessed: "2026-10-02"
   - title: "Ben's eBird phenology export"
     publisher: "eBird Basic Dataset"

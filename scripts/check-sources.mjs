@@ -54,9 +54,16 @@ async function check(url) {
 			if (res.ok) return { ok: true, status: res.status };
 			// 405 means the method is wrong, not the URL. Try the next one.
 			if (method === 'HEAD' && (res.status === 405 || res.status === 403)) continue;
+			// 401, 403 and 429 mean this host will not talk to a script. Avibase
+			// and travel.state.gov both refuse a plain client even with a browser
+			// user agent, and both open perfectly well for a person. Calling those
+			// unverified would invite somebody to delete a working source, which
+			// is a worse outcome than leaving the flag alone.
+			if ([401, 403, 429].includes(res.status)) return { blocked: true, status: res.status };
 			return { ok: false, status: res.status };
 		} catch (err) {
-			if (method === 'GET') return { ok: false, status: err.name === 'TimeoutError' ? 'timeout' : 'failed' };
+			if (method === 'GET')
+				return { ok: false, status: err.name === 'TimeoutError' ? 'timeout' : 'failed' };
 		}
 	}
 	return { ok: false, status: 'failed' };
@@ -68,6 +75,7 @@ const URL_LINE = /^(\s*)url:\s*"([^"]+)"\s*$/;
 let checked = 0;
 let good = 0;
 const bad = [];
+const blocked = [];
 
 for (const file of files(CONTENT).sort()) {
 	const rel = file.slice(root.length + 1).replace(/\\/g, '/');
@@ -84,10 +92,14 @@ for (const file of files(CONTENT).sort()) {
 		const result = await check(url);
 		checked++;
 		if (result.ok) good++;
+		else if (result.blocked) blocked.push(`${rel}  ${result.status}  ${url}`);
 		else bad.push(`${rel}  ${result.status}  ${url}`);
 		await sleep(PAUSE_MS);
 
-		if (!WRITE) continue;
+		// A blocked host proves nothing either way, so the flag is left as it is.
+		// This script can confirm a URL; it can only disconfirm one on hard
+		// evidence, which means a 404, a 410 or a connection that fails.
+		if (!WRITE || result.blocked) continue;
 
 		// Rewrite the verified and accessed lines belonging to this url.
 		for (let j = i + 1; j < Math.min(i + 6, lines.length); j++) {

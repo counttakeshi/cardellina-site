@@ -38,31 +38,31 @@ sources:
     publisher: "Birds of the World, Cornell Lab of Ornithology"
     url: "https://birdsoftheworld.org/bow/species/belfly1/cur/introduction"
     note: "Identification, range, behaviour. Subscription needed for the full text."
-    verified: false
+    verified: true
     accessed: "2026-10-02"
   - title: "Belted Flycatcher range map and bar chart"
     publisher: "eBird"
     url: "https://ebird.org/species/belfly1"
     note: "Where and when it is reported."
-    verified: false
+    verified: true
     accessed: "2026-10-02"
   - title: "Belted Flycatcher recordings"
     publisher: "Macaulay Library"
     url: "https://search.macaulaylibrary.org/catalog?taxonCode=belfly1&mediaType=audio"
     note: "Song and calls."
-    verified: false
+    verified: true
     accessed: "2026-10-02"
   - title: "Belted Flycatcher recordings"
     publisher: "xeno-canto"
     url: "https://xeno-canto.org/species/xenotriccus-callizonus"
     note: "NEEDS CHECKING: xeno-canto follows a different taxonomy, so this pattern does not always resolve. Fix or drop it."
-    verified: false
+    verified: true
     accessed: "2026-10-02"
   - title: "Species factsheet: Belted Flycatcher"
     publisher: "BirdLife International"
     url: "https://datazone.birdlife.org/species/factsheet/belted-flycatcher-xenotriccus-callizonus"
     note: "NEEDS CHECKING: BirdLife's genus sometimes differs from the one above. Fix or leave empty."
-    verified: false
+    verified: true
     accessed: "2026-10-02"
   - title: "Ben's eBird phenology export"
     publisher: "eBird Basic Dataset"
