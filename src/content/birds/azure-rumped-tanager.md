@@ -1,0 +1,87 @@
+---
+title: "Azure-rumped Tanager"
+# COPY: a <title> written for search, roughly 50 characters.
+seoTitle: ""
+# COPY: the search result description, roughly 150 to 160 characters.
+metaDescription: ""
+status: draft
+updated: 2026-10-02
+# COPY: a guide slug from guides.ts.
+author: ""
+renderSources: true
+
+# The quick-reference table. Scientific name is filled from species.ts;
+# the rest are yours. An empty row is not rendered.
+scientificName: "Poecilostreptus cabanisi"
+# COPY: e.g. "Least Concern (IUCN)" or "Endangered (IUCN)".
+conservationStatus: ""
+# COPY: e.g. "Chiapas, Mexico & highlands of Guatemala".
+range: ""
+# COPY: e.g. "2,300 m - 3,350 m".
+elevation: ""
+# COPY: e.g. "Year-round; most vocal February - May".
+bestMonths: ""
+# COPY: e.g. "High - steep hiking required".
+difficulty: ""
+
+ebirdCode: "azrtan1"
+
+# The call to action at the end. The link is the most specific tour that
+# looks for this bird; the words are yours.
+cta:
+  # COPY: one or two sentences tying the bird to the tour below.
+  text: ""
+  href: "/trips/volcano-endemics"
+
+sources:
+  - title: "Azure-rumped Tanager (Poecilostreptus cabanisi)"
+    publisher: "Birds of the World, Cornell Lab of Ornithology"
+    url: "https://birdsoftheworld.org/bow/species/azrtan1/cur/introduction"
+    note: "Identification, range, behaviour. Subscription needed for the full text."
+    verified: true
+    accessed: "2026-10-03"
+  - title: "Azure-rumped Tanager range map and bar chart"
+    publisher: "eBird"
+    url: "https://ebird.org/species/azrtan1"
+    note: "Where and when it is reported."
+    verified: true
+    accessed: "2026-10-03"
+  - title: "Azure-rumped Tanager recordings"
+    publisher: "Macaulay Library"
+    url: "https://search.macaulaylibrary.org/catalog?taxonCode=azrtan1&mediaType=audio"
+    note: "Song and calls."
+    verified: true
+    accessed: "2026-10-03"
+  - title: "Azure-rumped Tanager recordings"
+    publisher: "xeno-canto"
+    url: "https://xeno-canto.org/species/poecilostreptus-cabanisi"
+    note: "NEEDS CHECKING: xeno-canto follows a different taxonomy, so this pattern does not always resolve. Fix or drop it."
+    verified: true
+    accessed: "2026-10-03"
+  - title: "Species factsheet: Azure-rumped Tanager"
+    publisher: "BirdLife International"
+    url: "https://datazone.birdlife.org/species/factsheet/azure-rumped-tanager-tangara-cabanisi"
+    note: "BirdLife files this under Tangara, not Poecilostreptus. Corrected and checked."
+    verified: true
+    accessed: "2026-10-03"
+  - title: "Ben's eBird phenology export"
+    publisher: "eBird Basic Dataset"
+    note: "Once D6 is imported, the monthly chart on this page comes from it."
+    verified: false
+    accessed: "2026-10-02"
+---
+## Identification
+
+<!-- COPY: two or three paragraphs. What it looks like, what it sounds like, and what it is confused with. Birds of the World is in the sources. -->
+
+## Distribution and habitat
+
+<!-- COPY: two or three paragraphs. Where it occurs across its whole range, then where in Chiapas specifically, and at what elevation. -->
+
+## Seasonality and finding the species
+
+<!-- COPY: two or three paragraphs. When it is findable, when it sings, what time of day, and how hard it actually is. This is the section a birder came for, so be honest about the odds. -->
+
+## Conservation
+
+<!-- COPY: one or two paragraphs. Status, the threats that matter, and anything we or our partners do about it. The BirdLife factsheet is in the sources. -->

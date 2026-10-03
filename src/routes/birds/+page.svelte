@@ -18,6 +18,18 @@
 	import { breadcrumbJsonLd } from '$lib/jsonld';
 	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
 	import { imageAttrs } from '$lib/imageSize';
+	import { accounts } from '$lib/data/accounts';
+	import { liveMarkdownAccountSlugs } from '$lib/content';
+
+	/**
+	 * Which birds have an account to link to, derived rather than flagged.
+	 * The hasAccount field in species.ts was a third copy of this fact: set too
+	 * early it links at a 404, forgotten it hides a page that exists.
+	 */
+	const accountSlugs = new Set([
+		...accounts.map((a) => a.slug),
+		...liveMarkdownAccountSlugs()
+	]);
 
 	/** Title and description overrides for this page; empty until Ben fills them. */
 	const seo = fixedSeo('/birds');
@@ -182,7 +194,7 @@
 				<div class="sp">
 					<div class="sp-main">
 						<span class="bn">
-							{#if bird.hasAccount}
+							{#if accountSlugs.has(bird.slug)}
 								<a href="{base}/birds/{bird.slug}">{bird.commonName}</a>
 							{:else}
 								{bird.commonName}

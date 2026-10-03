@@ -322,6 +322,15 @@ export const species: Species[
 		zones: ["pineoak"]
 	},
 	{
+		slug: "wine-throated-hummingbird",
+		commonName: "Wine-throated Hummingbird",
+		scientificName: "Selasphorus ellioti",
+		family: "Hummingbirds",
+		tier: "nca",
+		zones: ["pineoak", "cloud"],
+		tierBadge: "NCA"
+	},
+	{
 		slug: "agami-heron",
 		commonName: "Agami Heron",
 		scientificName: "Agamia agami",
@@ -416,6 +425,32 @@ export const species: Species[
 		family: "Owls",
 		tier: "wide",
 		zones: ["rainforest"]
+	},
+	{
+		slug: "bearded-screech-owl",
+		commonName: "Bearded Screech-Owl",
+		scientificName: "Megascops barbarus",
+		family: "Owls",
+		tier: "nca",
+		zones: ["pineoak", "cloud"],
+		tierBadge: "NCA"
+	},
+	{
+		slug: "fulvous-owl",
+		commonName: "Fulvous Owl",
+		scientificName: "Strix fulvescens",
+		family: "Owls",
+		tier: "nca",
+		zones: ["cloud", "pineoak"],
+		tierBadge: "NCA"
+	},
+	{
+		slug: "unspotted-saw-whet-owl",
+		commonName: "Unspotted Saw-whet Owl",
+		scientificName: "Aegolius ridgwayi",
+		family: "Owls",
+		tier: "mxca",
+		zones: ["cloud"]
 	},
 	{
 		slug: "black-headed-trogon",

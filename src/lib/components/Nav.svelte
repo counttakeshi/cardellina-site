@@ -2,6 +2,7 @@
 	import { base } from '$app/paths';
 	import { page } from '$app/state';
 	import { asset } from '$lib/ledger';
+	import { contentFor } from '$lib/content';
 
 	const LOGO = asset('images/cardellina-logo-r-ouLe0QMSi7BFi1G9-thumb.webp');
 
@@ -16,6 +17,36 @@
 		href?: string;
 		children?: NavChild[];
 	}
+
+	/**
+	 * D2. These appear only once their page is live. A draft is not built, so a
+	 * nav entry for one would be a link to a 404 on every page of the site.
+	 *
+	 * Built rather than listed, so publishing a page is still one word of
+	 * frontmatter and nothing here has to be remembered.
+	 */
+	const whereChildren: NavChild[] = [
+		contentFor('chiapas/index') && {
+			label: 'Chiapas',
+			href: '/chiapas',
+			hint: 'The state, its habitats and when to come'
+		},
+		contentFor('mexico/index') && {
+			label: 'Mexico guide',
+			href: '/mexico',
+			hint: 'Where the endemics are, country-wide'
+		}
+	].filter(Boolean) as NavChild[];
+
+	const guideChildren: NavChild[] = [
+		{ label: 'Valente & Ben', href: '/guides', hint: 'The two of us, and our wider team' },
+		{ label: 'Partners', href: '/partners', hint: 'Projects and people we work with' },
+		contentFor('tour-companies-and-clubs') && {
+			label: 'For tour companies and clubs',
+			href: '/tour-companies-and-clubs',
+			hint: 'Ground handling and custom itineraries'
+		}
+	].filter(Boolean) as NavChild[];
 
 	const items: NavItem[] = [
 		{
@@ -53,11 +84,11 @@
 		{
 			id: 'guides',
 			label: 'Guides',
-			children: [
-				{ label: 'Valente & Ben', href: '/guides', hint: 'The two of us, and our wider team' },
-				{ label: 'Partners', href: '/partners', hint: 'Projects and people we work with' }
-			]
-		}
+			children: guideChildren
+		},
+		...(whereChildren.length
+			? [{ id: 'where', label: 'Where to bird', children: whereChildren }]
+			: [])
 	];
 
 	let openMenu = $state<string | null>(null);

@@ -89,3 +89,58 @@ what Google Images holds, so that is a migration with redirects.
 **Six photographs on disk are reachable from nowhere** (3.2MB), and 29 ledger
 entries are of birds the library does not list, so no page can ask for them.
 Separate from this brief; the audit is in the conversation.
+
+---
+
+# Part D
+
+## Facts only you have
+
+**The four new species.** Wine-throated Hummingbird, Bearded Screech-Owl,
+Fulvous Owl and Unspotted Saw-whet Owl are now in `species.ts` with the tier
+and zones the brief proposed. Confirm each: the tier decides which range filter
+finds them in the library.
+
+**`northern-swamps` has no tour.** Every other trip report is mapped to the
+tours it came out of. That one is empty in `src/lib/related.ts` because nothing
+in the data says, and a guess would put a report under the wrong trip.
+
+**The reviews.** `tours`, `month`, `country` and `sourceUrl` are empty on all
+but Peter Standring's, whose review names Palenque itself. `sourceUrl` is the
+one worth most: a review a reader can go and check beats one they cannot.
+
+**Hit rates.** `src/lib/data/hitRates.ts` is empty. This is the single most
+convincing thing the site could publish, and the one number a reader will hold
+you to, so it takes real counts or nothing.
+
+**The phenology CSV**, and the eBird Basic Dataset version to pass as
+`--source` so the chart can cite what it is drawing.
+
+**The trade page** needs the RNT registration number, the insurer, and a
+decision on which operators are willing to be named as references.
+
+**Protected-area pages.** `/chiapas` cites CONANP's page for El Triunfo. Find
+the equivalent for every protected area the tours visit, and list any that have
+none.
+
+## Decisions
+
+**Tour pricing for the routes.** `fromPriceUsd` is empty on all four, so they
+advertise no price in their structured data. That is deliberate: a trip
+advertised with no price beats one advertised wrong. Filling it turns on the
+offer.
+
+**`outsideAdvisoryAreas`** is a claim about safety. Only set it on a route you
+have checked against the three current advisories, and recheck when they
+change.
+
+## Sources
+
+Every scaffolded URL went in as `verified: false`. `npm run seo:sources`
+opens them all and `-- --write` records the result. The xeno-canto and BirdLife
+URLs were built from a naming pattern and both services use their own taxonomy,
+so some will fail. Fix or delete a failing URL rather than leaving it: a source
+a reader cannot open is worse than no source.
+
+The Resplendent Quetzal's likely sources are a comment in `accounts.ts`,
+unrendered, for you to confirm.

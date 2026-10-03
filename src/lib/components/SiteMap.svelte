@@ -5,6 +5,8 @@
 	import { photoFor, imageUrl } from '$lib/ledger';
 	import mapBase from './map-base.svg?raw';
 	import { imageAttrs } from '$lib/imageSize';
+	import { accounts } from '$lib/data/accounts';
+	import { liveMarkdownAccountSlugs } from '$lib/content';
 
 	type Mode = 'site' | 'species';
 
@@ -49,7 +51,15 @@
 	};
 
 	/** Birds with a full account page, so the popover can offer to link on. */
-	const ACCOUNTS = new Map(species.filter((sp) => sp.hasAccount).map((sp) => [sp.commonName, sp.slug]));
+	// Same derivation as the library: an account exists if it is one of the four
+	// originals or a live Markdown file, not because a flag says so.
+	const ACCOUNT_SLUGS = new Set([
+		...accounts.map((a) => a.slug),
+		...liveMarkdownAccountSlugs()
+	]);
+	const ACCOUNTS = new Map(
+		species.filter((sp) => ACCOUNT_SLUGS.has(sp.slug)).map((sp) => [sp.commonName, sp.slug])
+	);
 
 	/** The bird whose photo is open in the site card, if any. */
 	let openBird = $state<string | null>(null);

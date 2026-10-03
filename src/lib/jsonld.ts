@@ -165,6 +165,14 @@ export interface ItineraryEntry {
 	name: string;
 }
 
+/** D8. A fixed departure, which is a dated offer rather than a price. */
+export interface DepartureOffer {
+	start: string;
+	end: string;
+	priceUsd: number;
+	soldOut?: boolean;
+}
+
 export function tourJsonLd(opts: {
 	name: string;
 	description: string;
@@ -172,6 +180,7 @@ export function tourJsonLd(opts: {
 	url: string;
 	offer?: TourOffer;
 	itinerary?: ItineraryEntry[];
+	departures?: DepartureOffer[];
 }) {
 	return compact({
 		'@context': 'https://schema.org',
@@ -182,16 +191,33 @@ export function tourJsonLd(opts: {
 		url: opts.url,
 		touristType: 'Birdwatchers',
 		provider: { '@id': ORG_ID },
-		offers: opts.offer
-			? compact({
-					'@type': 'Offer',
-					price: String(opts.offer.priceUsd),
-					priceCurrency: 'USD',
-					description: opts.offer.note,
-					url: opts.url,
-					availability: 'https://schema.org/InStock'
-				})
-			: undefined,
+		// A dated departure is a better offer than a from-price, so when there are
+		// any they replace it rather than sitting alongside: two offers for the
+		// same trip, one of them vaguer, helps nobody.
+		offers: opts.departures?.length
+			? opts.departures.map((d) =>
+					compact({
+						'@type': 'Offer',
+						price: String(d.priceUsd),
+						priceCurrency: 'USD',
+						url: opts.url,
+						availabilityStarts: d.start,
+						availabilityEnds: d.end,
+						availability: d.soldOut
+							? 'https://schema.org/SoldOut'
+							: 'https://schema.org/InStock'
+					})
+				)
+			: opts.offer
+				? compact({
+						'@type': 'Offer',
+						price: String(opts.offer.priceUsd),
+						priceCurrency: 'USD',
+						description: opts.offer.note,
+						url: opts.url,
+						availability: 'https://schema.org/InStock'
+					})
+				: undefined,
 		itinerary: opts.itinerary?.length
 			? {
 					'@type': 'ItemList',
