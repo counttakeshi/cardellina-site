@@ -215,11 +215,10 @@
 			"key_species": [
 				"Blue-tailed Hummingbird",
 				"Sparkling-tailed Hummingbird",
-				"Russet-crowned Motmot",
 				"Long-tailed Manakin",
 				"Rufous-and-white Wren",
 				"White-faced Ground-Sparrow",
-				"Prevost's Ground-Sparrow",
+				"Gray-crowned Ground-Sparrow",
 				"White-bellied Chachalaca"
 			],
 			"must_show": []
@@ -290,6 +289,8 @@
 				"Horned Guan",
 				"Black-capped Siskin",
 				"Wine-throated Hummingbird",
+				"Garnet-throated Hummingbird",
+				"Broad-tailed Hummingbird",
 				"Buffy-crowned Wood-Partridge",
 				"Pink-headed Warbler",
 				"Ocellated Quail",
@@ -1498,9 +1499,10 @@
 		"chiapas-highlights": {
 			"name": "Chiapas Highlights",
 			"slug": "chiapas-highlights-birding-tour",
-			"days": 3,
+			"days": 4,
 			"sites": [
 				"sancris",
+				"montebello",
 				"sumidero",
 				"ocote",
 				"sepultura"
@@ -1514,17 +1516,16 @@
 		"volcano-endemics": {
 			"name": "Volcano Endemics",
 			"slug": "volcano-endemics-birding-tour",
-			"days": 3,
+			"days": 4,
 			"sites": [
-				"sepultura",
-				"tonala",
-				"union",
+				"piedra",
 				"chiquihuite",
-				"tacana"
+				"tacana",
+				"union"
 			],
 			"must_show": [
-				"Pink-headed Warbler",
-				"Orange-breasted Bunting"
+				"Horned Guan",
+				"Pink-headed Warbler"
 			]
 		},
 		"lowland-jungles": {

@@ -186,6 +186,16 @@
 								<div class="day-n"><span>{day.label}</span></div>
 								<div class="day-body">
 									<h3>{day.title}</h3>
+									{#if day.birds?.length}
+										<div class="day-birds">
+											<div class="hl-label">Highlight species</div>
+											<div class="chips">
+												{#each day.birds as bird (bird)}
+													<span class="chip">{bird}</span>
+												{/each}
+											</div>
+										</div>
+									{/if}
 									{#each day.body as para (para)}
 										<p>{@html para}</p>
 									{/each}
@@ -587,7 +597,8 @@
 		padding: 1.4rem 0 0;
 		border-top: 1px solid var(--rule);
 	}
-	.headline .hl-label {
+	.headline .hl-label,
+	.day-birds .hl-label {
 		font-family: var(--mono);
 		font-size: 10.5px;
 		font-weight: 500;
@@ -595,6 +606,9 @@
 		text-transform: uppercase;
 		color: var(--phwa);
 		margin-bottom: 0.7rem;
+	}
+	.day-birds {
+		margin: 0 0 1rem;
 	}
 
 	.chips {

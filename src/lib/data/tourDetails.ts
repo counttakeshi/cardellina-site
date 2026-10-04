@@ -30,6 +30,8 @@ export interface ItineraryDay {
 	body: string[];
 	/** Overnight location, or how the trip ends. */
 	stay: string;
+	/** The day's highlight species, shown as chips above the prose. */
+	birds?: string[];
 }
 
 
@@ -808,7 +810,7 @@ export const tourDetails: TourDetail[] = [
 		"facts": [
 			{
 				"label": "Length",
-				"value": "3 days"
+				"value": "3-4 days"
 			},
 			{
 				"label": "Focus",
@@ -825,6 +827,30 @@ export const tourDetails: TourDetail[] = [
 		],
 		"gallery": [
 			{
+				"thumb": asset("images/resplendent-quetzal-mnlW0616OoTEDEj3-thumb.webp"),
+				"full": asset("images/resplendent-quetzal-mnlW0616OoTEDEj3-full.webp"),
+				"alt": "Resplendent Quetzal",
+				"caption": "Resplendent Quetzal"
+			},
+			{
+				"thumb": asset("images/azure-hooded-jay-w6Bqp2psIEeDOfzQ-thumb.webp"),
+				"full": asset("images/azure-hooded-jay-w6Bqp2psIEeDOfzQ-full.webp"),
+				"alt": "Azure-hooded Jay",
+				"caption": "Azure-hooded Jay",
+				"credit": "Sergio Gómez Villaverde"
+			},
+			{
+				"thumb": asset("images/belted-flycatcher-great-photo-iZzV6wprekrFaMzq-thumb.webp"),
+				"full": asset("images/belted-flycatcher-great-photo-iZzV6wprekrFaMzq-full.webp"),
+				"alt": "Belted Flycatcher",
+				"caption": "Belted Flycatcher"
+			},
+			{
+				"thumb": asset("images/saves_aves_golden-cheeked_warbler-fO82HsR2CVu7j9hq-thumb.webp"),
+				"full": asset("images/saves_aves_golden-cheeked_warbler-fO82HsR2CVu7j9hq-full.webp"),
+				"alt": "Golden-cheeked Warbler",
+				"caption": "Golden-cheeked Warbler"
+			},		{
 				"thumb": asset("images/mountain-trogon-2-SLizb4Wf8opo6wqS-thumb.webp"),
 				"full": asset("images/mountain-trogon-2-SLizb4Wf8opo6wqS-full.webp"),
 				"alt": "Mountain Trogon",
@@ -940,43 +966,82 @@ export const tourDetails: TourDetail[] = [
 				"credit": "Sergio Gómez Villaverde"
 			}
 		],
-		"length": "3 days · A taste of everything",
-		"summary": "A short trip that touches every side of Chiapas birding in three days: the highland endemics around San Cristóbal, the dry-forest specialities of Sumidero Canyon, the lowland forest of El Ocote, and the Pacific-slope birds of La Sepultura. The best introduction to the state for anyone short on time.",
+		"length": "3-4 days · A taste of everything",
+		"summary": "A short trip that touches every side of Chiapas birding: the highland endemics around San Cristóbal, the cloud forest and border lakes of Montebello, and the dry-forest specialities of Sumidero Canyon, with an optional fourth day for the lowland forest of El Ocote and the Pacific slope at La Sepultura. The best introduction to the state for anyone short on time.",
 		"draftNote": "This is a sample itinerary showing the kind of route we run. Exact days, sites and pace are tailored to your trip.",
 		"headlineBirds": [
-			"Belted Flycatcher",
 			"Pink-headed Warbler",
+			"Resplendent Quetzal",
+			"Belted Flycatcher",
 			"Nava's Wren",
-			"Orange-breasted Bunting",
-			"Blue-and-white Mockingbird",
-			"Blue-throated Motmot",
+			"Azure-hooded Jay",
 			"Rose-bellied Bunting",
-			"Unicolored Jay"
+			"Orange-breasted Bunting",
+			"Blue-throated Motmot"
 		],
 		"days": [
 			{
 				"label": "Day 1",
-				"title": "San Cristóbal & the highlands",
+				"title": "San Cristóbal → Tziscao",
 				"body": [
-					"Pine-oak and cloud forest around San Cristóbal for Pink-headed Warbler, Garnet-throated Hummingbird, Rufous-browed Wren and Black-throated Jay. Optional evening owling for Bearded Screech-Owl."
+					"A morning in the pine-oak forest close to your accommodation in San Cristóbal, with chances at the Northern Central American highland endemics. Then east to Tziscao, a small town on the Guatemalan border (3hr)."
+				],
+				"birds": [
+					"Pink-headed Warbler",
+					"Garnet-throated Hummingbird",
+					"Rufous-browed Wren",
+					"Golden-cheeked Warbler"
+				],
+				"stay": "Overnight · Tziscao"
+			},
+			{
+				"label": "Day 2",
+				"title": "Lagunas de Montebello",
+				"body": [
+					"A full morning in the cloud forest at Montebello, birding between the crystalline lakes that sit along the Guatemalan border. Lunch is traditional local food overlooking the water, then back to San Cristóbal (3hr)."
+				],
+				"birds": [
+					"Resplendent Quetzal",
+					"Azure-hooded Jay",
+					"Black-throated Jay",
+					"Yellow-throated Nightingale-Thrush",
+					"Barred Parakeet"
 				],
 				"stay": "Overnight · San Cristóbal"
 			},
 			{
-				"label": "Day 2",
+				"label": "Day 3",
 				"title": "Sumidero Canyon",
 				"body": [
-					"A morning above the Grijalva at Sumidero for Belted Flycatcher, Slender Sheartail and Red-breasted Chat, then on to Ocozocoautla with owling at El Ocote for Black-and-White Owl, Crested Owl, Spectacled Owl."
+					"Sumidero Canyon Park, an hour from San Cristóbal. We bird the entrance first for a handful of West Mexican endemics, then move up to the canyon viewpoints a thousand metres above the Grijalva river."
 				],
-				"stay": "Overnight · Ocozocoautla"
+				"birds": [
+					"Slender Sheartail",
+					"Belted Flycatcher",
+					"Bar-winged Oriole",
+					"Blue Seedeater",
+					"Red-breasted Chat"
+				],
+				"stay": "Overnight · Ocozocoautla, or trip ends · San Cristóbal"
 			},
 			{
-				"label": "Day 3",
+				"label": "Day 4",
 				"title": "El Ocote & La Sepultura",
 				"body": [
-					"The limestone forest of El Ocote for Nava's Wren, Keel-billed Toucan and Green Shrike-Vireo, and a host of lowland jungle specialists. Continuing to the Sierra Madre slopes on the Pacific side for the flagship Rose-bellied Bunting, Orange-breasted Bunting, Cinnamon-tailed Sparrow and Citreoline Trogon, before the trip ends."
+					"An endemics-heavy day, starting in lowland jungle for Nava's Wren, a micro-endemic that lives on limestone outcrops alongside toucans and tanagers.",
+					"Then on to La Sepultura for more micro-endemics, Rose-bellied Bunting and Cinnamon-tailed Sparrow among them, before heading back to Tuxtla or San Cristóbal."
 				],
-				"stay": "Trip ends"
+				"birds": [
+					"Nava's Wren",
+					"Rose-bellied Bunting",
+					"Orange-breasted Bunting",
+					"Cinnamon-tailed Sparrow",
+					"Citreoline Trogon",
+					"Long-tailed Manakin",
+					"Great Swallow-tailed Swift",
+					"Keel-billed Toucan"
+				],
+				"stay": "Trip ends · Tuxtla or San Cristóbal"
 			}
 		]
 	},
@@ -988,7 +1053,7 @@ export const tourDetails: TourDetail[] = [
 		"facts": [
 			{
 				"label": "Length",
-				"value": "3 days"
+				"value": "4 days"
 			},
 			{
 				"label": "Focus",
@@ -1016,18 +1081,6 @@ export const tourDetails: TourDetail[] = [
 				"alt": "Pink-headed Warbler",
 				"caption": "Pink-headed Warbler",
 				"credit": "Sergio Gómez Villaverde"
-			},
-			{
-				"thumb": asset("images/yellow-headed-amazon-RwBRxOKOv3wii34L-thumb.webp"),
-				"full": asset("images/yellow-headed-amazon-RwBRxOKOv3wii34L-full.webp"),
-				"alt": "Yellow-headed Amazon",
-				"caption": "Yellow-headed Amazon"
-			},
-			{
-				"thumb": asset("images/_dsc0870-UHFcPZY27edAPFr1-thumb.webp"),
-				"full": asset("images/_dsc0870-UHFcPZY27edAPFr1-full.webp"),
-				"alt": "Giant Wren",
-				"caption": "Giant Wren"
 			},
 			{
 				"thumb": asset("images/sparkling-tailed-hummingbird-rx6NUrWTCsWDxH5N-thumb.webp"),
@@ -1066,13 +1119,6 @@ export const tourDetails: TourDetail[] = [
 				"caption": "Rufous Sabrewing"
 			},
 			{
-				"thumb": asset("images/turquoise-browed-motmot-hwikmYfulmi5nHCi-thumb.webp"),
-				"full": asset("images/turquoise-browed-motmot-hwikmYfulmi5nHCi-full.webp"),
-				"alt": "Turquoise-browed Motmot",
-				"caption": "Turquoise-browed Motmot",
-				"credit": "Sergio Gómez Villaverde"
-			},
-			{
 				"thumb": asset("images/guatemalan-tyrannulet-HFmbr5dlTSRWWVe9-thumb.webp"),
 				"full": asset("images/guatemalan-tyrannulet-HFmbr5dlTSRWWVe9-full.webp"),
 				"alt": "Guatemalan Tyrannulet",
@@ -1087,64 +1133,72 @@ export const tourDetails: TourDetail[] = [
 				"credit": "Jaime Pérez"
 			},
 			{
-				"thumb": asset("images/orange-breasted-bunting-sergio-thumb.webp"),
-				"full": asset("images/orange-breasted-bunting-sergio-full.webp"),
-				"alt": "Orange-breasted Bunting",
-				"caption": "Orange-breasted Bunting",
+				"thumb": asset("images/blue-and-white-mockingbird-1-NCnEIapZ3vpQC2sm-thumb.webp"),
+				"full": asset("images/blue-and-white-mockingbird-1-NCnEIapZ3vpQC2sm-full.webp"),
+				"alt": "Blue-and-white Mockingbird",
+				"caption": "Blue-and-white Mockingbird",
 				"credit": "Sergio Gómez Villaverde"
 			},
 			{
-				"thumb": asset("images/citreoline-trogon-sergio-thumb.webp"),
-				"full": asset("images/citreoline-trogon-sergio-full.webp"),
-				"alt": "Citreoline Trogon",
-				"caption": "Citreoline Trogon",
+				"thumb": asset("images/black-capped-swallow-vYDUGfI4yq2m07pL-thumb.webp"),
+				"full": asset("images/black-capped-swallow-vYDUGfI4yq2m07pL-full.webp"),
+				"alt": "Black-capped Swallow",
+				"caption": "Black-capped Swallow",
 				"credit": "Sergio Gómez Villaverde"
 			},
 			{
-				"thumb": asset("images/cinnamon-tailed-sparrow-sergio-thumb.webp"),
-				"full": asset("images/cinnamon-tailed-sparrow-sergio-full.webp"),
-				"alt": "Cinnamon-tailed Sparrow",
-				"caption": "Cinnamon-tailed Sparrow",
-				"credit": "Sergio Gómez Villaverde"
+				"thumb": asset("images/resplendent-quetzal-mnlW0616OoTEDEj3-thumb.webp"),
+				"full": asset("images/resplendent-quetzal-mnlW0616OoTEDEj3-full.webp"),
+				"alt": "Resplendent Quetzal",
+				"caption": "Resplendent Quetzal"
 			}
 		],
-		"length": "3 days · Pacific slope to the volcano",
+		"length": "4 days · Pacific slope to the volcano",
 		"summary": "A focused push for the northern Central American highland endemics, from the Pacific slope up into the cloud forest of Tacaná Volcano on the Guatemalan border. The prize is the Horned Guan, reached by a long, hard hike, alongside a run of specialities found nowhere else in Mexico.",
 		"draftNote": "This is a sample itinerary showing the kind of route we run. Exact days, sites and pace are tailored to your trip.",
 		"headlineBirds": [
 			"Horned Guan",
 			"Pink-headed Warbler",
-			"Orange-breasted Bunting",
+			"Unspotted Saw-whet Owl",
+			"Azure-rumped Tanager",
 			"Blue-and-white Mockingbird",
 			"Blue-crowned Chlorophonia",
 			"Blue-throated Motmot",
-			"Giant Wren",
-			"Rose-bellied Bunting"
+			"Black-capped Siskin"
 		],
 		"days": [
 			{
 				"label": "Day 1",
-				"title": "Tuxtla → La Sepultura → the coast",
+				"title": "Tapachula → Piedra de Huixtla → Chiquihuite",
 				"body": [
-					"Starting from Tuxtla, we begin at La Sepultura for Rose-bellied Bunting, Orange-breasted Bunting, Citreoline Trogon and Cinnamon-tailed Sparrow, then finish the day nearer the coast for Spot-breasted Oriole, Giant Wren, Rufous-naped Wren and Rufous-backed Wren, pushing on to reach Unión Juárez."
-				],
-				"stay": "Overnight · Unión Juárez"
-			},
-			{
-				"label": "Day 2",
-				"title": "Unión Juárez → Chiquihuite",
-				"body": [
-					"A full morning birding around Unión Juárez on the humid Pacific slope for Azure-rumped Tanager, Blue-tailed Hummingbird, Sparkling-tailed Hummingbird, White-faced Quail-Dove, Rufous Sabrewing and Middle American Leaftosser, before heading up to the high-elevation town of Chiquihuite."
+					"Starting from Tapachula, we visit the Pacific-slope foothills at Piedra de Huixtla for Long-tailed Manakin, Blue-tailed Hummingbird, Rufous-and-white Wren, Gray-crowned Ground-Sparrow and White-bellied Chachalaca, then move up to the high town of Chiquihuite for the night. We will have a one hour walk to our accommodation, which will give a sense of the following day's hike intensity."
 				],
 				"stay": "Overnight · Chiquihuite"
 			},
 			{
-				"label": "Day 3",
-				"title": "Tacaná Volcano hike",
+				"label": "Day 2",
+				"title": "The Horned Guan hike → Papales",
 				"body": [
-					"A long, hard day of hiking in search of the Horned Guan, with Black-capped Siskin, Buffy-crowned Wood-Partridge, Wine-throated Hummingbird and Pink-headed Warbler also on the mountain. A strenuous climb, around 3 hours of steep uphill to the primary site, followed by the descent. We overnight again at Chiquihuite; the trip ends here, with a drop-off at Tapachula airport or a long drive back to Tuxtla."
+					"A steep climb of several hours through cloud forest to the Horned Guan site, with Wine-throated Hummingbird and Pink-headed Warbler on the same mountain.",
+					"We stay at Papales, a rustic cabin above 3,000 m, with a chance of Unspotted Saw-whet Owl after dark, allowing for a calmer descent the next day."
 				],
-				"stay": "Trip ends"
+				"stay": "Overnight · Papales (rustic cabin, above 3,000 m)"
+			},
+			{
+				"label": "Day 3",
+				"title": "Back down to Chiquihuite → Unión Juárez",
+				"body": [
+					"A hike back down, catching more hummingbirds like Garnet-throated Hummingbird, Broad-tailed Hummingbird and Amethyst-throated Mountain-gem. A rest with afternoon birding near Chiquihuite for Blue-throated Motmot, Blue-and-white Mockingbird, Blue-crowned Chlorophonia, Hooded Grosbeak and Guatemalan Tyrannulet."
+				],
+				"stay": "Overnight · Unión Juárez"
+			},
+			{
+				"label": "Day 4",
+				"title": "Talquián → Tapachula",
+				"body": [
+					"A last morning on the humid Pacific slope near Talquián for Azure-rumped Tanager, Sparkling-tailed Hummingbird, Rufous Sabrewing, White-faced Quail-Dove and Black-capped Swallow, then down to Tapachula for the airport drop-off."
+				],
+				"stay": "Trip ends · Tapachula airport"
 			}
 		]
 	},

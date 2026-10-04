@@ -159,16 +159,16 @@ export const multiDayTrips: MultiDayTrip[] = [
 		name: 'Chiapas Highlights',
 		theme: 'A taste of everything',
 		summary:
-			'A short trip that touches on multiple habitats in three days: the highland endemics around San Cristóbal, the dry-forest specialities of Sumi…',
+			'A short trip that touches on multiple habitats: the highland endemics around San Cristóbal, the cloud forest and border lakes of Montebello, the dry-forest specialities of Sumi…',
 		birds: [
 			'Belted Flycatcher',
+			'Resplendent Quetzal',
 			'Rose-bellied Bunting',
-			'Unicolored Jay',
 			'Slender Sheartail',
 			'Cinnamon-tailed Sparrow',
 			'Highland Guan'
 		],
-		days: '3 days',
+		days: '3-4 days',
 		sampleItinerary: true,
 		image: tripImg('belted-flycatcher-great-photo-iZzV6wprekrFaMzq.jpg')
 	},
@@ -179,12 +179,12 @@ export const multiDayTrips: MultiDayTrip[] = [
 		summary:
 			'A focused push for the northern Central American highland endemics, from the Pacific slope up into the cloud forest of Tacaná Volcano on the Guatemala…',
 		birds: [
-			'Giant Wren',
 			'Horned Guan',
-			'Rose-bellied Bunting',
-			'Blue-crowned Chlorophonia',
+			'Pink-headed Warbler',
+			'Unspotted Saw-whet Owl',
 			'Azure-rumped Tanager',
-			'Cinnamon-tailed Sparrow'
+			'Blue-crowned Chlorophonia',
+			'Blue-throated Motmot'
 		],
 		days: '4 days',
 		sampleItinerary: true,
