@@ -96,14 +96,11 @@ Separate from this brief; the audit is in the conversation.
 
 ## Facts only you have
 
-**The four new species.** Wine-throated Hummingbird, Bearded Screech-Owl,
-Fulvous Owl and Unspotted Saw-whet Owl are now in `species.ts` with the tier
-and zones the brief proposed. Confirm each: the tier decides which range filter
-finds them in the library.
+~~**The four new species.**~~ **Confirmed** by Ben, workbook rows 15 to 18. The
+tier and zones the brief proposed were right for all four.
 
-**`northern-swamps` has no tour.** Every other trip report is mapped to the
-tours it came out of. That one is empty in `src/lib/related.ts` because nothing
-in the data says, and a guess would put a report under the wrong trip.
+~~**`northern-swamps` has no tour.**~~ **Answered:** the Palenque day tour,
+workbook row 14. Applied. Rows 10 to 13 confirm the other four mappings too.
 
 **The reviews.** `tours`, `month`, `country` and `sourceUrl` are empty on all
 but Peter Standring's, whose review names Palenque itself. `sourceUrl` is the
