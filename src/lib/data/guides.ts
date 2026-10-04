@@ -73,9 +73,8 @@ export const guides: Guide[] = [
 		tier: 'lead',
 		languages: ['English', 'Spanish', 'Dutch'],
 		profiles: [
-			'' // eBird
-			// '' — iNaturalist
-			// '' — Instagram
+			'https://ebird.org/profile/MjY1MTEzMA'
+			// NEEDS BEN: iNaturalist and Instagram, or leave as they are.
 		],
 		name: 'Valente González',
 		role: 'Tour leader & guide · born in Chiapas',
@@ -124,9 +123,8 @@ export const guides: Guide[] = [
 		name: 'Ben Simmons',
 		languages: ['English', 'Spanish', 'Portuguese'],
 		profiles: [
-			'' // eBird
-			// '' — iNaturalist
-			// '' — Instagram
+			'https://ebird.org/profile/MTUyMTMwNg'
+			// NEEDS BEN: iNaturalist and Instagram, or leave as they are.
 		],
 		role: 'Tour leader & guide · from London, in Latin America since 2011',
 		photo: imageUrl('ben-guide-photo-Awv4vr7rLzfqJD6j.jpg', 'full'),

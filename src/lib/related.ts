@@ -42,15 +42,16 @@ const DAY_TOUR_TO_SITE: Record<string, string> = Object.fromEntries(
 /**
  * Which report came out of which tour.
  *
- * NEEDS BEN: all of it, and especially northern-swamps, which is deliberately
- * empty. The brief proposed these; nothing in the data states them.
+ * Confirmed by Ben in the SEO workbook, rows 10 to 14: the four the brief
+ * proposed were right, and northern-swamps, which the brief left open, belongs
+ * to the Palenque day tour.
  */
 export const REPORT_TO_TOURS: Record<string, string[]> = {
 	'tacana-volcano': ['volcano-endemics', 'full-endemics'],
 	'palenque-and-catazaja': ['palenque', 'lowland-jungles'],
 	'san-cristobal-full-day': ['san-cristobal'],
 	'san-cristobal-to-montebello': ['san-cristobal', 'montebello-lakes'],
-	'northern-swamps': []
+	'northern-swamps': ['palenque']
 };
 
 /** The inverse, so a tour can name its reports without a second list. */

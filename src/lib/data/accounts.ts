@@ -57,6 +57,7 @@ export interface SpeciesAccount {
 export const accounts: SpeciesAccount[] = [
 	{
 		"slug": "horned-guan",
+		"author": "ben",
 		"metaTitle": "Horned Guan in Mexico: Where, When, and How to Find One",
 		"title": "Horned Guan",
 		"subtitle": "Oreophasis derbianus · Chiapas, Mexico",
@@ -156,6 +157,7 @@ export const accounts: SpeciesAccount[] = [
 	},
 	{
 		"slug": "resplendent-quetzal",
+		"author": "ben",
 		"metaTitle": "Resplendent Quetzal in Mexico: Where, When, and How to Find One",
 		"title": "Resplendent Quetzal",
 		"subtitle": "Pharomachrus mocinno · Chiapas highlands, Mexico",
@@ -265,6 +267,7 @@ export const accounts: SpeciesAccount[] = [
 	},
 	{
 		"slug": "pink-headed-warbler",
+		"author": "ben",
 		"metaTitle": "Pink-headed Warbler in Mexico: Where, When, and How to Find One",
 		"title": "Pink-headed Warbler",
 		"subtitle": "Cardellina versicolor · Chiapas, Mexico",
@@ -378,6 +381,7 @@ export const accounts: SpeciesAccount[] = [
 	},
 	{
 		"slug": "rose-bellied-bunting",
+		"author": "ben",
 		"metaTitle": "Rose-bellied Bunting in Mexico: Where, When, and How to Find One",
 		"title": "Rose-bellied Bunting",
 		"subtitle": "Passerina rositae · Isthmus of Tehuantepec, Mexico",
