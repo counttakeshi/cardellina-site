@@ -70,7 +70,7 @@ export const dayTours: DayTour[] = [
 			'Violet Sabrewing',
 			'Black-cheeked Woodpecker'
 		],
-		priceMxn: 6300,
+		priceMxn: 5800,
 		party: '1–2 people · ~5–6 hours birding',
 		image: dayImg('palenq-Yle4qa7Q10t5Q9gk.jpg')
 	},
@@ -88,7 +88,7 @@ export const dayTours: DayTour[] = [
 			'Blue Seedeater',
 			'Bar-winged Oriole'
 		],
-		priceMxn: 6000,
+		priceMxn: 5800,
 		party: '1–2 people · ~5–6 hours birding',
 		note: 'Not available on Tuesdays',
 		image: dayImg('sabes_aves_canon_del_sumidero-mePJl0M91pTLG4Ja.JPG')
@@ -107,7 +107,7 @@ export const dayTours: DayTour[] = [
 			'Blue-and-white Mockingbird',
 			'White-faced Ground Sparrow'
 		],
-		priceMxn: 6500,
+		priceMxn: 6200,
 		party: '1–2 people · ~5–6 hours birding',
 		image: dayImg('tenam-puente-m6Ljg0VxNXhzeewd.jpg')
 	},
@@ -126,7 +126,7 @@ export const dayTours: DayTour[] = [
 			'Green-throated Mountain-gem',
 			'Barred Parakeet'
 		],
-		priceMxn: 8100,
+		priceMxn: 7000,
 		party: '1–2 people · ~5–6 hours birding',
 		note: 'Entrances and transport from Comitán included',
 		image: dayImg('resplendent-quetzal-mnlW0616OoTEDEj3.jpg')
@@ -147,7 +147,7 @@ export const dayTours: DayTour[] = [
 			'Cinnamon-tailed Sparrow',
 			'Great Swallow-tailed Swift'
 		],
-		priceMxn: 8300,
+		priceMxn: 7300,
 		party: '1–2 people · ~5–6 hours birding',
 		note: 'Transport and entrances included',
 		image: dayImg('5a00c77407956732f80e74b002410be9-mk3qQ8RrkvuyPp7o.jpg')
