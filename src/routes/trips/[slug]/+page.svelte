@@ -14,6 +14,7 @@
 	import { tourBirdLinks, routesIncludingSite, reportsForTour } from '$lib/related';
 	import { imageAttrs } from '$lib/imageSize';
 	import { altFor } from '$lib/ledger';
+	import { approxUsd, fmtMxn, PRICE_NOTE } from '$lib/pricing';
 
 	let { data } = $props();
 	const tour = $derived(data.tour);
@@ -77,17 +78,17 @@
 			description: tour.kind === 'day' ? (tour.intro[0] ?? tour.tagline) : tour.summary,
 			image: tour.hero,
 			url: tourUrl,
-			// Multi-day routes carry no offer until Ben fills fromPriceUsd (D4):
+			// Multi-day routes carry no offer until Ben fills fromPriceMxn (D4):
 			// a trip advertised with no price is better than one advertised wrong.
 			offer: dayTour
-				? { priceUsd: dayTour.priceUsd, note: dayTour.party }
-				: tour.fromPriceUsd
-					? { priceUsd: tour.fromPriceUsd, note: 'From, per person' }
+				? { priceMxn: dayTour.priceMxn, note: dayTour.party }
+				: tour.fromPriceMxn
+					? { priceMxn: tour.fromPriceMxn, note: 'From, per person' }
 					: undefined,
 			departures: departures.map((d) => ({
 				start: d.start,
 				end: d.end,
-				priceUsd: d.priceUsd,
+				priceMxn: d.priceMxn,
 				soldOut: d.status === 'full' || d.status === 'cancelled'
 			})),
 			itinerary:
@@ -223,6 +224,7 @@
 					</tbody>
 				</table>
 			{/if}
+			{#if dayTour}<p class="price-note">{PRICE_NOTE}</p>{/if}
 			<a class="book" href="{base}/contact?tour={tour.slug}">
 				{tour.kind === 'day' ? 'Book this tour' : 'Enquire about this trip'}
 			</a>
@@ -267,7 +269,7 @@
 					{#each departures as d (d.start)}
 						<tr class:gone={d.status === 'full' || d.status === 'cancelled'}>
 							<td>{fmtDate(d.start)} to {fmtDate(d.end)}</td>
-							<td>{d.priceUsd.toLocaleString()} USD</td>
+							<td>{approxUsd(d.priceMxn)} ({fmtMxn(d.priceMxn)})</td>
 							<td>
 								{#if d.status === 'full'}Full
 								{:else if d.status === 'cancelled'}Cancelled
@@ -739,6 +741,12 @@
 	.card :global(.muted) {
 		color: var(--stone);
 		font-size: 12.5px;
+	}
+	.price-note {
+		color: var(--stone);
+		font-size: 12.5px;
+		line-height: 1.45;
+		margin: 0 0 1.2rem;
 	}
 	.book {
 		display: block;

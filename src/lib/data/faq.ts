@@ -9,9 +9,17 @@
  * is a second copy to keep correct.
  *
  * Nothing in here may state a fact the site does not already state elsewhere.
- * Prices, inclusions, pick-up points and languages all come from
- * `tourDetails.ts`; if they change there, they change here.
+ * Inclusions, pick-up points and languages all come from `tourDetails.ts`; if
+ * they change there, they change here. The price range is worked out from
+ * `trips.ts`.
  */
+
+import { dayTours } from '$lib/data/trips';
+import { approxUsd, fmtMxn, PRICE_NOTE } from '$lib/pricing';
+
+const prices = dayTours.map((t) => t.priceMxn);
+const lowest = Math.min(...prices);
+const highest = Math.max(...prices);
 
 export interface FaqEntry {
 	q: string;
@@ -25,7 +33,8 @@ export const faq: FaqEntry[] = [
 	{
 		q: 'What does a day tour cost, and what is included?',
 		a: [
-			'Range from 230–365 USD for 1–2 people. Most tours include transport and site entrances. Check individual tour pages for more information.'
+			`Range from ${approxUsd(lowest)} to ${approxUsd(highest)} (${fmtMxn(lowest)} to ${fmtMxn(highest)}) for 1–2 people. Most tours include transport and site entrances. Check individual tour pages for more information.`,
+			PRICE_NOTE
 		],
 		link: { label: 'See the day tours', href: '/trips#day' }
 	},

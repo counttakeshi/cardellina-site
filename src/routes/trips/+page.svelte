@@ -12,6 +12,7 @@
 	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
 	import { imageAttrs } from '$lib/imageSize';
 	import { altFor } from '$lib/ledger';
+	import { approxUsd, fmtMxn, PRICE_NOTE } from '$lib/pricing';
 
 	/** Title and description overrides for this page; empty until Ben fills them. */
 	const seo = fixedSeo('/trips');
@@ -137,7 +138,8 @@
 							<p class="c-birds">{tour.birds.join(' · ')}</p>
 							<div class="c-foot">
 								<div class="c-meta">
-									<span class="c-price">{tour.priceUsd} USD</span>
+									<span class="c-price">{approxUsd(tour.priceMxn)}</span>
+									<span class="c-mxn">{fmtMxn(tour.priceMxn)}</span>
 									<span class="c-party">{tour.party}</span>
 								</div>
 								<span class="c-link">See the tour →</span>
@@ -147,6 +149,8 @@
 					</article>
 				{/each}
 			</div>
+
+			<p class="panel-foot">{PRICE_NOTE}</p>
 		</div>
 	</section>
 
@@ -528,6 +532,12 @@
 		font-size: 22px;
 		color: var(--ink);
 		line-height: 1;
+	}
+	.c-mxn {
+		font-family: var(--mono);
+		font-size: 12px;
+		color: var(--ink);
+		margin-top: 2px;
 	}
 	.c-party {
 		font-family: var(--mono);

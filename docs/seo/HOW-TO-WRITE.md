@@ -130,7 +130,7 @@ maxAltitudeM: 2400,
 startTime: "05:30",
 pickupPoints: ["San Cristóbal de las Casas, any hotel"],
 whatToBring: ["Binoculars", "A warm layer for the first hour"],
-fromPriceUsd: 1850,              // routes only; until filled they advertise no price
+fromPriceMxn: 35000,             // routes only; until filled they advertise no price
 outsideAdvisoryAreas: true,      // only if you have checked it against the current advisories
 ```
 
@@ -163,7 +163,7 @@ his review names Palenque; the rest need you.
 
 ```ts
 groupDepartures: [
-  { start: "2027-02-14", end: "2027-02-22", priceUsd: 2950, seats: 8, seatsLeft: 3, status: "open" }
+  { start: "2027-02-14", end: "2027-02-22", priceMxn: 55000, seats: 8, seatsLeft: 3, status: "open" }
 ]
 ```
 

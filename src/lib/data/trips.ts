@@ -14,7 +14,8 @@ export interface DayTour {
 	blurb: string;
 	/** Target species, shown as a middot-separated run. */
 	birds: string[];
-	priceUsd: number;
+	/** Group total for 1–2 people. USD comes from pricing.ts. */
+	priceMxn: number;
 	party: string;
 	/** Caveat shown under the card, e.g. entrance fees or closure days. */
 	note?: string;
@@ -50,7 +51,7 @@ export const dayTours: DayTour[] = [
 			'Garnet-throated Hummingbird',
 			'Black-capped Swallow'
 		],
-		priceUsd: 230,
+		priceMxn: 4300,
 		party: '1–2 people · ~5–6 hours birding',
 		image: dayImg('sabes_aves_pink-headed_warbler-A0xjy2JlD8TLpRLX.jpg')
 	},
@@ -69,7 +70,7 @@ export const dayTours: DayTour[] = [
 			'Violet Sabrewing',
 			'Black-cheeked Woodpecker'
 		],
-		priceUsd: 290,
+		priceMxn: 6300,
 		party: '1–2 people · ~5–6 hours birding',
 		image: dayImg('palenq-Yle4qa7Q10t5Q9gk.jpg')
 	},
@@ -87,7 +88,7 @@ export const dayTours: DayTour[] = [
 			'Blue Seedeater',
 			'Bar-winged Oriole'
 		],
-		priceUsd: 330,
+		priceMxn: 6000,
 		party: '1–2 people · ~5–6 hours birding',
 		note: 'Not available on Tuesdays',
 		image: dayImg('sabes_aves_canon_del_sumidero-mePJl0M91pTLG4Ja.JPG')
@@ -106,7 +107,7 @@ export const dayTours: DayTour[] = [
 			'Blue-and-white Mockingbird',
 			'White-faced Ground Sparrow'
 		],
-		priceUsd: 295,
+		priceMxn: 6500,
 		party: '1–2 people · ~5–6 hours birding',
 		image: dayImg('tenam-puente-m6Ljg0VxNXhzeewd.jpg')
 	},
@@ -125,7 +126,7 @@ export const dayTours: DayTour[] = [
 			'Green-throated Mountain-gem',
 			'Barred Parakeet'
 		],
-		priceUsd: 350,
+		priceMxn: 8100,
 		party: '1–2 people · ~5–6 hours birding',
 		note: 'Entrances and transport from Comitán included',
 		image: dayImg('resplendent-quetzal-mnlW0616OoTEDEj3.jpg')
@@ -146,9 +147,9 @@ export const dayTours: DayTour[] = [
 			'Cinnamon-tailed Sparrow',
 			'Great Swallow-tailed Swift'
 		],
-		priceUsd: 365,
+		priceMxn: 8300,
 		party: '1–2 people · ~5–6 hours birding',
-		note: 'Entrances included',
+		note: 'Transport and entrances included',
 		image: dayImg('5a00c77407956732f80e74b002410be9-mk3qQ8RrkvuyPp7o.jpg')
 	}
 ];

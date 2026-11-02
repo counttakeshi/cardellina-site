@@ -53,6 +53,14 @@ from the repo name.
 3. Leave `MX`, SPF and DMARC alone: email for info@cardellina.com stays on
    Hostinger and is unrelated to where the website is hosted.
 
+## Prices
+
+Tour prices are set in pesos (`priceMxn` in `src/lib/data/trips.ts`). USD figures
+are worked out from the reference rate in `src/lib/data/fx.json`.
+
+`.github/workflows/fx-check.yml` compares that rate with the market every Monday
+and opens an issue when it is 5% out.
+
 ## Contact form
 
 GitHub Pages serves static files and cannot process a form submission, so the

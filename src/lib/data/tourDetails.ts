@@ -1,4 +1,6 @@
 import { asset } from '$lib/ledger';
+import { getDayTour } from '$lib/data/trips';
+import { approxUsd, fmtMxn } from '$lib/pricing';
 /**
  * Full detail pages for every day tour and multi-day trip. Keyed by the same slug
  * used in trips.ts, so the listing cards and these pages stay in step.
@@ -51,7 +53,7 @@ export interface GroupDeparture {
 	start: string;
 	/** ISO date. */
 	end: string;
-	priceUsd: number;
+	priceMxn: number;
 	seats: number;
 	seatsLeft: number;
 	status: 'open' | 'nearly full' | 'full' | 'cancelled';
@@ -104,7 +106,7 @@ interface TourBase {
 	/** D7. "Seen on X of Y outings" when present. From hitRates.ts. */
 	hitRates?: boolean;
 	/** Routes only. Until this is filled the TouristTrip carries no Offer. */
-	fromPriceUsd?: number;
+	fromPriceMxn?: number;
 	/** D8. Fixed departures. The page shows a table and the offers follow. */
 	groupDepartures?: GroupDeparture[];
 	/**
@@ -138,6 +140,13 @@ export interface MultiDayDetail extends TourBase {
 
 export type TourDetail = DayTourDetail | MultiDayDetail;
 
+/** The price row. Prices live in trips.ts, so each tour has one copy. */
+function priceFact(slug: string): string {
+	const mxn = getDayTour(slug)?.priceMxn;
+	if (!mxn) throw new Error(`No price for ${slug}`);
+	return `${approxUsd(mxn)}<br /><span class="muted">${fmtMxn(mxn)}, 1–2 people</span>`;
+}
+
 export const tourDetails: TourDetail[] = [
 	{
 		"slug": "san-cristobal",
@@ -152,7 +161,7 @@ export const tourDetails: TourDetail[] = [
 			},
 			{
 				"label": "Price",
-				"value": "230 USD <span class=\"muted\">(1–2 people)</span>"
+				"value": priceFact("san-cristobal")
 			},
 			{
 				"label": "Included",
@@ -275,7 +284,7 @@ export const tourDetails: TourDetail[] = [
 			},
 			{
 				"label": "Price",
-				"value": "290 USD <span class=\"muted\">(1–2 people)</span>"
+				"value": priceFact("palenque")
 			},
 			{
 				"label": "Included",
@@ -386,7 +395,7 @@ export const tourDetails: TourDetail[] = [
 			},
 			{
 				"label": "Price",
-				"value": "330 USD <span class=\"muted\">(1–2 people)</span>"
+				"value": priceFact("sumidero-canyon")
 			},
 			{
 				"label": "Included",
@@ -522,7 +531,7 @@ export const tourDetails: TourDetail[] = [
 			},
 			{
 				"label": "Price",
-				"value": "295 USD <span class=\"muted\">(1–2 people)</span>"
+				"value": priceFact("comitan")
 			},
 			{
 				"label": "Included",
@@ -630,7 +639,7 @@ export const tourDetails: TourDetail[] = [
 			},
 			{
 				"label": "Price",
-				"value": "350 USD <span class=\"muted\">(1–2 people)</span>"
+				"value": priceFact("montebello-lakes")
 			},
 			{
 				"label": "Included",
@@ -733,11 +742,11 @@ export const tourDetails: TourDetail[] = [
 			},
 			{
 				"label": "Price",
-				"value": "365 USD <span class=\"muted\">(1–2 people)</span>"
+				"value": priceFact("la-sepultura")
 			},
 			{
 				"label": "Included",
-				"value": "Guiding, entrances"
+				"value": "Guiding, transport, entrances"
 			},
 			{
 				"label": "Pick-up",

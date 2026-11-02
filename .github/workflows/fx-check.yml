@@ -1,0 +1,53 @@
+name: Check USD prices
+
+on:
+  schedule:
+    # Mondays, 08:00 in Chiapas.
+    - cron: '0 14 * * 1'
+  workflow_dispatch:
+    inputs:
+      test_rate:
+        description: 'Pretend the market is at this rate, to test the alert'
+        required: false
+
+permissions:
+  actions: write
+  contents: read
+  issues: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - id: fx
+        run: node scripts/check-fx.mjs
+        env:
+          TEST_RATE: ${{ inputs.test_rate }}
+
+      # An issue rather than a failed run, because GitHub emails the issue's text
+      # and the alert should say what to do. One open issue per drift, closed once
+      # the rate is back in range. It has to close itself: a forgotten open issue
+      # would otherwise block the next alert.
+      - name: Open or close the alert
+        env:
+          ALERT: ${{ steps.fx.outputs.alert }}
+        run: |
+          open=$(gh issue list --state open --search 'USD prices in:title' --json number --jq '.[].number')
+          if [ -n "$ALERT" ]; then
+            [ -n "$open" ] || gh issue create --title "$ALERT" --body "Set \`mxnPerUsd\` in \`src/lib/data/fx.json\` a little below the market rate and push. Peso prices do not change."
+          else
+            for n in $open; do gh issue close "$n" --comment "Back within 5% of the site's rate."; done
+          fi
+
+      # GitHub switches off scheduled jobs in a public repo after 60 days without
+      # a commit, and it would do that silently from the point of view of the alert.
+      - name: Keep this schedule switched on
+        run: gh workflow enable fx-check.yml

@@ -122,7 +122,7 @@ none.
 
 ## Decisions
 
-**Tour pricing for the routes.** `fromPriceUsd` is empty on all four, so they
+**Tour pricing for the routes.** `fromPriceMxn` is empty on all four, so they
 advertise no price in their structured data. That is deliberate: a trip
 advertised with no price beats one advertised wrong. Filling it turns on the
 offer.

@@ -156,7 +156,7 @@ export function breadcrumbJsonLd(crumbs: Crumb[]) {
 // ── B3 ──────────────────────────────────────────────────────────────────────
 
 export interface TourOffer {
-	priceUsd: number;
+	priceMxn: number;
 	/** The existing party-size note, e.g. "1–2 people · ~5–6 hours birding". */
 	note?: string;
 }
@@ -169,7 +169,7 @@ export interface ItineraryEntry {
 export interface DepartureOffer {
 	start: string;
 	end: string;
-	priceUsd: number;
+	priceMxn: number;
 	soldOut?: boolean;
 }
 
@@ -198,8 +198,8 @@ export function tourJsonLd(opts: {
 			? opts.departures.map((d) =>
 					compact({
 						'@type': 'Offer',
-						price: String(d.priceUsd),
-						priceCurrency: 'USD',
+						price: String(d.priceMxn),
+						priceCurrency: 'MXN',
 						url: opts.url,
 						availabilityStarts: d.start,
 						availabilityEnds: d.end,
@@ -211,8 +211,8 @@ export function tourJsonLd(opts: {
 			: opts.offer
 				? compact({
 						'@type': 'Offer',
-						price: String(opts.offer.priceUsd),
-						priceCurrency: 'USD',
+						price: String(opts.offer.priceMxn),
+						priceCurrency: 'MXN',
 						description: opts.offer.note,
 						url: opts.url,
 						availability: 'https://schema.org/InStock'

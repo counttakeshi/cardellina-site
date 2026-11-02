@@ -5,6 +5,7 @@
 	import ContactForm from '$lib/components/ContactForm.svelte';
 	import { dayTours, multiDayTrips } from '$lib/data/trips';
 	import { faq } from '$lib/data/faq';
+	import { approxUsd, fmtMxn } from '$lib/pricing';
 	import { whatsappLink, WHATSAPP_DISPLAY, CONTACT_EMAIL } from '$lib/config';
 	import Seo from '$lib/components/Seo.svelte';
 	import { pageTitle, pageDescription, fixedSeo } from '$lib/seo';
@@ -34,7 +35,7 @@
 			return {
 				kind: 'day',
 				tourName: day.name,
-				tourMeta: `${day.priceUsd} USD · ${day.party}`
+				tourMeta: `${approxUsd(day.priceMxn)} (${fmtMxn(day.priceMxn)}) · ${day.party}`
 			};
 		}
 
