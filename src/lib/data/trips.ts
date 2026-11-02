@@ -147,7 +147,7 @@ export const dayTours: DayTour[] = [
 			'Cinnamon-tailed Sparrow',
 			'Great Swallow-tailed Swift'
 		],
-		priceMxn: 7300,
+		priceMxn: 7500,
 		party: '1–2 people · ~5–6 hours birding',
 		note: 'Transport and entrances included',
 		image: dayImg('5a00c77407956732f80e74b002410be9-mk3qQ8RrkvuyPp7o.jpg')
