@@ -566,6 +566,34 @@
 		margin-top: 0.9rem;
 	}
 
+	/*
+	 * Lines each card's rows up with its neighbour's, so the dividers, prices and
+	 * links sit level however long the copy runs. Eight rows: the photo, then
+	 * kicker, name, tagline, blurb, birds, foot and note. Multi-day cards leave the
+	 * last two empty, which is why the gap moves to a margin: a grid gap would add
+	 * space for every empty row.
+	 */
+	@supports (grid-template-rows: subgrid) {
+		.grid {
+			row-gap: 0;
+			margin-bottom: -1.6rem;
+		}
+		.card {
+			display: grid;
+			grid-row: span 8;
+			grid-template-rows: subgrid;
+			margin-bottom: 1.6rem;
+		}
+		.c-body {
+			display: grid;
+			grid-row: 2 / -1;
+			grid-template-rows: subgrid;
+		}
+		.c-foot {
+			margin-top: 0;
+		}
+	}
+
 	.panel-foot {
 		margin-top: 2rem;
 		font-size: 15.5px;

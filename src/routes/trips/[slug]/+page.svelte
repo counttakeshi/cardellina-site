@@ -723,7 +723,7 @@
 	.card td {
 		padding: 0.55rem 0;
 		font-size: 14px;
-		vertical-align: top;
+		vertical-align: baseline;
 		border-bottom: 1px solid var(--rule);
 	}
 	.card tr:last-child td {
